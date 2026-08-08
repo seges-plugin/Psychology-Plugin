@@ -1,0 +1,13 @@
+{
+  "name": "noesis",
+  "displayName": "Psychology Plugin",
+  "description": "Psychology Plugin -- an AI-powered self-understanding and self-assessment plugin for general adults in the AI era, wrapping Psychology MCP (Seges.ai's free psychometric scoring server, built under Project Noesis). Welcoming to neurodivergent people among everyone else, not ND-exclusive, and not a clinical service (refers out to real counselors via find_counselors, available to every signed-in user with a weekly/monthly usage cap, rather than providing therapy itself). Provides strength-framed interpretation of validated psychological/psychometric instruments -- population norms exist for some but not most (see each instrument's population_norms field), and none are neurodivergence-specific -- plus AI coaching.",
+  "version": "2.1.0",
+  "author": {
+    "name": "Seges.ai -- Project Noesis",
+    "url": "https://github.com/seges-plugin"
+  },
+  "homepage": "https://noesis.seges.ai",
+  "repository": "https://github.com/seges-plugin/Psychology-Plugin",
+  "license": "MIT"
+}
