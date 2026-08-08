@@ -216,7 +216,7 @@ Then, in Claude Code — adding Noesis's Claude plugin marketplace entry for thi
 
 ```
 /plugin marketplace add seges-plugin/Psychology-Plugin
-/plugin install noesis@noesis
+/plugin install psychology@psychology
 ```
 
 `.mcp.json` reads `NOESIS_PAT` from your environment and sends it as the `Authorization` header. Cloning this repo into your Claude Code plugins directory and restarting works too, with the same variable set the same way.
