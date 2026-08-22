@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+set -eu
+
+if [ -s "$1" ]; then
+  echo 'This repository requires an empty commit message.' >&2
+  exit 1
+fi

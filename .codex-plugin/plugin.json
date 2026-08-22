@@ -1,0 +1,46 @@
+{
+  "name": "noesis",
+  "version": "1.0.1",
+  "description": "Noesis is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments. It uses the hosted MCP endpoint at https://noesis.seges.ai/mcp. A host is supported only after that exact host and version completes a recorded OAuth authorization-code and S256 PKCE acceptance test. Noesis does not provide therapy, diagnosis, or treatment.",
+  "author": {
+    "name": "seges-plugin",
+    "url": "https://github.com/seges-plugin"
+  },
+  "homepage": "https://noesis.seges.ai",
+  "repository": "https://github.com/seges-plugin/Psychology-Plugin",
+  "license": "MIT",
+  "keywords": [
+    "psychology",
+    "psychometrics",
+    "self-assessment",
+    "self-reflection",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "Noesis",
+    "shortDescription": "Non-clinical, source-aware self-reflection through a hosted MCP connector.",
+    "longDescription": "Noesis supports structured self-reflection with published or clearly labelled psychometric instruments and plain-language interpretation. It is not therapy, diagnosis, or treatment. The public connector uses an OAuth authorization-code flow with mandatory S256 PKCE; do not paste a static token or credential. A host is supported only after its exact version has a recorded acceptance result. Signed-in storage reads require the applicable consent and an explicit per-session source choice; stored results, profiles, and journal content are never loaded by default. Referral results are informational leads only, and users independently verify credentials, availability, scope, and suitability.",
+    "developerName": "seges-plugin",
+    "category": "productivity",
+    "capabilities": [
+      "psychometric-scoring",
+      "self-reflection",
+      "consent-controlled-storage",
+      "referral-leads"
+    ],
+    "websiteURL": "https://noesis.seges.ai",
+    "privacyPolicyURL": "https://noesis.seges.ai/privacy",
+    "termsOfServiceURL": "https://noesis.seges.ai/terms",
+    "defaultPrompt": [
+      "Help me choose a non-clinical self-reflection exercise.",
+      "Explain the limits of this assessment in plain language.",
+      "Before using saved context, show me the available sources and let me choose."
+    ],
+    "brandColor": "#0d6efd",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png",
+    "screenshots": []
+  }
+}

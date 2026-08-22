@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "noesis": {
+      "type": "http",
+      "url": "https://noesis.seges.ai/mcp"
+    }
+  }
+}

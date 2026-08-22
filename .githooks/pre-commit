@@ -1,0 +1,34 @@
+#!/usr/bin/env sh
+set -eu
+
+expected_name='seges-plugin'
+expected_email='seges-plugin@users.noreply.github.com'
+
+require_ident() {
+  label="$1"
+  actual="$2"
+  case "$actual" in
+    "$expected_name <$expected_email> "*) ;;
+    *)
+      printf '%s identity must be %s <%s>; got %s\n' "$label" "$expected_name" "$expected_email" "$actual" >&2
+      exit 1
+      ;;
+  esac
+}
+
+require_ident author "$(git var GIT_AUTHOR_IDENT)"
+require_ident committer "$(git var GIT_COMMITTER_IDENT)"
+
+if ! command -v node >/dev/null 2>&1; then
+  echo 'Node.js is required to run the plugin contract gate.' >&2
+  exit 1
+fi
+node scripts/verify-plugin-contract.mjs
+
+# The public package deliberately excludes the restricted vocabulary and owner identifiers.
+# Bracketed characters keep this enforcement pattern out of its own literal scan.
+policy_pattern='s[e]x|f[e]tish|k[i]nk|ori[e]ntation|relat[io]nship|z[e]reo|c[o]nnact'
+if git diff --cached -U0 -- . | sed -n '/^+/p' | grep -Eiq "$policy_pattern"; then
+  echo 'Staged content violates the public-content policy.' >&2
+  exit 1
+fi

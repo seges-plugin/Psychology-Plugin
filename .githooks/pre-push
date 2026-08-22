@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+set -eu
+
+expected_name='seges-plugin'
+actual_name="$(gh api user --jq .login 2>/dev/null || true)"
+if [ "$actual_name" != "$expected_name" ]; then
+  printf 'Push identity must be %s; gh reports %s.\n' "$expected_name" "${actual_name:-none}" >&2
+  exit 1
+fi
