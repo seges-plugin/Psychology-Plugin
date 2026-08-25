@@ -1,0 +1,16 @@
+{
+  "name": "psychology",
+  "version": "1.0.1",
+  "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments.",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "seges-plugin",
+    "email": "hello@noesis.seges.ai",
+    "url": "https://github.com/seges-plugin"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seges-plugin/Psychology-Plugin"
+  }
+}
