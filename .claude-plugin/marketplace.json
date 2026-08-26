@@ -1,7 +1,7 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "psychology",
-  "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments. It connects to https://noesis.seges.ai/mcp through OAuth authorization code flow with mandatory S256 PKCE. This file is not a claim of listing or host support: a host is supported only after that exact host and version completes a recorded acceptance test.",
+  "description": "Understand yourself better with real, published self-assessments and plain-language explanations, right in your chat. Never therapy or diagnosis. Connects securely to https://noesis.seges.ai/mcp; this listing does not itself guarantee your specific app has finished our compatibility check yet.",
   "owner": {
     "name": "seges-plugin",
     "url": "https://github.com/seges-plugin",
@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "psychology",
-      "description": "Structured, non-clinical self-reflection with published or clearly labelled psychometric instruments and transparent limits. Psychology does not provide therapy, diagnosis, or treatment. Signed-in storage reads require the applicable consent and an explicit per-session source choice; no stored results, profiles, or journal content are loaded by default. Referral results are informational leads only, and users independently verify credentials, availability, scope, and suitability. A host is supported only after its exact version completes a recorded OAuth authorization-code and S256 PKCE acceptance test.",
+      "description": "Take real, published self-assessments (Big Five, values, attachment style, and more) and get honest, strength-focused explanations of what your results mean. Not therapy, diagnosis, or treatment; if you want a real counselor, Psychology can suggest one to look into, but you always do your own checking before reaching out. Sign in only if you want results saved for later. You choose what's remembered each time, and nothing loads automatically.",
       "author": {
         "name": "seges-plugin",
         "url": "https://github.com/seges-plugin",
