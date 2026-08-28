@@ -149,9 +149,10 @@ catalog, or login screen is not a substitute.
 ## Support
 
 Found a problem, have a question, or want to report a security or privacy concern? Contact
-**problems@noesis.seges.ai** — every report gets a response. For questions about the Terms of
-Service or data processing specifically, contact **problems@noesis.seges.ai** instead.
-
+**problems@noesis.seges.ai**. We do not currently offer a guaranteed response time. For questions
+about the Terms of Service or data processing specifically, use the same address. Full reporting
+guidance, including what not to send by email and what to do in an emergency, is published at
+https://noesis.seges.ai/support/.
 ## License
 
 [MIT](LICENSE)
