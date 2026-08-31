@@ -5,7 +5,7 @@
   "owner": {
     "name": "seges-plugin",
     "url": "https://github.com/seges-plugin",
-    "email": "hello@noesis.seges.ai"
+    "email": "problems@noesis.seges.ai"
   },
   "plugins": [
     {
@@ -14,7 +14,7 @@
       "author": {
         "name": "seges-plugin",
         "url": "https://github.com/seges-plugin",
-        "email": "hello@noesis.seges.ai"
+        "email": "problems@noesis.seges.ai"
       },
       "category": "productivity",
       "source": "./",

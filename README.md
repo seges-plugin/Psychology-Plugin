@@ -150,7 +150,7 @@ catalog, or login screen is not a substitute.
 
 Found a problem, have a question, or want to report a security or privacy concern? Contact
 **problems@noesis.seges.ai** — every report gets a response. For questions about the Terms of
-Service or data processing specifically, contact **hello@noesis.seges.ai** instead.
+Service or data processing specifically, contact **problems@noesis.seges.ai** instead.
 
 ## License
 
