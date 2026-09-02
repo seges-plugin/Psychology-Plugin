@@ -8,11 +8,11 @@ description: >-
   PRIORITY and overrides all other skills when activated. Activate when the user uses phrases like
   "I want to hurt myself", "I can't go on", "I want to die", "crisis", "emergency", "I feel unsafe",
   "suicidal", "self-harm", "abuse", "being hurt", "end it all", "no point in living", "everyone
-  would be better off without me", or any expression of intent to harm themselves or others. This
+  would be better off without me", or any expression of intent to harm themselves or others.
   Give this skill routing priority whenever the host or model sees these signals in the current
   user-provided material. There is no automated classifier, lifecycle hook, background monitor, or
   automatic human handoff behind this instruction. It also covers
-  two content-adjacent patterns, added 2026-07-30: distress connected to identity
+  two content-adjacent patterns, added 2026-07-30: distress connected to sexual orientation/identity
   in a hostile family/community/legal environment, and a reflection surfacing a past non-consensual
   experience, see Content-Domain-Specific Considerations below.
 triggers:
@@ -154,25 +154,30 @@ connection gap afterward, once the person is stabilized, using `skills/assessmen
 connector-unavailable boundary in `skills/00-session-bootstrap/SKILL.md` for the reminder to give them.
 
 Always provide specific, actionable resources, matched to what's actually being described, not just the
-country. **The full categorized directory** (all of the below, plus Canada, Australia, and a general
-international pointer) lives in `skills/coaching/references/safety-guidelines.md`'s **Crisis & Support
-Hotline Directory**, treat that as the single canonical source and update it there first if a number
-ever needs correcting.
+country. **The list below is the canonical directory. Update it here.**
+
+Corrected 2026-09-03: this previously said the full directory lived in
+`skills/coaching/references/safety-guidelines.md`'s "Crisis & Support Hotline Directory", and told you to
+treat that as the single canonical source. That section does not exist. That file is 22 lines and contains
+no hotline directory, no phone numbers, and no sourcing notes, so following the pointer for a number
+returned nothing, and a model that needs a hotline and finds none is at risk of improvising one. It also
+claimed Canada and Australia coverage: Canada appears below via Trans Lifeline, and Australia appeared
+nowhere in this repository at all, so that claim is dropped rather than left standing. For any country not
+listed, use findahelpline.com below instead of recalling a number from memory.
 
 **Added 2026-08-07 (closes gaps.html finding S1, CRITICAL)**: this list had zero Taiwan coverage despite
 Psychology being a Taiwan-headquartered, bilingual zh-TW/English product. Taiwan entries below independently
-verified against each operating agency's own page on 2026-08-07, see `safety-guidelines.md`'s directory
-for full sourcing.
+verified against each operating agency's own page on 2026-08-07.
 
 **Immediate (call/text now)**:
 - **1925 安心專線** (Taiwan, MOHW 24hr suicide/mental-health crisis line): Call 1925
 - **1995 生命線** (Taiwan Lifeline, 24hr): Call 1995
-- **113 保護專線** (Taiwan, domestic violence/assault/abuse, 24hr, multilingual): Call 113
+- **113 保護專線** (Taiwan, domestic violence/sexual assault/abuse, 24hr, multilingual): Call 113
 - **Taiwan emergency**: 110 (police) / 119 (fire-ambulance) / 112 (mobile only, no SIM/poor signal)
 - **988 Suicide & Crisis Lifeline** (US): Call or text 988
 - **Crisis Text Line**: Text HOME to 741741
 - **National Domestic Violence Hotline** (US): 1-800-799-7233, or text START to 88788
-- **National assault Hotline / RAINN** (US): 1-800-656-4673, or text HOPE to 64673
+- **National Sexual Assault Hotline / RAINN** (US): 1-800-656-4673, or text HOPE to 64673
 - **Trevor Project** (LGBTQ+, US, all ages welcome): 1-866-488-7386 or text START to 678678
 - **Trans Lifeline**: 1-877-565-8860 (US) / 1-877-330-6366 (Canada)
 - **Samaritans** (UK): 116 123
@@ -299,13 +304,15 @@ flagging mechanism, be honest about that rather than promising a check-in you ca
 ## Content-Domain-Specific Considerations
 
 **Added 2026-07-30**, covering two content-adjacent patterns that can arise in ordinary conversation:
-distress connected to identity in a hostile environment, and a reflection surfacing a
-past non-consensual experience. Full detail, hotline numbers, and verification notes:
-`skills/coaching/references/safety-guidelines.md`'s "Content-Domain-Specific Crisis Considerations"
-section, this is the condensed version for quick reference during a live conversation.
+distress connected to sexual orientation/identity in a hostile environment, and a reflection surfacing a
+past non-consensual experience. Corrected 2026-09-03: this used to point at
+`skills/coaching/references/safety-guidelines.md`'s "Content-Domain-Specific Crisis Considerations" for
+"full detail, hotline numbers, and verification notes". No such section exists, so this is not a condensed
+version of anything. It is the whole of what the plugin says on these two patterns, and the numbers it
+needs are in the directory above.
 
-### focus/Identity Distress in a Hostile Environment
-- **Presentation**: Fear, hopelessness, or danger tied specifically to identity being
+### Orientation/Identity Distress in a Hostile Environment
+- **Presentation**: Fear, hopelessness, or danger tied specifically to sexual orientation/identity being
   unsafe to disclose or live openly (hostile family, community, workplace, or legal environment),
   distinct from general mood distress unconnected to identity.
 - **Response**: Classify severity with the standard rubric above first. Validate the specific source of
@@ -328,7 +335,8 @@ section, this is the condensed version for quick reference during a live convers
 - **Response**: Pause the assessment/interpretation framing immediately. Respond to the person, not the
   instrument, acknowledge what was shared without probing for details (the assessment does not need more
   than what was volunteered, and asking risks re-traumatizing). Never fold this into a strength-framed
-  interpretation of their preferences. Offer the assault hotline (RAINN, or 113 in Taiwan) and ask
+  interpretation of their preferences. Offer the National Sexual Assault Hotline (RAINN, 1-800-656-4673,
+  or 113 保護專線 in Taiwan) and ask
   whether they want to continue, pause, or switch to a supportive conversation, let them choose. **Added
   2026-08-07, updated 2026-08-08**: also mention `psychology_find_counselors(location, focus)` (try a `focus` like
   "trauma-informed therapy") for real, ongoing local support once the immediate moment has passed. It is

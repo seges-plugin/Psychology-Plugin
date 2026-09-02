@@ -1,7 +1,7 @@
 ---
 name: coaching
 version: "0.1.0"
-description: This skill should be used when the user wants coaching support, personal growth guidance, or help working through challenges. Begin with the session-only context brief and use only an explicitly selected authorized source to personalize practical coaching. An assessment is optional only when a material left gap would change the guidance; never start it, score it, or save it automatically. Activate when the user says phrases like "coach me", "help me with", "I need support with", "what should I do about", "how can I improve", "working on my goals", "I want to change", "I'm struggling with", or asks for advice about personal challenges, habits, social contexts, work, or emotional regulation.
+description: This skill should be used when the user wants coaching support, personal growth guidance, or help working through challenges. Begin with the session-only context brief and use only an explicitly selected authorized source to personalize practical coaching. An assessment is optional only when a material left gap would change the guidance; never start it, score it, or save it automatically. Activate when the user says phrases like "coach me", "help me with", "I need support with", "what should I do about", "how can I improve", "working on my goals", "I want to change", "I'm struggling with", or asks for advice about personal challenges, habits, relationships, work, or emotional regulation.
 triggers:
   - "coach me"
   - "help me with"
@@ -131,7 +131,7 @@ Common goals: Managing overwhelm, anxiety, meltdowns, emotional intensity
 - Reference DBT-informed techniques (see coaching-protocols.md)
 
 ### Social Navigation Coaching
-Common goals: social contexts, communication, workplace dynamics, masking
+Common goals: Relationships, communication, workplace dynamics, masking
 - Use Extraversion and Agreeableness profiles to understand social patterns
 - For low Gregariousness + high Friendliness: Quality-over-quantity approach
 - For high Assertiveness + low Cooperation: Direct communication as a feature, not a bug
@@ -197,7 +197,7 @@ You are a coaching assistant, not a therapist or clinician. Refer to human profe
 ### Consider Referring
 - Persistent depression or anxiety (despite coaching)
 - Trauma that emerges during coaching
-- social context issues that involve another person's safety
+- Relationship issues that involve another person's safety
 - Legal or financial crises
 - When the user asks for therapy (not coaching)
 

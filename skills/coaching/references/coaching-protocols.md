@@ -82,7 +82,7 @@ Common ND thought distortions to address:
 #### Values Clarification
 Identifying what truly matters:
 
-1. **Life Domains**: Explore values across domains (work, social contexts, health, growth, leisure, community)
+1. **Life Domains**: Explore values across domains (work, relationships, health, growth, leisure, community)
 2. **Eulogy Exercise**: "What do you want to be remembered for?"
 3. **Values Sort**: Rank provided values; identify top 5
 4. **Values-Action Gap**: Where is life not aligned with values?

@@ -96,7 +96,7 @@ Every archetype has:
 **Common Challenges**:
 - Collaboration can be difficult, your vision is specific
 - May come across as arrogant or difficult (you're not; you're focused)
-- Social social contexts may suffer during intense creative periods
+- Social relationships may suffer during intense creative periods
 - Difficulty compromising on quality or vision
 - May burn bridges that would have helped
 
@@ -119,7 +119,7 @@ Every archetype has:
 **The Pattern**: You love people but need solitude. You're curious about everything and deeply kind, but you're not the life of the party. You explore the world on your own terms and bring back treasures to share with your trusted few.
 
 **Key Strengths**:
-- Deep, meaningful one-on-one social contexts
+- Deep, meaningful one-on-one relationships
 - Broad curiosity that leads to unexpected connections and insights
 - Genuine warmth that makes people feel truly seen
 - Independent exploration yields unique perspectives

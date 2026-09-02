@@ -16,7 +16,7 @@ Openness reflects cognitive flexibility, aesthetic sensitivity, intellectual cur
 
 ### O2: Artistic Interests
 - **High pole**: Deep appreciation for art, music, beauty, design; seeks aesthetic experiences; may create art
-- **Low pole**: Interest in function over form; indifferent to aesthetics; practical focus
+- **Low pole**: Interest in function over form; indifferent to aesthetics; practical orientation
 - **Measurement**: Interest in artistic activities, aesthetic appreciation, creative pursuits
 - **2e note**: Sensory sensitivities in autism can create either intense aesthetic appreciation or aversion
 
@@ -48,7 +48,7 @@ Openness reflects cognitive flexibility, aesthetic sensitivity, intellectual cur
 
 ## Domain: Conscientiousness (C)
 
-Conscientiousness reflects self-discipline, organization, goal-focus, and deliberation. In ND adults, this domain often shows the most "spikiness", high Achievement-Striving alongside low Self-Discipline or Orderliness, reflecting compensatory patterns.
+Conscientiousness reflects self-discipline, organization, goal-orientation, and deliberation. In ND adults, this domain often shows the most "spikiness", high Achievement-Striving alongside low Self-Discipline or Orderliness, reflecting compensatory patterns.
 
 ### C1: Self-Efficacy
 - **High pole**: Confidence in abilities, sense of competence, belief in capacity to handle challenges
