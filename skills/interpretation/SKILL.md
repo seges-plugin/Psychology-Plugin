@@ -142,8 +142,9 @@ round trip:
 4. For PVQ-RR, a result record whose raw schema ID is `score_pvq_rr` (not an MCP invocation) already contains `higher_order` (the 4 higher-order value
    categories), `value_scores` (all 10 individual values), and `value_rankings` (ranked by score),
    there's nothing further to fetch.
-5. To connect Big Five results to a specific life domain (clinical, workplace, education,
-   social contexts, creativity, leadership), call `psychology_domain_filtered_report(big5_scores, domain)`.
+5. To connect Big Five results to a specific life domain, call `psychology_domain_filtered_report(big5_scores, domain)`.
+   `domain` must be exactly one of: `wellbeing`, `workplace`, `education`, `relationships`, `creativity`,
+   `leadership`. Any other value is rejected with an error, it is not silently mapped to a default.
 6. To combine results across more than one instrument into one profile, call
    `psychology_battery_aggregate(results, user_id)` (or `psychology_battery_aggregate_json` if you're working from a JSON
    string).
