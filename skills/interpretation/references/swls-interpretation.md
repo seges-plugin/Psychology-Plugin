@@ -49,7 +49,7 @@ whole, often worth exploring what's driving the ambivalence rather than trying t
 direction.
 
 **Slightly dissatisfied (15-19):** More dissatisfaction than satisfaction, but not extreme, this is
-common during genuine life transitions (a hard job market, a recent move, a social context ending) and
+common during genuine life transitions (a hard job market, a recent move, a relationship ending) and
 doesn't by itself indicate anything clinical. Worth asking directly what specifically feels off, since this
 band covers a wide range of very different underlying situations.
 
@@ -71,7 +71,7 @@ report and move past.
   life satisfaction specifically, it correlates with mood and mental health in the research literature,
   but it is not a diagnostic instrument for any of them, and this file does not treat it as one.
 - **Doesn't explain *why*.** The total score carries no information about which life domains (work,
-  social contexts, health, purpose) are driving satisfaction up or down, only a conversation surfaces that.
+  relationships, health, purpose) are driving satisfaction up or down, only a conversation surfaces that.
 - **Not a comparison to anyone else's life**, and the bands are not population percentiles, they are
   Diener's own published descriptive labels for the raw 5-35 sum.
 - **No neurodivergence-specific norm exists.** SWLS was validated on general-population and student
