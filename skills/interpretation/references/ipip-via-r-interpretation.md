@@ -38,12 +38,12 @@ or having difficulty accepting love. Read at the item level, this dimension clus
 VIA taxonomy calls **Transcendence** (hope, gratitude) and **Humanity** (capacity to love and be loved),
 that mapping is this file's own reading of the item content, not a claim the source papers make explicitly.
 
-**Toward the high end:** An focus toward the future and toward connection that holds up under
+**Toward the high end:** An orientation toward the future and toward connection that holds up under
 difficulty, not naive optimism, but a durable sense that things can work out and that you're genuinely
 cared for. This is a real psychological resource, strongly associated in the broader wellbeing literature
 with resilience during hard periods.
 
-**Toward the low end:** A more guarded social context with hope, gratitude, or felt connection right now.
+**Toward the low end:** A more guarded relationship with hope, gratitude, or felt connection right now.
 Frame this honestly rather than glossing it: if the low end reflects real difficulty trusting that things
 will improve or that care is genuinely available, that's worth exploring directly, not just relabeling as
 a "realistic" personality style. It can also simply reflect a hard current season rather than a fixed

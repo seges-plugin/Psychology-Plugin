@@ -23,7 +23,7 @@ Each facet includes:
 
 **Average:** Your imagination is situationally activated, you can engage it when needed but don't live in it constantly. This gives you a nice balance between creative thinking and present-moment focus.
 
-**Low:** You're someone who prefers concrete reality to hypothetical possibilities. This isn't a lack, it's a strength. You don't get lost in "what-ifs," which means you can take action without overthinking. Your practical focus frees up mental energy for execution.
+**Low:** You're someone who prefers concrete reality to hypothetical possibilities. This isn't a lack, it's a strength. You don't get lost in "what-ifs," which means you can take action without overthinking. Your practical orientation frees up mental energy for execution.
 
 **Very Low:** You have a distinctly present-focused, concrete way of engaging with the world. While others get distracted by possibilities, you stay grounded in what is. This makes you remarkably effective at cutting through complexity and focusing on actionable reality.
 
@@ -35,15 +35,15 @@ Each facet includes:
 
 **Average:** You enjoy aesthetic experiences when you encounter them, but don't actively seek them out. You can appreciate a beautiful sunset or a well-designed space without making aesthetics a central focus.
 
-**Low:** You're more interested in function than form. You appreciate things that work well more than things that look beautiful. This practical focus means you don't get distracted by aesthetics and can focus on what matters most to you.
+**Low:** You're more interested in function than form. You appreciate things that work well more than things that look beautiful. This practical orientation means you don't get distracted by aesthetics and can focus on what matters most to you.
 
 **Very Low:** You have a strongly utilitarian approach to the world. You value what works over what looks good. This is a genuine strength, you're immune to superficial appeal and can see through marketing, pretension, and unnecessary complexity.
 
 ### Emotionality (O3), Emotional depth and richness
 
-**Very High:** You experience emotions with exceptional depth and complexity. Your emotional life is rich, nuanced, and deeply felt. This gives you profound empathy, emotional insight, and the capacity for deeply meaningful social contexts. The intensity can sometimes be overwhelming, but it's also the source of your greatest connections.
+**Very High:** You experience emotions with exceptional depth and complexity. Your emotional life is rich, nuanced, and deeply felt. This gives you profound empathy, emotional insight, and the capacity for deeply meaningful relationships. The intensity can sometimes be overwhelming, but it's also the source of your greatest connections.
 
-**High:** You have good access to your emotions and experience them vividly. You're likely comfortable with emotional expression and can articulate how you feel. This emotional awareness serves your social contexts and self-understanding well.
+**High:** You have good access to your emotions and experience them vividly. You're likely comfortable with emotional expression and can articulate how you feel. This emotional awareness serves your relationships and self-understanding well.
 
 **Average:** You experience emotions in a balanced way, present but not overwhelming. You can access your feelings when needed without being ruled by them.
 
@@ -189,7 +189,7 @@ Each facet includes:
 
 **Low:** You prefer smaller groups or one-on-one interactions to large social gatherings. You may find extended socializing draining. This selectivity means your social time is meaningful and intentional.
 
-**Very Low:** You're strongly introverted, social interaction requires energy, and solitude restores you. This isn't social anxiety or dislike of people; it's a neurological difference in how you process stimulation. Your depth in one-on-one social contexts often exceeds what gregarious people achieve in groups.
+**Very Low:** You're strongly introverted, social interaction requires energy, and solitude restores you. This isn't social anxiety or dislike of people; it's a neurological difference in how you process stimulation. Your depth in one-on-one relationships often exceeds what gregarious people achieve in groups.
 
 ### Assertiveness (E3), Tendency to take charge and lead
 
@@ -247,7 +247,7 @@ Each facet includes:
 
 **Very High:** You have an exceptionally trusting nature. You believe in people's goodness and give them the benefit of the doubt. This trust creates openness and connection. The challenge is protecting yourself from those who might take advantage.
 
-**High:** You're generally trusting and assume good intentions in others. This openness helps you build social contexts quickly.
+**High:** You're generally trusting and assume good intentions in others. This openness helps you build relationships quickly.
 
 **Average:** You're reasonably trusting but not naive. You evaluate people individually rather than trusting or distrusting indiscriminately.
 
