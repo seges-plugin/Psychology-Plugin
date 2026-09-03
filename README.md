@@ -41,6 +41,10 @@ repository or registry.
 
 ## What Psychology is
 
+<div align="center">
+<img src="assets/readme/hero.jpg" alt="Illustrated silhouette of a person in quiet reflection, an inner archway of light suggesting self-exploration" width="72%" />
+</div>
+
 Psychology helps adults explore how they think, decide, and learn through published or clearly labelled
 psychometric instruments, source and limit cards, and plain-language reflection. It is not therapy,
 diagnosis, treatment, or emergency care.
@@ -51,6 +55,37 @@ secrets, static access tokens, or private server code.
 
 Referral results, when available, are informational leads. Users independently verify a provider's
 credentials, availability, scope, jurisdiction, and suitability before relying on a referral.
+
+## What Psychology helps with
+
+<table>
+<tr>
+<td align="center" width="25%">
+<img src="assets/readme/icon-assessment.svg" width="64" height="64" alt="Clipboard with a checkmark, representing self-assessment" /><br />
+<b>Self-assessment</b><br />
+<sub>Published, source-aware psychometric instruments</sub>
+</td>
+<td align="center" width="25%">
+<img src="assets/readme/icon-coaching.svg" width="64" height="64" alt="Ascending bar chart, representing coaching and growth" /><br />
+<b>Coaching &amp; growth</b><br />
+<sub>Plain-language reflection on how you think, decide, and learn</sub>
+</td>
+<td align="center" width="25%">
+<img src="assets/readme/icon-counselor-match.svg" width="64" height="64" alt="A person inside a locket-like frame, representing counselor matching" /><br />
+<b>Counselor matching</b><br />
+<sub>Informational referral leads you verify independently</sub>
+</td>
+<td align="center" width="25%">
+<img src="assets/readme/icon-crisis-safety.svg" width="64" height="64" alt="Compass-like crosshair, representing a crisis safety net" /><br />
+<b>Crisis safety net</b><br />
+<sub>Clear signposting to local emergency and crisis services</sub>
+</td>
+</tr>
+</table>
+
+<div align="center">
+<img src="assets/readme/divider.svg" alt="" width="100%" />
+</div>
 
 ## Connect a host
 
@@ -119,6 +154,10 @@ experience, and a refused or unavailable source must not be retried or bypassed.
 The complete user-need-to-skill-to-MCP flow, including session-only context distillation, minimum source
 reads, adaptive assessment gaps, and exact visible public tool names, is in
 [MCP-ROUTING-CONTRACT.md](MCP-ROUTING-CONTRACT.md).
+
+<div align="center">
+<img src="assets/readme/reflection-contours.png" alt="Abstract layered contour art in warm and cool tones, symbolizing depth of reflection" width="55%" />
+</div>
 
 ## Safe use
 
