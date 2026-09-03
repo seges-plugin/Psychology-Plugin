@@ -1,7 +1,7 @@
 {
   "name": "psychology",
-  "version": "1.0.2",
-  "description": "Understand yourself better, at your own pace. Psychology gives you real, published self-assessments (Big Five, values, attachment style, and more) plus honest, strength-focused explanations of what your results mean, right inside your chat. It never diagnoses or replaces a therapist. Sign in only if you want your results saved for next time; you choose what's remembered, and nothing is loaded without asking first.",
+  "version": "1.0.3",
+  "description": "Understand yourself better, at your own pace. Psychology gives you real, published self-assessments (Big Five, personal values, character strengths, and more) plus honest, strength-focused explanations of what your results mean, right inside your chat. It never diagnoses or replaces a therapist. Sign in only if you want your results saved for next time; you choose what's remembered, and nothing is loaded without asking first.",
   "author": {
     "name": "seges-plugin",
     "url": "https://github.com/seges-plugin",

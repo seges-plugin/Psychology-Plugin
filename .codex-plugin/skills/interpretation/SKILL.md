@@ -238,12 +238,12 @@ might suggest (see each file's own opening section):
 | Instrument | Raw result-schema ID (not a public MCP call) | Reference file |
 |---|---|---|
 | CAT-Q (camouflaging/masking) | `score_cat_q` | `references/cat-q-interpretation.md` |
-| ASRS v1.1 Part A (ADHD screener) | `score_asrs_part_a` | `references/asrs-interpretation.md` |
-| ECR-R (adult attachment) | `score_ecr_r` | `references/ecr-r-interpretation.md` |
+| ASRS v1.1 Part A (ADHD screener) — **not in the current public catalog** | `score_asrs_part_a` | `references/asrs-interpretation.md` |
+| ECR-R (adult attachment) — **not in the current public catalog** | `score_ecr_r` | `references/ecr-r-interpretation.md` |
 | SWLS (life satisfaction) | `score_swls` | `references/swls-interpretation.md` |
 | IPIP-VIA-R Core Strengths | `score_ipip_via_r` | `references/ipip-via-r-interpretation.md` |
 | Financial Forecasting & Management Ability | `score_financial_calibration` | `references/financial-calibration-interpretation.md` |
-| Wellness Self-Tracking | `score_wellness_tracking` | `references/wellness-tracking-interpretation.md` |
+| Wellness Self-Tracking — **not in the current public catalog** | `score_wellness_tracking` | `references/wellness-tracking-interpretation.md` |
 
 Every one of these files leads with an explicit non-diagnostic/non-clinical statement specific to that
 instrument (e.g. ASRS: "a high score describes an attention-pattern tendency, it is NOT a diagnosis"; CAT-Q:
@@ -254,7 +254,7 @@ response, don't let the strength-framing soften into an implied diagnosis.
 
 The following are raw result-schema IDs only, never public MCP invocations: Cross-Cultural Adaptability
 (`score_cross_cultural_adaptability`), Research & Analysis Ability
-(`score_research_analysis`), Reasoning Style (`score_reasoning_style`), Self-Regulated Learning
+(`score_research_analysis`), Reasoning Style (`score_reasoning_style`, itself not in the current public catalog), Self-Regulated Learning
 (`score_self_regulated_learning`), and Charisma / Self-Presentation (`score_charisma`), all added
 2026-07-28, plus Reasoning Ability (`score_reasoning_ability`, added 2026-07-30) do **not** yet have a
 matching `references/<instrument>-interpretation.md` file. **Say so plainly if asked to interpret one
@@ -271,6 +271,14 @@ Until a dedicated reference file exists, work directly from what the tool's own 
 you, each of these carries its own `subscale_scores`/`composite_score`/`raw_score` (or
 equivalent), `validation_status`, and `disclaimer` fields, so the raw material for an honest,
 strength-framed interpretation is already there:
+
+Five further instruments in the current public catalog also have no dedicated reference file here:
+Aspiration Index (`score_aspiration_index`), CRT-2 (`score_crt2`), IPIP-HEXACO (`score_ipip_hexaco`),
+Meaning in Life Questionnaire (`score_mlq`), and PVQ-21 (`score_pvq21`). Treat them exactly like the
+instruments listed immediately above: say plainly that no dedicated reference file exists, work only
+from the fields the returned record itself carries, and do not improvise a narrative from general
+knowledge of the published source instrument. `score_pvq21` in particular is the PVQ-21 short form and
+does not return the longer PVQ-RR's 10-value / 4-higher-order structure; read its own fields.
 1. Lead with the mandatory `validation_status`/`disclaimer` text (paraphrased warmly, not omitted),
     these are original or adapted instruments with no independent validation of their own.
 2. Apply the same strength-framing principles from this skill's Core Principle and Score Level Framing

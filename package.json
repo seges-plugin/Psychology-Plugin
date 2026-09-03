@@ -1,6 +1,6 @@
 {
   "name": "psychology",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments.",
   "private": true,
   "license": "MIT",

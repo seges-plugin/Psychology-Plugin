@@ -75,7 +75,12 @@ Do not paste a static bearer token, password, personal access token, or authoriz
 configuration file. Psychology public MCP access is OAuth-only. If a host cannot complete the browser flow,
 there is no supported credential workaround.
 
-**OpenClaw:** this repo's own `openclaw.plugin.json` cannot auto-wire the connector — OpenClaw's
+**OpenClaw (an unverified evaluation target, not a supported host):** OpenClaw has no passed
+acceptance record, so the steps below are published as evaluation notes only. They are not a
+statement that the connection works, is supported, or will keep working, and the rule at the end of
+this section applies to them in full.
+
+This repo's own `openclaw.plugin.json` cannot auto-wire the connector — OpenClaw's
 plugin manifest has no field for declaring an MCP server as of the current release. Add the entry
 yourself under `mcpServers` in your own `~/.openclaw/openclaw.json`:
 

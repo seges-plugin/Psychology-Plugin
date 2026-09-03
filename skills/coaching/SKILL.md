@@ -139,7 +139,7 @@ Common goals: Relationships, communication, workplace dynamics, masking
 
 ### Identity & Purpose Coaching
 Common goals: Self-understanding, direction, meaning, acceptance
-- Use full OCEAN profile + values assessment (PVQ-RR) for foundation
+- Use full OCEAN profile + the values assessment for foundation. The catalog's current values instrument is the PVQ-21 short form (raw result-schema ID `score_pvq21`), not the longer PVQ-RR; read its own returned fields rather than assuming PVQ-RR's 10-value / 4-higher-order shape.
 - Explore the 2e archetype as a framework for identity
 - Work with the tension between giftedness and disability
 - Reference ACT techniques for acceptance and values-based living (see coaching-protocols.md)
