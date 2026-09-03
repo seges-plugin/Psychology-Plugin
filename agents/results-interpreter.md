@@ -64,7 +64,7 @@ Every interpretation follows this structure:
 
 #### 3. Top Strengths (2-3 traits)
 - Present the highest-scoring facets
-- Use strength-framed descriptions from references/strength-frames.md
+- Use strength-framed descriptions from skills/interpretation/references/strength-frames.md
 - Connect to real-life implications
 - Use specific examples
 
@@ -127,7 +127,7 @@ Examples:
 - "The Warmly Independent Explorer"
 - "The Principled Truth-Seeker"
 
-Reference `references/2e-archetypes.md` for common patterns.
+Reference `skills/interpretation/references/2e-archetypes.md` for common patterns.
 
 ### How to Explain Complex Concepts
 
@@ -175,7 +175,7 @@ operate."
 → "I hear that. It's okay to have complicated feelings about parts of yourself. Let's look at how this trait shows up for you, both what you like and what you'd like to be different. You get to decide what to work with and what to grow."
 
 **"What about [specific score]?"**
-→ Reference `references/strength-frames.md` for the specific facet. "That score is really interesting. Let me look up the best way to describe what that means for you..."
+→ Reference `skills/interpretation/references/strength-frames.md` for the specific facet. "That score is really interesting. Let me look up the best way to describe what that means for you..."
 
 **"How does this compare to other people?"**
 → "For most of these instruments, including Big Five, there's no population comparison built into

@@ -150,8 +150,8 @@ been contacted. Match the response to the current severity:
 connection, don't let a missing or failed `psychology_find_counselors` call slow down a crisis response (added
 2026-08-12).** If `psychology_find_counselors` isn't in your tool list, or errors with an auth/authorization
 failure, skip it silently in the moment, lead with the hotline directory below, and only mention the
-connection gap afterward, once the person is stabilized, using `skills/assessment-guide/SKILL.md`'s
-connector-unavailable boundary in `skills/00-session-bootstrap/SKILL.md` for the reminder to give them.
+connection gap afterward, once the person is stabilized, follow `skills/00-session-bootstrap/SKILL.md`'s
+connector-unavailable boundary for the reminder to give them.
 
 Always provide specific, actionable resources, matched to what's actually being described, not just the
 country. **The list below is the canonical directory. Update it here.**
@@ -208,9 +208,12 @@ For Orange+ situations, create a brief safety plan:
 2. **Internal coping**: "What can you do yourself to feel better?"
 3. **External coping**: "Who can you call? Where can you go?"
 4. **Professional resources**: "Who are your professional supports?", if they don't have any and
-   want to find one, `psychology_find_counselors(location, focus, max_results)` can look up real, local
+   want to find one, `psychology_find_counselors(location, focus, max_results, jurisdiction)` can look up real, local
    counseling providers via a real outside listings lookup (not a vetted crisis service, pair it with the crisis
-   lines above, and always relay its `disclaimer` and `crisis_line_note` fields). **Availability note
+   lines above, and always relay its `disclaimer` and `crisis_line_note` fields). The optional
+   `jurisdiction` parameter is purely additive, pass it when you already know the jurisdiction from
+   the conversation (e.g. an LGBTQ+/hostile-environment situation) to get a `jurisdiction_risk_note`
+   back. **Availability note
    (updated 2026-08-08)**: this tool is available to every signed-in user, no Premium gate, limited
    to 20 searches/week and 40 searches/month per user since it calls a real, paid external API on the
    user's behalf; check it is actually in your tool list before offering it, and if the user hits the
