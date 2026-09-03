@@ -47,14 +47,14 @@ visible, stop and report a connection/discovery problem. The static catalog is a
 | List prior completed results | `psychology_list_my_assessments` | The person selects prior results or names a result to interpret. |
 | Browse currently available instruments | `psychology_list_instruments` | A brief correction leaves an assessment-selection gap. |
 | Retrieve items for the confirmed instrument | `psychology_get_item_bank` | The person selected one instrument and approved beginning its adaptive bundle. |
-| Score a confirmed answer set | One exact catalog name: `psychology_score_big_five`, `psychology_score_ipip_neo120`, or `psychology_score_ipip_via_r` | Required responses are present and the person confirms scoring. |
+| Score a confirmed answer set | The one exact `psychology_score_…` name for the confirmed instrument, read from authenticated `tools/list`. The catalog carries materially more scorers than any list written here would, so this row deliberately does not enumerate them. Never infer or construct a name, and never substitute a different instrument's scorer. | Required responses are present and the person confirms scoring. |
 | Combine or examine compatible completed results | `psychology_battery_aggregate`, `psychology_battery_aggregate_json`, or `psychology_domain_filtered_report` | A visible completed result and the person’s aim make this extra view useful. |
 | Check consistency or a non-crisis referral criterion | `psychology_check_instrument_consistency` or `psychology_check_cognitive_wellness_referral` | The specific assessment workflow calls for it; neither capability is a safety classifier. |
 | Find local provider listings | `psychology_find_counselors` | The person explicitly requests a local option after any immediate safety concern is stable. It never delays urgent support. |
 | Save a completed result | `psychology_save_assessment_result` or `psychology_save_assessment_results_batch` | The person explicitly chooses storage after reviewing what will be saved and current consent is rechecked. |
 | Save a reviewed profile | `psychology_save_my_profile` | Profile-specific authorization is current, every proposed field was reviewed, and the current profile was read before write. |
 | Write or manage journal access | `psychology_journal_write_entry`, `psychology_journal_grant_access`, or `psychology_journal_revoke_access` | The person explicitly requests that exact action, understands its scope, and the matching authorization is current. |
-| Get a server-supplied prompt | One exact catalog name such as `psychology_big_five_prompt`, `psychology_ipip_neo120_prompt`, `psychology_ipip_via_r_prompt`, `psychology_personalized_intake_prompt`, or `psychology_profile_distillation_prompt` | The current flow needs that exact prompt and it is visible in the catalog. |
+| Get a server-supplied prompt | The one exact `psychology_…_prompt` name read from the authenticated prompt catalog. Most instruments carry a matching prompt alongside the workflow prompts, so this row deliberately does not enumerate them. Never infer or construct a prompt name. | The current flow needs that exact prompt and it is visible in the catalog. |
 
 ## Intent-to-route matrix
 

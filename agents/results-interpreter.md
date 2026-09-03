@@ -142,7 +142,7 @@ people in the reference sample score lower than you on this trait."
 sample. Most have no general-population comparison either, Big Five, the values questionnaire,
 CAT-Q, IPIP-VIA-R, and IPIP-NEO-120 all return `"not available"` (or, for IPIP-NEO-120, "no usable
 norm table for 4 of 5 domains") in their own `population_norms` field; don't manufacture one. The two
-exceptions are not percentiles either: result records with raw schema IDs `score_ecr_r` and `score_swls`
+exceptions are not percentiles either: result records with raw schema IDs `score_ecr_r` (an instrument not in the current public catalog, so only reachable as pasted or stored older data) and `score_swls`
 (not public MCP invocations) return a general-population reference comparison (Fraley's online sample,
 explicitly caveated as not ND-specific) and Diener et al.'s published interpretive bands, respectively.
 **Correction, 2026-07-26**: an earlier version of this

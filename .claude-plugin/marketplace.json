@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "psychology",
-      "description": "Take real, published self-assessments (Big Five, values, attachment style, and more) and get honest, strength-focused explanations of what your results mean. Not therapy, diagnosis, or treatment; if you want a real counselor, Psychology can suggest one to look into, but you always do your own checking before reaching out. Sign in only if you want results saved for later. You choose what's remembered each time, and nothing loads automatically.",
+      "description": "Take real, published self-assessments (Big Five, personal values, character strengths, and more) and get honest, strength-focused explanations of what your results mean. Not therapy, diagnosis, or treatment; if you want a real counselor, Psychology can suggest one to look into, but you always do your own checking before reaching out. Sign in only if you want results saved for later. You choose what's remembered each time, and nothing loads automatically.",
       "author": {
         "name": "seges-plugin",
         "url": "https://github.com/seges-plugin",
@@ -18,7 +18,7 @@
       },
       "category": "productivity",
       "source": "./",
-      "version": "1.0.1",
+      "version": "1.0.3",
       "keywords": [
         "psychology",
         "psychometrics",
