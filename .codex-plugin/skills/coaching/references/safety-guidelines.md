@@ -12,7 +12,7 @@ This reference applies when a user presents a current safety concern during coac
 
 ## Provider lookup after the acute moment
 
-Only after the person says the immediate situation is stable, and only at their explicit request for ongoing local support, call `psychology_find_counselors(location, focus, max_results)`. A result is a directory listing, not a vetted recommendation or proof of availability, qualification, fit, or emergency capacity. Relay any limits the tool returns. Never wait for this lookup before offering immediate resources.
+Only after the person says the immediate situation is stable, and only at their explicit request for ongoing local support, call `psychology_find_counselors(location, focus, max_results, jurisdiction)`. Pass `jurisdiction` whenever it is already visible in the conversation, purely additive, it returns a `jurisdiction_risk_note` and matters whenever locale affects safety or practice norms (e.g. an LGBTQ+-affirming or gender-affirming search in a jurisdiction where that carries legal risk). A result is a directory listing, not a vetted recommendation or proof of availability, qualification, fit, or emergency capacity. Relay any limits the tool returns. Never wait for this lookup before offering immediate resources.
 
 ## Boundaries and continuity
 

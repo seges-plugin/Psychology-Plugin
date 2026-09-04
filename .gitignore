@@ -5,8 +5,12 @@
 # Internal maintainer tooling -- not part of the product, not useful to a
 # plugin user, and reveals internal publishing/enforcement workflow.
 .githooks/
-.github/
-scripts/
+.github/*
+!.github/workflows/
+.github/workflows/*
+!.github/workflows/validate.yml
+scripts/*
+!scripts/verify-plugin-contract.mjs
 HOST-ACCEPTANCE-RECEIPT-TEMPLATE.md
 OPENAI-PLUGIN-PACKAGING.md
 OPENAI-PLUGIN-TEST-CASES.md

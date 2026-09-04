@@ -151,9 +151,13 @@ the assistant must:
 per-session source choice. No MCP tool grants consent. Consent is completed in the signed-in website
 experience, and a refused or unavailable source must not be retried or bypassed.
 
-The complete user-need-to-skill-to-MCP flow, including session-only context distillation, minimum source
-reads, adaptive assessment gaps, and exact visible public tool names, is in
-[MCP-ROUTING-CONTRACT.md](MCP-ROUTING-CONTRACT.md).
+The portable user-need-to-skill-to-MCP flow is published with the plugin itself: start with the
+[session bootstrap](skills/00-session-bootstrap/SKILL.md), use the
+[context-session contract](skills/context-session/SKILL.md) for source-bounded context, and follow the
+[assessment guide](skills/assessment-guide/SKILL.md) or [coaching guide](skills/coaching/SKILL.md) for
+the requested workflow. These tracked files define session-only context distillation, minimum source
+reads, adaptive assessment gaps, and exact visible public tool names without relying on an unpublished
+maintainer document.
 
 <div align="center">
 <img src="assets/readme/reflection-contours.png" alt="Abstract layered contour art in warm and cool tones, symbolizing depth of reflection" width="55%" />

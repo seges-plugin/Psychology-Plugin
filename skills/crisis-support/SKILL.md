@@ -12,9 +12,10 @@ description: >-
   Give this skill routing priority whenever the host or model sees these signals in the current
   user-provided material. There is no automated classifier, lifecycle hook, background monitor, or
   automatic human handoff behind this instruction. It also covers
-  two content-adjacent patterns, added 2026-07-30: distress connected to sexual orientation/identity
+  three content-adjacent patterns: distress connected to sexual orientation/identity
   in a hostile family/community/legal environment, and a reflection surfacing a past non-consensual
-  experience, see Content-Domain-Specific Considerations below.
+  experience (added 2026-07-30), plus intimacy red-line escalation (added 2026-09-04), see
+  Content-Domain-Specific Considerations below.
 triggers:
   - "I want to hurt myself"
   - "I can't go on"
@@ -306,12 +307,13 @@ flagging mechanism, be honest about that rather than promising a check-in you ca
 
 ## Content-Domain-Specific Considerations
 
-**Added 2026-07-30**, covering two content-adjacent patterns that can arise in ordinary conversation:
-distress connected to sexual orientation/identity in a hostile environment, and a reflection surfacing a
-past non-consensual experience. Corrected 2026-09-03: this used to point at
+**Added 2026-07-30 and expanded 2026-09-04**, covering three content-adjacent patterns that can arise in
+ordinary conversation: distress connected to sexual orientation/identity in a hostile environment, a
+reflection surfacing a past non-consensual experience, and a red line reached during adult intimacy
+self-understanding. Corrected 2026-09-03: this used to point at
 `skills/coaching/references/safety-guidelines.md`'s "Content-Domain-Specific Crisis Considerations" for
 "full detail, hotline numbers, and verification notes". No such section exists, so this is not a condensed
-version of anything. It is the whole of what the plugin says on these two patterns, and the numbers it
+version of anything. It is the whole of what the plugin says on these three patterns, and the numbers it
 needs are in the directory above.
 
 ### Orientation/Identity Distress in a Hostile Environment
@@ -347,6 +349,21 @@ needs are in the directory above.
   Run the standard severity
   rubric in parallel; this pattern governs *how gently to handle the disclosure*, not a replacement for
   escalation if Orange+ indicators are also present.
+
+### Intimacy Self-Understanding Red Lines
+- **Presentation**: `skills/intimacy-self-understanding/SKILL.md` surfaces non-consent, coercion,
+  ongoing abuse, exploitation, a minor or minor-suggestive context, self-described compulsion or loss
+  of control, clinically severe distress, a diagnosis/treatment request, or a request for sex therapy.
+- **Response**: Stop the intimacy reflection and do not probe for sexual details. Apply the standard
+  severity rubric to non-consent, abuse, severe distress, self-harm, or danger, and lead with immediate
+  safety and appropriate human support. A diagnosis, treatment, trauma-processing, or sex-therapy
+  request receives a clear professional referral rather than continued quasi-therapy.
+- **Minor boundary**: If any minor or minor-suggestive content appears, stop the intimacy topic for the
+  remainder of the conversation. Do not ask follow-up questions, produce explicit content, or resume the
+  five-field map even if the immediate subject changes.
+- **No sensitive persistence**: Do not place any intimacy map or disclosure into a journal, profile,
+  memory, local-persistence path, or other durable store. Summarize only what is necessary for the
+  person's immediate safety in the current response.
 
 ## Boundaries
 

@@ -1,6 +1,6 @@
 {
   "name": "psychology",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments. The hosted MCP endpoint is https://noesis.seges.ai/mcp and uses OAuth authorization code flow with mandatory S256 PKCE. A host is supported only after its exact version completes a recorded acceptance test.",
   "keywords": [
     "psychology",
