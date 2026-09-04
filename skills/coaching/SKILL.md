@@ -47,7 +47,8 @@ plainly rather than proceeding as if it succeeded.** Coaching itself does not re
 the current conversation and the person's correction to the context brief are enough to begin. Never
 fabricate a tool result, use an assumed tool alias, or claim a host exposed a capability that was not
 actually visible. When a tool would help, resolve the semantic capability against the exact current host
-tool list as specified in `MCP-ROUTING-CONTRACT.md`.
+tool list. The public service mechanically reports its current catalog at `https://noesis.seges.ai/info`,
+but that catalog alone does not prove that any named host has completed acceptance.
 
 Before coaching begins, use `context-session` to make the user-correctable brief. The bootstrap may merge
 one minimum-necessary selected source into it; otherwise use only what has been discussed this session:
@@ -99,7 +100,7 @@ Adapt based on `coachingStyle` config setting. Default is collaborative.
 ### Exploration (40-50% of session)
 1. Deep dive into the chosen topic
 2. Use assessment context to personalize exploration
-3. Apply relevant coaching protocol (see references/coaching-protocols.md)
+3. Apply relevant coaching protocol (see `references/coaching-protocols.md`)
 4. Identify patterns, blocks, and resources
 
 ### Insight & Reframe (20-30% of session)
@@ -121,14 +122,14 @@ Common goals: Time management, organization, task initiation, planning
 - Use the user's Conscientiousness profile to identify natural supports
 - For low Self-Discipline: External scaffolding, body-doubling, interest-based motivation
 - For low Orderliness: Design systems that match their natural style, not impose alien structures
-- Reference ADHD coaching techniques (see coaching-protocols.md)
+- Reference ADHD coaching techniques (see `references/coaching-protocols.md`)
 
 ### Emotional Regulation Coaching
 Common goals: Managing overwhelm, anxiety, meltdowns, emotional intensity
 - Use Neuroticism profile to understand emotional patterns
 - For high Anxiety: Channel vigilance into preparation, grounding techniques
 - For high Emotionality: Validate depth, build emotional regulation skills
-- Reference DBT-informed techniques (see coaching-protocols.md)
+- Reference DBT-informed techniques (see `references/coaching-protocols.md`)
 
 ### Social Navigation Coaching
 Common goals: Relationships, communication, workplace dynamics, masking
@@ -142,14 +143,14 @@ Common goals: Self-understanding, direction, meaning, acceptance
 - Use full OCEAN profile + the values assessment for foundation. The catalog's current values instrument is the PVQ-21 short form (raw result-schema ID `score_pvq21`), not the longer PVQ-RR; read its own returned fields rather than assuming PVQ-RR's 10-value / 4-higher-order shape.
 - Explore the 2e archetype as a framework for identity
 - Work with the tension between giftedness and disability
-- Reference ACT techniques for acceptance and values-based living (see coaching-protocols.md)
+- Reference ACT techniques for acceptance and values-based living (see `references/coaching-protocols.md`)
 
 ### Stress & Burnout Coaching
 Common goals: Work-life balance, recovery, sustainable effort
 - Use Stress and Coping assessment results
 - For high Achievement-Striving + high Neuroticism: Perfectionism recovery
 - For low Self-Discipline + high demands: Sustainable systems over willpower
-- Reference CBT techniques for thought pattern modification (see coaching-protocols.md)
+- Reference CBT techniques for thought pattern modification (see `references/coaching-protocols.md`)
 
 ## Crisis Detection During Coaching
 

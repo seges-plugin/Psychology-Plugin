@@ -1,7 +1,7 @@
 ---
 name: 00-session-bootstrap
-description: Host-cooperated intent router for the first Psychology-relevant request in a session, including self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
-version: "1.1.0"
+description: Host-cooperated intent router for the first Psychology-relevant request in a session, including self-understanding, intimacy self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
+version: "1.2.0"
 ---
 
 # Psychology session bootstrap
@@ -56,11 +56,16 @@ presence of one as proof of the other.
 
 - If at least one `psychology_...` tool is visible, continue with the account-context check below.
 - If no `psychology_...` tool is visible at all, the Psychology connector is not set up in this session.
-  Say so plainly and explicitly in the same response — do not silently substitute generic self-help
-  content and present it as if it came from Psychology, and do not proceed into assessment-guide,
-  coaching, interpretation, ema-review, memory-distillation, or local-persistence. Follow
-  `skills/onboarding/SKILL.md` to help the person connect, then return to the original request only
-  after a `psychology_...` tool actually becomes visible.
+  Say so plainly and explicitly in the same response; never imply that a Psychology tool ran or that
+  account data was read. Tool-dependent assessment, scoring, account-backed interpretation, EMA, and
+  account persistence must stop and route to `skills/onboarding/SKILL.md`.
+- Connector-free coaching may continue only as a clearly labelled **session-only** conversation using
+  material already visible here. The same narrow exception applies to
+  `skills/intimacy-self-understanding/SKILL.md`, under its adult-only, user-initiated, no-persistence
+  boundary. Do not score an assessment, claim an account read, or save anything through this exception.
+- `memory-distillation` and `local-persistence` retain their own explicit-request and confirmation
+  requirements. Their availability never proves that the Psychology connector is connected, and their
+  output must never be represented as Psychology account data.
 
 ### Account context: check consent once when account data is useful
 

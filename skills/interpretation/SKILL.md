@@ -110,7 +110,9 @@ is not a percentile.
 
 > **Invocation rule.** A raw `score_*` label inside a returned record is a data/schema identifier, never a
 > public MCP call. For a real call, use the exact visible `psychology_…` tool or prompt name from
-> authenticated `tools/list` and `MCP-ROUTING-CONTRACT.md`. Never guess an alias.
+> authenticated `tools/list`. The public service's `https://noesis.seges.ai/info` catalog can verify
+> current public names mechanically, but it is not evidence that a named host accepted the connector.
+> Never guess an alias.
 
 ### Step 1: Retrieve Scores
 
