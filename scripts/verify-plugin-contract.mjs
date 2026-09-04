@@ -177,6 +177,51 @@ if (pluginFirst < 0 || connectorSecond < 0 || pluginFirst >= connectorSecond) {
   fail("README.md: Claude setup must present plugin installation before connector setup");
 }
 
+const twoTrackContract = [
+  ["README.md", readme, [
+    "standardized self-report score",
+    "AI-assisted conversational estimate",
+    "directly supplies or explicitly confirms every scored response",
+    "confirm, revise, or reject",
+    "opt out or stop",
+    "provenance",
+    "not a standardized score",
+    "never equivalent to, a replacement for, or validation",
+    "G2 execution, independent review, and release",
+    "must not be scored, stored, exported, or presented as a standardized score",
+  ]],
+  ["agents/assessment-proctor.md", text("agents/assessment-proctor.md"), [
+    "standardized self-report score",
+    "AI-assisted conversational estimate",
+    "directly supplied or explicitly confirmed",
+    "confirm, revise, or reject",
+    "opt out or stop",
+    "provenance",
+    "equivalent to, a replacement for, or validation",
+    "G2 execution, independent review, and release",
+    "must not be scored, stored, exported, or presented as a standardized score",
+  ]],
+  ["skills/assessment-guide/SKILL.md", text("skills/assessment-guide/SKILL.md"), [
+    "standardized self-report score",
+    "AI-assisted conversational estimate",
+    "directly supplied or explicitly confirmed",
+    "basis",
+    "confirm, revise, or reject",
+    "opt out or stop",
+    "provenance",
+    "not a standardized score",
+    "equivalent to, a replacement for, or validation",
+    "G2 execution, independent review, and release",
+    "must not be scored, stored, exported, or presented as a standardized score",
+  ]],
+];
+for (const [path, body, requiredPhrases] of twoTrackContract) {
+  const compact = body.replace(/\s+/g, " ").toLowerCase();
+  for (const phrase of requiredPhrases) {
+    if (!compact.includes(phrase.toLowerCase())) fail(`${path}: missing B1-6 two-track invariant: ${phrase}`);
+  }
+}
+
 const textExtensions = new Set([".json", ".md", ".mjs", ".js", ".ts", ".yml", ".yaml", ".toml", ".txt"]);
 const secretPatterns = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
