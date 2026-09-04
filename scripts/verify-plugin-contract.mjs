@@ -157,6 +157,26 @@ if (/\bsee coaching-protocols\.md\b/.test(coaching)) {
   fail("skills/coaching/SKILL.md: contains an unscoped coaching-protocols.md reference");
 }
 
+const readme = text("README.md");
+const readmeCompact = readme.replace(/\s+/g, " ");
+const claudeSetupRequired = [
+  "https://claude.ai/new#settings/customize-plugins",
+  "https://github.com/seges-plugin/Psychology-Plugin",
+  "https://claude.ai/new?modal=add-custom-connector&connectorName=Psychology&connectorUrl=https%3A%2F%2Fnoesis.seges.ai%2Fmcp#settings/customize-connectors",
+  "https://noesis.seges.ai/mcp",
+  "No client ID — register one automatically",
+  "does not support Client ID Metadata Documents (CIMD)",
+  "not evidence of sync, installation, connection, OAuth completion, or Claude.ai host acceptance",
+];
+for (const phrase of claudeSetupRequired) {
+  if (!readmeCompact.includes(phrase)) fail(`README.md: missing Claude setup invariant: ${phrase}`);
+}
+const pluginFirst = readme.indexOf("https://claude.ai/new#settings/customize-plugins");
+const connectorSecond = readme.indexOf("modal=add-custom-connector");
+if (pluginFirst < 0 || connectorSecond < 0 || pluginFirst >= connectorSecond) {
+  fail("README.md: Claude setup must present plugin installation before connector setup");
+}
+
 const textExtensions = new Set([".json", ".md", ".mjs", ".js", ".ts", ".yml", ".yaml", ".toml", ".txt"]);
 const secretPatterns = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,

@@ -87,6 +87,31 @@ credentials, availability, scope, jurisdiction, and suitability before relying o
 <img src="assets/readme/divider.svg" alt="" width="100%" />
 </div>
 
+## Add to Claude.ai
+
+Use the plugin first so Claude can load Psychology's portable skills and safety instructions:
+
+1. Open [Claude.ai Customize → Plugins](https://claude.ai/new#settings/customize-plugins).
+2. Choose **Add → Add marketplace → Add from a repository**.
+3. Paste `https://github.com/seges-plugin/Psychology-Plugin` into the repository URL field and
+   choose **Sync**.
+4. Open the synced marketplace and review the Psychology plugin before choosing to install it.
+
+Claude.ai does not currently document a public plugin-marketplace deep link that can prefill the
+repository URL. The link above opens the Plugins page only; it does not sync or install anything.
+
+After installing the plugin, add its hosted connector if Claude has not already asked you to do so.
+You can open the
+[prefilled custom-connector form](https://claude.ai/new?modal=add-custom-connector&connectorName=Psychology&connectorUrl=https%3A%2F%2Fnoesis.seges.ai%2Fmcp#settings/customize-connectors)
+or enter `https://noesis.seges.ai/mcp` yourself. Review the displayed name and URL before continuing.
+When Claude asks which OAuth client to use, choose **No client ID — register one automatically**.
+Noesis intentionally supports Dynamic Client Registration (DCR) for this flow and does not support
+Client ID Metadata Documents (CIMD).
+
+These links and steps are setup conveniences, not evidence of sync, installation, connection, OAuth
+completion, or Claude.ai host acceptance. Support still requires a passed acceptance receipt for the
+exact host version and plugin commit as described in [Host acceptance](#host-acceptance).
+
 ## Connect a host
 
 The connector endpoint is:
