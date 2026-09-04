@@ -49,6 +49,30 @@ Psychology helps adults explore how they think, decide, and learn through publis
 psychometric instruments, source and limit cards, and plain-language reflection. It is not therapy,
 diagnosis, treatment, or emergency care.
 
+## Two-track self-understanding contract
+
+Psychology deliberately keeps two different outputs separate:
+
+1. A **standardized self-report score** comes only from a named instrument when the person directly
+   supplies or explicitly confirms every scored response in the current administration. Conversation,
+   profile, journal, prior result, tone, and model judgement never fill an item or become score input.
+2. An **AI-assisted conversational estimate** exists only when the person explicitly initiates that
+   non-instrument reflection. It is not a standardized score and is never equivalent to, a replacement
+   for, or validation of a standardized self-report result.
+
+For a conversational estimate, Psychology must first show the person the proposed basis: the permitted
+current-session material actually used, the relevant time frame, and its uncertainty. It must then present
+each proposed estimate point separately so the person can **confirm, revise, or reject** it. The person can
+opt out or stop at any point; stopping produces no score and does not require them to complete an instrument.
+The resulting session receipt must preserve its provenance — the stated basis, source categories actually
+used, and each point's confirmation state — and must retain the exact label **AI-assisted conversational
+estimate**.
+
+Before **G2 execution, independent review, and release**, a conversational estimate must not be scored,
+stored, exported, or presented as a standardized score. It must not be routed into an assessment-result,
+profile, journal, memory, or other persistence path as a workaround. The current public contract therefore
+keeps it session-only and does not claim that it is validated.
+
 This repository contains portable skills, agents, package metadata, and a pointer to the hosted MCP
 endpoint. It intentionally does not contain scoring implementation, item banks, user data, OAuth
 secrets, static access tokens, or private server code.
