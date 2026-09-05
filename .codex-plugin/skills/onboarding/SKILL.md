@@ -6,6 +6,32 @@ version: "0.1.0"
 
 # Psychology connection guide
 
+## Use the lowest-friction path that matches the person's goal
+
+If the person only wants Psychology to use context they deliberately paste now, a connector is not required.
+Offer the session-only fast prompt in
+`skills/memory-distillation/references/cross-platform-memory-export-prompt.md`, then return to the
+memory-distillation flow. Claude's native direct-memory export may help inspect stored-memory scope, but the
+Psychology website has no verified parser contract for that native format; treat it only as a session-only selected
+paste unless the exact prompt converts it to a valid `noesis.platform-memory-summary.v1` part.
+Stored Memory, past-chat context, and account-data export are separate capabilities on Claude and ChatGPT;
+availability may vary by plan, region, managed workspace, and administrator policy. Do not turn optional account
+connection or persistence into an intake toll gate, and never call an unavailable or unknown scope complete.
+
+When a host supports portable plugins, install the Psychology plugin first so its safety and workflow skills
+are visible before adding the connector. A plugin installation and a connector authorization are separate:
+neither one proves the other succeeded, and neither authorizes an account-data read.
+
+- **Claude.ai:** open its Plugins page, add the public repository marketplace, review and install Psychology,
+  then use the prefilled custom-connector form documented in the repository README. When offered the supported
+  DCR choice, use **No client ID — register one automatically**.
+- **ChatGPT:** a private custom-app/connector evaluation may require the account or workspace to expose
+  Developer mode. The person must review and enable that host-controlled setting themselves, then use the exact
+  public MCP URL in the host's private draft. Developer mode, a created draft, or a successful tool scan is not
+  a public listing or a named-host acceptance result.
+- **Kimi.ai:** do not claim a plugin or consumer archive integration that has not completed exact-version host
+  acceptance. The copy-paste memory prompt remains available without such an integration.
+
 ## Promise before action
 
 Tell the user what they will get: a browser-authorized connection to Psychology, with a clear choice before any account-linked result is stored. Explain that a successful page load is not proof that their particular host is supported.
@@ -26,6 +52,10 @@ host-cooperated instruction, not an automatic lifecycle event. It begins with a 
 context brief and a current-session source choice; connection success must not silently read a profile,
 results, or notes. A successful browser page or a visible connector setting is not proof that tools are
 available, and it does not authorize a broad private-data read.
+
+Do not request a platform-memory export, selected conversation, or account archive during OAuth. Finish and
+verify connection first, return to the person's original purpose, then let them choose whether the optional
+memory-distillation route would reduce repetition.
 
 ## Registration and redirects
 
