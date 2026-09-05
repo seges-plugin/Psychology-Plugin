@@ -254,9 +254,10 @@ if (promptBlocks.length !== 1) {
   fail(`${crossPlatformReferencePath}: expected exactly one copyable text prompt, found ${promptBlocks.length}`);
 }
 const copyPrompt = promptBlocks[0]?.[1] ?? "";
+const canonicalCopyPrompt = copyPrompt.replace(/\r\n?/g, "\n");
 const copyPromptCompact = copyPrompt.replace(/\s+/g, " ");
-const canonicalPromptSha256 = createHash("sha256").update(`${copyPrompt}\n`, "utf8").digest("hex");
-if (canonicalPromptSha256 !== "d0ef2a3fd33602491827e5aae4dfc7e443a635a0fabea2ec5729e0d4b447c4cc") {
+const canonicalPromptSha256 = createHash("sha256").update(`${canonicalCopyPrompt}\n`, "utf8").digest("hex");
+if (canonicalPromptSha256 !== "f0b5b9b14a0ee3d896106c5855f403c286afb2c5489bf5d5f313dccfc94a51fd") {
   fail(`${crossPlatformReferencePath}: canonical UTF-8/LF/final-LF prompt SHA-256 drifted (${canonicalPromptSha256})`);
 }
 const schemaVersion = "noesis.platform-memory-summary.v1";

@@ -27,7 +27,7 @@ Replace `[claude_ai|chatgpt_com|kimi_ai]` with the service in which the prompt i
 requests only when the preceding completion record says `has_more: true`.
 
 The canonical transport form is UTF-8 without BOM, LF line endings, and exactly one final LF after the last
-prompt line. Its SHA-256 is `d0ef2a3fd33602491827e5aae4dfc7e443a635a0fabea2ec5729e0d4b447c4cc`.
+prompt line. Its SHA-256 is `f0b5b9b14a0ee3d896106c5855f403c286afb2c5489bf5d5f313dccfc94a51fd`.
 The Markdown fence delimiters are documentation only and are not part of those canonical bytes.
 
 ```text
