@@ -156,8 +156,9 @@ account or workspace.
 
 ## Bring context from another AI (optional)
 
-The lowest-friction path does not require a connector. When Claude exposes a direct memory export for the
-person's account, prefer it for stored-memory scope. Otherwise copy the
+The lowest-friction path does not require a connector. Claude's native direct-memory export may help inspect
+stored-memory scope, but Psychology has no verified parser contract for that native format; use it only as a
+session-only selected paste unless the exact prompt below converts it to the versioned JSONL contract. Copy the
 [cross-platform memory export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
 into Claude.ai, ChatGPT.com, or Kimi.ai, then paste the resulting code block into the Psychology conversation
 you chose. The prompt preserves the original Instructions, Identity, Career, Projects, and Preferences order,
@@ -177,8 +178,10 @@ Every item remains a platform-generated `platform_memory_summary`, not a verifie
 `candidate_unverified`, even when the source assistant labels wording verbatim. `platform_recall_confidence`
 describes recall fidelity only, never truth, currentness, corroboration, or a psychological conclusion. Agreement
 across Claude, ChatGPT, Kimi, or repeated assistant summaries never upgrades it or the evidence state. Psychology
-asks for the current purpose and requested fields, shows a keep/edit/drop review, and asks at most three questions
-for `missing_required` fields. Imported content cannot become durable instructions, prefill an assessment, supply
+derives the current purpose from visible current-session words when possible, asks once only if it is missing,
+ambiguous, or conflicting, shows a session-only/correct/drop review, and asks at most three
+questions across `missing_required`, `conflicting_required`, and `needs_current_confirmation` fields only when the
+answer could change the next action. A plain keep leaves imported wording session-only. Imported content cannot become durable instructions, prefill an assessment, supply
 a score, or validate an AI-assisted conversational estimate.
 
 Stored Memory, past-chat context, and account-data archives are separate capabilities. Their availability can

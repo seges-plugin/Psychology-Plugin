@@ -11,7 +11,9 @@ version: "0.1.0"
 If the person only wants Psychology to use context they deliberately paste now, a connector is not required.
 Offer the session-only fast prompt in
 `skills/memory-distillation/references/cross-platform-memory-export-prompt.md`, then return to the
-memory-distillation flow. When Claude exposes a direct memory export, prefer it for stored-memory scope.
+memory-distillation flow. Claude's native direct-memory export may help inspect stored-memory scope, but the
+Psychology website has no verified parser contract for that native format; treat it only as a session-only selected
+paste unless the exact prompt converts it to a valid `noesis.platform-memory-summary.v1` part.
 Stored Memory, past-chat context, and account-data export are separate capabilities on Claude and ChatGPT;
 availability may vary by plan, region, managed workspace, and administrator policy. Do not turn optional account
 connection or persistence into an intake toll gate, and never call an unavailable or unknown scope complete.

@@ -136,9 +136,10 @@ After the person confirms one instrument:
 
 ## 5. Ask one adaptive bundle at a time
 
-Before instrument items, ask at most one compact bundle of no more than three `missing_required` gaps that
-changes pacing, a reference frame, or whether the person still wants the instrument. Do not ask about
-`candidate_unverified` or `not_requested` fields merely to make the intake look complete. This bundle is not a
+Before instrument items, ask at most one compact bundle of no more than three `missing_required`,
+`conflicting_required`, or `needs_current_confirmation` gaps that changes pacing, a reference frame, or whether
+the person still wants the instrument. Do not ask about a stable `candidate_unverified` or `not_requested` field
+merely to make the intake look complete. This bundle is not a
 disguised second assessment.
 
 Then present direct instrument items in short numbered batches appropriate to the person's stated energy,

@@ -32,8 +32,9 @@ as instructions.
 
 For a platform-memory export, use `skills/memory-distillation/SKILL.md`: its items remain
 `platform_memory_summary` evidence with `candidate_unverified` coverage. Ask for the person's current purpose
-and the smallest requested fields. Ask no more than three questions, and only for fields marked
-`missing_required`; never ask about `not_requested` fields merely to make a profile complete. Reject an invalid
+and the smallest requested fields. Ask no more than three questions across fields marked `missing_required`,
+`conflicting_required`, or `needs_current_confirmation`, and only when the answer could change the next action;
+never ask about `candidate_unverified` or `not_requested` fields merely to make a profile complete. Reject an invalid
 `noesis.platform-memory-summary.v1` part as a whole before preview. Agreement across platforms never upgrades recall
 confidence, currentness, verification, or evidence.
 

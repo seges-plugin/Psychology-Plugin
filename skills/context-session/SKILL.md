@@ -52,8 +52,9 @@ Create the working context brief with these sections:
 2. **Known context** — relevant facts and recurring themes already present.
 3. **Tensions or conflicts** — statements that point in different directions, without treating either as
    an error.
-4. **Coverage and left gaps** — use only `known_direct`, `candidate_unverified`, `missing_required`, or
-   `not_requested`; only `missing_required` fields may become questions.
+4. **Coverage and left gaps** — use only `known_direct`, `candidate_unverified`, `missing_required`,
+   `conflicting_required`, `needs_current_confirmation`, or `not_requested`. Only the three `*_required`
+   or confirmation states may become questions, and only when the answer could change the next action.
 5. **Provisional output** — what the user will receive after the gaps are resolved.
 
 Show this brief and ask for correction before continuing. An empty read means no usable saved material,
@@ -64,7 +65,8 @@ previous summary as more authoritative than the person's current correction.
 
 Do not turn the session into a long form or ask raw source items one at a time. Convert each material left gap
 into short, familiar language that fits the user's setting, vocabulary, and stated aim. Ask no more than three
-remaining `missing_required` gaps together in one concise bundle.
+remaining `missing_required`, `conflicting_required`, or `needs_current_confirmation` gaps together in one concise
+bundle. Do not re-ask a stable `candidate_unverified` field when it is sufficient for a session-only next step.
 
 Each bundle must include:
 
