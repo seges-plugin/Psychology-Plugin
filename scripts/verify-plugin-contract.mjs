@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { readFileSync, readdirSync } from "node:fs";
 import { join, posix, relative, resolve, sep } from "node:path";
 
@@ -239,6 +240,10 @@ if (promptBlocks.length !== 1) {
 }
 const copyPrompt = promptBlocks[0]?.[1] ?? "";
 const copyPromptCompact = copyPrompt.replace(/\s+/g, " ");
+const canonicalPromptSha256 = createHash("sha256").update(`${copyPrompt}\n`, "utf8").digest("hex");
+if (canonicalPromptSha256 !== "26e40a634da43f67e569f4fccd9b45f83a0e7d68a5dd1d514c1cc758ba0285fd") {
+  fail(`${crossPlatformReferencePath}: canonical UTF-8/LF/final-LF prompt SHA-256 drifted (${canonicalPromptSha256})`);
+}
 const schemaVersion = "noesis.platform-memory-summary.v1";
 const categories = [
   "Instructions",

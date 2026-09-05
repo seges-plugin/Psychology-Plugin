@@ -24,6 +24,10 @@ Never call an unavailable scope complete. If the assistant cannot determine what
 Replace `[claude_ai|chatgpt_com|kimi_ai]` with the service in which the prompt is being used. Send continuation
 requests only when the preceding completion record says `has_more: true`.
 
+The canonical transport form is UTF-8 without BOM, LF line endings, and exactly one final LF after the last
+prompt line. Its SHA-256 is `26e40a634da43f67e569f4fccd9b45f83a0e7d68a5dd1d514c1cc758ba0285fd`.
+The Markdown fence delimiters are documentation only and are not part of those canonical bytes.
+
 ```text
 Export all of my stored memories and any context you have learned about me from past conversations that is
 currently available to you. Preserve my words verbatim where possible, especially for stored instructions and preferences,
