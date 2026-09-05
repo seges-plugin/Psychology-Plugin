@@ -136,6 +136,73 @@ These links and steps are setup conveniences, not evidence of sync, installation
 completion, or Claude.ai host acceptance. Support still requires a passed acceptance receipt for the
 exact host version and plugin commit as described in [Host acceptance](#host-acceptance).
 
+## Evaluate privately in ChatGPT
+
+ChatGPT does not install this GitHub plugin through Claude's marketplace flow. If the signed-in account or
+workspace exposes custom apps/connectors, the current evaluation path is a private draft:
+
+1. Open [ChatGPT Security settings — Developer mode](https://chatgpt.com/#settings/Security?section=developer-mode),
+   read the host warning, and decide whether to enable it. This is a persistent account/workspace setting,
+   not a step Psychology can take silently.
+2. Open [ChatGPT Plugin Management](https://chatgpt.com/#settings/Plugins) and create a private custom-app or
+   connector draft using `https://noesis.seges.ai/mcp`.
+3. Let ChatGPT discover or scan the tools, then complete the browser OAuth flow only on Noesis pages.
+4. Verify authenticated `tools/list`, one harmless read-only action, consent/source-choice behavior,
+   revocation, and reconnect before treating the draft as usable.
+
+Developer mode, a saved draft, a successful scan, or a visible connector is not a public listing and is not
+evidence of ChatGPT host acceptance. UI labels and availability are controlled by ChatGPT and can vary by
+account or workspace.
+
+## Bring context from another AI (optional)
+
+The lowest-friction path does not require a connector. When Claude exposes a direct memory export for the
+person's account, prefer it for stored-memory scope. Otherwise copy the
+[cross-platform memory export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
+into Claude.ai, ChatGPT.com, or Kimi.ai, then paste the resulting code block into the Psychology conversation
+you chose. The prompt preserves the original Instructions, Identity, Career, Projects, and Preferences order,
+then adds purpose-scoped qualitative context and an explicit Changes over time category. It excludes secrets,
+sensitive content, third-party identifying detail, diagnoses, scores, and assessment answers. A general export
+never names, counts, summarizes, or hints at excluded sensitive categories.
+
+The output is a versioned, injection-safe `noesis.platform-memory-summary.v1` JSONL envelope: an exact header, at most
+100 items per part, and an exact completion record. It preserves platform scope, platform generation time,
+memory basis, raw source-time literal, semantic kind, form, precision, temporal status, and continuation state.
+Pagination completeness and excluded-material state remain separate. `export_id` is only
+an opaque continuation cursor, never provenance. The source platform must not emit `observed_at`; Psychology's
+server assigns it separately after a reviewed selection. Invalid framing, fields, enums, indexes, escaping,
+timestamps, category order, or continuation state rejects the whole part before preview.
+
+Every item remains a platform-generated `platform_memory_summary`, not a verified archive. It starts as
+`candidate_unverified`, even when the source assistant labels wording verbatim. `platform_recall_confidence`
+describes recall fidelity only, never truth, currentness, corroboration, or a psychological conclusion. Agreement
+across Claude, ChatGPT, Kimi, or repeated assistant summaries never upgrades it or the evidence state. Psychology
+asks for the current purpose and requested fields, shows a keep/edit/drop review, and asks at most three questions
+for `missing_required` fields. Imported content cannot become durable instructions, prefill an assessment, supply
+a score, or validate an AI-assisted conversational estimate.
+
+Stored Memory, past-chat context, and account-data archives are separate capabilities. Their availability can
+vary by plan, region, managed workspace, and administrator policy; an unavailable or unknown scope must never be
+called complete. Claude.ai and ChatGPT.com provide official account-data export routes when eligible:
+[Claude data export](https://support.anthropic.com/en/articles/9450526-how-can-i-export-my-claude-data) and
+[ChatGPT data export](https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpthistory-and-data).
+Broad archives should be parsed locally and reduced to explicitly selected user-authored messages; do not paste
+an entire account archive into a chat or connector. This public contract does not verify a Kimi.ai consumer
+full-account or direct-memory archive. Kimi Code's separate session export is not a Kimi.ai consumer account
+export.
+
+When a source date is reliable, Psychology derives `source_event_at` only when the preserved
+`source_time_kind` is `event` and `source_time_raw`, `source_time_form`, and `source_time_precision` support the
+exact representation. Memory-save and memory-update times remain provenance. All stay separate from
+server-assigned `observed_at`. Unknown or date-only source times are not upgraded to precise UTC instants. A
+client preview time is neither timestamp.
+
+Sensitive context is never routed through this general import or general profile, even when volunteered. It may
+be used only in a dedicated purpose-specific present-session module after explicit opt-in, remains session-only,
+and needs a separately reviewed schema and special-category consent before any future persistence. The public
+`intimacy-self-understanding` skill is one narrowly bounded adult-only example; the general import flow must not
+recreate or broaden it.
+
 ## Connect a host
 
 The connector endpoint is:

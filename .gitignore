@@ -51,6 +51,31 @@ service-account*.json
 *.token.json
 *.secret
 
+# Public-plugin boundary -- this repository contains only portable manifests,
+# skills, documentation, and their verifier. Runtime/deployment infrastructure
+# belongs in private service repositories and must never be published here.
+Dockerfile*
+.dockerignore
+docker-compose*
+compose.yml
+compose.yaml
+compose.*.yml
+compose.*.yaml
+wrangler.toml
+wrangler.json
+wrangler.jsonc
+.dev.vars
+cloudflare/
+workers/
+cloudbuild*.yaml
+cloudbuild*.yml
+deploy*.ps1
+deploy*.sh
+deploy*.yaml
+deploy*.yml
+scripts/deploy*
+internal/
+
 # OS-generated
 .DS_Store
 .DS_Store?
