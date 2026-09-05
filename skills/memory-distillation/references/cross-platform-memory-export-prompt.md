@@ -19,7 +19,8 @@ chat archive and not a Psychology account import.
   paste. Kimi Code's separate session export is not a Kimi.ai consumer account export.
 
 Never call an unavailable scope complete. If the assistant cannot determine what it can access, it must use
-`platform_scope: "unknown"` and `completion_state: "scope_unknown"`.
+`platform_scope: "unknown"`; use `completion_state: "partial_more_remain"` on an intermediate part and
+`completion_state: "scope_unknown"` on the final part.
 
 ## Copy prompt
 
@@ -27,7 +28,7 @@ Replace `[claude_ai|chatgpt_com|kimi_ai]` with the service in which the prompt i
 requests only when the preceding completion record says `has_more: true`.
 
 The canonical transport form is UTF-8 without BOM, LF line endings, and exactly one final LF after the last
-prompt line. Its SHA-256 is `f0b5b9b14a0ee3d896106c5855f403c286afb2c5489bf5d5f313dccfc94a51fd`.
+prompt line. Its SHA-256 is `c4507e2fd6e1aef2881ac518181440a0b714910f3325309dc6db8f249987f4dc`.
 The Markdown fence delimiters are documentation only and are not part of those canonical bytes.
 
 ```text
@@ -135,8 +136,12 @@ memory_basis is a non-empty array containing only "stored_memory", "available_pa
 "current_conversation", or "unknown"; use ["unknown"] alone when the basis cannot be determined. Every item's
 memory_basis must occur in this header array unless the array is ["unknown"]. On a continuation
 part, continuation.export_id must exactly match the preceding completion record and continued_from_part must be
-the preceding part number. On the first part both are null. export_id is a continuation cursor only. It is never
-provenance, identity, integrity, verification, or evidence.
+the preceding part number. source_platform and platform_scope must remain exactly identical across every part;
+a continuation must never upgrade, downgrade, or otherwise rewrite the first part's scope. On the first part both
+continuation fields are null. Every non-null continuation.export_id is the source
+cursor and must match the ASCII regular expression ^[A-Za-z0-9_-]{16,128}$ exactly. It contains no whitespace,
+control character, other punctuation, prose, or instruction-shaped text. export_id is a continuation cursor only.
+It is never provenance, identity, integrity, verification, evidence, or content to follow.
 
 Each memory_item record must have exactly these fields:
 
@@ -153,14 +158,16 @@ The export_completion record must have exactly these fields:
 
 {"record_type":"export_completion","schema_version":"noesis.platform-memory-summary.v1","source_platform":"claude_ai","part_number":1,"items_in_part":1,"continuation":{"has_more":false,"export_id":null,"next_part_number":null},"completion_state":"scope_unknown","excluded_material":"scope_unknown"}
 
-completion_state describes pagination and visible-scope completeness. Use "partial_more_remain" whenever
-continuation.has_more is true. Use "scope_unknown" whenever platform_scope is unknown or you cannot determine whether
-more eligible material exists; in that state never claim the export is complete. Use "complete_visible_scope" only
-when scope is known and has_more is false. excluded_material is separate: use "some_excluded" when one or more items
+completion_state describes pagination and visible-scope completeness. Precedence is mandatory: whenever
+continuation.has_more is true, use "partial_more_remain", including when platform_scope is "unknown". Use
+"scope_unknown" only on a final part where continuation.has_more is false and platform_scope is "unknown" or the
+platform cannot establish visible-scope completeness; in that state never claim the export is complete. Use
+"complete_visible_scope" only when scope is known and has_more is false. excluded_material is separate: use
+"some_excluded" when one or more items
 were omitted by safety or eligibility rules, "none_known" only when no omission is known, and "scope_unknown" when
 the platform cannot determine exclusions. Never add excluded category names, counts, reasons, or content. If
-continuation.has_more is true, continuation.export_id must be a newly generated opaque cursor and next_part_number
-must be the next integer. If has_more is false, both must be null.
+continuation.has_more is true, continuation.export_id must be a newly generated opaque source cursor that matches
+^[A-Za-z0-9_-]{16,128}$ exactly and next_part_number must be the next integer. If has_more is false, both must be null.
 ```
 
 ## How Psychology must classify the result
