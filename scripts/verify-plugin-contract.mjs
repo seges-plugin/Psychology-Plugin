@@ -23,6 +23,10 @@ function text(path) {
   return readFileSync(join(root, repoPath(path)), "utf8");
 }
 
+function bytes(path) {
+  return readFileSync(join(root, repoPath(path)));
+}
+
 function json(path) {
   try {
     return JSON.parse(text(path));
@@ -108,12 +112,12 @@ if (JSON.stringify(rootSkills) !== JSON.stringify(codexSkills)) {
   fail("skills/ and .codex-plugin/skills/ have different file lists");
 } else {
   for (const skillPath of rootSkills) {
-    const rootContent = readFileSync(join(root, repoPath(`skills/${skillPath}`)));
-    const codexContent = readFileSync(join(root, repoPath(`.codex-plugin/skills/${skillPath}`)));
-    if (!rootContent.equals(codexContent)) fail(`skill mirror working-tree bytes differ: ${skillPath}`);
+    const rootContent = bytes(`skills/${skillPath}`);
+    const codexContent = bytes(`.codex-plugin/skills/${skillPath}`);
+    if (!rootContent.equals(codexContent)) fail(`skill mirror working-tree raw bytes differ: ${skillPath}`);
     const rootIndexBlob = indexBlob(`skills/${skillPath}`);
     const codexIndexBlob = indexBlob(`.codex-plugin/skills/${skillPath}`);
-    if (!rootIndexBlob.equals(codexIndexBlob)) fail(`skill mirror Git blobs differ byte-for-byte: ${skillPath}`);
+    if (!rootIndexBlob.equals(codexIndexBlob)) fail(`skill mirror index raw bytes differ: ${skillPath}`);
   }
 }
 
@@ -733,11 +737,105 @@ const intimacyRequired = [
   "No inference of orientation, kink, trauma history, consent, desire, or identity",
   "No persistence tool, account read, scoring tool, or hidden sensitive-data profile",
 ];
+const intimacyBehaviorRequirements = [
+  {
+    label: "explicit user initiation plus a single neutral opt-in and immediate decline stop",
+    patterns: [
+      /continue only when the person explicitly initiates this topic/i,
+      /ask one neutral opt-in question/i,
+      /a decline ends this topic immediately/i,
+    ],
+  },
+  {
+    label: "adult-only 18+ gate that stops on no, ambiguity, or minor indication",
+    patterns: [
+      /this skill is for adults only/i,
+      /are you 18 or older\?/i,
+      /if the answer is no, ambiguous, or suggests a minor, stop this topic/i,
+    ],
+  },
+  {
+    label: "direct self-report only with no sensitive-trait inference",
+    patterns: [
+      /record only what the person states directly/i,
+      /never infer a field/i,
+      /no inference of orientation, kink, trauma history, consent, desire, or identity/i,
+    ],
+  },
+  {
+    label: "no explicit sexual or arousal-seeking content",
+    patterns: [
+      /no explicit descriptions, erotic stories, sexual roleplay, or content designed for arousal/i,
+      /no instructions about sexual techniques, positions, acts, devices, or products/i,
+    ],
+  },
+  {
+    label: "no therapy, diagnosis, clinical label, or treatment",
+    patterns: [
+      /it is not sex therapy, medical advice,\s*diagnosis, treatment/i,
+      /no therapy claims, clinical labels, treatment plans/i,
+      /intensive therapy is always out of scope/i,
+    ],
+  },
+  {
+    label: "coercion, abuse, and severe-distress crisis escalation",
+    patterns: [
+      /stop this skill immediately and switch to `\.\.\/crisis-support\/skill\.md`/i,
+      /non-consent, coercion, ongoing abuse, exploitation, or immediate danger/i,
+      /clinically severe distress, self-harm, suicidal thinking, or danger to another person/i,
+      /do not probe for sexual details during escalation/i,
+    ],
+  },
+  {
+    label: "Specific Suggestion limited to neutral communication framing",
+    patterns: [
+      /specific suggestion\*\* is\s+allowed only as neutral communication framing/i,
+      /helping the person put a boundary into their\s+own words/i,
+    ],
+  },
+  {
+    label: "session-only operation with durable persistence unavailable",
+    patterns: [
+      /all content remains session-only/i,
+      /durable saving is unavailable/i,
+      /do not route these fields through a journal, profile, memory, local-persistence, export, or any other workaround/i,
+    ],
+  },
+];
 const prohibitedIntimacyRoutes = [
   /\]\([^)]*(?:journal|profile|memory|local-persistence|export)[^)]*\)/i,
   /(?:\.\.\/|\.\/|\/)(?:[^\s)`"']*\/)?(?:journal|profile|memory(?:-distillation)?|local-persistence|export)(?:\/|\.md|[?#]|\b)/i,
   /`(?:psychology_)?(?:journal|profile|memory|local_persistence|local-persistence|export)[a-z0-9_-]*`/i,
 ];
+
+const intimacyPersistenceTarget = String.raw`(?:journal|profile|memor(?:y|ies)|local[- ]persistence|export)`;
+const intimacyPersistenceAction = String.raw`(?:add(?:ed|ing)?|append(?:ed|ing)?|archiv(?:e|ed|ing)|call(?:ed|ing)?|commit(?:ted|ting)?|cop(?:y|ied|ying)|export(?:ed|ing)?|invok(?:e|ed|ing)|keep|kept|keeping|log(?:ged|ging)?|open(?:ed|ing)?|persist(?:ed|ing)?|record(?:ed|ing)?|retain(?:ed|ing)?|rout(?:e|ed|ing)|sav(?:e|ed|ing)|send|sent|sending|stor(?:e|ed|ing)|sync(?:ed|ing)?|upload(?:ed|ing)?|us(?:e|ed|ing)|writ(?:e|ten|ing))`;
+const affirmativeIntimacyRoutePatterns = [
+  new RegExp(String.raw`\b${intimacyPersistenceAction}\b[^\r\n.!?;]{0,160}\b${intimacyPersistenceTarget}\b`, "i"),
+  new RegExp(String.raw`\b${intimacyPersistenceTarget}\b[^\r\n.!?;]{0,160}\b(?:can|may|must|should|will)\s+(?:be\s+)?${intimacyPersistenceAction}\b`, "i"),
+  new RegExp(String.raw`\b${intimacyPersistenceTarget}\b[^\r\n.!?;]{0,160}\b(?:is|are|remains?)\s+(?:available|enabled|permitted|supported|allowed)\b`, "i"),
+];
+const routeNegationBeforeAction = /\b(?:cannot|can't|do not|don't|must not|never|no)\b/i;
+const routeNegationInMatch = /\b(?:no|not|never|without|unavailable)\b/i;
+
+function hasAffirmativeIntimacyRoute(body) {
+  const clauses = body.replace(/\s+/g, " ").split(/[.!?;]+/u);
+  return clauses.some((clause) => {
+    const exportAction = /\bexport(?:ed|ing)?\b/i.exec(clause);
+    if (exportAction && !routeNegationBeforeAction.test(clause.slice(0, exportAction.index))) return true;
+    return affirmativeIntimacyRoutePatterns.some((pattern) => {
+      const match = pattern.exec(clause);
+      if (!match) return false;
+      const beforeMatch = clause.slice(0, match.index);
+      const matchedText = match[0];
+      const action = new RegExp(String.raw`\b${intimacyPersistenceAction}\b`, "i").exec(matchedText);
+      const beforeAction = action
+        ? `${beforeMatch}${matchedText.slice(0, action.index)}`
+        : beforeMatch;
+      return !routeNegationBeforeAction.test(beforeAction) && !routeNegationInMatch.test(matchedText);
+    });
+  });
+}
 
 function intimacyContractViolations(body) {
   const violations = [];
@@ -745,11 +843,19 @@ function intimacyContractViolations(body) {
   for (const phrase of intimacyRequired) {
     if (!compact.toLowerCase().includes(phrase.toLowerCase())) violations.push(`missing invariant: ${phrase}`);
   }
+  for (const requirement of intimacyBehaviorRequirements) {
+    if (requirement.patterns.some((pattern) => !pattern.test(compact))) {
+      violations.push(`missing behavioral contract: ${requirement.label}`);
+    }
+  }
   if (/\bpsychology_[a-z0-9_]+\b/i.test(body)) {
     violations.push("session-only intimacy reflection must not reference any Psychology tool");
   }
   for (const pattern of prohibitedIntimacyRoutes) {
     if (pattern.test(body)) violations.push(`must not reference a persistence route (${pattern})`);
+  }
+  if (hasAffirmativeIntimacyRoute(body)) {
+    violations.push("must not affirmatively route session-only intimacy material to persistence or export");
   }
   return violations;
 }
@@ -767,13 +873,43 @@ const intimacyNegativeFixtures = [
   ["memory route", `${intimacy}\nSee [memory](../memory-distillation/SKILL.md).`],
   ["local persistence route", `${intimacy}\nUse ../local-persistence/SKILL.md.`],
   ["export route", `${intimacy}\nOpen /export after review.`],
+  ["affirmative journal prose", `${intimacy}\nSave the reviewed map to the journal.`],
+  ["affirmative profile prose", `${intimacy}\nThe profile may be used to store these fields.`],
+  ["affirmative memory prose", `${intimacy}\nCopy the result into memory for later sessions.`],
+  ["affirmative local persistence prose", `${intimacy}\nUse local persistence after the final review.`],
+  ["affirmative export prose", `${intimacy}\nThe map should be exported when the session ends.`],
+  ["affirmative persistence availability", `${intimacy}\nJournal storage is available after the review.`],
+  ["affirmative passive journal save", `${intimacy}\nThe reviewed map can be saved in the journal.`],
+  ["affirmative passive profile write", `${intimacy}\nThe fields may be written to a profile.`],
 ];
 for (const [label, fixture] of intimacyNegativeFixtures) {
   if (intimacyContractViolations(fixture).length === 0) {
     fail(`intimacy verifier negative fixture was not rejected: ${label}`);
   }
 }
-note(`intimacy contract: ${intimacyPaths.length} byte-exact mirrors and ${intimacyNegativeFixtures.length}/6 prohibited-route fixtures passed`);
+const intimacyWeakenedFixtures = [
+  ["user initiation", intimacy.replace("Continue only when the person explicitly initiates this topic.", "The topic may be introduced proactively.")],
+  ["neutral opt-in", intimacy.replace("ask one neutral opt-in question", "continue without asking")],
+  ["18+ gate", intimacy.replace(/ask only: "Are you 18 or\s+older\?"/, "assume adulthood")],
+  ["no inference", intimacy.replace("Never infer a field", "Infer fields when confidence is high")],
+  ["no explicit content", intimacy.replace("No explicit descriptions, erotic stories, sexual roleplay, or content designed for arousal", "Explicit content is permitted")],
+  ["no therapy or diagnosis", intimacy.replace("No therapy claims, clinical labels, treatment plans", "Therapy and diagnosis are permitted")],
+  ["coercion escalation", intimacy.replace("non-consent, coercion, ongoing abuse, exploitation, or immediate danger", "ordinary relationship disagreement")],
+  ["severe-distress escalation", intimacy.replace("clinically severe distress, self-harm, suicidal thinking, or danger to another person", "mild discomfort")],
+  ["neutral Specific Suggestion", intimacy.replace("allowed only as neutral communication framing", "may recommend intimate activities")],
+];
+for (const [label, fixture] of intimacyWeakenedFixtures) {
+  if (fixture === intimacy) fail(`intimacy verifier weakened fixture did not mutate the source: ${label}`);
+  else if (intimacyContractViolations(fixture).length === 0) {
+    fail(`intimacy verifier weakened fixture was not rejected: ${label}`);
+  }
+}
+note(
+  `intimacy contract: ${intimacyPaths.length} raw-byte-exact mirrors, ` +
+  `${intimacyBehaviorRequirements.length} behavioral gates, ` +
+  `${intimacyNegativeFixtures.length}/${intimacyNegativeFixtures.length} prohibited-route fixtures, and ` +
+  `${intimacyWeakenedFixtures.length}/${intimacyWeakenedFixtures.length} weakened-contract fixtures passed`,
+);
 
 async function verifyLiveCatalog() {
   const response = await fetch("https://noesis.seges.ai/info", { signal: AbortSignal.timeout(30_000) });
