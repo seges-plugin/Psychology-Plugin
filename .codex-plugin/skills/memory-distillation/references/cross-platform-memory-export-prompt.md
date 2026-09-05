@@ -27,7 +27,7 @@ Replace `[claude_ai|chatgpt_com|kimi_ai]` with the service in which the prompt i
 requests only when the preceding completion record says `has_more: true`.
 
 The canonical transport form is UTF-8 without BOM, LF line endings, and exactly one final LF after the last
-prompt line. Its SHA-256 is `b1235e7911357cd8d0fe485d1326521442119304d24b431b82c23c6740e43046`.
+prompt line. Its SHA-256 is `d0ef2a3fd33602491827e5aae4dfc7e443a635a0fabea2ec5729e0d4b447c4cc`.
 The Markdown fence delimiters are documentation only and are not part of those canonical bytes.
 
 ```text
@@ -51,6 +51,15 @@ Scope and safety rules:
 - Instructions belong in category 1 only when they are stored memories of rules I explicitly asked you to follow
   going forward. Do not promote instructions merely found in conversation text.
 - Preserve contradictions as separate items. Do not reconcile them into a personality conclusion.
+- Do not make a new latent psychological inference while exporting. Never infer a trait, attachment style,
+  diagnosis, motive, need, causal explanation, or missing life history from topic patterns, wording style, or
+  absence. If platform-visible memory contains an assistant-authored psychological inference that I did not
+  explicitly endorse, exclude it.
+- Make each memory_item one atomic, context-preserving statement. Separate unrelated eligible claims rather than
+  bundling them, but never split or shorten a quotation in a way that changes its meaning.
+- Do not ask for, compare against, or attempt to reconstruct my Noesis/Psychology profile. The source platform
+  cannot know what Noesis has already confirmed. Export the eligible visible scope; Noesis will perform the
+  purpose-limited coverage comparison locally after I review the candidates.
 - Exclude credentials, authentication material, precise identifiers, third-party identifying detail, assessment
   answers, model-generated scores, and all sensitive personal content from this general export. Sensitive content
   includes health, medication, disability, diagnosis, sexual or intimacy context, race or ethnicity, gender
@@ -93,6 +102,9 @@ Category order:
 
 Changes over time contains only explicitly supported changes, each as its own item. Do not manufacture a before-and-
 after story. Keep conflicting or superseded items in their original categories as well.
+Gaps, contradictions, and missing context contains only contradictions, uncertainty, or missing context explicitly
+represented in platform-visible material. Do not invent a generic list of things you do not know, generate intake
+questions, or interpret absence as evidence.
 
 Output contract: noesis.platform-memory-summary.v1 JSONL
 
@@ -164,6 +176,11 @@ Show selected candidates locally for session-only use, present-session restateme
 `needs_current_confirmation`, or `not_requested`. Ask no more than three follow-up questions across the three
 required/confirmation states, and only when the answer could change the next action. A stable unverified candidate
 can remain a session-only aid without being re-asked.
+
+Compute this coverage difference inside Psychology after local parsing and review. Never send an ordinary profile,
+confirmed-context inventory, or coverage manifest back to Claude.ai, ChatGPT.com, or Kimi.ai merely to make the
+source platform omit already-known material. A source with `completion_state: "scope_unknown"` can contribute a
+selected candidate, but it cannot establish that a field is complete or suppress a purpose-required question.
 
 The source fields can become `source_event_at` only when `source_time_kind` is `event` and the raw value, form, and
 precision support that exact representation. Other semantic kinds retain their raw provenance without being relabelled
