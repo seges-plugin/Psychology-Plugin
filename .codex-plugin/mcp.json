@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "psychology": {
+      "type": "http",
+      "url": "https://noesis.seges.ai/mcp"
+    }
+  }
+}

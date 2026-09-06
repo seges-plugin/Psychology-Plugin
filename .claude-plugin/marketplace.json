@@ -1,0 +1,32 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "psychology",
+  "description": "Understand yourself better with real, published self-assessments and plain-language explanations, right in your chat. Never therapy or diagnosis. Connects securely to https://noesis.seges.ai/mcp; this listing does not itself guarantee your specific app has finished our compatibility check yet.",
+  "owner": {
+    "name": "seges-plugin",
+    "url": "https://github.com/seges-plugin",
+    "email": "problems@noesis.seges.ai"
+  },
+  "plugins": [
+    {
+      "name": "psychology",
+      "description": "Take real, published self-assessments (Big Five, personal values, character strengths, and more) and get honest, strength-focused explanations of what your results mean. Not therapy, diagnosis, or treatment; if you want a real counselor, Psychology can suggest one to look into, but you always do your own checking before reaching out. Sign in only if you want results saved for later. You choose what's remembered each time, and nothing loads automatically.",
+      "author": {
+        "name": "seges-plugin",
+        "url": "https://github.com/seges-plugin",
+        "email": "problems@noesis.seges.ai"
+      },
+      "category": "productivity",
+      "source": "./",
+      "version": "1.2.3",
+      "keywords": [
+        "psychology",
+        "psychometrics",
+        "self-assessment",
+        "self-reflection",
+        "mcp"
+      ],
+      "strict": true
+    }
+  ]
+}

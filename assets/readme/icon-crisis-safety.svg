@@ -1,0 +1,10 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Crisis safety net">
+  <rect x="6" y="6" width="108" height="108" rx="24" fill="#f5efe6"/>
+  <rect x="6.75" y="6.75" width="106.5" height="106.5" rx="23.25" fill="none" stroke="#3d2b4f" stroke-opacity="0.14" stroke-width="1.5"/>
+  <circle cx="60" cy="60" r="30" fill="none" stroke="#3d2b4f" stroke-width="5"/>
+  <circle cx="60" cy="60" r="13" fill="none" stroke="#3d2b4f" stroke-width="5"/>
+  <line x1="60" y1="23" x2="60" y2="39" stroke="#3d2b4f" stroke-width="5" stroke-linecap="round"/>
+  <line x1="60" y1="81" x2="60" y2="97" stroke="#3d2b4f" stroke-width="5" stroke-linecap="round"/>
+  <line x1="23" y1="60" x2="39" y2="60" stroke="#3d2b4f" stroke-width="5" stroke-linecap="round"/>
+  <line x1="81" y1="60" x2="97" y2="60" stroke="#c4943a" stroke-width="5" stroke-linecap="round"/>
+</svg>
