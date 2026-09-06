@@ -1,0 +1,9 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Real counselor matching">
+  <rect x="6" y="6" width="108" height="108" rx="24" fill="#f5efe6"/>
+  <rect x="6.75" y="6.75" width="106.5" height="106.5" rx="23.25" fill="none" stroke="#3d2b4f" stroke-opacity="0.14" stroke-width="1.5"/>
+  <path d="M60 27c-14.9 0-27 12-27 27 0 20 27 40 27 40s27-20 27-40c0-15-12.1-27-27-27z"
+        fill="none" stroke="#3d2b4f" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="60" cy="52" r="8" fill="none" stroke="#3d2b4f" stroke-width="4.5"/>
+  <path d="M47 69c3-8.5 7.5-11.5 13-11.5s10 3 13 11.5" fill="none" stroke="#3d2b4f" stroke-width="4.5" stroke-linecap="round"/>
+  <circle cx="60" cy="53" r="3.4" fill="#c4943a"/>
+</svg>

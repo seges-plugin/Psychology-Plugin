@@ -1,0 +1,9 @@
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Coaching and growth">
+  <rect x="6" y="6" width="108" height="108" rx="24" fill="#f5efe6"/>
+  <rect x="6.75" y="6.75" width="106.5" height="106.5" rx="23.25" fill="none" stroke="#3d2b4f" stroke-opacity="0.14" stroke-width="1.5"/>
+  <line x1="32" y1="88" x2="88" y2="88" stroke="#3d2b4f" stroke-width="5" stroke-linecap="round"/>
+  <rect x="36" y="66" width="11" height="22" rx="2.5" fill="none" stroke="#3d2b4f" stroke-width="4.5"/>
+  <rect x="54.5" y="52" width="11" height="36" rx="2.5" fill="none" stroke="#3d2b4f" stroke-width="4.5"/>
+  <rect x="73" y="36" width="11" height="52" rx="2.5" fill="none" stroke="#3d2b4f" stroke-width="4.5"/>
+  <circle cx="78.5" cy="29" r="5.5" fill="#c4943a"/>
+</svg>
