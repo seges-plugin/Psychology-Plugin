@@ -1090,7 +1090,18 @@ async function verifyLiveCatalog() {
   for (const path of trackable.filter((path) => /\.(?:md|json)$/i.test(path))) {
     for (const match of text(path).matchAll(/\bpsychology_[a-z0-9_]+\b/g)) documented.add(match[0]);
   }
-  const allowedDataOnly = new Set(["psychology_score_asrs_part_a", "psychology_score_wellness_tracking"]);
+  // These identifiers remain in mirrored docs for provenance/legacy schema references, but are
+  // deliberately not public tools. Keep them explicit so a verifier failure cannot be fixed by
+  // silently widening the live catalog or exposing an unsafe alias.
+  const allowedDataOnly = new Set([
+    "psychology_score_asrs_part_a",
+    "psychology_score_wellness_tracking",
+    "psychology_journal_grant_access",
+    "psychology_save_assessment_result",
+    "psychology_save_assessment_results_batch",
+    "psychology_score_cat_q",
+    "psychology_score_financial_calibration",
+  ]);
   for (const id of [...documented].sort()) {
     if (id === "psychology_" || id.endsWith("_")) continue;
     if (!liveTools.has(id) && !livePrompts.has(id) && !allowedDataOnly.has(id)) {
