@@ -1,18 +1,30 @@
-# 2e Archetypes, Common Twice-Exceptional Profile Patterns
+# Optional 2e Reflection Prompts
 
-> This document catalogs the most common personality profile patterns found in twice-exceptional (2e) adults, those who are both gifted and neurodivergent. Use these archetypes to help users recognize themselves and feel seen in their assessment results.
+> Use this optional resource only when a person has explicitly self-identified as twice-exceptional
+> (2e) or directly asks for a 2e lens. It offers narrative prompts for reflection, not personality
+> types, diagnostic categories, evidence of giftedness or neurodivergence, or a way to identify someone
+> as 2e from their assessment responses.
 
 ## What is a 2e Archetype?
 
-A 2e archetype is a recurring pattern of scores across the OCEAN domains and facets that appears frequently in twice-exceptional adults. These aren't diagnostic categories, they're descriptive patterns that help people understand their unique constellation of strengths and challenges.
+An optional 2e reflection prompt is a way for a self-identified 2e person to compare a selected OCEAN
+response pattern with language they may or may not find useful. It is not a recurring pattern established
+by this measure, and a score pattern cannot confirm, rule out, or explain twice-exceptionality.
+
+Before offering one, say: “You mentioned that you identify as 2e / asked for a 2e lens. Would an optional
+descriptive reflection title be useful, or would you prefer to stay with the score and your current
+context?” If they decline, do not use this file. If they accept, present only one prompt as a hypothesis to
+edit or reject, and never present it as their essence, identity, or likely outcome.
 
 Every archetype has:
 - A **name** that captures the essence
-- A **score signature** (the OCEAN pattern)
-- **Key strengths** (what this pattern enables)
-- **Common challenges** (what this pattern asks for)
-- **Growth edges** (areas for development)
-- **Famous examples** (historical figures with similar patterns)
+- A **response pattern** to discuss, not an identifying signature
+- **Possible strengths to explore**, not demonstrated capabilities
+- **Possible tensions to explore**, not predicted challenges
+- **Reflection questions**, not prescribed growth edges
+
+Do not compare the person with famous figures. A public figure's identity and inner life cannot be inferred
+from an OCEAN pattern, and the person's score cannot establish meaningful similarity with them.
 
 ---
 
@@ -42,9 +54,7 @@ Every archetype has:
 - Building in social time as a requirement, not an option
 - Recognizing when good enough is good enough
 
-**Famous Examples**: Marie Curie, Alan Turing, Isaac Asimov
-
-**You might be this if**: You'd rather spend a weekend deep-diving into a new subject than at a party. You have detailed systems for organizing your life. You have a small circle of close friends who share your intellectual interests.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
@@ -74,9 +84,7 @@ Every archetype has:
 - Finding collaborators so you don't carry everything alone
 - Self-care as a prerequisite for caring for others
 
-**Famous Examples**: Florence Nightingale, Fred Rogers, Temple Grandin
-
-**You might be this if**: You're drawn to helping professions, advocacy, or social justice work. You get frustrated when systems don't work for real people. You have a small group you care for intensely.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
@@ -106,9 +114,7 @@ Every archetype has:
 - Building a sustainable creative practice (not just intense bursts)
 - Receiving feedback without seeing it as compromise
 
-**Famous Examples**: Steve Jobs, Frida Kahlo, Stanley Kubrick
-
-**You might be this if**: You have a creative practice (art, writing, design, code) that consumes you when you're in it. You've been told you're "intense" or "difficult." You'd rather work alone than compromise your vision.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
@@ -138,9 +144,7 @@ Every archetype has:
 - Focusing exploration on a few deep areas rather than many shallow ones
 - Taking credit for your work and contributions
 
-**Famous Examples**: J.K. Rowling, Bill Watterson, Emily Dickinson
-
-**You might be this if**: You love learning about everything but prefer to do it alone. You have a few incredibly close friends. People sometimes think you're shy, but you're actually just selective.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
@@ -170,9 +174,7 @@ Every archetype has:
 - Finding social situations that fit your natural style
 - Channeling anxiety into productive preparation rather than avoidance
 
-**Famous Examples**: Charles Darwin, Ludwig Wittgenstein, Simone de Beauvoir
-
-**You might be this if**: You have strong opinions about how things should be done. You feel anxious when things are disorganized or ambiguous. You'd rather be right than popular.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
@@ -202,9 +204,7 @@ Every archetype has:
 - Finding the right outlets for high energy
 - Building tolerance for quiet and stillness
 
-**Famous Examples**: Richard Feynman, Robin Williams, Oprah Winfrey
-
-**You might be this if**: You love meeting new people and trying new things. You have a million interests and get excited easily. People tell you that you have great energy.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
@@ -234,9 +234,7 @@ Every archetype has:
 - Finding environments that support rather than overwhelm sensitivity
 - Self-compassion for the gap between vision and execution
 
-**Famous Examples**: Vincent van Gogh, Sylvia Plath, Ian Curtis
-
-**You might be this if**: You feel everything intensely, beauty, sadness, joy, anxiety. You have creative visions that feel bigger than your ability to execute. You've been called "too sensitive" your whole life.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
@@ -266,28 +264,30 @@ Every archetype has:
 - Building social connections in professional contexts
 - Considering the human impact of efficient solutions
 
-**Famous Examples**: Grace Hopper, Nikola Tesla, Margaret Hamilton
-
-**You might be this if**: You're the person everyone comes to when something is broken. You prefer to work alone and let your results speak. You're calm when everyone else is panicking.
+**Optional reflection prompt**: Does any part of this description fit the context you chose? What would you edit, reject, or make more specific?
 
 ---
 
-## Custom Archetype Builder
+## Optional Reflection Title Builder
 
-Most 2e adults won't fit perfectly into one archetype, they'll be a blend. Use this guide to create custom archetypes:
+Use this only after the self-identified 2e/explicit-request gate at the top of this file. A person does
+not need to fit any label, and high/low facet differences do not define their core strengths, contribution,
+or future. To offer a title safely:
 
-1. **Identify the top 3 highest facets**, These define the core strengths
-2. **Identify the most distinctive pattern**, What makes this profile unique?
-3. **Name the tension**, Every 2e profile has internal contradictions (e.g., high achievement drive + low self-discipline). Name the tension as a dynamic, not a flaw.
-4. **Find the gift in the gap**, The space between high and low scores is where the unique contribution lives
-5. **Create a name**, Use the format "The [Adjective] [Noun]" or "The [Quality] [Role]"
+1. **Start with consent**: Ask whether the person wants a short, editable reflection title at all.
+2. **Use only selected response detail**: Name one or two reported facets without manufacturing a ranking,
+   missing facet, or capability claim.
+3. **Ask for context**: Invite the person to say whether the pattern changes by setting, role, or time.
+4. **Offer a tension as a question**: For example, “How do curiosity and follow-through meet in this
+   situation?” Do not call the tension a 2e signature or explain it through identity.
+5. **Make it revisable**: Use language such as “A possible title is …; what would you change or reject?”
 
-### Example Custom Archetypes
+### Example Optional Titles
 
-- **The Ordered Dreamer**: High Imagination + High Orderliness + Low Gregariousness, Creates beautiful systems for imaginary worlds
-- **The Gentle Rebel**: High Agreeableness + High Liberalism + Low Dutifulness, Challenges systems from a place of compassion
-- **The Anxious Achiever**: High Achievement-Striving + High Anxiety + High Intellect, Uses worry as fuel for excellence
-- **The Quiet Enthusiast**: High Cheerfulness + Low Gregariousness + High Emotionality, Deep joy shared with a trusted few
+- **The Ordered Dreamer**: an editable prompt about imagination and preferred structure
+- **The Gentle Rebel**: an editable prompt about cooperation and independent thinking
+- **The Careful Explorer**: an editable prompt about curiosity and deliberation
+- **The Quiet Enthusiast**: an editable prompt about positive affect and preferred social setting
 
 ---
 
@@ -299,11 +299,11 @@ Most 2e adults won't fit perfectly into one archetype, they'll be a blend. Use t
 - Limitations (you can develop any skill regardless of profile)
 - Explanations for everything
 
-**These archetypes ARE:**
-- Descriptive patterns to help with self-understanding
-- Starting points for conversation
-- Frameworks for recognizing strengths
-- Tools for finding your people (those with similar patterns)
-- Inspiration for growth
+**These prompts CAN be:**
+- Optional language a self-identified 2e person can edit or reject
+- A starting point for a conversation about one selected result and a stated context
+- A way to name possible strengths without claiming they are demonstrated
+
+They are not a way to find "your people," establish similarity with other people, or make a prediction.
 
 Always invite the user to confirm, refine, or reject the archetype. They're the expert on themselves.
