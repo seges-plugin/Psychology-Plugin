@@ -360,7 +360,9 @@ for (const [path, body, required] of [
   ["skills/psychology/SKILL.md", psychologyRouter, [
     "Mandatory front door for every @Psychology request",
     "No `psychology_...` tool is visible",
-    "first substantive reply must be the short connection interstitial",
+    "first substantive reply must be exactly this short connection interstitial",
+    "Psychology MCP is not connected in this Codex task yet",
+    "do not emit a generic preface or a reflection exercise before it",
     "Stop there until they choose",
     "Do not start an exercise just to be helpful",
     "No route may ask for a password, client ID, redirect URI, token, header, authorization code, or callback URL",
