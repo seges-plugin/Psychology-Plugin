@@ -206,6 +206,35 @@ if (weakenedIdentityBoundary === interpretationSkill) {
 }
 note(`B1-8 interpretation contract: ${interpretationFiles.length} measurement-bounded files checked`);
 
+// B1-12: Until an official, per-resource, time-bounded registry exists, this public skill must
+// provide an immediate and location-aware boundary rather than a hand-maintained crisis directory.
+const crisisSupportPath = "skills/crisis-support/SKILL.md";
+const crisisSupport = text(crisisSupportPath);
+for (const phrase of [
+  "crisis-resource",
+  "Never recall, invent, or infer a hotline, text code, service name, schedule, or",
+  "local emergency service",
+  "Noesis is not a crisis or emergency service",
+]) {
+  if (!crisisSupport.includes(phrase)) fail(`${crisisSupportPath}: missing B1-12 governed-crisis invariant: ${phrase}`);
+}
+for (const pattern of [
+  /\b(?:1925|1995|988|741741|1980|116\s*123)\b/i,
+  /\b(?:Crisis Text Line|Trans Lifeline|Samaritans|RAINN|Trevor Project|findahelpline)\b/i,
+]) {
+  if (pattern.test(crisisSupport)) fail(`${crisisSupportPath}: prohibited unmanaged crisis-directory claim: ${pattern}`);
+}
+const weakenedCrisisBoundary = crisisSupport.replace(
+  "Never recall, invent, or infer a hotline, text code, service name, schedule, or",
+  "You may recall a hotline, text code, service name, schedule, or",
+);
+if (weakenedCrisisBoundary === crisisSupport) {
+  fail(`${crisisSupportPath}: B1-12 weakened-boundary fixture did not mutate the source`);
+} else if (weakenedCrisisBoundary.includes("Never recall, invent, or infer a hotline, text code, service name, schedule, or")) {
+  fail(`${crisisSupportPath}: B1-12 weakened-boundary fixture was not rejected`);
+}
+note("B1-12 public crisis boundary: no unmanaged directory claims");
+
 const trackable = trackableFiles();
 const trackableSet = new Set(trackable);
 const publicBoundaryIgnoreRules = [

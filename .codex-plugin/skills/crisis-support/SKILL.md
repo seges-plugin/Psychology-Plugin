@@ -150,56 +150,27 @@ been contacted. Match the response to the current severity:
 **Everything in this step (the hotline list below, grounding, safety planning) works with zero MCP
 connection, don't let a missing or failed `psychology_find_counselors` call slow down a crisis response (added
 2026-08-12).** If `psychology_find_counselors` isn't in your tool list, or errors with an auth/authorization
-failure, skip it silently in the moment, lead with the hotline directory below, and only mention the
+failure, skip it silently in the moment, lead with the immediate safety boundary below, and only mention the
 connection gap afterward, once the person is stabilized, follow `skills/00-session-bootstrap/SKILL.md`'s
 connector-unavailable boundary for the reminder to give them.
 
-Always provide specific, actionable resources, matched to what's actually being described, not just the
-country. **The list below is the canonical directory. Update it here.**
+Always give a clear, actionable next step, but **do not treat this public plugin as a crisis-resource
+directory**. It has no governed, current, jurisdiction-specific directory of phone numbers, service hours,
+or provider availability. Never recall, invent, or infer a hotline, text code, service name, schedule, or
+local contact from memory.
 
-Corrected 2026-09-03: this previously said the full directory lived in
-`skills/coaching/references/safety-guidelines.md`'s "Crisis & Support Hotline Directory", and told you to
-treat that as the single canonical source. That section does not exist. That file is 22 lines and contains
-no hotline directory, no phone numbers, and no sourcing notes, so following the pointer for a number
-returned nothing, and a model that needs a hotline and finds none is at risk of improvising one. It also
-claimed Canada and Australia coverage: Canada appears below via Trans Lifeline, and Australia appeared
-nowhere in this repository at all, so that claim is dropped rather than left standing. For any country not
-listed, use findahelpline.com below instead of recalling a number from memory.
+For immediate danger, self-harm risk, abuse, or a situation where urgent help may be needed:
 
-**Added 2026-08-07 (closes gaps.html finding S1, CRITICAL)**: this list had zero Taiwan coverage despite
-Psychology being a Taiwan-headquartered, bilingual zh-TW/English product. Taiwan entries below independently
-verified against each operating agency's own page on 2026-08-07.
+1. State plainly that Noesis is not a crisis or emergency service and cannot contact anyone for the person.
+2. Encourage the person to contact their **local emergency service**, an officially listed local crisis
+   service, or a trusted person who can be physically present now.
+3. Ask their country or region only if they want help finding an official local option; do not guess one.
+4. If calling is difficult, ask whether a trusted person can stay with them or help them use an official
+   local emergency or crisis channel. Do not claim that any particular text, chat, or phone option exists.
 
-**Immediate (call/text now)**:
-- **1925 安心專線** (Taiwan, MOHW 24hr suicide/mental-health crisis line): Call 1925
-- **1995 生命線** (Taiwan Lifeline, 24hr): Call 1995
-- **113 保護專線** (Taiwan, domestic violence/sexual assault/abuse, 24hr, multilingual): Call 113
-- **Taiwan emergency**: 110 (police) / 119 (fire-ambulance) / 112 (mobile only, no SIM/poor signal)
-- **988 Suicide & Crisis Lifeline** (US): Call or text 988
-- **Crisis Text Line**: Text HOME to 741741
-- **National Domestic Violence Hotline** (US): 1-800-799-7233, or text START to 88788
-- **National Sexual Assault Hotline / RAINN** (US): 1-800-656-4673, or text HOPE to 64673
-- **Trevor Project** (LGBTQ+, US, all ages welcome): 1-866-488-7386 or text START to 678678
-- **Trans Lifeline**: 1-877-565-8860 (US) / 1-877-330-6366 (Canada)
-- **Samaritans** (UK): 116 123
-- **International**: [findahelpline.com](https://findahelpline.com)
-
-**Online Resources**:
-- [Crisis Text Line](https://www.crisistextline.org)
-- [988 Lifeline](https://988lifeline.org)
-- [TWLOHA](https://twloha.com)
-- [NAMI](https://www.nami.org), mental-health information and support, distinct from crisis
-  intervention; NAMI's own HelpLine (1-800-950-6264, text NAMI to 62640, weekdays 10am-10pm ET) is for
-  information/support, not a crisis line, always pair it with 988 or another crisis line above rather
-  than using it alone for Orange+ situations.
-- 張老師專線 1980 (Taiwan): Call 1980, Mon–Sat 9:00–21:00, Sun 9:00–17:00, life-adjustment/emotional
-  counseling, **not 24hr**; pair with 1925 or 1995 above for Orange+ situations outside those hours.
-
-**For Neurodivergent Adults Specifically**:
-- Neurodivergent experiences of crisis may differ (sensory overwhelm, meltdown, shutdown)
-- Crisis services may not be ND-informed
-- Validate: "I know reaching out can be especially hard when you're neurodivergent. The person on the other end of 988 is trained to help everyone."
-- If phone calls are difficult, prioritize text-based options
+For neurodivergent adults, acknowledge that reaching out can be difficult and offer the same immediate,
+location-aware next step without attributing the crisis to a neurotype or promising that a service has a
+particular training or accessibility feature.
 
 ### Step 5: Safety Planning
 
@@ -210,8 +181,8 @@ For Orange+ situations, create a brief safety plan:
 3. **External coping**: "Who can you call? Where can you go?"
 4. **Professional resources**: "Who are your professional supports?", if they don't have any and
    want to find one, `psychology_find_counselors(location, focus, max_results, jurisdiction)` can look up real, local
-   counseling providers via a real outside listings lookup (not a vetted crisis service, pair it with the crisis
-   lines above, and always relay its `disclaimer` and `crisis_line_note` fields). The optional
+   counseling providers via a real outside listings lookup (not a vetted crisis service; always relay its
+   `disclaimer` and `crisis_line_note` fields). The optional
    `jurisdiction` parameter is purely additive, pass it when you already know the jurisdiction from
    the conversation (e.g. an LGBTQ+/hostile-environment situation) to get a `jurisdiction_risk_note`
    back. **Availability note
@@ -313,20 +284,17 @@ reflection surfacing a past non-consensual experience, and a red line reached du
 self-understanding. Corrected 2026-09-03: this used to point at
 `skills/coaching/references/safety-guidelines.md`'s "Content-Domain-Specific Crisis Considerations" for
 "full detail, hotline numbers, and verification notes". No such section exists, so this is not a condensed
-version of anything. It is the whole of what the plugin says on these three patterns, and the numbers it
-needs are in the directory above.
+version of anything. It is the whole of what the plugin says on these three patterns; it does not maintain
+or invent a local crisis directory.
 
 ### Orientation/Identity Distress in a Hostile Environment
 - **Presentation**: Fear, hopelessness, or danger tied specifically to sexual orientation/identity being
   unsafe to disclose or live openly (hostile family, community, workplace, or legal environment),
   distinct from general mood distress unconnected to identity.
 - **Response**: Classify severity with the standard rubric above first. Validate the specific source of
-  the distress, not just the emotion. Route to **Trevor Project** (1-866-488-7386, text START to 678678)
-  alongside whatever the severity level already calls for, plus **ILGA World** (ilga.org /
-  database.ilga.org) as a legal-context and international-advocacy pointer for locations outside the
-  countries already covered in the Hotline Directory, ILGA World is a rights/legal-mapping resource, not
-  itself a 24/7 crisis line, so frame it as such rather than as an emergency contact. **Added 2026-08-07,
-   updated 2026-08-08**: for ongoing support, mention `psychology_find_counselors(location, focus)` (try a `focus`
+  the distress, not just the emotion. Lead with the immediate safety boundary above: an official local
+  emergency or crisis service, or a trusted person who can be present. For ongoing support, mention
+  `psychology_find_counselors(location, focus)` (try a `focus`
   like "LGBTQ-affirming therapy"), a live directory lookup, not a vetted specialty match, so relay its
   own `disclaimer` field. Available to every signed-in user, limited to 20 searches/week and 40/month per
   user since it calls a real, paid external API, see the availability note under Safety Planning above.
@@ -340,9 +308,9 @@ needs are in the directory above.
 - **Response**: Pause the assessment/interpretation framing immediately. Respond to the person, not the
   instrument, acknowledge what was shared without probing for details (the assessment does not need more
   than what was volunteered, and asking risks re-traumatizing). Never fold this into a strength-framed
-  interpretation of their preferences. Offer the National Sexual Assault Hotline (RAINN, 1-800-656-4673,
-  or 113 保護專線 in Taiwan) and ask
-  whether they want to continue, pause, or switch to a supportive conversation, let them choose. **Added
+  interpretation of their preferences. Offer the option of an officially listed local sexual-violence,
+  emergency, or crisis support service; ask whether they want to continue, pause, or switch to a
+  supportive conversation, and let them choose. **Added
   2026-08-07, updated 2026-08-08**: also mention `psychology_find_counselors(location, focus)` (try a `focus` like
   "trauma-informed therapy") for real, ongoing local support once the immediate moment has passed. It is
   a directory lookup, not a vetted specialty match; relay any limits and disclaimer returned by the tool.
