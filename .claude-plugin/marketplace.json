@@ -11,7 +11,7 @@
       "description": "Take real, published self-assessments (Big Five, personal values, character strengths, and more) and get honest, strength-focused explanations of what your results mean. Not therapy, diagnosis, or treatment; if you want a real counselor, Psychology can suggest one to look into, but you always do your own checking before reaching out. Sign in only if you want results saved for later. You choose what's remembered each time, and nothing loads automatically.",
       "category": "productivity",
       "source": "./",
-      "version": "1.2.5",
+      "version": "1.2.6",
       "keywords": [
         "psychology",
         "psychometrics",
