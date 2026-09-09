@@ -135,6 +135,77 @@ for (const base of ["skills", ".codex-plugin/skills"]) {
   }
 }
 
+// B1-8: Interpretation language must stay measurement-bounded. A score can support reflection, but it
+// cannot be used to infer an identity, neurotype, clinical condition, leadership ability, or outcome.
+const interpretationBoundaries = [
+  [
+    "skills/interpretation/SKILL.md",
+    [
+      "never infer, diagnose, validate, or assign",
+      "Apply an ND/2e lens only when the person has explicitly",
+      "not an identity, diagnosis, prediction, or conclusion",
+    ],
+  ],
+  [
+    "skills/interpretation/references/ocean-facets.md",
+    [
+      "not a map from OCEAN responses",
+      "do not attribute, confirm, or explain the score through that identity",
+      "do not infer a condition or identity from either pole",
+    ],
+  ],
+  [
+    "skills/interpretation/references/strength-frames.md",
+    [
+      "Do not use a facet score to infer or",
+      "It is not a prediction of long-term success.",
+      "do not explain the pattern as neurological",
+    ],
+  ],
+  [
+    "skills/interpretation/references/2e-archetypes.md",
+    [
+      "only when a person has explicitly self-identified as twice-exceptional",
+      "a score pattern cannot confirm, rule out, or explain twice-exceptionality",
+      "Do not compare the person with famous figures.",
+    ],
+  ],
+];
+for (const [path, required] of interpretationBoundaries) {
+  const body = text(path);
+  for (const phrase of required) {
+    if (!body.includes(phrase)) fail(`${path}: missing B1-8 measurement-boundary invariant: ${phrase}`);
+  }
+}
+const interpretationFiles = interpretationBoundaries.map(([path]) => path);
+const prohibitedInterpretationClaims = [
+  /\bADHD often\b/i,
+  /\bautism may\b/i,
+  /\bPDA\b[^\r\n.!?]{0,100}\bassociated\b/i,
+  /\bnatural leader\b/i,
+  /\bstrongest predictors? of (?:long-term |life )?success\b/i,
+  /\bsuccessful entrepreneurs?\b/i,
+  /\bFamous Examples\b/i,
+  /\bYou might be this if\b/i,
+];
+for (const path of interpretationFiles) {
+  const body = text(path);
+  for (const pattern of prohibitedInterpretationClaims) {
+    if (pattern.test(body)) fail(`${path}: prohibited B1-8 deterministic interpretation claim: ${pattern}`);
+  }
+}
+const interpretationSkill = text("skills/interpretation/SKILL.md");
+const weakenedIdentityBoundary = interpretationSkill.replace(
+  "Apply an ND/2e lens only when the person has explicitly",
+  "Apply an ND/2e lens whenever a score pattern seems suggestive",
+);
+if (weakenedIdentityBoundary === interpretationSkill) {
+  fail("skills/interpretation/SKILL.md: B1-8 weakened-boundary fixture did not mutate the source");
+} else if (interpretationBoundaries[0][1].every((phrase) => weakenedIdentityBoundary.includes(phrase))) {
+  fail("skills/interpretation/SKILL.md: B1-8 weakened-boundary fixture was not rejected");
+}
+note(`B1-8 interpretation contract: ${interpretationFiles.length} measurement-bounded files checked`);
+
 const trackable = trackableFiles();
 const trackableSet = new Set(trackable);
 const publicBoundaryIgnoreRules = [

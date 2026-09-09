@@ -1,6 +1,8 @@
 # Strength Frames, All 30 OCEAN Facets
 
-> This document provides strength-framed descriptions for every OCEAN facet at every score level. Use it to generate positive, neurodivergent-affirming interpretations regardless of where someone scores.
+> This document provides strength-framed descriptions for every OCEAN facet at every score level. Use
+> it to generate non-diagnostic, context-aware interpretations. Do not use a facet score to infer or
+> validate neurodivergence, giftedness, a condition, leadership ability, or future success.
 
 ## Format
 
@@ -129,9 +131,9 @@ Each facet includes:
 
 ### Achievement-Striving (C4), Drive to accomplish and achieve
 
-**Very High:** You have an intense drive to achieve and excel. You're likely ambitious, goal-oriented, and constantly pushing yourself. This achievement motivation has probably led to significant accomplishments. The challenge is knowing when to rest and recognizing that your worth isn't defined by what you achieve.
+**Very High:** In this measure, you reported a strong drive to achieve and pursue demanding goals. A useful strength to explore is sustained ambition; a useful counter-question is whether the pace feels chosen and sustainable in the setting you care about. Your worth is not defined by what you achieve.
 
-**High:** You're goal-oriented and work hard to accomplish what you set out to do. You take satisfaction in achievement and likely have a track record of success.
+**High:** In this measure, you reported being fairly goal-oriented and persistent. Explore whether achievement is satisfying and sustainable for you, rather than treating the score as evidence of a track record or likely outcome.
 
 **Average:** You have moderate achievement motivation, you work hard on what matters but don't need constant external validation through accomplishments.
 
@@ -141,7 +143,7 @@ Each facet includes:
 
 ### Self-Discipline (C5), Ability to persist at tasks despite difficulty
 
-**Very High:** You have remarkable willpower and persistence. When you commit to a task, you see it through even when it's difficult or boring. This self-discipline is one of the strongest predictors of long-term success. You can do hard things consistently.
+**Very High:** In this measure, you reported strong persistence and follow-through. That can be a useful resource for commitments you choose; ask where it helps and where flexibility, rest, or support would serve you better. It is not a prediction of long-term success.
 
 **High:** You generally have good follow-through and can persist at tasks even when they're not immediately rewarding. Your self-discipline serves you well.
 
@@ -159,7 +161,7 @@ Each facet includes:
 
 **Average:** You balance thought and action, you consider important decisions but don't overthink minor ones. This adaptability serves you well.
 
-**Low:** You prefer action over deliberation. You learn by doing rather than by analyzing. This bias for action means you try more things, fail faster, and learn quicker than cautious people. Many successful entrepreneurs have this pattern.
+**Low:** In this measure, you reported a more action-first than deliberation-first style. That can support experimentation in some settings, while other settings may benefit from an intentional pause. Do not turn this score into a comparison with other people or a prediction about entrepreneurship or success.
 
 **Very Low:** You have a powerfully action-oriented approach. While others are still planning, you've already tried three approaches and learned what works. This experimental mindset, combined with resilience from past "failures," makes you incredibly adaptable and fast-learning.
 
@@ -189,11 +191,11 @@ Each facet includes:
 
 **Low:** You prefer smaller groups or one-on-one interactions to large social gatherings. You may find extended socializing draining. This selectivity means your social time is meaningful and intentional.
 
-**Very Low:** You're strongly introverted, social interaction requires energy, and solitude restores you. This isn't social anxiety or dislike of people; it's a neurological difference in how you process stimulation. Your depth in one-on-one relationships often exceeds what gregarious people achieve in groups.
+**Very Low:** In this measure, you reported a strong preference for solitude or smaller social settings. Ask which kinds of connection feel restorative or draining for you; do not explain the pattern as neurological, confuse it with social anxiety, or compare the depth of your relationships with anyone else's.
 
 ### Assertiveness (E3), Tendency to take charge and lead
 
-**Very High:** You're a natural leader who speaks up, takes charge, and influences others. You're comfortable in the spotlight and effective at directing groups. This assertiveness means things happen when you're involved.
+**Very High:** In this measure, you reported comfort speaking up and taking initiative. That may be useful to explore in a concrete group or role, while leaving room for other ways of contributing. It does not demonstrate stable leadership ability or effectiveness in every context.
 
 **High:** You're generally comfortable speaking up, expressing your opinions, and taking the lead when needed. You can assert yourself effectively.
 
@@ -201,7 +203,7 @@ Each facet includes:
 
 **Low:** You prefer to influence through collaboration rather than direct assertion. You may lead from behind or through example rather than explicit direction. This collaborative style builds buy-in and shared ownership.
 
-**Very Low:** You have a powerfully non-dominant approach to influence. You lead through service, through expertise, through quiet example. When you do speak up, people listen because it's rare and considered. Many of the most effective leaders in history had this pattern.
+**Very Low:** In this measure, you reported a less dominant style of influence. In some settings, collaboration, expertise, or careful observation may be meaningful ways to contribute; ask which of those fit your own experience. Do not turn this score into a claim about how others respond to you or about leadership effectiveness.
 
 ### Activity Level (E4), Pace and energy of daily life
 
@@ -237,7 +239,7 @@ Each facet includes:
 
 **Low:** You have a more serious, contemplative emotional baseline. You don't experience exuberant joy frequently, but when you do, it's meaningful. Your emotional range may skew toward depth rather than height.
 
-**Very Low:** You have a deeply serious, perhaps melancholic baseline. This isn't depression, it's a temperament. Your capacity for profound joy may be less frequent but more intense. Many of history's greatest artists, thinkers, and leaders have had this pattern. Your seriousness is the flip side of your depth.
+**Very Low:** In this measure, you reported less frequent positive affect. Treat that as a self-report pattern for the selected period, not an explanation of mood, a temperament verdict, or a comparison with artists, thinkers, or leaders. If it feels troubling, invite the person to describe the context and follow the safety route for any expressed concern.
 
 ---
 
@@ -323,7 +325,7 @@ Each facet includes:
 
 ### Anxiety (N1), Tendency to worry and anticipate threat
 
-**Very High:** You have an exceptionally active threat-detection system. Your mind constantly scans for potential problems and prepares for them. While this can be exhausting, it's also a genuine survival strength, you rarely get caught off guard. Many highly successful people have this pattern. The key is channeling this vigilance productively rather than letting it run unchecked.
+**Very High:** In this measure, you reported frequent worry or threat anticipation. It may be useful to ask when that preparation helps and when it becomes costly, without calling it a survival strength, a condition, or a marker of likely success. If the person reports acute distress or danger, follow the safety route rather than continuing interpretation.
 
 **High:** You tend to worry and anticipate problems. This foresight helps you prepare for challenges, though it can also create unnecessary stress.
 
@@ -379,7 +381,7 @@ Each facet includes:
 
 **Low:** You're good at delaying gratification and thinking before acting on urges. This self-control serves your long-term goals.
 
-**Very Low:** You have exceptional impulse control and delayed gratification ability. While others chase immediate rewards, you stay focused on long-term goals. This discipline is one of the strongest predictors of life success.
+**Very Low:** In this measure, you reported a strong tendency to pause before acting on urges. Explore where that supports your chosen goals and where spontaneity also matters. It is not a comparison with others or a predictor of life success.
 
 ### Vulnerability (N6), Tendency to feel overwhelmed under stress
 

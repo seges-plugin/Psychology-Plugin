@@ -19,7 +19,7 @@ references:
   - path: "references/ocean-facets.md"
     description: "Technical descriptions of all 30 OCEAN facets with high/low pole characteristics"
   - path: "references/2e-archetypes.md"
-    description: "Common twice-exceptional profile patterns and archetype names"
+    description: "Optional self-identified 2e reflection prompts; never used to infer identity from scores"
   - path: "references/cat-q-interpretation.md"
     description: "Strength-framed, non-diagnostic interpretation of raw result-schema ID score_cat_q — a data ID, not a public MCP invocation — and its three subscales (Compensation, Masking, Assimilation)"
   - path: "references/asrs-interpretation.md"
@@ -38,7 +38,9 @@ references:
 
 # Interpretation Guide
 
-Generate strength-framed interpretations of psychometric results that honor neurodivergent identity and twice-exceptional experience.
+Generate strength-framed, measurement-bounded interpretations of psychometric results. Respect a
+person's stated identity, access needs, and lived context; never infer, diagnose, validate, or assign
+any of them from a score pattern.
 
 ## Session context comes first
 
@@ -69,7 +71,8 @@ consent-gated user choice handled by its dedicated flow.
 Every trait description must:
 1. **Name the strength first**, What does this trait enable?
 2. **Acknowledge the challenge**, What does it ask of the person?
-3. **Provide 2e context**, How does this show up differently for gifted ND adults?
+3. **Use only confirmed context**, How does the person say this varies by setting, relationship, role, or
+   an identity they have explicitly chosen to share?
 4. **Offer actionable insight**, How can they work with this trait?
 
 **Added 2026-08-07**: strength-framing is this skill's concrete way to keep the current interpretation
@@ -81,13 +84,23 @@ judgment of the person who has it; it is a writing instruction, not a SessionSta
 silently default to one convention across every interpretation, this is the user's own preference to
 set, not a house style to impose.
 
+### Identity, condition, and context boundary
+
+An OCEAN/IPIP score, facet pattern, archetype, or apparent "spikiness" cannot establish or rule out
+neurodivergence, giftedness, twice-exceptionality, ADHD, autism, PDA, a learning disability, a mental
+health condition, leadership ability, or likely life outcome. Do not offer any of those as an explanation
+for a score, even as a tentative one. Apply an ND/2e lens only when the person has explicitly
+self-identified with it or has directly asked to discuss it; then treat it as their context, not a
+measurement result. Ask what they want that context to change about the conversation, and keep the score's
+limits visible.
+
 ### The Reframe Formula
 
 ```
 [Trait] as [Strength Name]
-→ "Your score in [Trait] suggests you're someone who [strength description].
-   This means you [capability], though you may sometimes [challenge].
-   For 2e adults, this often shows up as [2e manifestation]."
+→ "In this measure, your responses describe [pattern].
+   A possible strength to explore is [strength description], though it may also involve [challenge].
+   Does that fit in the setting you care about?"
 ```
 
 ### Score Level Framing
@@ -159,17 +172,20 @@ round trip:
 1. **Top strengths**: Use only comparable score fields, explicit rankings, subscales, or tool-reported
    norms. Never manufacture a percentile or rank when the selected result does not provide one.
 2. **Unique patterns**: Unusual combinations (e.g., high Openness + low Extraversion)
-3. **2e signatures**: Combinations common in twice-exceptional adults
+3. **Context-confirmed variation**: Differences the person has explicitly described across settings,
+   roles, relationships, or life periods
 4. **Growth edges**: Areas where the user may want support (frame as "areas for growth")
 
 ### Step 3: Generate Archetype Name
-Create a 3-5 word archetype name that captures the user's essence. Examples:
+Offer, but never require, a 3-5 word **descriptive reflection title** that summarizes the selected result.
+It is not an identity, diagnosis, prediction, or conclusion about the person. Examples:
 - "The Deeply Curious Strategist" (High Openness, High Conscientiousness, Low Extraversion)
 - "The Compassionate Systems Thinker" (High Agreeableness, High Openness, High Conscientiousness)
 - "The Intensely Focused Creator" (High Conscientiousness, High Openness, Low Agreeableness)
 - "The Warmly Independent Explorer" (High Agreeableness, High Openness, Low Extraversion)
 
-Use `references/2e-archetypes.md` for common patterns.
+Use `references/2e-archetypes.md` only if the person has explicitly self-identified as 2e or directly
+asks for that optional lens. Never use it to infer that identity from scores.
 
 ### Step 4: Write the Interpretation
 
@@ -177,7 +193,7 @@ Structure the interpretation as:
 1. **Opening**, Warm acknowledgment, archetype name
 2. **Top strengths**, 2-3 strongest traits with strength-framed descriptions
 3. **Unique patterns**, What makes their profile distinctive
-4. **2e context**, How this profile shows up in twice-exceptional experience
+4. **Context**, only the setting or self-described identity context the person has explicitly confirmed
 5. **Growth edges**, 1-2 areas for development, framed as opportunities
 6. **Integration**, How the traits work together as a whole
 7. **Next steps**, Suggested follow-up assessments or coaching focus. If the person explicitly asks for
@@ -191,41 +207,25 @@ Structure the interpretation as:
 - Use the user's own language from the conversation
 - Ask: "Does this resonate with how you experience yourself?"
 
-## 2e Context Integration
+## Self-identified context integration
 
-Twice-exceptional adults often have profiles that look different from typical norms:
+Use setting and identity context to make a reflection more useful without turning it into an explanation
+for the score:
 
-### Common 2e Patterns
-- **Spiky profiles**: Very high in some traits, very low in others (not "flat")
-- **High Openness + High Neuroticism**: The "tortured artist" pattern, deep curiosity with intense emotional experience
-- **High Conscientiousness + ADHD**: Compensatory overwork, high effort to manage executive function challenges
-- **High Agreeableness + Social Difficulty**: Caring deeply but struggling with social execution
-- **Low Extraversion + High Enthusiasm**: Needs solitude but has intense passions
-
-When you see these patterns, name them explicitly and normalize them.
-
-## Special Populations
-
-### AuDHD (Autistic + ADHD)
-- Expect contradictory patterns (high structure need + high novelty seeking)
-- Frame as "dynamic tension" rather than contradiction
-- Emphasize the creativity that comes from holding opposites
-
-### High-Masking Autistic Adults
-- Scores may not reflect true preferences (masking distorts responses)
-- Invite reflection: "Does this score feel true to you inside, or is this how others see you?"
-- Note where masking may be affecting results
-
-### Gifted with Learning Disabilities
-- High abstract reasoning + low processing speed
-- Frame the gap as "asynchronous development", a feature, not a bug
-- Emphasize the advantages of deep thinking over fast thinking
+1. Ask only if the person wants to discuss a context they have already named, such as work, study,
+   caregiving, a relationship, sensory environment, access need, or a self-identified ND/2e experience.
+2. Ask a concrete comparison: “Does this response pattern feel different in that setting than elsewhere?”
+3. Preserve the person's answer as their perspective. Do not claim the measure detects masking,
+   compensatory effort, neurological difference, giftedness, or a clinical condition.
+4. If a score feels inaccurate or incomplete, say that the measure may be a limited snapshot and invite
+   correction; do not repair it with an identity-based explanation.
 
 ## Facet-Level Interpretation
 
 When interpreting IPIP-NEO-120 or similar instruments, go to the facet level (not just domain level). Reference `references/ocean-facets.md` for detailed facet descriptions and `references/strength-frames.md` for strength-framed descriptions of each facet.
 
-Always interpret the full 30-facet profile, not just the 5 domains. The facets tell the real story.
+When the selected result actually includes facets, use the available facet detail rather than making a
+domain-only claim. Do not say facets tell the "real" story or infer missing facets.
 
 ## Interpreting Instruments with Dedicated Reference Files
 
