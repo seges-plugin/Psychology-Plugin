@@ -1,7 +1,7 @@
 ---
 name: 00-session-bootstrap
 description: Host-cooperated intent router for the first Psychology-relevant request in a session, including self-understanding, intimacy self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
-version: "1.2.0"
+version: "1.2.4"
 ---
 
 # Psychology session bootstrap
@@ -64,9 +64,22 @@ presence of one as proof of the other.
 
 - If at least one `psychology_...` tool is visible, continue with the account-context check below.
 - If no `psychology_...` tool is visible at all, the Psychology connector is not set up in this session.
-  Say so plainly and explicitly in the same response; never imply that a Psychology tool ran or that
-  account data was read. Tool-dependent assessment, scoring, account-backed interpretation, EMA, and
-  account persistence must stop and route to `skills/onboarding/SKILL.md`.
+  This verdict must be the **first substantive content** of the response (after any urgent-safety routing),
+  before a generic exercise, assessment recommendation, or long context brief. Say that the portable
+  Psychology plugin is loaded but its MCP tools are not callable in this Codex task; never imply that a
+  Psychology tool ran or that account data was read. Tool-dependent assessment, scoring, account-backed
+  interpretation, EMA, and account persistence must stop and route to `skills/onboarding/SKILL.md`.
+
+  Use this short, action-first interstitial:
+
+  > **Psychology MCP is not connected in this Codex task yet.** The plugin guidance is available, but no
+  > `psychology_*` tool can be called, so I cannot use Noesis instruments, consent, or saved sources here.
+  > Would you like to connect it now? The secure Codex flow opens an official Noesis browser sign-in; it
+  > does not ask you to paste a password, token, header, or authorization URL. If you prefer not to connect,
+  > say **session-only reflection** and I can help using only what you write in this chat.
+
+  Do not start the session-only alternative unless the person explicitly chooses it. Do not send a person
+  who is currently using Codex to ChatGPT Developer mode, ChatGPT Plugin Management, or a Claude setup flow.
 - Connector-free coaching may continue only as a clearly labelled **session-only** conversation using
   material already visible here. The same narrow exception applies to
   `skills/intimacy-self-understanding/SKILL.md`, under its adult-only, user-initiated, no-persistence

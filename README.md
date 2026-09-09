@@ -111,6 +111,26 @@ credentials, availability, scope, jurisdiction, and suitability before relying o
 <img src="assets/readme/divider.svg" alt="" width="100%" />
 </div>
 
+## Use Psychology in Codex
+
+Installing `Psychology` in Codex loads its portable workflow and safety skills. It does **not** by itself
+complete the separate OAuth connection to the hosted Noesis MCP. A first-use response must make that distinction
+visible: if the current task has no callable `psychology_...` tool, it must offer secure Codex connection before
+offering a session-only reflection. It must not send a Codex user to ChatGPT Developer mode or a Claude setup page.
+
+If Codex already lists a Noesis MCP server, select its normal **Sign in** or **Reconnect** action instead of
+creating another entry. Otherwise, after deciding to make this local configuration change, run:
+
+```powershell
+codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp
+codex mcp login psychology --oauth-client-registration dcr
+```
+
+The login command opens the official Noesis browser sign-in and consent flow. Do not paste a password, client ID,
+redirect URI, OAuth code, token, authorization header, or callback URL into Codex. Start a new task after sign-in,
+confirm a callable `psychology_...` tool is present, and make `psychology_get_consent_status` the first harmless
+read-only check. A connected account does not automatically read profile, journal, result, or imported-memory data.
+
 ## Add to Claude.ai
 
 Use the plugin first so Claude can load Psychology's portable skills and safety instructions:

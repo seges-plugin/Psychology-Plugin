@@ -107,6 +107,20 @@ if (JSON.stringify(canonical(rootMcp)) !== JSON.stringify(canonical(codexMcp))) 
   fail(".mcp.json and .codex-plugin/mcp.json differ");
 }
 
+const psychologyMcp = rootMcp.mcpServers?.psychology;
+if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== "https://noesis.seges.ai/mcp") {
+  fail(".mcp.json: Psychology must declare the canonical Streamable HTTP endpoint");
+}
+if (psychologyMcp?.oauth_resource !== "https://noesis.seges.ai/psychology/mcp") {
+  fail(".mcp.json: Psychology must declare the canonical OAuth protected resource");
+}
+if (!Array.isArray(codexPlugin.interface?.defaultPrompt) || codexPlugin.interface.defaultPrompt.length > 3) {
+  fail(".codex-plugin/plugin.json: defaultPrompt must contain at most three entries");
+}
+if (!codexPlugin.interface.defaultPrompt?.[0]?.includes("Psychology MCP is connected")) {
+  fail(".codex-plugin/plugin.json: first default prompt must make MCP connection checking the entry point");
+}
+
 const rootSkills = walk("skills").map((path) => path.slice("skills/".length));
 const codexSkills = walk(".codex-plugin/skills").map((path) => path.slice(".codex-plugin/skills/".length));
 if (JSON.stringify(rootSkills) !== JSON.stringify(codexSkills)) {
@@ -333,6 +347,33 @@ const memoryDistillation = text("skills/memory-distillation/SKILL.md");
 const contextSession = text("skills/context-session/SKILL.md");
 const onboarding = text("skills/onboarding/SKILL.md");
 const assessmentGuide = text("skills/assessment-guide/SKILL.md");
+const sessionBootstrap = text("skills/00-session-bootstrap/SKILL.md");
+
+for (const [path, body, required] of [
+  ["skills/00-session-bootstrap/SKILL.md", sessionBootstrap, [
+    "first substantive content",
+    "Psychology MCP is not connected in this Codex task yet",
+    "Do not start the session-only alternative unless the person explicitly chooses it",
+    "Do not send a person who is currently using Codex to ChatGPT Developer mode",
+  ]],
+  ["skills/onboarding/SKILL.md", onboarding, [
+    "Codex desktop and CLI",
+    "codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp",
+    "codex mcp login psychology --oauth-client-registration dcr",
+    "official `noesis.seges.ai` sign-in/consent page",
+    "Never ask them to paste a password, client ID, redirect URI, token, header, authorization code, or browser callback URL",
+  ]],
+  ["README.md", readme, [
+    "## Use Psychology in Codex",
+    "codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp",
+    "codex mcp login psychology --oauth-client-registration dcr",
+  ]],
+]) {
+  const compactBody = body.replace(/\s+/g, " ");
+  for (const phrase of required) {
+    if (!compactBody.includes(phrase)) fail(`${path}: missing Codex MCP onboarding invariant: ${phrase}`);
+  }
+}
 
 for (const forbidden of ["Optional cross-session profile update", "profile-save flow below"]) {
   if (memoryDistillation.includes(forbidden)) {
