@@ -117,6 +117,8 @@ Installing `Psychology` in Codex loads its portable workflow and safety skills. 
 complete the separate OAuth connection to the hosted Noesis MCP. A first-use response must make that distinction
 visible: if the current task has no callable `psychology_...` tool, it must offer secure Codex connection before
 offering a session-only reflection. It must not send a Codex user to ChatGPT Developer mode or a Claude setup page.
+The package's `skills/psychology/SKILL.md` is the mandatory `@Psychology` front door, so this connection verdict
+is not left to a later assessment or coaching skill.
 
 If Codex already lists a Noesis MCP server, select its normal **Sign in** or **Reconnect** action instead of
 creating another entry. Otherwise, after deciding to make this local configuration change, run:

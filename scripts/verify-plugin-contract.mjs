@@ -348,6 +348,7 @@ const contextSession = text("skills/context-session/SKILL.md");
 const onboarding = text("skills/onboarding/SKILL.md");
 const assessmentGuide = text("skills/assessment-guide/SKILL.md");
 const sessionBootstrap = text("skills/00-session-bootstrap/SKILL.md");
+const psychologyRouter = text("skills/psychology/SKILL.md");
 
 for (const [path, body, required] of [
   ["skills/00-session-bootstrap/SKILL.md", sessionBootstrap, [
@@ -355,6 +356,14 @@ for (const [path, body, required] of [
     "Psychology MCP is not connected in this Codex task yet",
     "Do not start the session-only alternative unless the person explicitly chooses it",
     "Do not send a person who is currently using Codex to ChatGPT Developer mode",
+  ]],
+  ["skills/psychology/SKILL.md", psychologyRouter, [
+    "Mandatory front door for every @Psychology request",
+    "No `psychology_...` tool is visible",
+    "first substantive reply must be the short connection interstitial",
+    "Stop there until they choose",
+    "Do not start an exercise just to be helpful",
+    "No route may ask for a password, client ID, redirect URI, token, header, authorization code, or callback URL",
   ]],
   ["skills/onboarding/SKILL.md", onboarding, [
     "Codex desktop and CLI",
