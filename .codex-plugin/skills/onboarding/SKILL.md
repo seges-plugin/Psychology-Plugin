@@ -1,7 +1,7 @@
 ---
 name: onboarding
 description: Guide a user through a browser-authorized Psychology MCP connection without collecting credentials or overstating host support.
-version: "0.1.0"
+version: "1.2.4"
 ---
 
 # Psychology connection guide
@@ -21,6 +21,32 @@ connection or persistence into an intake toll gate, and never call an unavailabl
 When a host supports portable plugins, install the Psychology plugin first so its safety and workflow skills
 are visible before adding the connector. A plugin installation and a connector authorization are separate:
 neither one proves the other succeeded, and neither authorizes an account-data read.
+
+### Codex desktop and CLI
+
+When the person is in Codex, do not redirect them to ChatGPT Developer mode, ChatGPT Plugin Management, or
+a Claude connector page. First inspect the current task's tool list. If no `psychology_...` tool is visible,
+say that the plugin is installed but the MCP is not connected in this task, then offer to set it up now.
+Do not begin a generic reflection exercise until the person either chooses the secure connection path or
+explicitly chooses a session-only reflection.
+
+The deterministic Codex setup path uses no copied credential. If an existing Noesis server already appears
+in Codex MCP settings, reconnect that existing server rather than creating a duplicate. Otherwise, after the
+person agrees to make the local configuration change, add the stable server name and start the normal OAuth
+flow:
+
+```powershell
+codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp
+codex mcp login psychology --oauth-client-registration dcr
+```
+
+The second command opens the browser authorization flow. Immediately before it starts, state that the
+destination is the official `noesis.seges.ai` sign-in/consent page and that only the OAuth authorization
+request is being sent. The person reviews and completes Google sign-in and the displayed consent there.
+Never ask them to paste a password, client ID, redirect URI, token, header, authorization code, or browser
+callback URL. Then begin a new Codex task, confirm at least one callable `psychology_...` tool, and use
+`psychology_get_consent_status` as the smallest safe read-only check. Connection alone does not read a
+profile, note, result, or imported memory.
 
 - **Claude.ai:** open its Plugins page, add the public repository marketplace, review and install Psychology,
   then use the prefilled custom-connector form documented in the repository README. When offered the supported
