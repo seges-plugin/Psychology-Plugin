@@ -121,10 +121,12 @@ The package's `skills/psychology/SKILL.md` is the mandatory `@Psychology` front 
 is not left to a later assessment or coaching skill.
 
 If Codex already lists a Noesis MCP server, select its normal **Sign in** or **Reconnect** action instead of
-creating another entry. Otherwise, after deciding to make this local configuration change, run:
+creating another entry. If it was configured with a legacy protected-resource value, reconnect or replace that
+one entry with the canonical root resource below; do not keep both resource variants. Otherwise, after deciding
+to make this local configuration change, run:
 
 ```powershell
-codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp
+codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
 codex mcp login psychology --oauth-client-registration dcr
 ```
 
@@ -234,7 +236,7 @@ The connector endpoint is:
 
     https://noesis.seges.ai/mcp
 
-The protected MCP resource is `https://noesis.seges.ai/psychology/mcp`, and the public catalog is
+The canonical protected MCP resource is `https://noesis.seges.ai/mcp`, and the public catalog is
 `https://noesis.seges.ai/info`. Every actual tool or prompt call must use the exact visible
 `psychology_…` name supplied by authenticated `tools/list`; names in a returned score record or internal
 schema are data identifiers, not callable aliases.
