@@ -116,13 +116,20 @@ if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== canonicalMcpResourc
 if (psychologyMcp?.oauth_resource !== canonicalMcpResource) {
   fail(".mcp.json: Psychology must declare the canonical OAuth protected resource");
 }
-for (const [path, body] of [
-  [".mcp.json", text(".mcp.json")],
-  [".codex-plugin/mcp.json", text(".codex-plugin/mcp.json")],
-  ["README.md", text("README.md")],
-  ["skills/onboarding/SKILL.md", text("skills/onboarding/SKILL.md")],
-  [".codex-plugin/skills/onboarding/SKILL.md", text(".codex-plugin/skills/onboarding/SKILL.md")],
-]) {
+const publishedConnectorContractPaths = [
+  ".mcp.json",
+  ".codex-plugin/mcp.json",
+  ".codex-plugin/plugin.json",
+  ".claude-plugin/plugin.json",
+  ".claude-plugin/marketplace.json",
+  "kimi.plugin.json",
+  "openclaw.plugin.json",
+  "README.md",
+  "skills/onboarding/SKILL.md",
+  ".codex-plugin/skills/onboarding/SKILL.md",
+];
+for (const path of publishedConnectorContractPaths) {
+  const body = text(path);
   if (body.includes(deprecatedMcpResource)) {
     fail(`${path}: deprecated protected-resource value must not be published`);
   }
