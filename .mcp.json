@@ -3,7 +3,7 @@
     "psychology": {
       "type": "http",
       "url": "https://noesis.seges.ai/mcp",
-      "oauth_resource": "https://noesis.seges.ai/psychology/mcp"
+      "oauth_resource": "https://noesis.seges.ai/mcp"
     }
   }
 }
