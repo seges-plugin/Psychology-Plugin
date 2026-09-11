@@ -7,6 +7,8 @@ const root = resolve(import.meta.dirname, "..");
 const offline = process.argv.includes("--offline");
 const failures = [];
 const notes = [];
+const canonicalMcpResource = "https://noesis.seges.ai/mcp";
+const deprecatedMcpResource = "https://noesis.seges.ai/psychology/mcp";
 
 function fail(message) {
   failures.push(message);
@@ -108,11 +110,22 @@ if (JSON.stringify(canonical(rootMcp)) !== JSON.stringify(canonical(codexMcp))) 
 }
 
 const psychologyMcp = rootMcp.mcpServers?.psychology;
-if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== "https://noesis.seges.ai/mcp") {
+if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== canonicalMcpResource) {
   fail(".mcp.json: Psychology must declare the canonical Streamable HTTP endpoint");
 }
-if (psychologyMcp?.oauth_resource !== "https://noesis.seges.ai/psychology/mcp") {
+if (psychologyMcp?.oauth_resource !== canonicalMcpResource) {
   fail(".mcp.json: Psychology must declare the canonical OAuth protected resource");
+}
+for (const [path, body] of [
+  [".mcp.json", text(".mcp.json")],
+  [".codex-plugin/mcp.json", text(".codex-plugin/mcp.json")],
+  ["README.md", text("README.md")],
+  ["skills/onboarding/SKILL.md", text("skills/onboarding/SKILL.md")],
+  [".codex-plugin/skills/onboarding/SKILL.md", text(".codex-plugin/skills/onboarding/SKILL.md")],
+]) {
+  if (body.includes(deprecatedMcpResource)) {
+    fail(`${path}: deprecated protected-resource value must not be published`);
+  }
 }
 if (!Array.isArray(codexPlugin.interface?.defaultPrompt) || codexPlugin.interface.defaultPrompt.length > 3) {
   fail(".codex-plugin/plugin.json: defaultPrompt must contain at most three entries");
@@ -369,14 +382,14 @@ for (const [path, body, required] of [
   ]],
   ["skills/onboarding/SKILL.md", onboarding, [
     "Codex desktop and CLI",
-    "codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp",
+    "codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp",
     "codex mcp login psychology --oauth-client-registration dcr",
     "official `noesis.seges.ai` sign-in/consent page",
     "Never ask them to paste a password, client ID, redirect URI, token, header, authorization code, or browser callback URL",
   ]],
   ["README.md", readme, [
     "## Use Psychology in Codex",
-    "codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp",
+    "codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp",
     "codex mcp login psychology --oauth-client-registration dcr",
   ]],
 ]) {

@@ -36,7 +36,7 @@ person agrees to make the local configuration change, add the stable server name
 flow:
 
 ```powershell
-codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/psychology/mcp
+codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
 codex mcp login psychology --oauth-client-registration dcr
 ```
 
