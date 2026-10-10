@@ -89,12 +89,15 @@ const claudePlugin = json(".claude-plugin/plugin.json");
 const marketplace = json(".claude-plugin/marketplace.json");
 const kimiPlugin = json("kimi.plugin.json");
 const openclawPlugin = json("openclaw.plugin.json");
+const portablePlugin = json("plugin.json");
+const portableMcp = json("mcp.json");
 const rootMcp = json(".mcp.json");
 const codexMcp = json(".codex-plugin/mcp.json");
 const hooks = json("hooks/hooks.json");
 
 const versions = new Map([
   ["package.json", packageJson.version],
+  ["plugin.json", portablePlugin.version],
   [".codex-plugin/plugin.json", codexPlugin.version],
   [".claude-plugin/plugin.json", claudePlugin.version],
   [".claude-plugin/marketplace.json", marketplace.plugins?.[0]?.version],
@@ -116,7 +119,33 @@ if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== canonicalMcpResourc
 if (psychologyMcp?.oauth_resource !== canonicalMcpResource) {
   fail(".mcp.json: Psychology must declare the canonical OAuth protected resource");
 }
+if (portablePlugin.$schema !== "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json") {
+  fail("plugin.json: missing the portable Agent Plugins manifest schema");
+}
+if (portablePlugin.name !== "psychology") fail("plugin.json: portable plugin name must be psychology");
+if (codexPlugin.mcpServers !== "./.mcp.json") {
+  fail(".codex-plugin/plugin.json: compatibility MCP path must resolve to the root .mcp.json");
+}
+const portableOpenAiInterface = portablePlugin.extensions?.["com.openai"]?.interface;
+if (portableOpenAiInterface?.displayName !== "Psychology") {
+  fail("plugin.json: OpenAI extension must provide the Psychology interface metadata");
+}
+const portablePsychologyMcp = portableMcp.mcpServers?.psychology;
+if (portableMcp.$schema !== "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json") {
+  fail("mcp.json: missing the portable Agent Plugins MCP schema");
+}
+if (portablePsychologyMcp?.type !== "streamable-http" || portablePsychologyMcp?.url !== canonicalMcpResource) {
+  fail("mcp.json: Psychology must declare the canonical Streamable HTTP endpoint");
+}
+if (
+  portablePsychologyMcp?.extensions?.["com.openai"]?.auth?.type !== "oauth" ||
+  portablePsychologyMcp?.extensions?.["com.openai"]?.auth?.client?.mode !== "dcr"
+) {
+  fail("mcp.json: Psychology must declare OAuth with dynamic client registration for ChatGPT");
+}
 const publishedConnectorContractPaths = [
+  "plugin.json",
+  "mcp.json",
   ".mcp.json",
   ".codex-plugin/mcp.json",
   ".codex-plugin/plugin.json",
@@ -398,6 +427,9 @@ for (const [path, body, required] of [
     "## Use Psychology in Codex",
     "codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp",
     "codex mcp login psychology --oauth-client-registration dcr",
+    "## Use Psychology in ChatGPT",
+    "portable Agent Plugins package files at its root",
+    "GitHub repository URL by itself is not an MCP server URL",
   ]],
 ]) {
   const compactBody = body.replace(/\s+/g, " ");
