@@ -406,7 +406,8 @@ const claudeSetupRequired = [
   "https://noesis.seges.ai/mcp",
   "No client ID — register one automatically",
   "does not support Client ID Metadata Documents (CIMD)",
-  "not evidence of sync, installation, connection, OAuth completion, or Claude.ai host acceptance",
+  "The public support record lists Claude.ai web and desktop with a 2026-08-30 acceptance date",
+  "it does not cover Claude Code or Claude mobile",
 ];
 for (const phrase of claudeSetupRequired) {
   if (!readmeCompact.includes(phrase)) fail(`README.md: missing Claude setup invariant: ${phrase}`);
@@ -415,6 +416,15 @@ const pluginFirst = readme.indexOf("https://claude.ai/new#settings/customize-plu
 const connectorSecond = readme.indexOf("modal=add-custom-connector");
 if (pluginFirst < 0 || connectorSecond < 0 || pluginFirst >= connectorSecond) {
   fail("README.md: Claude setup must present plugin installation before connector setup");
+}
+for (const phrase of [
+  "Claude Code remains an unverified evaluation target",
+  "Kimi Code is not listed in the current public support record",
+  "OpenClaw (an unverified evaluation target, not a supported host)",
+]) {
+  if (!readmeCompact.includes(phrase)) {
+    fail(`README.md: missing host acceptance boundary: ${phrase}`);
+  }
 }
 
 const crossPlatformReferencePath = "skills/memory-distillation/references/cross-platform-memory-export-prompt.md";
