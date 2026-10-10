@@ -13,7 +13,7 @@
     "mcp"
   ],
   "skills": "./skills/",
-  "mcpServers": "./.mcp.json",
+  "mcpServers": "./mcp.json",
   "interface": {
     "displayName": "Psychology",
     "shortDescription": "Find your strengths in the AI chats and memories you choose.",
