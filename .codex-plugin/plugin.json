@@ -36,7 +36,7 @@
     "termsOfServiceURL": "https://noesis.seges.ai/terms",
     "defaultPrompt": [
       "Check whether the Psychology MCP is connected. If not, guide me through secure Codex setup first.",
-      "Use the ChatGPT, Claude, or Kimi memories and past chats I choose to suggest likely answers for my goal, then ask only for remaining gaps.",
+      "Use relevant memories and past chats this assistant can actually access, plus conversations or an export I choose to share from another AI, to distil strengths and likely answers for my goal. Show examples and uncertainty, ask only consequential gaps, and say when a source is unavailable; do not imply access to another account's archive.",
       "Before using saved context, show me the available sources and let me choose."
     ],
     "brandColor": "#0d6efd",
