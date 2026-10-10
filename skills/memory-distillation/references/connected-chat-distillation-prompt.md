@@ -1,49 +1,33 @@
 # Start with what your AI already knows
 
 Copy this into the ChatGPT or Claude chat where you have connected the Psychology plugin/MCP. Replace the goal
-with what you want help with. It uses relevant context the current assistant can actually access; it does not
-claim to search chats that are unavailable to it.
+with what you want help with.
 
 ```text
 I connected Psychology/Noesis because I want to understand my strengths and use them for this goal: [MY GOAL].
 
-Start with the relevant memories and past conversations about me that you can actually access in this account
-and current chat. Do not make me repeat useful context that is already available. If you cannot access past-chat
-history or a particular memory source, say what you can and cannot see in one short sentence; do not pretend you
-searched it. I can choose and paste specific chats if needed.
+Start with the relevant memories and past conversations about me that you can access in this account and current
+chat. Do not make me repeat useful context that is already available. Do not imply you searched a source you cannot
+see; if a requested memory or past-chat source is unavailable, say so briefly and continue with what is available.
 
-First give me a concise, useful draft with:
-1. Strengths, preferences, constraints, and recurring ways I approach work or decisions that relate to my goal.
-2. Likely wording or candidate answers that may fit my goal, grounded in specific examples from context you can
-   see. Mark interpretations as hypotheses and show the example or source that supports each one.
-3. Important contradictions or genuinely missing details that could change the next step.
-4. One practical next step that uses the strengths I already show.
+If the exact tool `psychology_get_profile_distillation_guide` is visible in this chat, call it and use its guidance
+to shape this distillation. Use only exact `psychology_*` tool names visible here. If that tool is not visible or
+the call fails, say so briefly and continue from accessible context without inventing tool output.
 
-Use what is already clear before asking me anything. Then ask at most three short questions, and only if my answer
-could change the draft or next step. Let me correct, reject, or skip any candidate. Do not turn guesses into facts.
+First give me a concise, useful draft for my goal:
+- Strengths, preferences, and recurring patterns, grounded in specific examples from accessible memories or chats.
+- Likely wording or candidate answers that fit my goal, with the examples behind them; label interpretations as
+  candidates rather than facts.
+- Only contradictions or missing details that could change what we do next.
+- One practical next step that builds on strengths already shown.
 
-If I ask you to complete a named self-report assessment using my context, do not make me start from a blank page.
-After retrieving its current items, preserve each exact item wording and response scale. For each subjective
-self-report item, you may suggest one clearly labelled, source-linked candidate response grounded in context you
-can actually access and that I selected for this session. Show the specific example, platform/source label, stable
-source reference or link when available, and timeframe that support it; state uncertainty and let me confirm it as
-my answer, edit it, reject it, or skip it. Never invent a source link or date. A candidate remains pending;
-silence, prior answers, repeated summaries, or my request to use context do not confirm it. Only my explicit,
-item-specific confirmation or edited answer in this administration can enter formal scoring. If the session exposes
-`psychology_prepare_conversational_estimate_review`, use it for unconfirmed estimates with `validated_score: false`
-and `persist: false`; follow its live schema and do not call it unless it is actually visible. It is a session-only
-review receipt, never a score or save. Do not call an assessment scoring tool until every required response is
-user-endorsed and I separately confirm scoring.
+Use what is already clear before asking me anything. Ask at most three short questions, only when each answer could
+change the draft or next step. Let me correct, reject, or skip a candidate. Do not turn guesses into facts.
 
-For objective performance, knowledge, or ability-test items, never infer, draft, rank, or hint at an answer from
-conversation history. Show the exact item and let me respond. Do not reveal an answer key. Do not infer a score or
-diagnosis from conversation history. For ordinary forms, applications, planning, or reflection, you may suggest
-draft wording based on my context and let me edit it.
-
-Use Psychology MCP tools only when they add something needed for my stated goal. Call only exact psychology_*
-tool names visible in this chat. Before reading any saved Psychology account source, check its consent status and
-ask me to choose the source for this session. Do not save, update, or grant access to anything unless I separately
-ask and confirm it.
+Do not read saved Psychology account data unless I ask. Before any such read, check the current consent status and
+ask me to choose a source for this session. Do not save or update anything unless I separately ask and confirm it.
+For another AI's memories or chats, use its available export or selected conversations that I choose to share; do
+not imply access to another account's archive.
 ```
 
 If the connected assistant says it cannot access the relevant past chats, use the separate
