@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology",
   "version": "1.2.9",
-  "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments.",
+  "description": "Connect Psychology to distil the memories and past chats you choose, surface candidate patterns and likely answers, and ask only about consequential gaps. Also supports non-clinical, source-aware self-reflection.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -17,8 +17,8 @@
     "com.openai": {
       "interface": {
         "displayName": "Psychology",
-        "shortDescription": "Non-clinical, source-aware self-reflection through a hosted MCP connector.",
-        "longDescription": "Psychology supports structured self-reflection with published or clearly labelled psychometric instruments and plain-language interpretation. It is not therapy, diagnosis, or treatment. The public connector uses an OAuth authorization-code flow with mandatory S256 PKCE; do not paste a static token or credential. A host is supported only after its exact version has a recorded acceptance result. Signed-in storage reads require the applicable consent and an explicit per-session source choice; stored results, profiles, and journal content are never loaded by default. Referral results are informational leads only, and users independently verify credentials, availability, scope, and suitability.",
+        "shortDescription": "Distil the memories and past chats you choose; explore patterns and likely answers, then fill only real gaps.",
+        "longDescription": "Start with the memories, past chats, or selected conversations the current assistant can actually access. Psychology helps distil relevant strengths, patterns, preferences, and likely answers for your goal, show the examples behind candidate insights, and ask only about gaps that could change what comes next. The assistant must say when a requested source is unavailable; conversation context never fills a standardized self-report answer. Psychology also supports non-clinical reflection with published or clearly labelled instruments. It is not therapy, diagnosis, or treatment. The hosted connector uses OAuth authorization-code flow with mandatory S256 PKCE; do not paste a static token or credential. A host is supported only after its exact version has a recorded acceptance result. Signed-in storage reads require applicable consent and an explicit per-session source choice; stored results, profiles, and journal content are never loaded by default.",
         "category": "productivity",
         "capabilities": [
           "psychometric-scoring",
@@ -30,9 +30,9 @@
         "privacyPolicyURL": "https://noesis.seges.ai/privacy",
         "termsOfServiceURL": "https://noesis.seges.ai/terms",
         "defaultPrompt": [
-          "Check whether the Psychology MCP is connected. If not, guide me through secure setup first.",
-          "Help me choose a non-clinical self-reflection exercise after confirming the available Psychology tools.",
-          "Before using saved context, show me the available sources and let me choose."
+          "Use the memories and past chats I choose that you can actually access to distil relevant patterns and likely answers for my goal. Show supporting examples, then ask only consequential gaps; tell me if a source is unavailable. Keep this session-only and never use conversation context to answer standardized items.",
+          "I will paste selected conversations or a memory summary. Distil the context relevant to my goal, show candidate patterns with examples, and ask only what remains unclear.",
+          "Check whether the Psychology MCP is connected. If not, guide me through secure setup first; never ask me to paste a password, token, or credential."
         ],
         "brandColor": "#0d6efd",
         "composerIcon": "./assets/icon.png",

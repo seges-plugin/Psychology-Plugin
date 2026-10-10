@@ -4,7 +4,7 @@
 
 # Psychology
 
-Non-clinical, source-aware self-reflection through a hosted MCP connector.
+Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
 [Website](https://noesis.seges.ai) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
@@ -14,36 +14,30 @@ Non-clinical, source-aware self-reflection through a hosted MCP connector.
 
 </div>
 
-## Release status
+## Start from what you've already told your AI
 
-This repository is a public integration kit. The current [supported-client record](https://noesis.seges.ai/ai/supported-clients.json)
-lists Claude.ai web and desktop with a date-bounded acceptance record dated 2026-08-30; Anthropic does
-not publish a host version identifier this record can independently verify. That coverage does not
-include Claude Code or Claude mobile. Kimi Code and OpenClaw are not listed as accepted clients.
+**AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
 
-A connector URL, plugin manifest, installation, or login screen does not establish that a particular
-host has implemented the protocol correctly or that an individual account is connected. Host claims
-follow the public record and the scope described in [Host acceptance](#host-acceptance).
+Connect Psychology in a chat that supports the plugin or a remote MCP connector, then paste the
+[one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
+It guides the assistant to use the memories and past chats it can actually access—or conversations
+you select and paste—to distil strengths, patterns, preferences, and likely answers for your goal.
+It shows examples behind candidate insights and asks only about gaps that could change what comes
+next. For another source AI, use the [cross-platform export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
+and paste its answer into the connected Psychology chat.
 
-Psychology uses an OAuth authorization-code flow with mandatory S256 PKCE. The live endpoint and
-discovery metadata demonstrate the connection protocol; they do not prove that an individual host has
-implemented that protocol correctly.
+Psychology helps adults understand how they think, decide, and learn. Candidate patterns are shown
+with supporting examples; they remain session-only and never fill a standardized assessment answer.
+Psychology is not therapy, diagnosis, treatment, or emergency care. The assistant must say when
+requested memories or chats are not accessible.
 
-## Public-claim records
+### Host availability
 
-The public claims made by this integration kit are governed by the versioned [Psychology public release
-records](https://noesis.seges.ai/ai/release-records.json). The relevant record IDs are:
-
-- `claim.product.non-clinical-boundary.v1`
-- `claim.product.source-and-limit-boundary.v1`
-- `claim.connection.no-named-host-support.v1`
-- `claim.connection.named-client-acceptance.v1`
-- `claim.integration-kit.protocol-boundary.v1`
-- `claim.integration-kit.context-selection-boundary.v1`
-
-Each record publishes its status, source pointers, limitation, and review date. An acceptance receipt,
-browser trace, user content, OAuth artifact, or unannounced host evidence is never added to this public
-repository or registry.
+The published host listing currently covers Claude.ai web and desktop, dated 2026-08-30; Anthropic
+does not publish a host version identifier. ChatGPT custom connectors remain a private evaluation path;
+Claude Code, Kimi Code, Kimi.ai, and OpenClaw are evaluation/setup paths, not accepted hosts. A
+manifest, installation, visible server, or login screen does not establish host acceptance or an
+authenticated connection. See [host acceptance](#host-acceptance) and the [public support record](https://noesis.seges.ai/ai/supported-clients.json).
 
 ## What Psychology is
 
@@ -51,42 +45,28 @@ repository or registry.
 <img src="assets/readme/hero.jpg" alt="Illustrated silhouette of a person in quiet reflection, an inner archway of light suggesting self-exploration" width="72%" />
 </div>
 
-**AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
+Psychology combines selected conversation context, published self-assessments, and practical
+reflection. It also offers plain-language interpretation and informational referral leads that users
+verify independently.
 
-Connect Psychology in a chat that supports the plugin or a remote MCP connector, then paste the
-[one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
-The published host listing currently covers Claude.ai web and desktop; ChatGPT's custom connector flow remains
-a private evaluation path. Psychology starts from the memories and past chats that assistant can actually access, distils strengths,
-patterns, preferences, and likely answers for your goal, then asks only about gaps that could change what
-comes next. If your chat cannot access the context you want, use the prompt's selected-conversation fallback.
+### Public claims
 
-Psychology helps adults understand how they think, decide, and learn through their own chosen conversation
-context, published self-assessments, and practical reflection. It is not therapy, diagnosis, treatment, or
-emergency care.
+Public product and connection claims follow the versioned [Psychology release records](https://noesis.seges.ai/ai/release-records.json)
+and [supported-client record](https://noesis.seges.ai/ai/supported-clients.json). They publish status,
+source, limitations, and review date; private acceptance receipts, browser traces, user content, and
+OAuth artifacts are not published here.
 
-## Two-track self-understanding contract
+## Self-assessment and conversational reflection
 
-Psychology deliberately keeps two different outputs separate:
-
-1. A **standardized self-report score** comes only from a named instrument when the person directly
-   supplies or explicitly confirms every scored response in the current administration. Conversation,
-   profile, journal, prior result, tone, and model judgement never fill an item or become score input.
-2. An **AI-assisted conversational estimate** exists only when the person explicitly initiates that
-   non-instrument reflection. It is not a standardized score and is never equivalent to, a replacement
-   for, or validation of a standardized self-report result.
-
-For a conversational estimate, Psychology must first show the person the proposed basis: the permitted
-current-session material actually used, the relevant time frame, and its uncertainty. It must then present
-each proposed estimate point separately so the person can **confirm, revise, or reject** it. The person can
-opt out or stop at any point; stopping produces no score and does not require them to complete an instrument.
-The resulting session receipt must preserve its provenance — the stated basis, source categories actually
-used, and each point's confirmation state — and must retain the exact label **AI-assisted conversational
-estimate**.
-
-Before **G2 execution, independent review, and release**, a conversational estimate must not be scored,
-stored, exported, or presented as a standardized score. It must not be routed into an assessment-result,
-profile, journal, memory, or other persistence path as a workaround. The current public contract therefore
-keeps it session-only and does not claim that it is validated.
+A standardized self-report score uses only responses the person directly supplies or explicitly
+confirms every scored response for a named instrument; past chats, memories, profiles, journals,
+prior results, and model inference never answer scored items. An explicitly initiated AI-assisted
+conversational estimate is a separate session-only reflection, never equivalent to, a replacement
+for, or validation of a standardized score; it is not a standardized score. Show its basis, uncertainty,
+and provenance; let the person
+confirm, revise, or reject each candidate and opt out or stop at any point. Before G2 execution,
+independent review, and release, it must not be scored, stored, exported, or presented as a
+standardized score.
 
 This repository contains portable skills, agents, package metadata, and a pointer to the hosted MCP
 endpoint. It intentionally does not contain scoring implementation, item banks, user data, OAuth
@@ -236,19 +216,6 @@ For either path, verify authenticated `tools/list`, one harmless read-only actio
 behavior, revocation, and reconnect before treating the connection as usable. A saved draft, successful scan,
 or visible connector is not a public listing and does not establish ChatGPT host acceptance. UI labels and
 availability can vary by account or workspace.
-
-## Start from what you've already told your AI
-
-When ChatGPT or Claude has relevant memory and past-chat context available in the connected conversation, use the
-[one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md) there.
-For a different source AI, copy the [cross-platform export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
-into that assistant and paste its answer into the connected Psychology chat. You can also select and paste a few
-specific conversations. The assistant must state when its access is limited and build only from what it can see.
-
-The source assistant uses only the memories and conversations it can actually access. Candidate patterns are
-shown with supporting examples so you can correct or reject them; they remain session-only and never fill a
-standardized assessment answer. If you use a cross-platform export, do not paste a full account archive: select
-only conversations relevant to your goal.
 
 ## Connect a host
 
