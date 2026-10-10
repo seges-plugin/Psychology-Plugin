@@ -36,7 +36,7 @@
         "privacyPolicyURL": "https://noesis.seges.ai/privacy",
         "termsOfServiceURL": "https://noesis.seges.ai/terms",
         "defaultPrompt": [
-          "Use only the memories and past chats I choose that you can actually access to distil relevant patterns and likely answers for my goal. Show the supporting examples and uncertainty, then ask only consequential gaps; tell me if a source is unavailable. For a named self-report item, suggest a source-linked candidate and let me confirm, edit, reject, or skip it before it can be scored or saved. I answer objective performance items myself.",
+          "Use the memories and past chats you can access to distil strengths and likely answers for my goal, grounded in examples. If the exact psychology_get_profile_distillation_guide tool is visible, call it; if unavailable, say so briefly and continue with accessible context. Ask only consequential gaps and tell me if a requested source is unavailable.",
           "I will paste selected conversations or a memory summary. Distil the context relevant to my goal, show candidate patterns with examples, and ask only what remains unclear.",
           "Check whether the Psychology MCP is connected. If not, guide me through secure setup first; never ask me to paste a password, token, or credential."
         ],
