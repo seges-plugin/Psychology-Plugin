@@ -160,23 +160,29 @@ These links and steps are setup conveniences, not evidence of sync, installation
 completion, or Claude.ai host acceptance. Support still requires a passed acceptance receipt for the
 exact host version and plugin commit as described in [Host acceptance](#host-acceptance).
 
-## Evaluate privately in ChatGPT
+## Use Psychology in ChatGPT
 
-ChatGPT does not install this GitHub plugin through Claude's marketplace flow. If the signed-in account or
-workspace exposes custom apps/connectors, the current evaluation path is a private draft:
+This repository includes the portable Agent Plugins package files at its root: `plugin.json` describes the
+plugin and `mcp.json` declares its hosted MCP server and OAuth Dynamic Client Registration. Use an
+OpenAI-supported plugin/package source in the ChatGPT Plugins Directory to install or evaluate the package;
+local marketplace options and UI availability depend on the ChatGPT app, account, and workspace. See
+[OpenAI's plugin packaging guide](https://developers.openai.com/plugins/build/plugins) for the supported
+package and marketplace flows.
 
-1. Open [ChatGPT Security settings — Developer mode](https://chatgpt.com/#settings/Security?section=developer-mode),
-   read the host warning, and decide whether to enable it. This is a persistent account/workspace setting,
-   not a step Psychology can take silently.
-2. Open [ChatGPT Plugin Management](https://chatgpt.com/#settings/Plugins) and create a private custom-app or
-   connector draft using `https://noesis.seges.ai/mcp`.
-3. Let ChatGPT discover or scan the tools, then complete the browser OAuth flow only on Noesis pages.
-4. Verify authenticated `tools/list`, one harmless read-only action, consent/source-choice behavior,
-   revocation, and reconnect before treating the draft as usable.
+A GitHub repository URL by itself is not an MCP server URL. If you are adding a custom MCP server directly,
+use `https://noesis.seges.ai/mcp` in ChatGPT's MCP connection form, not the GitHub URL. ChatGPT then discovers
+the MCP tools from the hosted server and completes OAuth on Noesis pages. The repository's plugin manifests
+are not read by that direct-connector flow.
 
-Developer mode, a saved draft, a successful scan, or a visible connector is not a public listing and is not
-evidence of ChatGPT host acceptance. UI labels and availability are controlled by ChatGPT and can vary by
-account or workspace.
+If the account or workspace requires it for custom MCP connections, review [ChatGPT Security settings —
+Developer mode](https://chatgpt.com/#settings/Security?section=developer-mode) and open [ChatGPT Plugin
+Management](https://chatgpt.com/#settings/Plugins). Read any host warning before changing this persistent
+setting; Psychology cannot enable it for you.
+
+For either path, verify authenticated `tools/list`, one harmless read-only action, consent/source-choice
+behavior, revocation, and reconnect before treating the connection as usable. A saved draft, successful scan,
+or visible connector is not a public listing and does not establish ChatGPT host acceptance. UI labels and
+availability can vary by account or workspace.
 
 ## Bring context from another AI (optional)
 
@@ -332,8 +338,9 @@ catalog, or login screen is not a substitute.
 
 ## Repository layout
 
-- .mcp.json is the canonical hosted MCP declaration.
-- .codex-plugin and .claude-plugin contain host metadata only.
+- `plugin.json` and `mcp.json` at the repository root are the portable Agent Plugins package entry point and ChatGPT-compatible MCP declaration.
+- `.mcp.json` and `.codex-plugin/plugin.json` preserve the Codex-specific MCP compatibility configuration.
+- `.claude-plugin` contains Claude marketplace metadata.
 - skills and agents contain portable instruction contracts.
 - hooks/hooks.json intentionally contains no executable lifecycle hook.
 
