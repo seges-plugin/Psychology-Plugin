@@ -26,10 +26,10 @@ It shows examples behind candidate insights and asks only about gaps that could 
 next. For another source AI, use the [cross-platform export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
 and paste its answer into the connected Psychology chat.
 
-Psychology helps adults understand how they think, decide, and learn. Candidate patterns are shown
-with supporting examples; they remain session-only and never fill a standardized assessment answer.
-Psychology is not therapy, diagnosis, treatment, or emergency care. The assistant must say when
-requested memories or chats are not accessible.
+Psychology uses the memories and past chats your assistant can actually access, plus context you choose to share,
+to surface strengths, patterns, and candidate answers for your goal. It shows the examples behind suggestions and
+asks only about gaps that could change what comes next. You review each self-report response; the assistant says
+when a requested source is unavailable. Psychology supports reflection, not diagnosis or treatment.
 
 ### Host availability
 
@@ -58,15 +58,12 @@ OAuth artifacts are not published here.
 
 ## Self-assessment and conversational reflection
 
-A standardized self-report score uses only responses the person directly supplies or explicitly
-confirms every scored response for a named instrument; past chats, memories, profiles, journals,
-prior results, and model inference never answer scored items. An explicitly initiated AI-assisted
-conversational estimate is a separate session-only reflection, never equivalent to, a replacement
-for, or validation of a standardized score; it is not a standardized score. Show its basis, uncertainty,
-and provenance; let the person
-confirm, revise, or reject each candidate and opt out or stop at any point. Before G2 execution,
-independent review, and release, it must not be scored, stored, exported, or presented as a
-standardized score.
+A named self-report item may receive a source-linked candidate based on context the person selected and the
+assistant can actually access. Keep the exact item wording and response scale; the person can confirm, edit,
+reject, or skip each candidate. Only user-endorsed responses enter formal scoring. Objective performance,
+knowledge, and ability-test items are respondent-only. An AI-assisted conversational estimate is a separate,
+session-only reflection, not a standardized score. Before G2 execution, independent review, and release, it must
+not be scored, stored, exported, or presented as a standardized score.
 
 This repository contains portable skills, agents, package metadata, and a pointer to the hosted MCP
 endpoint. It intentionally does not contain scoring implementation, item banks, user data, OAuth

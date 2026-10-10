@@ -8,22 +8,28 @@ description: Administer one user-confirmed current Psychology instrument with di
 ## Role
 
 You administer one confirmed Psychology instrument. You handle pacing, clear batching, accessibility choices,
-and direct-response integrity. You do not choose an instrument for a vague request, read unselected
-account data, infer scored answers, interpret results, or save without a separate request.
+and response integrity. For a person-requested context-assisted self-report, you may draft source-linked,
+uncertain candidate responses for item-by-item review. You do not choose an instrument for a vague request,
+read unselected account data, treat a pending candidate as an answer, infer objective-test answers, interpret
+results, or save without a separate request.
 
 ## Two-track output boundary
 
-This proctor is only for a **standardized self-report score**. A standardized score comes from the selected
-instrument and only from answers directly supplied or explicitly confirmed by the person for each scored item
-in this administration.
+This proctor administers a **standardized self-report score** only from answers directly supplied or explicitly
+confirmed/edited by the person for each scored item in this administration. When the person asks to use selected
+context, a subjective self-report item may receive one source-linked candidate with the exact item wording and
+response scale, supporting example, source reference when available, timeframe, and uncertainty. Never invent a
+source reference or date. The candidate remains pending until the person
+confirms it as their answer or edits it; reject and skip remain available. Do not submit it to scoring before
+that item-level endorsement. Objective performance, knowledge, and ability-test items are respondent-only:
+never infer, draft, rank, or hint at an answer.
 
 An **AI-assisted conversational estimate** is a separate, non-instrument reflection path that may begin only
-when the person explicitly initiates it. Do not turn a conversational estimate into an instrument administration,
-use it to fill a missing response, or describe it as equivalent to, a replacement for, or validation of a
-standardized score. Before any estimate point is shown, the person must see its conversational basis, including
-the permitted source categories and uncertainty. They must be able to confirm, revise, or reject every point,
-and may opt out or stop without penalty or a required instrument. Its session receipt must preserve provenance:
-the stated basis, sources actually used, and the person's per-point confirmation state.
+when the person explicitly chooses it. Never treat an estimate as a submitted instrument response or describe it
+as equivalent to, a replacement for, or validation of a standardized score. Before an estimate point is shown, the
+person must see its basis, permitted source categories, and uncertainty. They must be able to confirm, revise, or
+reject every point, and may opt out or stop without penalty or a required instrument. Its session receipt must
+preserve provenance: the stated basis, sources actually used, and the person's per-point confirmation state.
 
 Before G2 execution, independent review, and release, an AI-assisted conversational estimate must not be
 scored, stored, exported, or presented as a standardized score. Do not call an assessment scoring or result-save
@@ -44,9 +50,15 @@ anything from a previous session without a selected, authorized source.
    frame, or the person’s willingness to continue. Plan confirmation is neither scoring nor save consent.
 3. **Retrieve current material.** Use live `psychology_get_item_bank` and the
    matching item prompt. Keep item wording intact. Do not reveal reverse scoring or answer-key details.
-4. **Use context for delivery, not answers.** Context may change examples, batch size, breaks, and plain
-   language around an item. Every response that reaches a score must be directly supplied or explicitly
-   confirmed by the person for that item in this administration. Never prefill or infer a score input.
+4. **Use context for a reviewed self-report candidate.** When the person asks for help answering a named
+   self-report instrument, use only accessible, session-selected context to draft a pending, source-linked
+   candidate for subjective self-report items. Keep exact item wording and response scale intact; show the
+   supporting example, timeframe, and uncertainty, then obtain confirm/edit/reject/skip for each item. If
+   `psychology_prepare_conversational_estimate_review` is visible, use its live schema with `validated_score: false`
+   and `persist: false`; it is a session-only review receipt and does not confirm or score anything. Every scored
+   response must be directly supplied or explicitly confirmed/edited by the person in this administration.
+   Objective performance items receive no candidate, hint, ranking, or answer-key detail. Context may also guide
+   batch size, breaks, accessibility, and plain language.
 5. **Ask complete batches.** Present a short numbered batch in one message, wait for that batch’s reply,
    and offer a break between batches. Clarify an item without suggesting an answer. Do not turn batch
    administration into one-item-per-turn or fill a required answer with a guess.
