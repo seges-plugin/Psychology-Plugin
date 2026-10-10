@@ -1,9 +1,14 @@
 ---
 name: memory-distillation
-version: "1.2.3"
-description: Use when a person wants a copy-and-paste memory inventory from Claude.ai, ChatGPT.com, or Kimi.ai, deliberately supplies an assistant-memory export or selected chat material, or asks to turn visible conversation material into a reviewable Psychology brief. Classify platform summaries as unverified candidates, preserve provenance and dual timestamps, ask only purpose-relevant gaps, and never use imported context as assessment answers or durable instructions.
+version: "1.2.4"
+description: Use when a person wants Psychology to build on the memories and past chats they choose to bring from ChatGPT, Claude, or Kimi. Give them the working copy prompt, distil relevant context into useful candidate patterns for their stated goal, then ask only for the missing details that could change the next step.
 triggers:
   - "import my memory"
+  - "use my past chats"
+  - "use my ChatGPT memories"
+  - "use my Claude memories"
+  - "use my Kimi memories"
+  - "help me figure out what to write based on my chats"
   - "this is my saved context"
   - "turn this into a profile"
   - "remember this in Psychology"
@@ -22,8 +27,10 @@ This skill has two deliberately separate outcomes:
    in the separate import store. It requires current `selected_context.v1` purpose consent and the website flow
    below; it never creates or updates an ordinary profile.
 
-Psychology never reaches into another product to retrieve personal context. A person controls whether an
-export, an earlier summary, or their own current words are supplied here.
+The person chooses which assistant's memories or past chats to use and starts the export from that assistant.
+The copy prompt asks that assistant to use relevant context it can actually access, then the person pastes the
+result here. The user-selected context is the starting point; Psychology should build on it before asking for
+new information.
 
 ## Choose the smallest useful import route
 
@@ -33,21 +40,28 @@ ambiguous, or conflicting. Do not treat "everything you know" as permission to r
 
 Offer only the routes that the current environment can honestly support:
 
-1. **Fast platform-memory inventory** — give the person the copy prompt in
-   [references/cross-platform-memory-export-prompt.md](references/cross-platform-memory-export-prompt.md).
-   This is the lowest-friction route and remains a `platform_memory_summary` with
-   `candidate_unverified` coverage. Claude's native direct-memory export, when exposed, may be the lowest-friction
-   way to inspect stored-memory scope, but this website has no verified parser contract for that native format:
-   use it only as a session-only selected paste unless it is converted by the exact prompt below and validates as
+1. **Current connected chat** — when the current ChatGPT or Claude conversation can use its available memories
+   or past-chat context, give the person the short ready-to-paste prompt in
+   [references/connected-chat-distillation-prompt.md](references/connected-chat-distillation-prompt.md).
+   It distils goal-relevant strengths, patterns, and candidate wording first, then asks only consequential gaps.
+   It must say when a source is unavailable rather than implying a complete history search.
+2. **Selected context from another AI** — if the current assistant cannot access the desired context or the
+   person wants another platform's history, offer the ready-to-paste prompt in
+   [references/cross-platform-memory-export-prompt.md](references/cross-platform-memory-export-prompt.md),
+   filled with their stated purpose and source platform. It asks that source assistant to draw on relevant saved
+   memories and past conversations available to it, and to offer clearly marked candidate patterns or likely
+   answers for the stated goal. This result remains a `platform_memory_summary` with `candidate_unverified`
+   coverage. Claude's native direct-memory export, when exposed, may be the lowest-friction way to inspect
+   stored-memory scope, but this website has no verified parser contract for that native format: use it only as
+   a session-only selected paste unless it is converted by the exact prompt below and validates as
    `noesis.platform-memory-summary.v1`. Stored Memory, past-chat context, and account-data archives are separate
    capabilities on Claude and ChatGPT; plan, region, managed-workspace, and administrator policy can restrict each
    one. Never call an unavailable or unknown scope complete.
-2. **Selected conversations** — accept only text or files the person deliberately selects. Direct evidence
+3. **Selected conversations** — accept only text or files the person deliberately selects. Direct evidence
    requires verbatim user-authored text plus platform, author role, stable source reference, and source time.
-3. **Official account archive** — Claude.ai and ChatGPT.com provide account-data exports, but broad archives
+4. **Official account archive** — Claude.ai and ChatGPT.com provide account-data exports, but broad archives
    should be parsed locally and reduced to selected user-authored messages. This public contract does not verify
    a Kimi.ai consumer full-account archive path; do not substitute Kimi Code's separate `/export` feature.
-
 The session-only route must remain available without a connector. Never ask the person to upload an entire
 archive to a chat or connector when a local review or selected paste is sufficient.
 
@@ -121,7 +135,9 @@ not connected, declines storage, or never wants cross-session candidate retentio
 Ask no more than three follow-up questions in one bundle across `missing_required`, `conflicting_required`, and
 `needs_current_confirmation` fields, and only when the answer could change the next action. Do not ask the person
 to reconfirm a `known_direct` field merely because it came from an earlier current-session message.
-Do not turn a `candidate_unverified` platform-memory summary into a fact without a current correction.
+Use candidate patterns to suggest what may fit the person's stated goal; show the source examples and uncertainty,
+and let the person edit, reject, or use them for this session. Do not turn a `candidate_unverified` platform-memory
+summary into a confirmed fact without a current correction.
 
 Keep two distinct times when a source provides them. Preserve `source_time_raw`, `source_time_kind`,
 `source_time_form`, and `source_time_precision`; derive `source_event_at` only when `source_time_kind` is `event`

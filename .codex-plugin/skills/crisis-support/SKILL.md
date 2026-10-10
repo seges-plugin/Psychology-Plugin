@@ -147,7 +147,7 @@ been contacted. Match the response to the current severity:
 
 ### Step 4: Support Resources
 
-**Everything in this step (the hotline list below, grounding, safety planning) works with zero MCP
+**Everything in this step (the immediate safety boundary below, grounding, safety planning) works with zero MCP
 connection, don't let a missing or failed `psychology_find_counselors` call slow down a crisis response (added
 2026-08-12).** If `psychology_find_counselors` isn't in your tool list, or errors with an auth/authorization
 failure, skip it silently in the moment, lead with the immediate safety boundary below, and only mention the
@@ -155,16 +155,17 @@ connection gap afterward, once the person is stabilized, follow `skills/00-sessi
 connector-unavailable boundary for the reminder to give them.
 
 Always give a clear, actionable next step, but **do not treat this public plugin as a crisis-resource
-directory**. It has no governed, current, jurisdiction-specific directory of phone numbers, service hours,
+directory**. It has no governed, current, jurisdiction-specific registry of phone numbers, service hours,
 or provider availability. Never recall, invent, or infer a hotline, text code, service name, schedule, or
-local contact from memory.
+local contact from memory. This Psychology plugin is not a crisis or emergency service.
 
 For immediate danger, self-harm risk, abuse, or a situation where urgent help may be needed:
 
-1. State plainly that Noesis is not a crisis or emergency service and cannot contact anyone for the person.
+1. State plainly that the plugin cannot contact anyone for the person.
 2. Encourage the person to contact their **local emergency service**, an officially listed local crisis
    service, or a trusted person who can be physically present now.
-3. Ask their country or region only if they want help finding an official local option; do not guess one.
+3. Ask their country, region, or city only if they want help finding an official local option; do not
+   guess one. Do not delay emergency action while asking.
 4. If calling is difficult, ask whether a trusted person can stay with them or help them use an official
    local emergency or crisis channel. Do not claim that any particular text, chat, or phone option exists.
 
@@ -281,11 +282,9 @@ flagging mechanism, be honest about that rather than promising a check-in you ca
 **Added 2026-07-30 and expanded 2026-09-04**, covering three content-adjacent patterns that can arise in
 ordinary conversation: distress connected to sexual orientation/identity in a hostile environment, a
 reflection surfacing a past non-consensual experience, and a red line reached during adult intimacy
-self-understanding. Corrected 2026-09-03: this used to point at
-`skills/coaching/references/safety-guidelines.md`'s "Content-Domain-Specific Crisis Considerations" for
-"full detail, hotline numbers, and verification notes". No such section exists, so this is not a condensed
-version of anything. It is the whole of what the plugin says on these three patterns; it does not maintain
-or invent a local crisis directory.
+self-understanding. Corrected 2026-09-03: this used to point at a nonexistent coaching reference. This is
+the whole of what the plugin says on these three patterns; it does not maintain or invent local crisis
+contacts.
 
 ### Orientation/Identity Distress in a Hostile Environment
 - **Presentation**: Fear, hopelessness, or danger tied specifically to sexual orientation/identity being

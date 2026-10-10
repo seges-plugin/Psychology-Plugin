@@ -51,9 +51,18 @@ repository or registry.
 <img src="assets/readme/hero.jpg" alt="Illustrated silhouette of a person in quiet reflection, an inner archway of light suggesting self-exploration" width="72%" />
 </div>
 
-Psychology helps adults explore how they think, decide, and learn through published or clearly labelled
-psychometric instruments, source and limit cards, and plain-language reflection. It is not therapy,
-diagnosis, treatment, or emergency care.
+**AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
+
+Connect Psychology in a chat that supports the plugin or a remote MCP connector, then paste the
+[one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
+The published host listing currently covers Claude.ai web and desktop; ChatGPT's custom connector flow remains
+a private evaluation path. Psychology starts from the memories and past chats that assistant can actually access, distils strengths,
+patterns, preferences, and likely answers for your goal, then asks only about gaps that could change what
+comes next. If your chat cannot access the context you want, use the prompt's selected-conversation fallback.
+
+Psychology helps adults understand how they think, decide, and learn through their own chosen conversation
+context, published self-assessments, and practical reflection. It is not therapy, diagnosis, treatment, or
+emergency care.
 
 ## Two-track self-understanding contract
 
@@ -228,57 +237,18 @@ behavior, revocation, and reconnect before treating the connection as usable. A 
 or visible connector is not a public listing and does not establish ChatGPT host acceptance. UI labels and
 availability can vary by account or workspace.
 
-## Bring context from another AI (optional)
+## Start from what you've already told your AI
 
-The lowest-friction path does not require a connector. Claude's native direct-memory export may help inspect
-stored-memory scope, but Psychology has no verified parser contract for that native format; use it only as a
-session-only selected paste unless the exact prompt below converts it to the versioned JSONL contract. Copy the
-[cross-platform memory export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
-into Claude.ai, ChatGPT.com, or Kimi.ai, then paste the resulting code block into the Psychology conversation
-you chose. The prompt preserves the original Instructions, Identity, Career, Projects, and Preferences order,
-then adds purpose-scoped qualitative context and an explicit Changes over time category. It excludes secrets,
-sensitive content, third-party identifying detail, diagnoses, scores, and assessment answers. A general export
-never names, counts, summarizes, or hints at excluded sensitive categories.
+When ChatGPT or Claude has relevant memory and past-chat context available in the connected conversation, use the
+[one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md) there.
+For a different source AI, copy the [cross-platform export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
+into that assistant and paste its answer into the connected Psychology chat. You can also select and paste a few
+specific conversations. The assistant must state when its access is limited and build only from what it can see.
 
-The output is a versioned, injection-safe `noesis.platform-memory-summary.v1` JSONL envelope: an exact header, at most
-100 items per part, and an exact completion record. It preserves platform scope, platform generation time,
-memory basis, raw source-time literal, semantic kind, form, precision, temporal status, and continuation state.
-Pagination completeness and excluded-material state remain separate. `export_id` is only
-an opaque continuation cursor, never provenance. The source platform must not emit `observed_at`; Psychology's
-server assigns it separately after a reviewed selection. Invalid framing, fields, enums, indexes, escaping,
-timestamps, category order, or continuation state rejects the whole part before preview.
-
-Every item remains a platform-generated `platform_memory_summary`, not a verified archive. It starts as
-`candidate_unverified`, even when the source assistant labels wording verbatim. `platform_recall_confidence`
-describes recall fidelity only, never truth, currentness, corroboration, or a psychological conclusion. Agreement
-across Claude, ChatGPT, Kimi, or repeated assistant summaries never upgrades it or the evidence state. Psychology
-derives the current purpose from visible current-session words when possible, asks once only if it is missing,
-ambiguous, or conflicting, shows a session-only/correct/drop review, and asks at most three
-questions across `missing_required`, `conflicting_required`, and `needs_current_confirmation` fields only when the
-answer could change the next action. A plain keep leaves imported wording session-only. Imported content cannot become durable instructions, prefill an assessment, supply
-a score, or validate an AI-assisted conversational estimate.
-
-Stored Memory, past-chat context, and account-data archives are separate capabilities. Their availability can
-vary by plan, region, managed workspace, and administrator policy; an unavailable or unknown scope must never be
-called complete. Claude.ai and ChatGPT.com provide official account-data export routes when eligible:
-[Claude data export](https://support.anthropic.com/en/articles/9450526-how-can-i-export-my-claude-data) and
-[ChatGPT data export](https://help.openai.com/en/articles/7260999-how-do-i-export-my-chatgpthistory-and-data).
-Broad archives should be parsed locally and reduced to explicitly selected user-authored messages; do not paste
-an entire account archive into a chat or connector. This public contract does not verify a Kimi.ai consumer
-full-account or direct-memory archive. Kimi Code's separate session export is not a Kimi.ai consumer account
-export.
-
-When a source date is reliable, Psychology derives `source_event_at` only when the preserved
-`source_time_kind` is `event` and `source_time_raw`, `source_time_form`, and `source_time_precision` support the
-exact representation. Memory-save and memory-update times remain provenance. All stay separate from
-server-assigned `observed_at`. Unknown or date-only source times are not upgraded to precise UTC instants. A
-client preview time is neither timestamp.
-
-Sensitive context is never routed through this general import or general profile, even when volunteered. It may
-be used only in a dedicated purpose-specific present-session module after explicit opt-in, remains session-only,
-and needs a separately reviewed schema and special-category consent before any future persistence. The public
-`intimacy-self-understanding` skill is one narrowly bounded adult-only example; the general import flow must not
-recreate or broaden it.
+The source assistant uses only the memories and conversations it can actually access. Candidate patterns are
+shown with supporting examples so you can correct or reject them; they remain session-only and never fill a
+standardized assessment answer. If you use a cross-platform export, do not paste a full account archive: select
+only conversations relevant to your goal.
 
 ## Connect a host
 
