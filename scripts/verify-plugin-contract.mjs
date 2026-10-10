@@ -119,6 +119,15 @@ if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== canonicalMcpResourc
 if (psychologyMcp?.oauth_resource !== canonicalMcpResource) {
   fail(".mcp.json: Psychology must declare the canonical OAuth protected resource");
 }
+if (
+  marketplace.plugins?.length !== 1 ||
+  marketplace.plugins[0]?.name !== "psychology" ||
+  marketplace.plugins[0]?.source !== "./" ||
+  marketplace.plugins[0]?.strict !== true
+) {
+  fail(".claude-plugin/marketplace.json: must publish the strict Psychology plugin from the repository root");
+}
+if (claudePlugin.name !== "psychology") fail(".claude-plugin/plugin.json: Claude plugin name must be psychology");
 if (portablePlugin.$schema !== "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json") {
   fail("plugin.json: missing the portable Agent Plugins manifest schema");
 }
@@ -137,6 +146,24 @@ if (portableMcp.$schema !== "https://agent-plugins.org/schemas/1.0.0/mcp.schema.
 if (portablePsychologyMcp?.type !== "streamable-http" || portablePsychologyMcp?.url !== canonicalMcpResource) {
   fail("mcp.json: Psychology must declare the canonical Streamable HTTP endpoint");
 }
+if (kimiPlugin.skills !== "./skills/" || kimiPlugin.mcpServers?.psychology?.url !== canonicalMcpResource) {
+  fail("kimi.plugin.json: Kimi Code must declare the root skills directory and canonical Psychology MCP URL");
+}
+if (
+  !Array.isArray(openclawPlugin.skills) ||
+  !openclawPlugin.skills.includes("./skills") ||
+  openclawPlugin.mcpServers?.psychology?.url !== canonicalMcpResource ||
+  openclawPlugin.mcpServers?.psychology?.transport !== "streamable-http" ||
+  openclawPlugin.mcpServers?.psychology?.auth !== "oauth" ||
+  "type" in (openclawPlugin.mcpServers?.psychology ?? {})
+) {
+  fail("openclaw.plugin.json: native OpenClaw manifest must declare root skills and Streamable HTTP OAuth MCP config");
+}
+const hostIntegrationReadme = text("README.md");
+if (hostIntegrationReadme.includes("plugin manifest has no field for declaring an MCP server")) {
+  fail("README.md: remove the outdated claim that OpenClaw manifests cannot declare MCP servers");
+}
+if (walk("skills").length === 0) fail("host integration skill files are missing from the repository");
 if (
   portablePsychologyMcp?.extensions?.["com.openai"]?.auth?.type !== "oauth" ||
   portablePsychologyMcp?.extensions?.["com.openai"]?.auth?.client?.mode !== "dcr"
