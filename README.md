@@ -160,6 +160,42 @@ These links and steps are setup conveniences, not evidence of sync, installation
 completion, or Claude.ai host acceptance. Support still requires a passed acceptance receipt for the
 exact host version and plugin commit as described in [Host acceptance](#host-acceptance).
 
+## Use Psychology in Claude Code
+
+Claude Code is a separate product from Claude.ai. In a Claude Code session, add this [Claude Code
+marketplace](https://code.claude.com/docs/en/plugins/install) and install its `psychology` plugin:
+
+```text
+/plugin marketplace add seges-plugin/Psychology-Plugin
+/plugin install psychology@psychology
+```
+
+Review the plugin and choose an install scope. The plugin's root `.mcp.json` declares the hosted HTTP
+server. Approve it if Claude Code prompts, then run `claude mcp login psychology` or use **Sign in**
+in `/mcp`. Check the result with `claude mcp get psychology`. If you install it from the shell or
+add it during a session, start a new session or run `/reload-plugins` to apply it.
+
+Claude Code and Claude.ai manage connector authorization separately. Installing this plugin in
+Claude Code does not connect a Claude.ai account, and adding the Claude.ai connector does not install
+this repository's plugin. Neither setup step is evidence of host acceptance.
+
+## Use Psychology in Kimi Code
+
+Install this repository as a custom [Kimi Code plugin](https://github.com/MoonshotAI/kimi-code/blob/main/docs/en/customization/plugins.md):
+
+```text
+/plugins install https://github.com/seges-plugin/Psychology-Plugin
+```
+
+Enable it in `/plugins`, then run `/reload` or start a new session. The `kimi.plugin.json` manifest
+declares both `./skills/` and the hosted MCP server. Complete browser authorization with
+`/mcp-config login psychology`; then confirm the server is connected in `/mcp` and that its tools
+are available. The Kimi.ai consumer app and Kimi Code CLI have different plugin and MCP
+configuration surfaces; these steps apply to Kimi Code CLI only.
+
+Plugin installation, reload, or a visible server entry does not prove OAuth completion or host
+acceptance. Use only the authenticated `psychology_…` tool names returned by the connected server.
+
 ## Use Psychology in ChatGPT
 
 This repository includes the portable Agent Plugins package files at its root: `plugin.json` describes the
@@ -259,28 +295,24 @@ Do not paste a static bearer token, password, personal access token, or authoriz
 configuration file. Psychology public MCP access is OAuth-only. If a host cannot complete the browser flow,
 there is no supported credential workaround.
 
-**OpenClaw (an unverified evaluation target, not a supported host):** OpenClaw has no passed
-acceptance record, so the steps below are published as evaluation notes only. They are not a
-statement that the connection works, is supported, or will keep working, and the rule at the end of
-this section applies to them in full.
+**OpenClaw (an unverified evaluation target, not a supported host):** OpenClaw's [native plugin
+manifest](https://docs.openclaw.ai/plugins/manifest) and [MCP OAuth flow](https://docs.openclaw.ai/cli/mcp/transports) can
+declare static MCP servers. Install this repository as a plugin from GitHub, review
+and confirm the source when OpenClaw prompts, then enable `psychology`:
 
-This repo's own `openclaw.plugin.json` cannot auto-wire the connector — OpenClaw's
-plugin manifest has no field for declaring an MCP server as of the current release. Add the entry
-yourself under `mcpServers` in your own `~/.openclaw/openclaw.json`:
-
-```json
-{
-  "mcpServers": {
-    "psychology": {
-      "transport": "streamable-http",
-      "url": "https://noesis.seges.ai/mcp"
-    }
-  }
-}
+```sh
+openclaw plugins install git:github.com/seges-plugin/Psychology-Plugin
+openclaw plugins enable psychology
 ```
 
-Then run `openclaw mcp login psychology` to complete the same browser OAuth flow described above —
-OpenClaw has its own built-in OAuth client for exactly this case.
+Inspect it with `openclaw plugins inspect psychology`. The manifest contributes the skills and a
+remote Streamable HTTP MCP server using OpenClaw's native OAuth configuration; it does not require a
+second manual server entry in `openclaw.json`.
+
+Complete browser authorization with `openclaw mcp login psychology`. Check the saved connection
+with `openclaw mcp status --verbose` and run `openclaw mcp doctor psychology --probe` to verify
+reachability and tool discovery. Plugin install, enablement, or saved credentials alone do not
+prove that authenticated tools work or that this host version has passed acceptance.
 
 Before an installation guide, marketplace listing, or support claim names a host, that host and exact
 version must have a passed acceptance record. Until then, describe it only as an unverified evaluation
@@ -339,8 +371,9 @@ catalog, or login screen is not a substitute.
 ## Repository layout
 
 - `plugin.json` and `mcp.json` at the repository root are the portable Agent Plugins package entry point and ChatGPT-compatible MCP declaration.
-- `.mcp.json` and `.codex-plugin/plugin.json` preserve the Codex-specific MCP compatibility configuration.
-- `.claude-plugin` contains Claude marketplace metadata.
+- `.mcp.json` and `.codex-plugin/plugin.json` provide the Claude Code remote MCP config and Codex-compatible MCP configuration.
+- `.claude-plugin` contains Claude Code marketplace metadata; Claude.ai connector setup is separate.
+- `kimi.plugin.json` declares the Kimi Code CLI skills and MCP server; `openclaw.plugin.json` declares OpenClaw-native skills and OAuth MCP wiring.
 - skills and agents contain portable instruction contracts.
 - hooks/hooks.json intentionally contains no executable lifecycle hook.
 
