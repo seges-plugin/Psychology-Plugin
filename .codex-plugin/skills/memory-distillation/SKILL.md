@@ -1,6 +1,6 @@
 ---
 name: memory-distillation
-version: "1.2.4"
+version: "1.2.5"
 description: Use when a person wants Psychology to build on the memories and past chats they choose to bring from ChatGPT, Claude, or Kimi. Give them the working copy prompt, distil relevant context into useful candidate patterns for their stated goal, then ask only for the missing details that could change the next step.
 triggers:
   - "import my memory"
@@ -139,6 +139,15 @@ Use candidate patterns to suggest what may fit the person's stated goal; show th
 and let the person edit, reject, or use them for this session. Do not turn a `candidate_unverified` platform-memory
 summary into a confirmed fact without a current correction.
 
+When the person asks to answer a named self-report item using selected context, that summary may ground one
+source-linked, uncertain candidate response after the exact item and response scale are retrieved. Keep it pending
+for that item until the person confirms or edits it in this administration; reject, skip, and stop remain available.
+It never supplies an answer automatically, and no candidate can be used for an objective performance, knowledge,
+or ability-test item. Only a user-endorsed answer can enter formal scoring. If the live session exposes
+`psychology_prepare_conversational_estimate_review`, it may prepare the unconfirmed candidate for its
+session-only review using the visible schema with `validated_score: false` and `persist: false`. The tool does not
+score, confirm, or save the candidate.
+
 Keep two distinct times when a source provides them. Preserve `source_time_raw`, `source_time_kind`,
 `source_time_form`, and `source_time_precision`; derive `source_event_at` only when `source_time_kind` is `event`
 and the raw literal, form, and precision support the exact representation. A memory-save or memory-update time
@@ -166,7 +175,9 @@ page when it is available. The site must parse the raw export locally, keep unse
 show every candidate for keep/edit/drop, require separate secret, sensitive-content, and third-party-data review,
 and request the independently revocable `selected_context.v1` purpose consent before sending selected rows. A
 selected row remains `candidate_unverified`; retention does not make it a fact, direct statement, profile field,
-assessment answer, score, or validated estimate; it never prefills an assessment item. `Instructions` and any row whose three reviews are `unknown` or
+   assessment answer, score, or validated estimate; it never prefills an assessment item automatically. A selected
+   row can only ground a pending candidate response when the person asks for help with a named self-report item and
+   the assessment workflow permits it. `Instructions` and any row whose three reviews are `unknown` or
 `present` are ineligible. If this dedicated path is not available, keep the result session-only.
 
 ## Step 4: Keep the in-chat review session-only

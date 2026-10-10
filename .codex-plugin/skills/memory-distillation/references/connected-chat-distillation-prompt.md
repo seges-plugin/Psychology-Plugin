@@ -22,9 +22,23 @@ First give me a concise, useful draft with:
 Use what is already clear before asking me anything. Then ask at most three short questions, and only if my answer
 could change the draft or next step. Let me correct, reject, or skip any candidate. Do not turn guesses into facts.
 
-If I am answering a standardized self-report assessment, do not choose or fill any response for me. Show the exact
-item and let me answer it myself. Do not infer a score or diagnosis from conversation history. For ordinary forms,
-applications, planning, or reflection, you may suggest draft wording based on my context and let me edit it.
+If I ask you to complete a named self-report assessment using my context, do not make me start from a blank page.
+After retrieving its current items, preserve each exact item wording and response scale. For each subjective
+self-report item, you may suggest one clearly labelled, source-linked candidate response grounded in context you
+can actually access and that I selected for this session. Show the specific example, platform/source label, stable
+source reference or link when available, and timeframe that support it; state uncertainty and let me confirm it as
+my answer, edit it, reject it, or skip it. Never invent a source link or date. A candidate remains pending;
+silence, prior answers, repeated summaries, or my request to use context do not confirm it. Only my explicit,
+item-specific confirmation or edited answer in this administration can enter formal scoring. If the session exposes
+`psychology_prepare_conversational_estimate_review`, use it for unconfirmed estimates with `validated_score: false`
+and `persist: false`; follow its live schema and do not call it unless it is actually visible. It is a session-only
+review receipt, never a score or save. Do not call an assessment scoring tool until every required response is
+user-endorsed and I separately confirm scoring.
+
+For objective performance, knowledge, or ability-test items, never infer, draft, rank, or hint at an answer from
+conversation history. Show the exact item and let me respond. Do not reveal an answer key. Do not infer a score or
+diagnosis from conversation history. For ordinary forms, applications, planning, or reflection, you may suggest
+draft wording based on my context and let me edit it.
 
 Use Psychology MCP tools only when they add something needed for my stated goal. Call only exact psychology_*
 tool names visible in this chat. Before reading any saved Psychology account source, check its consent status and

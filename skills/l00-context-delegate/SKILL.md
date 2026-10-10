@@ -1,6 +1,6 @@
 ---
 name: l00-context-delegate
-description: Use when a person explicitly asks Psychology to use permitted current context to tailor an assessment plan or explain which direct questions remain. Context can shape the plan; it never supplies a scored answer.
+description: Use when a person explicitly asks Psychology to use permitted current context to tailor an assessment plan or draft source-linked candidate responses for subjective self-report items. Context never submits or confirms a scored answer; objective performance items remain respondent-only.
 triggers:
   - "use what I already told you"
   - "use my context"
@@ -10,9 +10,9 @@ triggers:
 
 # Context-aware assessment delegate
 
-This skill makes a proposed assessment feel continuous without pretending that Psychology can read another
-product’s memory or turn context into psychometric responses. It is selected only when the person asks to
-use known context. For a standard assessment, use `assessment-guide` directly.
+This skill makes an assessment responsive to context the person selected without pretending Psychology can read
+unavailable history or treating an inference as the person's answer. It is selected when the person asks to use
+known context. For a standard assessment, use `assessment-guide` directly.
 
 Follow `skills/00-session-bootstrap/SKILL.md` before this skill. It is a host-cooperated instruction, not a
 guaranteed lifecycle event. The bootstrap produces a visible, correctable context receipt and the only
@@ -39,19 +39,22 @@ with a source label and confidence limit.
 
 1. **Show the context receipt.** State aim, sources used, directly supported signals, tensions, and left
    gaps. Invite correction before proposing an instrument or question.
-2. **Choose a plan, not answers.** Explain how the permitted context changes instrument choice, reference
-   frame, batch size, examples, or the first gap bundle. Offer a non-assessment path as well. The person
-   confirms one instrument before item retrieval.
+2. **Choose a plan.** Explain how permitted context changes instrument choice, reference frame, batch size,
+   examples, or the first gap bundle. If the person asks for help answering self-report items, the assessment
+   workflow may draft a pending source-linked candidate after retrieving the exact item and scale. Offer a
+   non-assessment path as well. The person confirms one instrument before item retrieval.
 3. **Retrieve current material.** Use `psychology_get_item_bank` and the matching exact visible
    `psychology_…` prompt. The
    instrument’s own wording and response format remain unchanged.
-4. **Ask direct questions for every score input.** Every score input is still directly supplied or explicitly confirmed by the person for that item.
-   Context may explain why a question matters, but cannot prefill, rank, infer, or submit any response. If context makes an item unnecessary for the person’s
-   goal, explain that the instrument cannot be scored without its required direct answer and offer to
-   stop or use a non-scored reflection instead.
-5. **Score only after direct confirmation.** Show a receipt separating tailoring sources from direct
-   answers. A fresh explicit confirmation is required before an applicable exact visible catalog scoring call. No delegation,
-   confidence tier, or inferred value can enter the response set.
+4. **Keep candidates separate from answers.** For a requested subjective self-report candidate, preserve the
+   exact item wording and response scale, show the supporting example, source, timeframe, and uncertainty, and
+   ask the person to confirm, edit, reject, or skip it. A candidate stays pending until item-specific endorsement.
+   Never produce candidates for objective performance, knowledge, or ability-test items; those require unaided
+   respondent answers. If the exact visible session-only estimate-review tool is available, use it only with its
+   live schema and with validation and persistence disabled.
+5. **Score after endorsement.** Show a receipt separating source evidence, pending candidates, and user-endorsed
+   answers. A fresh explicit scoring confirmation is required before an applicable exact visible catalog scoring
+   call. No unconfirmed inference can enter the response set.
 6. **Persist only by separate request.** Follow the `assessment-guide` persistence path: fresh
    `psychology_get_consent_status`, exact reviewed destination, and final confirmation.
 
