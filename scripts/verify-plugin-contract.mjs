@@ -429,7 +429,7 @@ for (const [path, body, required] of [
     "codex mcp login psychology --oauth-client-registration dcr",
     "## Use Psychology in ChatGPT",
     "portable Agent Plugins package files at its root",
-    "a GitHub repository URL is not an MCP server endpoint",
+    "GitHub repository URL by itself is not an MCP server URL",
   ]],
 ]) {
   const compactBody = body.replace(/\s+/g, " ");

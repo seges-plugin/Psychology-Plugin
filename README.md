@@ -174,6 +174,11 @@ use `https://noesis.seges.ai/mcp` in ChatGPT's MCP connection form, not the GitH
 the MCP tools from the hosted server and completes OAuth on Noesis pages. The repository's plugin manifests
 are not read by that direct-connector flow.
 
+If the account or workspace requires it for custom MCP connections, review [ChatGPT Security settings —
+Developer mode](https://chatgpt.com/#settings/Security?section=developer-mode) and open [ChatGPT Plugin
+Management](https://chatgpt.com/#settings/Plugins). Read any host warning before changing this persistent
+setting; Psychology cannot enable it for you.
+
 For either path, verify authenticated `tools/list`, one harmless read-only action, consent/source-choice
 behavior, revocation, and reconnect before treating the connection as usable. A saved draft, successful scan,
 or visible connector is not a public listing and does not establish ChatGPT host acceptance. UI labels and
