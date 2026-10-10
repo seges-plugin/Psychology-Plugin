@@ -46,7 +46,7 @@ imported-memory data.
 |---|---|
 | Choose, administer, or interpret one instrument | `../assessment-guide/SKILL.md` |
 | Understand visible context without turning it into answers | `../l00-context-delegate/SKILL.md` |
-| Review a deliberately supplied memory export | `../memory-distillation/SKILL.md` |
+| Use selected ChatGPT, Claude, or Kimi memories and past chats to distil a goal or likely answer | `../memory-distillation/SKILL.md` |
 | Practical non-clinical support after choosing session-only reflection | `../coaching/SKILL.md` |
 | Immediate danger or urgent safety concern | `../crisis-support/SKILL.md` |
 

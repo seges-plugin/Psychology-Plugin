@@ -1,7 +1,7 @@
 {
   "name": "psychology",
   "version": "1.2.9",
-  "description": "Understand yourself better, at your own pace. Psychology gives you real, published self-assessments (Big Five, personal values, character strengths, and more) plus honest, strength-focused explanations of what your results mean, right inside your chat. It never diagnoses or replaces a therapist. Sign in only if you want your results saved for next time; you choose what's remembered, and nothing is loaded without asking first.",
+  "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring in memories and past chats you choose, and get grounded candidate answers for your goal before being asked only the gaps that matter. Also offers published self-assessments and practical reflection.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",

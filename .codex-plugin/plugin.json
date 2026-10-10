@@ -1,7 +1,7 @@
 {
   "name": "psychology",
   "version": "1.2.9",
-  "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments. Start every task by checking whether callable psychology_* MCP tools are available; if they are not, surface secure Codex connection guidance before offering a clearly labelled session-only alternative. It uses the hosted MCP endpoint at https://noesis.seges.ai/mcp. A host is supported only after that exact host and version completes a recorded OAuth authorization-code and S256 PKCE acceptance test. Psychology does not provide therapy, diagnosis, or treatment.",
+  "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal before answering only the gaps that matter. Check callable psychology_* MCP tools before any tool-dependent task.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -16,8 +16,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Psychology",
-    "shortDescription": "Non-clinical, source-aware self-reflection through a hosted MCP connector.",
-    "longDescription": "Psychology supports structured self-reflection with published or clearly labelled psychometric instruments and plain-language interpretation. It is not therapy, diagnosis, or treatment. The public connector uses an OAuth authorization-code flow with mandatory S256 PKCE; do not paste a static token or credential. A host is supported only after its exact version has a recorded acceptance result. Signed-in storage reads require the applicable consent and an explicit per-session source choice; stored results, profiles, and journal content are never loaded by default. Referral results are informational leads only, and users independently verify credentials, availability, scope, and suitability.",
+    "shortDescription": "Find your strengths in the AI chats and memories you choose.",
+    "longDescription": "Bring the memories and past chats available to your connected assistant, or select an export from another AI. Psychology helps distil strengths and likely answers for your goal, then asks only for the gaps that still matter. It also offers structured self-assessments and practical reflection.",
     "category": "productivity",
     "capabilities": [
       "psychometric-scoring",
@@ -30,7 +30,7 @@
     "termsOfServiceURL": "https://noesis.seges.ai/terms",
     "defaultPrompt": [
       "Check whether the Psychology MCP is connected. If not, guide me through secure Codex setup first.",
-      "Help me choose a non-clinical self-reflection exercise after confirming the available Psychology tools.",
+      "Use the ChatGPT, Claude, or Kimi memories and past chats I choose to suggest likely answers for my goal, then ask only for remaining gaps.",
       "Before using saved context, show me the available sources and let me choose."
     ],
     "brandColor": "#0d6efd",
