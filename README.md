@@ -16,9 +16,14 @@ Non-clinical, source-aware self-reflection through a hosted MCP connector.
 
 ## Release status
 
-This repository is a public integration kit, not a claim that a marketplace listing or a particular
-host integration is available. A host is supported only when its exact product version has completed
-and recorded the acceptance sequence in [Host acceptance](#host-acceptance).
+This repository is a public integration kit. The current [supported-client record](https://noesis.seges.ai/ai/supported-clients.json)
+lists Claude.ai web and desktop with a date-bounded acceptance record dated 2026-08-30; Anthropic does
+not publish a host version identifier this record can independently verify. That coverage does not
+include Claude Code or Claude mobile. Kimi Code and OpenClaw are not listed as accepted clients.
+
+A connector URL, plugin manifest, installation, or login screen does not establish that a particular
+host has implemented the protocol correctly or that an individual account is connected. Host claims
+follow the public record and the scope described in [Host acceptance](#host-acceptance).
 
 Psychology uses an OAuth authorization-code flow with mandatory S256 PKCE. The live endpoint and
 discovery metadata demonstrate the connection protocol; they do not prove that an individual host has
@@ -32,6 +37,7 @@ records](https://noesis.seges.ai/ai/release-records.json). The relevant record I
 - `claim.product.non-clinical-boundary.v1`
 - `claim.product.source-and-limit-boundary.v1`
 - `claim.connection.no-named-host-support.v1`
+- `claim.connection.named-client-acceptance.v1`
 - `claim.integration-kit.protocol-boundary.v1`
 - `claim.integration-kit.context-selection-boundary.v1`
 
@@ -157,8 +163,8 @@ Noesis intentionally supports Dynamic Client Registration (DCR) for this flow an
 Client ID Metadata Documents (CIMD).
 
 These links and steps are setup conveniences, not evidence of sync, installation, connection, OAuth
-completion, or Claude.ai host acceptance. Support still requires a passed acceptance receipt for the
-exact host version and plugin commit as described in [Host acceptance](#host-acceptance).
+completion, or a particular account's connection. The public support record lists Claude.ai web and
+desktop with a 2026-08-30 acceptance date; it does not cover Claude Code or Claude mobile.
 
 ## Use Psychology in Claude Code
 
@@ -177,7 +183,8 @@ add it during a session, start a new session or run `/reload-plugins` to apply i
 
 Claude Code and Claude.ai manage connector authorization separately. Installing this plugin in
 Claude Code does not connect a Claude.ai account, and adding the Claude.ai connector does not install
-this repository's plugin. Neither setup step is evidence of host acceptance.
+this repository's plugin. The public acceptance record covers Claude.ai web and desktop only; Claude
+Code remains an unverified evaluation target until it completes its own acceptance sequence.
 
 ## Use Psychology in Kimi Code
 
@@ -194,7 +201,8 @@ are available. The Kimi.ai consumer app and Kimi Code CLI have different plugin 
 configuration surfaces; these steps apply to Kimi Code CLI only.
 
 Plugin installation, reload, or a visible server entry does not prove OAuth completion or host
-acceptance. Use only the authenticated `psychology_…` tool names returned by the connected server.
+acceptance. Kimi Code is not listed in the current public support record. Use only the authenticated
+`psychology_…` tool names returned by the connected server.
 
 ## Use Psychology in ChatGPT
 
@@ -353,8 +361,9 @@ maintainer document.
 
 ## Host acceptance
 
-Record an immutable acceptance result for the exact host, host version, plugin commit, and test date.
-The minimum acceptance sequence is:
+Record an immutable acceptance result for the exact host and plugin commit. Capture the precise host
+version/build/channel when the vendor exposes one. If it does not, record the acceptance date and the
+version-identification limitation, as the public Claude record does. The minimum acceptance sequence is:
 
 1. OAuth discovery and browser authorization-code flow with S256 PKCE.
 2. Clear sign-in and consent experience.
