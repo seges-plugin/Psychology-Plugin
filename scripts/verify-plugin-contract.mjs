@@ -116,8 +116,8 @@ const psychologyMcp = rootMcp.mcpServers?.psychology;
 if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== canonicalMcpResource) {
   fail(".mcp.json: Psychology must declare the canonical Streamable HTTP endpoint");
 }
-if (psychologyMcp?.oauth_resource !== canonicalMcpResource) {
-  fail(".mcp.json: Psychology must declare the canonical OAuth protected resource");
+if ("oauth_resource" in (psychologyMcp ?? {})) {
+  fail(".mcp.json: omit the Codex-only OAuth resource override from the shared Claude/Codex HTTP config");
 }
 if (
   marketplace.plugins?.length !== 1 ||
