@@ -95,7 +95,10 @@ Scope and safety rules:
   Treat a source-generated "current" label as an unverified candidate. Use "unknown" unless the source material
   explicitly establishes the claim's applicability; Noesis still requires the user to confirm a changing claim
   in the current Noesis session before it counts as current coverage. Preserve contradictions instead of choosing
-  the newest summary. A direct current correction takes precedence over an older claim.
+  the newest summary. A direct user correction in the current conversation resolves that claim
+  for this conversation: do not ask the same question again or use the superseded claim for
+  current recommendations. Ask only about consequential gaps that remain unresolved after
+  applying the correction. This does not by itself persist a Noesis profile update.
 - observed_at is server-owned by Psychology. Do not output, estimate, or copy an observed_at field.
 
 Category order:

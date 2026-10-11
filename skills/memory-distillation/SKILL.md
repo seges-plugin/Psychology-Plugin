@@ -38,7 +38,10 @@ Treat source-generated `temporal_status: current` as an unverified candidate, no
 Only an explicit current-session user statement can confirm that a changing claim still applies; otherwise mark
 it historical/unknown or conflicting and ask whether it still applies only when that answer changes the next step.
 Example: an April 2024 CEO aspiration in a memory updated today remains historical/unknown until the user
-confirms its present relevance. A direct current correction takes precedence over older summaries.
+confirms its present relevance. A direct correction in the current conversation resolves that claim
+for this conversation: do not ask the same question again or recommend from the superseded claim.
+Ask only about consequential gaps that remain unresolved after applying the correction; this does not
+by itself persist a Noesis profile update.
 
 ## Choose the smallest useful import route
 
