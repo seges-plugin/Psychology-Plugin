@@ -32,6 +32,11 @@ The copy prompt asks that assistant to use relevant context it can actually acce
 result here. The user-selected context is the starting point; Psychology should build on it before asking for
 new information.
 
+For time-sensitive goals, roles, preferences, and plans, distinguish when a source or summary was created from
+when the underlying statement applied. A recent summary date does not make an old goal current. Prefer explicit
+corrections; if current status is unknown, label the goal historical or unknown and ask whether it still applies
+before using it to recommend a current direction.
+
 ## Choose the smallest useful import route
 
 Determine what the person wants the context to help with from their visible current-session words and which

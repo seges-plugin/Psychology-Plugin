@@ -26,6 +26,8 @@ First give me a concise, useful draft for my goal:
 - Only contradictions or missing details that could change what we do next.
 - One practical next step that builds on strengths already shown.
 
+For goals, roles, preferences, and plans that can change over time, distinguish when a source or summary was created from when the underlying statement applied. A recent summary date does not make an old goal current. Treat explicit corrections as current evidence; if a past goal's current status is unknown, label it historical or unknown and ask whether it still applies before using it to recommend a current direction.
+
 Keep the first response to at most five relevant patterns or candidate answers. Do not add routine
 disclaimers about formal tests, psychological measurement, diagnosis, scoring, or validity unless I ask about a
 named instrument, its scoring, diagnosis, or validity. Do not expand into a long plan or roadmap unless I ask.
