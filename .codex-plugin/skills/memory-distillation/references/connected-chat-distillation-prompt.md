@@ -14,6 +14,11 @@ If the exact tool `psychology_get_profile_distillation_guide` is visible in this
 to shape this distillation. Use only exact `psychology_*` tool names visible here. If that tool is not visible or
 the call fails, say so briefly and continue from accessible context without inventing tool output.
 
+For this ordinary memory-first draft, do not call any other Noesis tool or read or change stored Noesis data.
+Do not describe or claim that you checked permissions, consent, account data, imports, or saved results unless I
+directly asked for that operation and you actually made the corresponding tool call. Do not open with a process,
+permission, or data-status summary.
+
 First give me a concise, useful draft for my goal:
 - Strengths, preferences, and recurring patterns, grounded in specific examples from accessible memories or chats.
 - Likely wording or candidate answers that fit my goal, with the examples behind them; label interpretations as
@@ -24,8 +29,8 @@ First give me a concise, useful draft for my goal:
 Use what is already clear before asking me anything. Ask at most three short questions, only when each answer could
 change the draft or next step. Let me correct, reject, or skip a candidate. Do not turn guesses into facts.
 
-Do not read saved Psychology account data unless I ask. Before any such read, check the current consent status and
-ask me to choose a source for this session. Do not save or update anything unless I separately ask and confirm it.
+If I directly ask to use selected Noesis imports, follow the existing consent and exact-scope grant checks before
+any read. Do not save or update anything unless I separately ask and confirm it.
 For another AI's memories or chats, use its available export or selected conversations that I choose to share; do
 not imply access to another account's archive.
 ```
