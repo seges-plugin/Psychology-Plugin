@@ -32,10 +32,13 @@ The copy prompt asks that assistant to use relevant context it can actually acce
 result here. The user-selected context is the starting point; Psychology should build on it before asking for
 new information.
 
-For time-sensitive goals, roles, preferences, and plans, distinguish when a source or summary was created from
-when the underlying statement applied. A recent summary date does not make an old goal current. Prefer explicit
-corrections; if current status is unknown, label the goal historical or unknown and ask whether it still applies
-before using it to recommend a current direction.
+For time-sensitive goals, roles, preferences, and plans, distinguish the original statement/event time, memory
+saved/updated time, and when the statement applied. A recent summary date does not make an old goal current.
+Treat source-generated `temporal_status: current` as an unverified candidate, not a currentness confirmation.
+Only an explicit current-session user statement can confirm that a changing claim still applies; otherwise mark
+it historical/unknown or conflicting and ask whether it still applies only when that answer changes the next step.
+Example: an April 2024 CEO aspiration in a memory updated today remains historical/unknown until the user
+confirms its present relevance. A direct current correction takes precedence over older summaries.
 
 ## Choose the smallest useful import route
 
@@ -45,7 +48,7 @@ ambiguous, or conflicting. Do not treat "everything you know" as permission to r
 
 Offer only the routes that the current environment can honestly support:
 
-1. **Current connected chat** — when the current ChatGPT or Claude conversation can use its available memories
+1. **Current connected chat** — when the current ChatGPT, Codex, or Claude conversation can use its available memories
    or past-chat context, give the person the short ready-to-paste prompt in
    [references/connected-chat-distillation-prompt.md](references/connected-chat-distillation-prompt.md).
    It directly calls `psychology_get_profile_distillation_guide` once before drafting, then distils goal-relevant

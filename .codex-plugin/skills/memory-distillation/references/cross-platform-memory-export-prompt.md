@@ -89,8 +89,13 @@ Scope and safety rules:
   means: "event", "memory_saved", "memory_updated", or "unknown". source_time_form is "instant", "wall_clock",
   "date_only", "month_only", "year_only", or "unknown". source_time_precision is "instant", "minute", "day",
   "month", "year", or "unknown". Unknown values remain unknown.
-- temporal_status is "current", "historical", "superseded", "conflicting", or "unknown". Use a non-unknown value
-  only when the platform-visible material itself supports it; never infer currentness from recall.
+- temporal_status is "current", "historical", "superseded", "conflicting", or "unknown". Keep it separate from
+  source time and platform_generation_time. A memory_saved or memory_updated date is only the date of the memory
+  record; it does not say when the claim applied and never proves that a goal, role, or preference is current.
+  Treat a source-generated "current" label as an unverified candidate. Use "unknown" unless the source material
+  explicitly establishes the claim's applicability; Noesis still requires the user to confirm a changing claim
+  in the current Noesis session before it counts as current coverage. Preserve contradictions instead of choosing
+  the newest summary. A direct current correction takes precedence over an older claim.
 - observed_at is server-owned by Psychology. Do not output, estimate, or copy an observed_at field.
 
 Category order:
