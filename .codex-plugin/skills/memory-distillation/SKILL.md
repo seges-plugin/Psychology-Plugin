@@ -43,10 +43,10 @@ Offer only the routes that the current environment can honestly support:
 1. **Current connected chat** — when the current ChatGPT or Claude conversation can use its available memories
    or past-chat context, give the person the short ready-to-paste prompt in
    [references/connected-chat-distillation-prompt.md](references/connected-chat-distillation-prompt.md).
-   It calls `psychology_get_profile_distillation_guide` when that exact tool is visible, then distils
-   goal-relevant strengths, patterns, and candidate wording before asking only consequential gaps. If the tool is
-   unavailable or fails, it says so briefly and continues with context it can access. It must never imply a
-   complete history search when a source is unavailable.
+   It directly calls `psychology_get_profile_distillation_guide` once before drafting, then distils goal-relevant
+   strengths, patterns, and candidate wording before asking only consequential gaps. If the guide tool is unavailable
+   or the call fails, it says so briefly and continues with context it can access. It must never imply a complete
+   history search when a source is unavailable.
 2. **Selected context from another AI** — if the current assistant cannot access the desired context or the
    person wants another platform's history, offer the ready-to-paste prompt in
    [references/cross-platform-memory-export-prompt.md](references/cross-platform-memory-export-prompt.md),

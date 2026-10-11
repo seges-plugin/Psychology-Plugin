@@ -10,9 +10,9 @@ Start with the relevant memories and past conversations about me that you can ac
 chat. Do not make me repeat useful context that is already available. Do not imply you searched a source you cannot
 see; if a requested memory or past-chat source is unavailable, say so briefly and continue with what is available.
 
-If the exact tool `psychology_get_profile_distillation_guide` is visible in this chat, call it and use its guidance
-to shape this distillation. Use only exact `psychology_*` tool names visible here. If that tool is not visible or
-the call fails, say so briefly and continue from accessible context without inventing tool output.
+Call `psychology_get_profile_distillation_guide` once before drafting and use its guidance to shape this distillation.
+Do not only check whether the tool exists. Use only exact `psychology_*` tool names visible here. If the guide tool
+is unavailable or the call fails, say so briefly and continue from accessible context without inventing tool output.
 
 For this ordinary memory-first draft, do not call any other Noesis tool or read or change stored Noesis data.
 Do not describe or claim that you checked permissions, consent, account data, imports, or saved results unless I
