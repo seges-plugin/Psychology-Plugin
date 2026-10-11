@@ -26,6 +26,10 @@ It shows examples behind candidate insights and asks only about gaps that could 
 next. For another source AI, use the [cross-platform export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
 and paste its answer into the connected Psychology chat.
 
+For time-sensitive goals, Psychology keeps source dates, the period a claim applied, and Noesis's receipt time
+separate. A recently updated memory does not make an older goal current, and a present correction does not invent
+the date an earlier goal ended.
+
 Psychology uses the memories and past chats your assistant can actually access, plus context you choose to share,
 to surface strengths, patterns, and candidate answers for your goal. It shows the examples behind suggestions and
 asks only about gaps that could change what comes next. You review each self-report response; the assistant says

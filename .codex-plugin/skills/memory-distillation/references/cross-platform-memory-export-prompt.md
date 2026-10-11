@@ -98,7 +98,10 @@ Scope and safety rules:
   the newest summary. A direct user correction in the current conversation resolves that claim
   for this conversation: do not ask the same question again or use the superseded claim for
   current recommendations. Ask only about consequential gaps that remain unresolved after
-  applying the correction. This does not by itself persist a Noesis profile update.
+  applying the correction. A correction establishes neither when an older claim began nor when it stopped
+  applying; do not infer or backdate a valid-time boundary from the correction's arrival, source event time, or
+  memory update time. Preserve an unstated applicability boundary as unknown. This does not by itself persist a
+  Noesis profile update.
 - observed_at is server-owned by Psychology. Do not output, estimate, or copy an observed_at field.
 
 Category order:
