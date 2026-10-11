@@ -33,13 +33,19 @@ result here. The user-selected context is the starting point; Psychology should 
 new information.
 
 For time-sensitive goals, roles, preferences, and plans, distinguish the original statement/event time, memory
-saved/updated time, and when the statement applied. A recent summary date does not make an old goal current.
+saved/updated time, when the statement applied (its valid-time period), and when Psychology later received a
+reviewed selection (`observed_at`). These are separate facts: a source event date is not automatically the date
+the claim began or stopped applying, and a memory-save/update date is never an applicability date. A recent
+summary date does not make an old goal current.
 Treat source-generated `temporal_status: current` as an unverified candidate, not a currentness confirmation.
-Only an explicit current-session user statement can confirm that a changing claim still applies; otherwise mark
-it historical/unknown or conflicting and ask whether it still applies only when that answer changes the next step.
-Example: an April 2024 CEO aspiration in a memory updated today remains historical/unknown until the user
-confirms its present relevance. A direct correction in the current conversation resolves that claim
-for this conversation: do not ask the same question again or recommend from the superseded claim.
+Only an explicit current-session user statement can confirm that a changing claim applies now; otherwise mark it
+historical/unknown or conflicting and ask whether it still applies only when that answer changes the next step.
+An explicit correction resolves the claim for this conversation, but it does not establish when the prior claim
+stopped applying. Keep an unstated valid-time start or end unknown; never backdate a correction or create a
+precise interval from a source-event date, summary date, or the correction's arrival time. Example: an April 2024
+CEO aspiration in a memory updated today remains historical/unknown until the user confirms its present relevance.
+A direct correction that the person no longer wants to be CEO resolves current status: do not ask the same question
+again or recommend from the superseded claim, and do not infer the date that aspiration ended.
 Ask only about consequential gaps that remain unresolved after applying the correction; this does not
 by itself persist a Noesis profile update.
 
@@ -163,16 +169,20 @@ or ability-test item. Only a user-endorsed answer can enter formal scoring. If t
 session-only review using the visible schema with `validated_score: false` and `persist: false`. The tool does not
 score, confirm, or save the candidate.
 
-Keep two distinct times when a source provides them. Preserve `source_time_raw`, `source_time_kind`,
+Keep source provenance time, claim applicability time (valid time), and receipt time distinct. Preserve
+`source_time_raw`, `source_time_kind`,
 `source_time_form`, and `source_time_precision`; derive `source_event_at` only when `source_time_kind` is `event`
 and the raw literal, form, and precision support the exact representation. A memory-save or memory-update time
 remains provenance and is never relabelled as the original event time. `source_time_kind` records whether the
 literal describes the original event, memory save, memory update, or is unknown; it never describes timestamp
 syntax. A known literal may retain semantic kind `unknown` while preserving its known form and precision.
-`observed_at` is assigned only by Psychology's server when it receives a reviewed selection. A source platform
-must never output it, and a client preview time is neither timestamp. Do not invent a source time or convert an
-unknown or date-only value into a precise UTC instant. Preserve `temporal_status` separately; recall confidence
-and cross-platform repetition never establish currentness.
+Record a claim's valid-time period only when the source or user's explicit statement supports it; otherwise leave
+its start/end unknown. A current-session correction can confirm the current claim for this conversation but cannot
+backdate or close an older claim's valid period without an explicit applicability date. `observed_at` is assigned
+only by Psychology's server when it receives a reviewed selection. A source platform must never output it, and a
+client preview time is neither timestamp. Do not invent a source time or convert an unknown or date-only value into
+a precise UTC instant. Preserve `temporal_status` separately; recall confidence and cross-platform repetition
+never establish currentness.
 
 ## Step 3: Offer only the dedicated selected-candidate retention path
 
@@ -201,10 +211,10 @@ Show each non-empty candidate with a short source label, evidence kind, source t
 and a session choice. Never ask the person to accept an unseen bulk summary.
 
 ```text
-| Requested field | Candidate | Evidence kind | Source time | Temporal status | Choice |
-|---|---|---|---|---|---|
-| current focus | concise draft | platform memory candidate | known date or unknown | unknown | use this session / correct / drop |
-| communication preference | concise draft | current statement | known date or unknown | current | use this session / correct / drop |
+| Requested field | Candidate | Evidence kind | Source time | Applies when (valid time) | Temporal status | Choice |
+|---|---|---|---|---|---|---|
+| current focus | concise draft | platform memory candidate | known date or unknown | explicitly supported period or unknown | unknown | use this session / correct / drop |
+| communication preference | concise draft | current statement | known date or unknown | current session only unless a wider period is stated | current | use this session / correct / drop |
 ```
 
 A current correction improves the working brief but does not authorize a profile write. Never solicit race or
