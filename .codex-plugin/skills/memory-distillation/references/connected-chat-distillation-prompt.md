@@ -26,7 +26,7 @@ First give me a concise, useful draft for my goal:
 - Only contradictions or missing details that could change what we do next.
 - One practical next step that builds on strengths already shown.
 
-For goals, roles, preferences, and plans that can change over time, distinguish when a source or summary was created from when the underlying statement applied. A recent summary date does not make an old goal current. Treat explicit corrections as current evidence; if a past goal's current status is unknown, label it historical or unknown and ask whether it still applies before using it to recommend a current direction.
+For goals, roles, preferences, and plans that can change over time, separate the original statement/event time, memory/summary saved or updated time, and when the statement applied. A recent summary date does not make an old goal current; neither does a source-generated `temporal_status: current`. Treat a direct correction in this current Noesis conversation as current evidence; if a past goal's current status is unknown, label it historical/unknown or conflicting and ask whether it still applies before using it to recommend a current direction. Example: an April 2024 CEO aspiration in a memory updated today remains historical/unknown until the user confirms it now.
 
 Keep the first response to at most five relevant patterns or candidate answers. Do not add routine
 disclaimers about formal tests, psychological measurement, diagnosis, scoring, or validity unless I ask about a
