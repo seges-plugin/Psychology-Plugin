@@ -26,6 +26,10 @@ First give me a concise, useful draft for my goal:
 - Only contradictions or missing details that could change what we do next.
 - One practical next step that builds on strengths already shown.
 
+Keep the first response to at most five relevant patterns or candidate answers. Do not add routine
+disclaimers about formal tests, psychological measurement, diagnosis, scoring, or validity unless I ask about a
+named instrument, its scoring, diagnosis, or validity. Do not expand into a long plan or roadmap unless I ask.
+
 Use what is already clear before asking me anything. Ask at most three short questions, only when each answer could
 change the draft or next step. Let me correct, reject, or skip a candidate. Do not turn guesses into facts.
 
