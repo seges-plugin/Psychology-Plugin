@@ -44,8 +44,10 @@ Offer only the routes that the current environment can honestly support:
    or past-chat context, give the person the short ready-to-paste prompt in
    [references/connected-chat-distillation-prompt.md](references/connected-chat-distillation-prompt.md).
    It directly calls `psychology_get_profile_distillation_guide` once before drafting, then distils goal-relevant
-   strengths, patterns, and candidate wording before asking only consequential gaps. If the guide tool is unavailable
-   or the call fails, it says so briefly and continues with context it can access. It must never imply a complete
+   strengths, patterns, and candidate wording before asking only consequential gaps. Keep the response to at most five
+   relevant patterns or candidates, omit routine formal-test/measurement/diagnosis/validity disclaimers unless asked,
+   and do not add a long plan unless requested. If the guide tool is unavailable or the call fails, it says so briefly
+   and continues with context it can access. It must never imply a complete
    history search when a source is unavailable.
 2. **Selected context from another AI** — if the current assistant cannot access the desired context or the
    person wants another platform's history, offer the ready-to-paste prompt in
