@@ -30,7 +30,7 @@
     "termsOfServiceURL": "https://noesis.seges.ai/terms",
     "defaultPrompt": [
       "Check whether the Psychology MCP is connected. If not, guide me through secure Codex setup first.",
-      "Use relevant memories and past chats this assistant can actually access, plus conversations or an export I choose to share from another AI, to distil strengths and likely answers for my goal. Call psychology_get_profile_distillation_guide if visible; otherwise say so and continue with accessible context. For this draft, do not call other Noesis tools or claim permission/data checks. Show examples, ask only consequential gaps, and do not imply access to another account's archive.",
+      "Use relevant memories and past chats this assistant can actually access, plus conversations or an export I choose to share from another AI, to distil strengths and likely answers for my goal. Before drafting, call psychology_get_profile_distillation_guide once; if the tool is unavailable or the call fails, say so plainly and continue with accessible context. For this draft, do not call other Noesis tools or claim permission/data checks. Show examples, ask only consequential gaps, and do not imply access to another account's archive.",
       "Before using saved context, show me the available sources and let me choose."
     ],
     "brandColor": "#0d6efd",
