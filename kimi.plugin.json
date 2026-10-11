@@ -1,7 +1,7 @@
 {
   "name": "psychology",
   "version": "1.2.9",
-  "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, then distil the memories and past chats you choose into grounded strengths and likely answers for your goal. Psychology also offers published self-assessments and practical reflection.",
+  "description": "AI getting stronger while your own advantage feels unclear? Distil accessible memories and past chats—or selected context you choose to share—into grounded strengths and likely answers, then focus on gaps that matter. Kimi Code remains an evaluation/setup path, not an accepted host.",
   "keywords": [
     "psychology",
     "psychometrics",
@@ -19,7 +19,7 @@
   "interface": {
     "displayName": "Psychology",
     "shortDescription": "Distil your chosen AI memories and chats into strengths and likely next answers.",
-    "longDescription": "Psychology supports structured self-reflection with published or clearly labelled psychometric instruments and plain-language interpretation. It is not therapy, diagnosis, or treatment. A host is supported only after its exact version completes a recorded OAuth authorization-code and S256 PKCE acceptance test. Signed-in storage reads require the applicable consent and an explicit per-session source choice; stored results, profiles, and journal content are never loaded by default. Referral results are informational leads only, and users independently verify credentials, availability, scope, and suitability.",
+    "longDescription": "Distil memories and past chats your connected assistant can access—or selected conversations you choose to share—into strengths and likely answers for your goal. Ground candidates in examples, then ask only consequential gaps. Kimi Code is an evaluation/setup path, not a supported host; this does not claim a direct Kimi.ai consumer archive. Stored-data reads require the applicable consent and an explicit source choice for the session.",
     "developerName": "seges-plugin",
     "websiteURL": "https://noesis.seges.ai"
   },
