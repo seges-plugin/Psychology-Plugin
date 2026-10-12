@@ -18,8 +18,10 @@ Distil the memories and past chats you choose, then reflect on what matters with
 
 **AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
 
-Connect Psychology in a ChatGPT, Claude, or Codex chat with callable plugin/MCP tools, then paste the
+Connect Psychology in a chat with callable plugin/MCP tools, then paste the
 [one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
+The current published support record covers Claude.ai web and desktop; ChatGPT custom connectors and Codex
+remain evaluation/setup paths.
 It guides the assistant to use the memories and past chats it can actually access—or conversations
 you select and paste—to distil strengths, patterns, preferences, and likely answers for your goal.
 It shows examples behind candidate insights and asks only about gaps that could change what comes
@@ -40,8 +42,8 @@ when a requested source is unavailable. Psychology supports reflection, not diag
 ### Host availability
 
 The published host listing currently covers Claude.ai web and desktop, dated 2026-08-30; Anthropic
-does not publish a host version identifier. ChatGPT custom connectors remain a private evaluation path;
-Claude Code, Kimi Code, Kimi.ai, and OpenClaw are evaluation/setup paths, not accepted hosts. A
+does not publish a host version identifier. ChatGPT custom connectors and Codex remain private evaluation/setup
+paths; Claude Code, Kimi Code, Kimi.ai, and OpenClaw are evaluation/setup paths, not accepted hosts. A
 manifest, installation, visible server, or login screen does not establish host acceptance or an
 authenticated connection. See [host acceptance](#host-acceptance) and the [public support record](https://noesis.seges.ai/ai/supported-clients.json).
 
