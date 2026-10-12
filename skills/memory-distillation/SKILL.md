@@ -68,23 +68,21 @@ Offer only the routes that the current environment can honestly support:
    history search when a source is unavailable.
 2. **Selected context from another AI** — if the current assistant cannot access the desired context or the
    person wants another platform's history, offer the ready-to-paste prompt in
-   [references/cross-platform-memory-export-prompt.md](references/cross-platform-memory-export-prompt.md),
+   [references/selected-memory-summary-prompt.md](references/selected-memory-summary-prompt.md),
    filled with their stated purpose and source platform. It asks that source assistant to draw on relevant saved
    memories and past conversations available to it, and to offer clearly marked candidate patterns or likely
    answers for the stated goal. This result remains a `platform_memory_summary` with `candidate_unverified`
-   coverage. Claude's native direct-memory export, when exposed, may be the lowest-friction way to inspect
-   stored-memory scope, but this website has no verified parser contract for that native format: use it only as
-   a session-only selected paste unless it is converted by the exact prompt below and validates as
+   coverage. Use only the source assistant's context available in that session and the purpose-limited summary the
+   person chooses to paste. Do not ask them to export or upload a full account archive. This website has no verified
+   parser contract for a source platform's native memory format: use it only as a session-only selected paste unless
+   it is converted by the exact prompt below and validates as
    `noesis.platform-memory-summary.v1`. Stored Memory, past-chat context, and account-data archives are separate
    capabilities on Claude and ChatGPT; plan, region, managed-workspace, and administrator policy can restrict each
    one. Never call an unavailable or unknown scope complete.
 3. **Selected conversations** — accept only text or files the person deliberately selects. Direct evidence
    requires verbatim user-authored text plus platform, author role, stable source reference, and source time.
-4. **Official account archive** — Claude.ai and ChatGPT.com provide account-data exports, but broad archives
-   should be parsed locally and reduced to selected user-authored messages. This public contract does not verify
-   a Kimi.ai consumer full-account archive path; do not substitute Kimi Code's separate `/export` feature.
-The session-only route must remain available without a connector. Never ask the person to upload an entire
-archive to a chat or connector when a local review or selected paste is sufficient.
+The session-only route must remain available without a connector. Never ask the person to export or upload an
+entire account archive; use accessible context and user-selected summaries or conversation excerpts.
 
 The fast prompt emits `noesis.platform-memory-summary.v1` JSONL. Accept only a complete part containing one exact
 `export_header`, zero to 100 `memory_item` records, and one exact `export_completion`. Reject the entire part

@@ -11,7 +11,7 @@ Start with the relevant memories and past conversations about me that you can ac
 chat. Do not make me repeat useful context that is already available. Do not imply you searched a source you cannot
 see; if a requested memory or past-chat source is unavailable, say so briefly and continue with what is available.
 If I want to use older conversations that you cannot access, offer two simple options: I can paste a few selected
-conversations here, or run the cross-platform export prompt in the source AI chat and paste its result here. Do not
+conversations here, or run the selected-memory summary prompt in the source AI chat and paste its result here. Do not
 ask me to upload a full account archive.
 
 Call `psychology_get_profile_distillation_guide` once before drafting and use its guidance to shape this distillation.
@@ -46,5 +46,5 @@ not imply access to another account's archive.
 ```
 
 If the connected assistant says it cannot access the relevant past chats, use the separate
-[cross-platform export prompt](cross-platform-memory-export-prompt.md) in the source assistant, then paste that
-result here. For large archives, select a few relevant conversations instead of pasting a full account export.
+[selected-memory summary prompt](selected-memory-summary-prompt.md) in the source assistant, then paste that
+purpose-limited result here. Do not export or paste a full account archive.

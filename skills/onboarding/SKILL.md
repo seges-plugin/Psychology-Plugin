@@ -10,7 +10,7 @@ version: "1.2.4"
 
 If the person only wants Psychology to use context they deliberately paste now, a connector is not required.
 Offer the session-only fast prompt in
-`skills/memory-distillation/references/cross-platform-memory-export-prompt.md`, then return to the
+`skills/memory-distillation/references/selected-memory-summary-prompt.md`, then return to the
 memory-distillation flow. Claude's native direct-memory export may help inspect stored-memory scope, but the
 Psychology website has no verified parser contract for that native format; treat it only as a session-only selected
 paste unless the exact prompt converts it to a valid `noesis.platform-memory-summary.v1` part.
