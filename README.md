@@ -18,7 +18,7 @@ Distil the memories and past chats you choose, then reflect on what matters with
 
 **AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
 
-Connect Psychology in a chat that supports the plugin or a remote MCP connector, then paste the
+Connect Psychology in a ChatGPT, Claude, or Codex chat with callable plugin/MCP tools, then paste the
 [one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
 It guides the assistant to use the memories and past chats it can actually access—or conversations
 you select and paste—to distil strengths, patterns, preferences, and likely answers for your goal.
