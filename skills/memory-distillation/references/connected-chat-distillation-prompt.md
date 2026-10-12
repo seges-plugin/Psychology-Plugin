@@ -1,7 +1,8 @@
 # Start with what your AI already knows
 
-Copy this into the ChatGPT or Claude chat where you have connected the Psychology plugin/MCP. Replace the goal
-with what you want help with.
+Copy this into a ChatGPT, Claude, or Codex chat where the Psychology plugin/MCP is connected and its tools are
+callable. Replace the goal with what you want help with. The prompt cannot grant access to past chats: each host
+can use only memories and conversations it actually makes available in that session.
 
 ```text
 I connected Psychology/Noesis because I want to understand my strengths and use them for this goal: [MY GOAL].
