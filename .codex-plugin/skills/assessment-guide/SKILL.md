@@ -219,6 +219,17 @@ under the two-track contract above. A save requires a separate user request, a f
 - Use `psychology_save_assessment_result` or `psychology_save_assessment_results_batch` only for a reviewed completed result.
 - Use `psychology_get_my_profile` before `psychology_save_my_profile`, after a per-field review and profile-specific
   authorization.
+- For any separately requested save of a time-sensitive, user-reviewed profile claim, inspect the current host's
+  `psychology_save_my_profile` input schema first. If it exposes `profile.claim_temporal_json`, use only that exact
+  schema and preserve source time, valid-time, and platform record/save time as distinct values. Populate
+  `source_time_raw`, `source_time_kind`, `source_time_form`, and `source_time_precision` only from visible evidence;
+  set `valid_from` or `valid_until` only when the user explicitly gives that boundary, and never infer a boundary
+  from an event date, memory saved/updated date, or the time of a later correction. A current correction can
+  establish what applies now without establishing when a historical claim stopped applying. `observed_at` is
+  server-owned and must never be supplied by the assistant. Imported platform-memory candidates remain
+  session-only in this workflow and must not be routed through generic profile saving. If the host schema does
+  not expose the temporal field, do not invent it: keep the distinction in the reviewed session brief and explain
+  that this save path cannot carry the temporal metadata.
 - Use `psychology_journal_write_entry`, `psychology_journal_grant_access`, or `psychology_journal_revoke_access` only for the exact action
   the person requested. Revocation requires a known grant identifier and explicit confirmation.
 - A failed or expired authorization means reconnect through the host's normal OAuth flow or stop. Never
