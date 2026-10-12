@@ -35,8 +35,9 @@ For a platform-memory export, use `skills/memory-distillation/SKILL.md`: its ite
 and the smallest requested fields. Ask no more than three questions across fields marked `missing_required`,
 `conflicting_required`, or `needs_current_confirmation`, and only when the answer could change the next action;
 never ask about `candidate_unverified` or `not_requested` fields merely to make a profile complete. Reject an invalid
-`noesis.platform-memory-summary.v1` part as a whole before preview. Agreement across platforms never upgrades recall
-confidence, currentness, verification, or evidence.
+`noesis.platform-memory-summary.v2` part as a whole before preview. Historical v1 input may be read only with
+valid-time bounds and applicability basis unknown. Agreement across platforms never upgrades recall confidence,
+currentness, verification, or evidence.
 
 ## 2. Establish the available account-context boundary
 

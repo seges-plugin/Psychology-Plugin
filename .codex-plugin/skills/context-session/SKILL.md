@@ -38,7 +38,9 @@ pending candidate response after exact item and scale retrieval; item-specific u
 required before that response can enter scoring. Objective performance items remain respondent-only.
 `platform_recall_confidence` means recall fidelity only. Agreement among platforms or repeated summaries never
 upgrades truth, currentness, verification, confidence, or evidentiary status. Reject an invalid
-`noesis.platform-memory-summary.v1` part as a whole before preview rather than salvaging individual lines.
+`noesis.platform-memory-summary.v2` part as a whole before preview rather than salvaging individual lines. A legacy
+v1 part may be read as a candidate, but its absent valid-time bounds and applicability basis stay unknown; never
+derive them from text or timestamps.
 For the cross-platform fast prompt and archive distinctions, follow
 `skills/memory-distillation/SKILL.md` and its linked reference.
 
@@ -87,7 +89,9 @@ never present a reflection as a verdict about the person.
 
 When imported material carries a source time, derive `source_event_at` only when `source_time_kind` is `event`
 and valid `source_time_raw`, `source_time_form`, and `source_time_precision` support the exact representation.
-Memory-save and memory-update times remain provenance. Keep them separate from the Psychology server's later
+Memory-save and memory-update times remain provenance. Legacy v1 has no structured claim-valid-time bounds,
+applicability basis, or per-item platform-record time; keep those unknown and never borrow its header generation time.
+Keep them separate from the Psychology server's later
 `observed_at`, which the source platform must never provide; a local preview time is neither timestamp. Do not
 invent precision for an unknown or date-only source time.
 
