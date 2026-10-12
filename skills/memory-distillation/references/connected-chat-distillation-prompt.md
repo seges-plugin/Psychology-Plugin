@@ -41,8 +41,9 @@ change the draft or next step. Let me correct, reject, or skip a candidate. Do n
 
 If I directly ask to use selected Noesis imports, follow the existing consent and exact-scope grant checks before
 any read. Do not save or update anything unless I separately ask and confirm it.
-For another AI's memories or chats, use its available export or selected conversations that I choose to share; do
-not imply access to another account's archive.
+For another AI's memories or chats, use a purpose-limited memory summary made with the selected-memory summary
+prompt or selected conversations that I choose to share; never ask me to upload a full account archive or imply
+access to another account's archive.
 ```
 
 If the connected assistant says it cannot access the relevant past chats, use the separate
