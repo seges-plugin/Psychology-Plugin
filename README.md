@@ -30,9 +30,11 @@ and paste its answer into the connected Psychology chat.
 If the connected assistant cannot access older chats, continue with what it can see or bring in a few selected
 conversations; do not upload a full account archive.
 
-For time-sensitive goals, Psychology keeps source dates, the period a claim applied, and Noesis's receipt time
-separate. A recently updated memory does not make an older goal current, and a present correction does not invent
-the date an earlier goal ended.
+For time-sensitive goals, Psychology keeps five clocks separate: when an event happened, when the source memory
+was saved or updated, when its summary was generated, when the claim applied, and when Noesis received a reviewed
+selection. A recently updated memory does not make an older goal current, and a present correction does not invent
+the date an earlier goal ended. Legacy v1 summaries remain readable, but do not contain structured claim-validity
+or per-item memory-record times.
 
 Psychology uses the memories and past chats your assistant can actually access, plus context you choose to share,
 to surface strengths, patterns, and candidate answers for your goal. It shows the examples behind suggestions and

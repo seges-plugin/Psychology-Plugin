@@ -91,7 +91,9 @@ uncertainty; get an item-specific confirmation or edit before treating it as the
 auto-fill, confirm, or enter scoring on its own, and it cannot ground objective performance, knowledge, or
 ability-test answers. `platform_recall_confidence` is recall fidelity only; agreement among assistants never
 upgrades it, verification, or evidentiary status. Reject an invalid
-`noesis.platform-memory-summary.v1` part as a whole before using any item.
+`noesis.platform-memory-summary.v2` part as a whole before using any item. Historical v1 candidates have no
+structured valid-time bounds or applicability basis, and no per-item platform-record time; treat them as unknown
+and do not infer them from the header generation time.
 
 ## 2. Decide whether an assessment is useful
 

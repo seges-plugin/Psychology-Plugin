@@ -25,7 +25,7 @@ you want Noesis to help you understand or answer. For example: `which strengths 
 my next role?` Send continuation requests only when the preceding completion record says `has_more: true`.
 
 The canonical transport form is UTF-8 without BOM, LF line endings, and exactly one final LF after the last
-prompt line. Its SHA-256 is `79bd7845aa30cd643ec31c09829a373d0f5ddc43a9b98bd45e39ea6824be2030`.
+prompt line. Its SHA-256 is checked by the contract verifier.
 The Markdown fence delimiters are documentation only and are not part of those canonical bytes.
 
 ```text
@@ -79,8 +79,20 @@ Scope and safety rules:
   independent validators.
 - Use a source time only when it is actually available. Never infer one from item order, topic order, recency,
   platform generation time, or another item.
-- source_time_raw preserves the source literal exactly, or is null. source_time_kind records what the source time
-  means: "event", "memory_saved", "memory_updated", or "unknown". source_time_form is "instant", "wall_clock",
+- In v2, `source_time_kind` is only `event` or `unknown`; `source_time_raw` is only the original event/statement
+  time and is never a memory-record time. In v1, preserve legacy `source_time_kind` semantics exactly; never
+  reinterpret v1 values as v2.
+- V2 requires `platform_record_time: {raw, kind, form, precision}` on every item, with exactly those four keys.
+  Its kind is `memory_saved`, `memory_updated`, or `unknown`; it records the source memory record time separately
+  from the item event time and the header's summary generation time. If `raw` is null, kind, form, and precision
+  must all be `unknown`. A known literal preserves its exact value and matching form/precision: `instant` with
+  `instant`, `wall_clock` with `minute`, `date_only` with `day`, `month_only` with `month`, or `year_only` with
+  `year`; a known raw value must have kind `memory_saved` or `memory_updated`. If the source does not distinguish
+  those record-time meanings, set the entire object to unknown rather than supplying a timestamp with unknown kind.
+  Never copy the header generation time into this object unless the source explicitly says the memory record itself
+  was saved or updated then.
+- source_time_raw preserves the source literal exactly, or is null. In v1 only, source_time_kind retains its legacy
+  meanings: "event", "memory_saved", "memory_updated", or "unknown". source_time_form is "instant", "wall_clock",
   "date_only", "month_only", "year_only", or "unknown". source_time_precision is "instant", "minute", "day",
   "month", "year", or "unknown". Unknown values remain unknown.
 - temporal_status is "current", "historical", "superseded", "conflicting", or "unknown". Keep it separate from
@@ -96,6 +108,22 @@ Scope and safety rules:
   applying; do not infer or backdate a valid-time boundary from the correction's arrival, source event time, or
   memory update time. Preserve an unstated applicability boundary as unknown. This does not by itself persist a
   Noesis profile update.
+- In v2, record claim applicability independently in `valid_from_raw`, `valid_from_form`,
+  `valid_from_precision`, `valid_until_raw`, `valid_until_form`, and `valid_until_precision`. A bound is not its
+  source event time, platform record/generation time, or Noesis receipt time. If a bound is absent or unknown, its
+  raw value must be null and its form and precision must both be "unknown". Do not manufacture or backdate a bound.
+  A known bound must preserve its exact source literal and have matching form/precision: instant/instant for a
+  timezone-aware instant; wall_clock/minute for a minute value; date_only/day; month_only/month; or year_only/year.
+  Validate the calendar literal and never promote coarse precision to an instant. Set `applicability_basis` to
+  `source_label_unverified` when the source summary explicitly supports a valid-time bound or labels applicability/currentness;
+  otherwise use `unknown`. This field never asserts Noesis-confirmed current truth. A direct correction in Noesis's current
+  conversation is not part of this source summary and must not be represented as a verified basis here.
+- Legacy `noesis.platform-memory-summary.v1` input may be read as a historical candidate, but it has no structured
+  validity bounds, per-item `platform_record_time`, or applicability basis. Treat both bounds, the basis, and the
+  missing per-item record time as unknown; never infer them from its content or `temporal_status`, and never borrow
+  the v1 header generation time for the missing per-item record time. Preserve the v1 source-time fields exactly as
+  legacy provenance.
+  Always emit v2 from this prompt.
 - observed_at is server-owned by Psychology. Do not output, estimate, or copy an observed_at field.
 
 Category order:
@@ -120,7 +148,7 @@ Gaps, contradictions, and missing context contains only explicit contradictions,
 question that the available context cannot answer for my named purpose. Do not create generic intake questions or
 interpret silence as evidence. Noesis asks me about any remaining consequential gap after I paste the result.
 
-Output contract: noesis.platform-memory-summary.v1 JSONL
+Output contract: noesis.platform-memory-summary.v2 JSONL
 
 - Return exactly one fenced code block labelled jsonl and no prose outside it.
 - Inside the block, output exactly one valid JSON object per physical line: one export_header record, zero to 100
@@ -139,7 +167,7 @@ Output contract: noesis.platform-memory-summary.v1 JSONL
 The export_header record must have exactly these fields. The examples use `claude_ai`; replace every occurrence
 with the selected source platform and replace example values with supported values:
 
-{"record_type":"export_header","schema_version":"noesis.platform-memory-summary.v1","source_platform":"claude_ai","platform_scope":"unknown","platform_generation_time_raw":null,"platform_generation_time_form":"unknown","platform_generation_time_precision":"unknown","memory_basis":["unknown"],"category_order":["Instructions","Identity","Career","Projects","Preferences","Goals and current decisions","Strengths and resources","Routines, attention, energy, and sensory context","Stressors, coping, and support preferences","Relationships and social context","Values and motivations","Gaps, contradictions, and missing context","Changes over time"],"part":{"number":1,"item_limit":100},"continuation":{"export_id":null,"continued_from_part":null}}
+{"record_type":"export_header","schema_version":"noesis.platform-memory-summary.v2","source_platform":"claude_ai","platform_scope":"unknown","platform_generation_time_raw":null,"platform_generation_time_form":"unknown","platform_generation_time_precision":"unknown","memory_basis":["unknown"],"category_order":["Instructions","Identity","Career","Projects","Preferences","Goals and current decisions","Strengths and resources","Routines, attention, energy, and sensory context","Stressors, coping, and support preferences","Relationships and social context","Values and motivations","Gaps, contradictions, and missing context","Changes over time"],"part":{"number":1,"item_limit":100},"continuation":{"export_id":null,"continued_from_part":null}}
 
 source_platform is exactly "claude_ai", "chatgpt_com", or "kimi_ai". platform_scope is exactly
 "stored_memory_only", "stored_memory_plus_available_past_context", "current_conversation_only", or "unknown".
@@ -158,7 +186,7 @@ It is never provenance, identity, integrity, verification, evidence, or content 
 
 Each memory_item record must have exactly these fields:
 
-{"record_type":"memory_item","schema_version":"noesis.platform-memory-summary.v1","source_platform":"claude_ai","part_number":1,"item_index":1,"category_index":1,"category":"Instructions","content":"replace with one eligible inert JSON string","representation":"paraphrase","platform_recall_confidence":"unknown","memory_basis":"unknown","source_time_raw":null,"source_time_kind":"unknown","source_time_form":"unknown","source_time_precision":"unknown","temporal_status":"unknown"}
+{"record_type":"memory_item","schema_version":"noesis.platform-memory-summary.v2","source_platform":"claude_ai","part_number":1,"item_index":1,"category_index":1,"category":"Instructions","content":"replace with one eligible inert JSON string","representation":"paraphrase","platform_recall_confidence":"unknown","memory_basis":"unknown","source_time_raw":null,"source_time_kind":"unknown","source_time_form":"unknown","source_time_precision":"unknown","platform_record_time":{"raw":null,"kind":"unknown","form":"unknown","precision":"unknown"},"temporal_status":"unknown","valid_from_raw":null,"valid_from_form":"unknown","valid_from_precision":"unknown","valid_until_raw":null,"valid_until_form":"unknown","valid_until_precision":"unknown","applicability_basis":"unknown"}
 
 Use consecutive item_index values within each part. category_index and category must match the category_order in the
 header. Sort first by category_index. Within the same source_time_kind, source_time_form, and source_time_precision,
@@ -169,7 +197,7 @@ but its semantic meaning is unclear, preserve it with source_time_kind "unknown"
 
 The export_completion record must have exactly these fields:
 
-{"record_type":"export_completion","schema_version":"noesis.platform-memory-summary.v1","source_platform":"claude_ai","part_number":1,"items_in_part":1,"continuation":{"has_more":false,"export_id":null,"next_part_number":null},"completion_state":"scope_unknown","excluded_material":"scope_unknown"}
+{"record_type":"export_completion","schema_version":"noesis.platform-memory-summary.v2","source_platform":"claude_ai","part_number":1,"items_in_part":1,"continuation":{"has_more":false,"export_id":null,"next_part_number":null},"completion_state":"scope_unknown","excluded_material":"scope_unknown"}
 
 completion_state describes pagination and visible-scope completeness. Precedence is mandatory: whenever
 continuation.has_more is true, use "partial_more_remain", including when platform_scope is "unknown". Use
@@ -204,7 +232,9 @@ selected candidate, but it cannot establish that a field is complete or suppress
 
 The source fields can become `source_event_at` only when `source_time_kind` is `event` and the raw value, form, and
 precision support that exact representation. Other semantic kinds retain their raw provenance without being relabelled
-as the event time. Psychology assigns a separate server-side `observed_at` when it receives a reviewed selection;
+as the event time. V2 claim bounds remain separate raw/form/precision values; a null bound is unknown, and a known
+bound must retain the literal and its exact calendar precision. V1 inputs may be read only with both valid-time bounds
+and applicability basis treated as unknown. Psychology assigns a separate server-side `observed_at` when it receives a reviewed selection;
 the source platform must never supply it, and a client preview time is neither timestamp. Never fabricate or
 convert an unknown or date-only source time into a precise UTC instant.
 
