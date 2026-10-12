@@ -9,6 +9,9 @@ I connected Psychology/Noesis because I want to understand my strengths and use 
 Start with the relevant memories and past conversations about me that you can access in this account and current
 chat. Do not make me repeat useful context that is already available. Do not imply you searched a source you cannot
 see; if a requested memory or past-chat source is unavailable, say so briefly and continue with what is available.
+If I want to use older conversations that you cannot access, offer two simple options: I can paste a few selected
+conversations here, or run the cross-platform export prompt in the source AI chat and paste its result here. Do not
+ask me to upload a full account archive.
 
 Call `psychology_get_profile_distillation_guide` once before drafting and use its guidance to shape this distillation.
 Do not only check whether the tool exists. Use only exact `psychology_*` tool names visible here. If the guide tool

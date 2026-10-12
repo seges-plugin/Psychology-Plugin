@@ -25,6 +25,8 @@ you select and paste—to distil strengths, patterns, preferences, and likely an
 It shows examples behind candidate insights and asks only about gaps that could change what comes
 next. For another source AI, use the [cross-platform export prompt](skills/memory-distillation/references/cross-platform-memory-export-prompt.md)
 and paste its answer into the connected Psychology chat.
+If the connected assistant cannot access older chats, continue with what it can see or bring in a few selected
+conversations; do not upload a full account archive.
 
 For time-sensitive goals, Psychology keeps source dates, the period a claim applied, and Noesis's receipt time
 separate. A recently updated memory does not make an older goal current, and a present correction does not invent
