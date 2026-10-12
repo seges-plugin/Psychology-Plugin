@@ -77,7 +77,7 @@ Offer only the routes that the current environment can honestly support:
    person chooses to paste. Do not ask them to export or upload a full account archive. This website has no verified
    parser contract for a source platform's native memory format: use it only as a session-only selected paste unless
    it is converted by the exact prompt below and validates as
-   `noesis.platform-memory-summary.v1`. Stored Memory, past-chat context, and account-data archives are separate
+   `noesis.platform-memory-summary.v2`. Stored Memory, past-chat context, and account-data archives are separate
    capabilities on Claude and ChatGPT; plan, region, managed-workspace, and administrator policy can restrict each
    one. Never call an unavailable or unknown scope complete.
 3. **Selected conversations** — accept only text or files the person deliberately selects. Direct evidence
