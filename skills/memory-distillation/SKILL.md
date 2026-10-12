@@ -209,6 +209,15 @@ target for platform-memory candidates, even after a keep, confirmation, edit, or
 statement can enter the ordinary profile workflow only in a separate interaction that does not carry imported
 text forward as evidence; this skill never performs or shortcuts that transition.
 
+The first-use connected-chat distillation is always session-only and must never call a profile-save tool. Do not
+offer persistence unless the person explicitly asks. For a separate, explicit request to save an eligible profile
+made only from direct current-session statements, show the exact fields to be saved and obtain the person's final
+confirmation, then follow the current profile-consent and age-gate requirements before calling the currently
+exposed tool. Imported platform-memory candidates remain ineligible for `psychology_save_my_profile` and can only
+use the dedicated selected-candidate retention path above. The current tool writes an append-only snapshot
+immediately when it returns `saved: true`; it does not create a pending draft or approval link. Never say data was
+saved before the tool returns `saved: true`, and never claim an unrelated tool result approved or saved it.
+
 If the person asks to retain reviewed import candidates, direct them to the Psychology site's dedicated import
 page when it is available. The site must parse the raw export locally, keep unselected material on the device,
 show every candidate for keep/edit/drop, require separate secret, sensitive-content, and third-party-data review,
