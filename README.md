@@ -340,3 +340,7 @@ https://noesis.seges.ai/support/.
 ## License
 
 [MIT](LICENSE)
+
+## Local contract re-verification (2026-10-13)
+
+`npm test` passed on the current `main` checkout: 90 public files and 28 mirrored skill files, including the historical-goal/current-correction fixture and 43 negative import fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive.
