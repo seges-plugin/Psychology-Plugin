@@ -370,3 +370,11 @@ private evaluation path, not an accepted host. ChatGPT, Claude, and Kimi generat
 Codex-only for excerpts selected or pasted from the current task. Native platform memory formats remain session-only
 and are not converted into Codex v3. The verifier keeps the v2 prompt's canonical digest pinned and checks this
 source-to-schema mapping.
+
+## Current and historical memory clocks (source manifest v1.2.15)
+
+The quick-start now names all five relevant clocks for changing claims: source event/statement time, platform memory
+saved/updated time, summary-generation time, the claim's applicability period, and Noesis receipt time only when an
+actual reviewed selection has one. It also says a current correction settles the current conversation without dating
+when the older claim ended. The contract verifier checks these rules and the Codex mirror. This is prompt guidance;
+it does not establish that a host can access older chats or expose every timestamp.
