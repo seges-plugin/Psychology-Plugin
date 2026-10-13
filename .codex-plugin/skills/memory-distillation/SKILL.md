@@ -1,6 +1,6 @@
 ---
 name: memory-distillation
-version: "1.2.10"
+version: "1.2.11"
 description: Use when a person wants Psychology to build on the memories and past chats they choose to bring from ChatGPT, Claude, or Kimi. Give them the working copy prompt, distil relevant context into useful candidate patterns for their stated goal, then ask only for the missing details that could change the next step.
 triggers:
   - "import my memory"
