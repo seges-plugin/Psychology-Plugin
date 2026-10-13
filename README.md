@@ -6,7 +6,7 @@
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [Plugin source release v1.2.11](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.11) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
