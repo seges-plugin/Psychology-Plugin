@@ -1,6 +1,6 @@
 ---
 name: memory-distillation
-version: "1.2.6"
+version: "1.2.7"
 description: Use when a person wants Psychology to build on the memories and past chats they choose to bring from ChatGPT, Claude, or Kimi. Give them the working copy prompt, distil relevant context into useful candidate patterns for their stated goal, then ask only for the missing details that could change the next step.
 triggers:
   - "import my memory"
@@ -27,10 +27,10 @@ This skill has two deliberately separate outcomes:
    in the separate import store. It requires current `selected_context.v1` purpose consent and the website flow
    below; it never creates or updates an ordinary profile.
 
-The person chooses which assistant's memories or past chats to use and starts the export from that assistant.
-The copy prompt asks that assistant to use relevant context it can actually access, then the person pastes the
-result here. The user-selected context is the starting point; Psychology should build on it before asking for
-new information.
+The person chooses which assistant's memories or past chats to use and runs the selected-memory summary prompt
+there. The prompt asks that assistant to use relevant context it can actually access, then the person pastes the
+purpose-limited summary here. This is not an account archive export. The user-selected context is the starting
+point; Psychology should build on it before asking for new information.
 
 For time-sensitive goals, roles, preferences, and plans, distinguish the original statement/event time, each
 source-memory saved/updated time, the time the summary was generated, when the claim applied (its valid-time
