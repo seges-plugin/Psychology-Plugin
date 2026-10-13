@@ -6,7 +6,7 @@
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Plugin source release v1.2.13](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.13) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [Plugin source release v1.2.14](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.14) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
@@ -349,7 +349,7 @@ https://noesis.seges.ai/support/.
 
 The v1.2.13 source prompt keeps ordinary distillation limited to material available in the current assistant conversation. Only when the user directly asks to use selected Noesis imports does it check current consent, list metadata for active grants tied to that exact OAuth connection, show the scope and ask the user to choose one, and then read only with those returned purpose, categories, date bounds, and time basis. Missing, revoked, expired, or mismatched grants stop the import flow. This does not provide full-account archive access. The prompt calls selected material a purpose-limited summary, not an account export, and caps fallback follow-up questions at three consequential gaps. The production catalog exposes the matching `psychology_list_my_selected_context_grants` tool; `npm test` passes against the live 34-tool catalog. The GitHub release is source distribution and does not claim official ChatGPT or Claude marketplace acceptance.
 
-## Candidate evidence citations (working-tree update; not yet released)
+## Candidate evidence citations (source release v1.2.14)
 
 The first-use connected-chat prompt now asks for a compact source note beside each candidate: source platform and
 type, plus a visible conversation title, stable reference, or link when available. It asks the assistant to keep
@@ -357,4 +357,4 @@ event/statement time, memory saved/updated time, summary-generation time, and cl
 changing claims, to mark unavailable details unknown, and to include Noesis receipt time only for a reviewed
 selection that actually has one. This makes the draft easier to inspect without implying a source identifier or
 timestamp the host cannot expose. The same wording is included in the ChatGPT and Codex package prompts. The
-manifest version is 1.2.14 in this working tree; this is not a published GitHub release or host-acceptance claim.
+manifest version 1.2.14 is published as a GitHub source release. This is not a host-acceptance claim.
