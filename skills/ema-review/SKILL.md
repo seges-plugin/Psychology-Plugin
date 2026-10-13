@@ -71,6 +71,7 @@ flow and use crisis-support; do not retrieve account context to continue a retro
 
 ## Persistence remains optional
 
-Do not turn a retrospective into an automatic stored note, profile update, or local export. If the person
-asks to retain a user-approved summary, explain the proposed destination and follow the relevant save or
-local-export flow. A write always requires a fresh explicit choice and a fresh `psychology_get_consent_status()` check.
+Do not turn a retrospective into an automatic stored note, profile update, or local file. If the person
+asks to retain a user-approved summary, explain the proposed destination and follow a supported,
+consent-controlled hosted save flow. A write always requires a fresh explicit choice and a fresh
+`psychology_get_consent_status()` check.

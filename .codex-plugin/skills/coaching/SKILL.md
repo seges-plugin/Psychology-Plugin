@@ -245,7 +245,7 @@ failed. Refer to human professionals when:
 > does not create an automatic coaching-session log or authorize a stored-data read. Start with
 > `psychology_get_consent_status`, show the current source choices, and ask for an explicit per-session selection
 > before using any stored result. If those tools are unavailable, offer a user-controlled summary or
-> local export instead; do not invent persistence, host support, or a credential workaround.
+> keep the result in this conversation; do not create a local file or invent persistence, host support, or a credential workaround.
 
 At the close of a coaching conversation, summarize in your response:
 - Session topic and focus
