@@ -19,22 +19,21 @@ Distil the memories and past chats you choose, then reflect on what matters with
 **AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
 
 Connect Psychology in a chat with callable plugin/MCP tools, then paste the
-[one-step context prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
+[quick-start prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
+Jump to [Claude.ai setup](#add-to-claude-ai) or [ChatGPT connection setup (private evaluation)](#use-psychology-in-chatgpt).
 The current published support record covers Claude.ai web and desktop; ChatGPT custom connectors and Codex
 remain evaluation/setup paths.
 It guides the assistant to use the memories and past chats it can actually access—or conversations
 you select and paste—to distil strengths, patterns, preferences, and likely answers for your goal.
 It shows examples behind candidate insights and asks only about gaps that could change what comes
 next. For ChatGPT, Claude, or Kimi, use the [v2 selected-memory summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt.md).
-For Codex, use the [v3 Codex-selected summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt-v3.md): it processes only excerpts you select or paste in the current Codex task and never searches other tasks or account history. Codex is a source format here, not a claim that Codex is an accepted connected host.
+For Codex, use the [v3 Codex-selected summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt-v3.md): it processes only excerpts you select or paste in the current Codex task and never searches other tasks or account history. Codex is a source format here, not a claim that Codex is an accepted connected host. For detailed timestamp and selected-import cases, see the [advanced bitemporal prompt](skills/memory-distillation/references/connected-chat-distillation-prompt-advanced.md).
 If the connected assistant cannot access older chats, continue with what it can see or bring in a few selected
 conversations; do not upload a full account archive.
 
-For time-sensitive goals, Psychology keeps five clocks separate: when an event happened, when the source memory
-was saved or updated, when its summary was generated, when the claim applied, and when Noesis received a reviewed
-selection. A recently updated memory does not make an older goal current, and a present correction does not invent
-the date an earlier goal ended. Legacy v1 summaries remain readable, but do not contain structured claim-validity
-or per-item memory-record times.
+For changing goals, Psychology separates when a statement happened, when it was saved, and when it applied. It
+uses your current corrections and does not guess when an older goal ended. See the advanced prompt for detailed
+timestamp handling.
 
 Psychology uses the memories and past chats your assistant can actually access, plus context you choose to share,
 to surface strengths, patterns, and candidate answers for your goal. It shows the examples behind suggestions and
@@ -139,6 +138,8 @@ read-only check. A connected account does not automatically read profile, journa
 
 ## Add to Claude.ai
 
+<a id="add-to-claude-ai"></a>
+
 Use the plugin first so Claude can load Psychology's portable skills and safety instructions:
 
 1. Open [Claude.ai Customize → Plugins](https://claude.ai/new#settings/customize-plugins).
@@ -154,7 +155,7 @@ After installing the plugin, add its hosted connector if Claude has not already 
 You can open the
 [prefilled custom-connector form](https://claude.ai/new?modal=add-custom-connector&connectorName=Psychology&connectorUrl=https%3A%2F%2Fnoesis.seges.ai%2Fmcp#settings/customize-connectors)
 or enter `https://noesis.seges.ai/mcp` yourself. Review the displayed name and URL before continuing.
-When Claude asks which OAuth client to use, choose **No client ID — register one automatically**.
+This is a two-step setup: install the plugin, then connect the hosted MCP. When Claude asks which OAuth client to use, choose **No client ID — register one automatically**.
 Noesis intentionally supports Dynamic Client Registration (DCR) for this flow and does not support
 Client ID Metadata Documents (CIMD).
 
@@ -201,6 +202,8 @@ acceptance. Kimi Code is not listed in the current public support record. Use on
 `psychology_…` tool names returned by the connected server.
 
 ## Use Psychology in ChatGPT
+
+<a id="use-psychology-in-chatgpt"></a>
 
 This repository includes the portable Agent Plugins package files at its root: `plugin.json` describes the
 plugin and `mcp.json` declares its hosted MCP server and OAuth Dynamic Client Registration. Use an
@@ -358,3 +361,12 @@ changing claims, to mark unavailable details unknown, and to include Noesis rece
 selection that actually has one. This makes the draft easier to inspect without implying a source identifier or
 timestamp the host cannot expose. The same wording is included in the ChatGPT and Codex package prompts. The
 manifest version 1.2.14 is published as a GitHub source release. This is not a host-acceptance claim.
+
+## Distillation onboarding and schema clarification (2026-10-14)
+
+The first-use connected-chat prompt is now a shorter quick-start, with the detailed bitemporal/import flow linked as an
+advanced prompt. README setup links take readers directly to Claude.ai and ChatGPT instructions; ChatGPT remains a
+private evaluation path, not an accepted host. ChatGPT, Claude, and Kimi generated summaries use v2; v3 remains
+Codex-only for excerpts selected or pasted from the current task. Native platform memory formats remain session-only
+and are not converted into Codex v3. The verifier keeps the v2 prompt's canonical digest pinned and checks this
+source-to-schema mapping.
