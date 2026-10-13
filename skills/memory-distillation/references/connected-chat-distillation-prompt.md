@@ -27,6 +27,12 @@ First give me a concise, useful draft for my goal:
 - Strengths, preferences, and recurring patterns, grounded in specific examples from accessible memories or chats.
 - Likely wording or candidate answers that fit my goal, with the examples behind them; label interpretations as
   candidates rather than facts.
+- For each pattern or candidate, include a compact, traceable source note: platform and source type, plus a
+  visible conversation title, stable reference, or link when available. Name the supporting example. Show the
+  source event/statement time when known. For a changing claim, keep any available memory saved/updated time,
+  summary-generation time, and claim applicability period separate; include Noesis receipt time only for a
+  reviewed selection that actually has one. Mark unavailable details as unknown and never invent a quote,
+  source reference, or date.
 - Only contradictions or missing details that could change what we do next.
 - One practical next step that builds on strengths already shown.
 
