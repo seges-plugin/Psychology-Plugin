@@ -14,6 +14,11 @@ If I want to use older conversations that you cannot access, offer two simple op
 conversations here, or run the selected-memory summary prompt in the source AI chat and paste its result here. Do not
 ask me to upload a full account archive.
 
+Codex boundary: when this prompt is used in Codex, use the current task conversation and only Codex excerpts or
+summaries I explicitly select or paste. Do not search or claim access to other Codex tasks, chats, saved memories,
+workspace files, or account history. A Codex summary is for session-only use unless the connected Noesis service
+explicitly exposes and accepts Codex as a selected-import source.
+
 Call `psychology_get_profile_distillation_guide` once before drafting and use its guidance to shape this distillation.
 Do not only check whether the tool exists. Use only exact `psychology_*` tool names visible here. If the guide tool
 is unavailable or the call fails, say so briefly and continue from accessible context without inventing tool output.
