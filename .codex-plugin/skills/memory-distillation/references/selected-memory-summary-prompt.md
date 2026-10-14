@@ -153,8 +153,11 @@ Output contract: noesis.platform-memory-summary.v2 JSONL
 - Return exactly one fenced code block labelled jsonl and no prose outside it.
 - Inside the block, output exactly one valid JSON object per physical line: one export_header record, zero to 100
   memory_item records, and one export_completion record, in that order.
-- Output at most 100 memory_item records per part. A continuation is a new response with the same schema and at most
-  100 additional items. Never silently truncate.
+- Output at most 100 memory_item records per part and at most 32 parts (3,200 items) per summary chain. A continuation
+  is a new response with the same schema and at most 100 additional items. Never silently truncate or request parts
+  beyond 32. If more material remains after part 32, keep `has_more: true` and `partial_more_remain`, stop there, and
+  tell Noesis the chain is incomplete so the user can narrow the source selection; never label it complete or import
+  an incomplete chain.
 - Encode every JSON string according to RFC 8259. Escape quotes and reverse solidus. Encode line feed, carriage
   return, tab, and every U+0000 through U+001F control character with JSON escapes. Encode every U+0060 backtick
   from source content as the six ASCII characters \u0060. Never emit a raw backtick inside a JSON string.
@@ -177,7 +180,8 @@ memory_basis is a non-empty array containing only "stored_memory", "available_pa
 "current_conversation", or "unknown"; use ["unknown"] alone when the basis cannot be determined. Every item's
 memory_basis must occur in this header array unless the array is ["unknown"]. On a continuation
 part, continuation.export_id must exactly match the preceding completion record and continued_from_part must be
-the preceding part number. source_platform and platform_scope must remain exactly identical across every part;
+the preceding part number. source_platform and platform_scope must remain exactly identical across every part; part
+numbers must run from 1 through no more than 32 and never continue after part 32;
 a continuation must never upgrade, downgrade, or otherwise rewrite the first part's scope. On the first part both
 continuation fields are null. Every non-null continuation.export_id is the source
 cursor and must match the ASCII regular expression ^[A-Za-z0-9_-]{16,128}$ exactly. It contains no whitespace,

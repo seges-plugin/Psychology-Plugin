@@ -6,7 +6,7 @@
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Plugin source release v1.2.15](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.15) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [Plugin source release v1.2.16](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.16) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
@@ -370,6 +370,10 @@ private evaluation path, not an accepted host. ChatGPT, Claude, and Kimi generat
 Codex-only for excerpts selected or pasted from the current task. Native platform memory formats remain session-only
 and are not converted into Codex v3. The verifier keeps the v2 prompt's canonical digest pinned and checks this
 source-to-schema mapping.
+
+## Bounded selected-memory continuation (source release v1.2.16)
+
+The ChatGPT/Claude/Kimi v2 selected-memory summary is capped at 32 parts (3,200 items) per chain, matching the service's import contract. If more source material remains at that limit, the prompt preserves the incomplete status and asks the user to narrow their selection; the verifier rejects a chain beyond the cap. This limits one selected-summary flow and does not imply complete access to any platform archive.
 
 ## Current and historical memory clocks (source release v1.2.15)
 
