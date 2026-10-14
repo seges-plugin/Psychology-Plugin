@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "description": "Connect Psychology to distil the memories and past chats you choose, surface candidate patterns and likely answers, and ask only about consequential gaps. Also supports non-clinical, source-aware self-reflection.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
