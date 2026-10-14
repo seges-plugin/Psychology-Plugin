@@ -6,7 +6,7 @@
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Plugin source release v1.2.16](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.16) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [Plugin source release v1.2.19](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.19) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
@@ -391,6 +391,10 @@ Assessment guidance now references only versioned result-save tools that are pre
 tool catalog, and only for user-requested eligible self-reports. MCP guidance no longer suggests creating
 or expanding journal access grants; those choices stay in the signed-in Noesis website. The contract
 verifier guards against the retired actionable tool names returning.
+
+## Canonical OAuth resource contract (source release v1.2.19)
+
+The MCP routing contract now identifies `https://noesis.seges.ai/mcp` as both the user configuration endpoint and the protected MCP resource. The offline verifier asserts that these values stay aligned with the connector manifests. This documentation correction does not change OAuth server behavior or claim host acceptance.
 
 ## Consequential-only follow-up questions (source release v1.2.17)
 
