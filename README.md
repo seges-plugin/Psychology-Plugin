@@ -23,14 +23,15 @@ Connect Psychology in a chat with callable plugin/MCP tools, then paste the
 Jump to [Claude.ai setup](#add-to-claude-ai) or [ChatGPT connection setup (private evaluation)](#use-psychology-in-chatgpt).
 The current published support record covers Claude.ai web and desktop; ChatGPT custom connectors and Codex
 remain evaluation/setup paths.
-It guides the assistant to use the memories and past chats it can actually access—or conversations
+It asks the assistant to first use any built-in memory or past-chat retrieval available for your goal,
+then use the memories and past chats it can actually access—or conversations
 you select and paste—to distil strengths, patterns, preferences, and likely answers for your goal.
 It shows examples behind candidate insights and asks only about gaps that could change what comes
 next. For ChatGPT, Claude, or Kimi, use the [v2 selected-memory summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt.md).
 For Codex, use the [v3 Codex-selected summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt-v3.md): it processes only excerpts you select or paste in the current Codex task and never searches other tasks or account history. Codex is a source format here, not a claim that Codex is an accepted connected host. For detailed timestamp and selected-import cases, see the [advanced bitemporal prompt](skills/memory-distillation/references/connected-chat-distillation-prompt-advanced.md).
 The quick-start prompt asks no more than three follow-up questions, and only when an answer could change the next step.
-If the connected assistant cannot access older chats, continue with what it can see or bring in a few selected
-conversations; do not upload a full account archive.
+If the connected assistant cannot access older chats or finds no relevant past chats, it says so before
+continuing with the context already visible or a few conversations you select; do not upload a full account archive.
 
 For changing goals, Psychology separates when a statement happened, when it was saved, and when it applied. It
 uses your current corrections and does not guess when an older goal ended. See the advanced prompt for detailed

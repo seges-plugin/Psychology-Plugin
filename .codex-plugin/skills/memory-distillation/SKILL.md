@@ -58,8 +58,12 @@ ambiguous, or conflicting. Do not treat "everything you know" as permission to r
 
 Offer only the routes that the current environment can honestly support:
 
-1. **Current connected chat** — use the current ChatGPT or Claude conversation's memories or past-chat context only
-   when that host makes them available. In Codex, use the current task conversation and only Codex excerpts or
+1. **Current connected chat** — first actively use any built-in memory or past-chat retrieval the current ChatGPT
+   or Claude host exposes for the stated goal; do not treat the current conversation or the Noesis guide as a search
+   of account history, and do not ask the person to paste history before trying available retrieval. Use retrieved
+   memories or past-chat context only when that host makes them available. If no retrieval is exposed or it returns
+   no relevant context, state that boundary briefly and continue with the current conversation or selected material.
+   In Codex, use the current task conversation and only Codex excerpts or
    summaries the person explicitly selects or pastes; never search or imply access to other Codex tasks, chats,
    saved memories, workspace files, or account history. Give the person the short ready-to-paste prompt in
    [references/connected-chat-distillation-prompt.md](references/connected-chat-distillation-prompt.md).
