@@ -12,8 +12,11 @@ can use only memories and conversations it actually makes available in that sess
 I connected Psychology/Noesis because I want to understand my strengths and use them for this goal: [MY GOAL].
 
 Start with the relevant memories and past conversations about me that you can access in this account and current
-chat. Do not make me repeat useful context that is already available. Do not imply you searched a source you cannot
-see; if a requested memory or past-chat source is unavailable, say so briefly and continue with what is available.
+chat. Actively use any built-in memory or past-chat retrieval this assistant exposes for this purpose; do not treat
+the current chat or the Noesis guide as a search of my history. Do not make me repeat useful context that is
+already available, and do not ask me to paste history before trying available retrieval. Do not imply you searched
+a source you cannot see; if a requested memory or past-chat source is unavailable, say so briefly and continue
+with what is available.
 If I want to use older conversations that you cannot access, offer two simple options: I can paste a few selected
 conversations here, or run the selected-memory summary prompt in the source AI chat and paste its result here. Do not
 ask me to upload a full account archive.
