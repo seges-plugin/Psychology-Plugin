@@ -1,6 +1,6 @@
 {
   "name": "psychology",
-  "version": "1.2.17",
+  "version": "1.2.18",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal before answering only the gaps that matter. Check callable psychology_* MCP tools before any tool-dependent task.",
   "author": {
     "name": "seges-plugin",

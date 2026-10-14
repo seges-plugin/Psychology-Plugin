@@ -286,7 +286,8 @@ the assistant must:
 
 `psychology_journal_view_memory` is permitted only after the applicable journal consent and the person's explicit
 per-session source choice. No MCP tool grants consent. Consent is completed in the signed-in website
-experience, and a refused or unavailable source must not be retried or bypassed.
+experience; journal grant creation and scope changes are managed there, not through MCP. A refused or unavailable
+source must not be retried or bypassed.
 
 The portable user-need-to-skill-to-MCP flow is published with the plugin itself: start with the
 [session bootstrap](skills/00-session-bootstrap/SKILL.md), use the
@@ -383,6 +384,13 @@ saved/updated time, summary-generation time, the claim's applicability period, a
 actual reviewed selection has one. It also says a current correction settles the current conversation without dating
 when the older claim ended. The contract verifier checks these rules and the Codex mirror. This is prompt guidance;
 it does not establish that a host can access older chats or expose every timestamp.
+
+## Consent-safe tool guidance (source release v1.2.18)
+
+Assessment guidance now references only versioned result-save tools that are present in the authenticated
+tool catalog, and only for user-requested eligible self-reports. MCP guidance no longer suggests creating
+or expanding journal access grants; those choices stay in the signed-in Noesis website. The contract
+verifier guards against the retired actionable tool names returning.
 
 ## Consequential-only follow-up questions (source release v1.2.17)
 

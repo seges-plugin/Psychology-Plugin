@@ -1,7 +1,7 @@
 {
   "id": "psychology",
   "name": "Psychology",
-  "version": "1.2.17",
+  "version": "1.2.18",
   "description": "Distil memories and past chats available to the connected assistant—or selected conversations you choose to share—into goal-relevant strengths and likely answers, then ask only consequential gaps. OpenClaw is an evaluation/setup path, not a supported host. The hosted MCP uses OAuth; stored-data reads require consent and an explicit source choice.",
   "configSchema": {
     "type": "object",
