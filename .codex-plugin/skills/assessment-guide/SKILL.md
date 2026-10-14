@@ -218,7 +218,7 @@ reviewed completed standardized self-report result; an AI-assisted conversationa
 under the two-track contract above. A save requires a separate user request, a fresh
 `psychology_get_consent_status` check, an explanation of the exact destination and fields, and a final confirmation.
 
-- Use `psychology_save_assessment_result` or `psychology_save_assessment_results_batch` only for a reviewed completed result.
+- Use only a versioned result-save tool that is visible in the authenticated `tools/list`, and only for a user-requested, reviewed, eligible completed self-report. Use `psychology_save_standardized_self_report_v2` only when that exact tool is visible. Performance results and conversational estimates are not save-eligible.
 - Use `psychology_get_my_profile` before `psychology_save_my_profile`, after a per-field review and profile-specific
   authorization.
 - For any separately requested save of a time-sensitive, user-reviewed profile claim, inspect the current host's
@@ -232,8 +232,7 @@ under the two-track contract above. A save requires a separate user request, a f
   session-only in this workflow and must not be routed through generic profile saving. If the host schema does
   not expose the temporal field, do not invent it: keep the distinction in the reviewed session brief and explain
   that this save path cannot carry the temporal metadata.
-- Use `psychology_journal_write_entry`, `psychology_journal_grant_access`, or `psychology_journal_revoke_access` only for the exact action
-  the person requested. Revocation requires a known grant identifier and explicit confirmation.
+- Use `psychology_journal_write_entry` only for the exact entry the person requested and after its matching authorization is current. Use `psychology_journal_revoke_access` only for a known grant identifier after explicit confirmation. Do not create or expand journal grants through MCP; direct the person to configure or change grant scope in the signed-in Noesis website. MCP tools cannot grant or expand consent.
 - A failed or expired authorization means reconnect through the host's normal OAuth flow or stop. Never
   retry broadly, request a static credential, or suggest a token workaround.
 
