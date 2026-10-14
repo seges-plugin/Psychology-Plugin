@@ -28,6 +28,7 @@ you select and paste—to distil strengths, patterns, preferences, and likely an
 It shows examples behind candidate insights and asks only about gaps that could change what comes
 next. For ChatGPT, Claude, or Kimi, use the [v2 selected-memory summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt.md).
 For Codex, use the [v3 Codex-selected summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt-v3.md): it processes only excerpts you select or paste in the current Codex task and never searches other tasks or account history. Codex is a source format here, not a claim that Codex is an accepted connected host. For detailed timestamp and selected-import cases, see the [advanced bitemporal prompt](skills/memory-distillation/references/connected-chat-distillation-prompt-advanced.md).
+The quick-start prompt asks no more than three follow-up questions, and only when an answer could change the next step.
 If the connected assistant cannot access older chats, continue with what it can see or bring in a few selected
 conversations; do not upload a full account archive.
 
