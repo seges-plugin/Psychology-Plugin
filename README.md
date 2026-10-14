@@ -383,3 +383,7 @@ saved/updated time, summary-generation time, the claim's applicability period, a
 actual reviewed selection has one. It also says a current correction settles the current conversation without dating
 when the older claim ended. The contract verifier checks these rules and the Codex mirror. This is prompt guidance;
 it does not establish that a host can access older chats or expose every timestamp.
+
+## Consequential-only follow-up questions (source release v1.2.17)
+
+The quick-start now asks no more than three questions, and only when each answer could change the next step. The prompt verifier protects this rule in the canonical and Codex-mirrored prompt. This is a source release; host availability and historical-chat access remain limited to each assistant's actual context.
