@@ -6,7 +6,7 @@
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Plugin source release v1.2.14](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.14) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [Plugin source release v1.2.15](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.15) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
@@ -371,7 +371,7 @@ Codex-only for excerpts selected or pasted from the current task. Native platfor
 and are not converted into Codex v3. The verifier keeps the v2 prompt's canonical digest pinned and checks this
 source-to-schema mapping.
 
-## Current and historical memory clocks (source manifest v1.2.15)
+## Current and historical memory clocks (source release v1.2.15)
 
 The quick-start now names all five relevant clocks for changing claims: source event/statement time, platform memory
 saved/updated time, summary-generation time, the claim's applicability period, and Noesis receipt time only when an
