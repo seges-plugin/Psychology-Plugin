@@ -395,8 +395,19 @@ verifier guards against the retired actionable tool names returning.
 
 ## Canonical OAuth resource contract (source release v1.2.19)
 
-The MCP routing contract now identifies `https://noesis.seges.ai/mcp` as both the user configuration endpoint and the protected MCP resource. The offline verifier asserts that these values stay aligned with the connector manifests. This documentation correction does not change OAuth server behavior or claim host acceptance.
+The canonical MCP route is `https://noesis.seges.ai/mcp` for both client configuration and the protected resource. The offline verifier compares the portable, shared, and Codex connector manifest URLs and checks this public routing statement. This documentation correction does not change OAuth server behavior or claim host acceptance.
 
 ## Consequential-only follow-up questions (source release v1.2.17)
 
 The quick-start now asks no more than three questions, and only when each answer could change the next step. The prompt verifier protects this rule in the canonical and Codex-mirrored prompt. This is a source release; host availability and historical-chat access remain limited to each assistant's actual context.
+
+
+## Distillation workflow audit refresh (2026-10-15)
+
+The current quick-start actively asks ChatGPT, Claude, or Codex to search host-accessible memory/past chats before drafting, call the Noesis guide once, then label direct user-authored quotes separately from summary paraphrases, preserve event/save/generation/applicability/receipt clocks, and ask only consequential gaps. It explicitly says host access is not full-account access and falls back to selected/current-chat context when unavailable. Service regression tests passed, but this is prompt-contract evidence only: live host retrieval, source-message provenance, quote authorship, and model adherence have not been established. Do not describe distillation as complete across all account/host configurations until tested in those hosts.
+
+
+## Plugin prompt contract verification (2026-10-15)
+
+
+pm test passed locally: 94 public files and 30 mirrored skill files verified; the suite includes old-goal/current-correction temporal fixtures and the selected-memory summary negative fixtures. This validates the prompt/manifest contract only. It does not demonstrate that a connected ChatGPT, Claude, or Codex account can retrieve past sessions or that a live model follows the prompt.
