@@ -43,6 +43,12 @@ task and excerpts you select or paste; it cannot search other tasks, saved memor
 history. Ordinary distillation does not list or read stored Noesis records. Reading selected Noesis imports requires
 an explicit request and an exact active grant.
 
+Pasted summaries and platform-memory candidates stay session-only unless you separately choose the site's
+item-by-item selected-context retention flow. Imported candidates never become ordinary profile fields and are
+not saved through the generic profile tools, even when you confirm or edit them. Generic profile saves are only
+for eligible direct statements from a separate current-session interaction that does not carry imported text as
+evidence.
+
 Psychology uses the memories and past chats your assistant can actually access, plus context you choose to share,
 to surface strengths, patterns, and candidate answers for your goal. It shows the examples behind suggestions and
 asks only about gaps that could change what comes next. You review each self-report response; the assistant says
