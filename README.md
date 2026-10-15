@@ -365,7 +365,7 @@ https://noesis.seges.ai/support/.
 
 ## Local contract re-verification (2026-10-16)
 
-`npm test` passed on the current local working tree: 90 public files and 30 mirrored skill files, including the historical-goal/current-correction fixture and 43 negative import fixtures. The contract check now keeps short starter prompts separate from detailed skill behavior. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive. These source changes are not yet pushed or released.
+`npm test` passes on source commit `3f0a1df4ae5dc798399300e19a79cf022bd01457` on `seges-plugin/Psychology-Plugin` main; GitHub CI run `38798554114` also passed. The contract suite covers 90 public files, 30 mirrored skill files, the historical-goal/current-correction fixture, and 43 negative import fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive. Manifest v1.2.20 is on main but has no tag or release; v1.2.19 remains the latest published release.
 
 ## Unreleased source package v1.2.20 (2026-10-15)
 
