@@ -9,8 +9,8 @@
 !.github/workflows/
 .github/workflows/*
 !.github/workflows/validate.yml
-scripts/*
-!scripts/verify-plugin-contract.mjs
+scripts/
+fixtures/
 HOST-ACCEPTANCE-RECEIPT-TEMPLATE.md
 OPENAI-PLUGIN-PACKAGING.md
 OPENAI-PLUGIN-TEST-CASES.md

@@ -23,6 +23,6 @@
   ],
   "scripts": {
     "test": "npm run verify",
-    "verify": "node scripts/verify-plugin-contract.mjs"
+    "verify": "node tools/verify-plugin-contract.mjs"
   }
 }
