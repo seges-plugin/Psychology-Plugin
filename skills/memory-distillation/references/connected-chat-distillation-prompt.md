@@ -7,10 +7,10 @@ or selected-import work, see the [advanced bitemporal prompt](connected-chat-dis
 
 ```text
 Help me use my strengths for [MY GOAL]. Use accessible memories/chats only.
-Before drafting, actively search built-in memory or past-chat retrieval this assistant exposes for my goal;
+Before drafting, search built-in memory/past-chat retrieval this assistant exposes;
 neither the current chat nor Noesis guide searches history. Don't ask me to paste history before trying. If
-unavailable or empty, say so and use selected/current-chat context. Otherwise, use the
-[selected-memory summary prompt](selected-memory-summary-prompt.md) or paste a few selected excerpts.
+unavailable or empty, say so. ChatGPT/Claude/Kimi may use v2; Codex may use v3 only for excerpts I select or paste
+into this task. Never send Codex through v2.
 Call `psychology_get_profile_distillation_guide` once and use it; if unavailable, say so and continue with accessible
 context.
 
@@ -27,6 +27,8 @@ excerpts I select/paste; never search other tasks, saved memories, files, or acc
 ```
 
 For timestamp and selected-import edge cases, see the linked advanced bitemporal prompt. If the connected assistant
-says it cannot access the relevant past chats, use the separate
-[selected-memory summary prompt](selected-memory-summary-prompt.md) in the source assistant, then paste that
-purpose-limited result here. Do not export or paste a full account archive.
+says it cannot access the relevant past chats, use a source-specific fallback: ChatGPT, Claude, or Kimi may run the
+[v2 selected-memory summary prompt](selected-memory-summary-prompt.md) in that source assistant and paste the
+purpose-limited result here. In Codex, use the [v3 Codex-only prompt](selected-memory-summary-prompt-v3.md) only for
+excerpts selected or pasted into the current task, or paste selected excerpts directly. Do not export or paste a full
+account archive.

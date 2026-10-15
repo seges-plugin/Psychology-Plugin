@@ -70,6 +70,8 @@ prompt or selected conversations that I choose to share; never ask me to upload 
 access to another account's archive.
 ```
 
-If the connected assistant says it cannot access the relevant past chats, use the separate
-[selected-memory summary prompt](selected-memory-summary-prompt.md) in the source assistant, then paste that
-purpose-limited result here. Do not export or paste a full account archive.
+If the connected assistant says it cannot access the relevant past chats, use a source-specific fallback:
+ChatGPT, Claude, or Kimi may run the [v2 selected-memory summary prompt](selected-memory-summary-prompt.md) in that
+source assistant and paste the purpose-limited result here. In Codex, use the [v3 Codex-only prompt]
+(selected-memory-summary-prompt-v3.md) only for excerpts selected or pasted into the current task, or paste selected
+excerpts directly. Do not export or paste a full account archive.
