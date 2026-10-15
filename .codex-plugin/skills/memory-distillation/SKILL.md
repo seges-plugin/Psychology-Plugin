@@ -264,7 +264,7 @@ brief and cannot be routed into another field to bypass that boundary.
 
 ## Step 5: Read selected candidates only through a current bounded grant
 
-In a later session, use the dedicated selected-import-context read tool only when all of the following are true:
+In any session, use the dedicated selected-import-context read tool only when all of the following are true:
 
 1. The exact tool is visible in the current host; this portable skill does not claim a name that the live catalog
    has not released, and an older catalog does not imply it exists.
