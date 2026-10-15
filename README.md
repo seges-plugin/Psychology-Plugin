@@ -32,6 +32,7 @@ For Codex, use the [v3 Codex-selected summary prompt](skills/memory-distillation
 The quick-start prompt asks no more than three follow-up questions, and only when an answer could change the next step.
 If the connected assistant cannot access older chats or finds no relevant past chats, it says so before
 continuing with the context already visible or a few conversations you select; do not upload a full account archive.
+Codex uses its v3 selected-excerpt prompt for current-task material; ChatGPT, Claude, and Kimi use v2. The v3 contract rejects a claimed Codex memory saved/updated timestamp because this workflow has no separate Codex memory-record clock.
 
 For changing goals, Psychology separates when a statement happened, when it was saved, and when it applied. It
 uses your current corrections and does not guess when an older goal ended. See the advanced prompt for detailed
