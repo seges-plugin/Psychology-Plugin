@@ -6,7 +6,7 @@
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Plugin source release v1.2.19](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.19) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [Latest published plugin source release v1.2.19](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.19) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
@@ -353,9 +353,13 @@ https://noesis.seges.ai/support/.
 
 [MIT](LICENSE)
 
-## Local contract re-verification (2026-10-13)
+## Local contract re-verification (2026-10-15)
 
-`npm test` passed on the current `main` checkout: 90 public files and 28 mirrored skill files, including the historical-goal/current-correction fixture and 43 negative import fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive.
+`npm test` passed on the current `main` checkout: 94 public files and 30 mirrored skill files, including the historical-goal/current-correction fixture and 43 negative import fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive.
+
+## Unreleased source package v1.2.20 (2026-10-15)
+
+The repository manifests declare v1.2.20, but no v1.2.20 tag or GitHub source release exists yet; v1.2.19 remains the latest published release. This source version adds memory-first retrieval instructions for host-accessible ChatGPT and Claude memories/past chats, limits Codex distillation to the current task and user-selected or pasted excerpts, and tightens the corresponding prompt/schema contract checks. These are source-package changes, not proof that any host can retrieve historical sessions or that a live model follows the prompt. Coordinate the profile-write instructions and exact runtime tool schemas with the service-system owner before publishing a release; this note does not claim that the in-progress owner-review flow is deployed or accepted by a host.
 
 ## Explicit selected-context distillation (2026-10-13)
 
