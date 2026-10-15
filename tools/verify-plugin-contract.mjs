@@ -272,31 +272,20 @@ if (!routingReadme.includes(canonicalMcpResource)) {
 if (!Array.isArray(codexPlugin.interface?.defaultPrompt) || codexPlugin.interface.defaultPrompt.length > 3) {
   fail(".codex-plugin/plugin.json: defaultPrompt must contain at most three entries");
 }
-if (!codexPlugin.interface.defaultPrompt?.[0]?.includes("Psychology MCP is connected")) {
-  fail(".codex-plugin/plugin.json: first default prompt must make MCP connection checking the entry point");
-}
-const codexDistillationPrompt = codexPlugin.interface.defaultPrompt?.[1] ?? "";
-for (const phrase of [
-  "Use relevant context this assistant can actually access",
-  "any purpose-limited summary or selected conversations I choose to share from another AI",
-  "Codex-specific boundary: use only this current task and excerpts I explicitly select or paste into it",
-  "never search other tasks, saved memories, workspace files, or account history",
-  "ordinary first-use distillation, do not call other Noesis tools, list/read stored Noesis records",
-  "ask only consequential gaps",
-  "Never ask me to upload a full account archive",
+for (const [path, prompts] of [
+  [".codex-plugin/plugin.json", codexPlugin.interface.defaultPrompt],
+  ["plugin.json", portableOpenAiInterface?.defaultPrompt],
 ]) {
-  if (!codexDistillationPrompt.toLowerCase().includes(phrase.toLowerCase())) {
-    fail(`.codex-plugin/plugin.json: distillation prompt must preserve the memory-first access boundary (${phrase})`);
+  if (!Array.isArray(prompts) || prompts.length !== 3) {
+    fail(`${path}: provide three distinct, task-focused starter prompts`);
+    continue;
   }
-}
-const codexSavedContextPrompt = codexPlugin.interface.defaultPrompt?.[2] ?? "";
-for (const phrase of [
-  "Only if I explicitly ask to use saved Noesis context",
-  "wait for my selection, then read only that grant's exact scope",
-  "Never list or read saved Noesis context during ordinary first-use distillation",
-]) {
-  if (!codexSavedContextPrompt.toLowerCase().includes(phrase.toLowerCase())) {
-    fail(`.codex-plugin/plugin.json: saved Noesis context must be explicit, scoped, and opt-in (${phrase})`);
+  if (prompts.some((prompt) => typeof prompt !== "string" || prompt.length > 128 || prompt.startsWith("@"))) {
+    fail(`${path}: starter prompts must be plain user requests of 128 characters or fewer, without app mentions`);
+  }
+  if (new Set(prompts).size !== prompts.length) fail(`${path}: starter prompts must be distinct`);
+  if (!prompts.some((prompt) => /memories|memory|AI chats|chat history/i.test(prompt))) {
+    fail(`${path}: starter prompts must surface the memory-first value`);
   }
 }
 
@@ -614,9 +603,10 @@ for (const phrase of [
 
 for (const [path, body, required] of [
   ["skills/00-session-bootstrap/SKILL.md", sessionBootstrap, [
-    "first substantive content",
-    "Psychology MCP is not connected in this Codex task yet",
-    "Do not start the session-only alternative unless the person explicitly chooses it",
+    "If the person explicitly asks to distil memories, past chats, or material they selected or pasted for a session-only result",
+    "route directly to `skills/memory-distillation/SKILL.md`",
+    "Do not ask them to choose that already-requested path or make MCP setup a prerequisite",
+    "Offer MCP setup only when they ask to use Noesis tools or account-backed data",
     "Do not send a person who is currently using Codex to ChatGPT Developer mode",
     "per-item platform-record time is also unknown",
     "source event/statement time, per-item memory saved/updated time, summary-generation time, claim valid-time bounds",
@@ -627,11 +617,11 @@ for (const [path, body, required] of [
   ["skills/psychology/SKILL.md", psychologyRouter, [
     "Mandatory front door for every @Psychology request",
     "No `psychology_...` tool is visible",
-    "first substantive reply must be exactly this short connection interstitial",
-    "Psychology MCP is not connected in this Codex task yet",
-    "do not emit a generic preface or a reflection exercise before it",
-    "Stop there until they choose",
-    "Do not start an exercise just to be helpful",
+    "If the person explicitly asks to distil memories, past chats, or selected/pasted material for this session",
+    "route directly to `../memory-distillation/SKILL.md`",
+    "do not make connection or another choice a prerequisite",
+    "Offer MCP setup only when the person asks to use Noesis tools or account-backed data",
+    "For any other tool-dependent request, the first substantive reply must be this short connection interstitial",
     "No route may ask for a password, client ID, redirect URI, token, header, authorization code, or callback URL",
   ]],
   ["skills/onboarding/SKILL.md", onboarding, [
@@ -837,76 +827,37 @@ for (const phrase of [
     fail(`${connectedChatPromptPath}: missing concise first-session invariant: ${phrase}`);
   }
 }
-for (const [path, prompt] of [
-  ["plugin.json", portableOpenAiInterface?.defaultPrompt?.[0] ?? ""],
+// defaultPrompt is a short, user-facing launcher. Keep behavioral policy in the
+// canonical distillation prompt and skills, where it can be reviewed and tested.
+for (const [path, body, required] of [
+  ["skills/memory-distillation/references/connected-chat-distillation-prompt.md", connectedChatPromptCompact, [
+    "direct statements from inferred candidates",
+    "keep candidates unconfirmed until I confirm or edit",
+    "current corrections first",
+  ]],
+  ["skills/memory-distillation/SKILL.md", memoryDistillation, [
+    "directly supported facts",
+    "candidate_unverified",
+    "A current-session correction can confirm the current claim for this conversation",
+  ]],
 ]) {
-  for (const phrase of [
-    "psychology_get_profile_distillation_guide",
-    "continue with accessible context",
-    "ask only consequential gaps",
-    "cite the accessible source platform and source type",
-    "Label each direct statement separately from each AI-inferred candidate",
-    "an inferred candidate is not my answer until I confirm or edit it",
-    "mark unavailable source references or dates as unknown",
-    "do not call other Noesis tools, save profile data, or claim permission/data checks",
-    "Do not offer persistence unless I explicitly ask",
-    "If I explicitly ask to use my selected Noesis imports, first call psychology_get_consent_status",
-    "If conversation_import_authorized is not true, stop and ask me to enable that purpose in Noesis",
-    "call psychology_list_my_selected_context_grants and show only the active grants it returns for this connection",
-    "If the grant-list tool is unavailable or fails, stop; do not read imported context",
-    "Ask me to select one of those exact returned grants before reading",
-    "After I select a returned grant, call psychology_get_my_selected_import_context",
-    "exactly its purpose as agent_purpose, categories as category_filter, date_range_start and date_range_end as date_from and date_to, and time_basis as time_basis",
-    "Never invent, alter, combine, broaden, or retry a grant scope",
-    "If the grant expires, consent is withdrawn, or the read is rejected, stop and ask me to configure a new exact grant",
-    "This reads only selected entries for this current connection, never a full account archive",
-    "show me the exact fields, obtain my final confirmation",
-  ]) {
-    if (!prompt.toLowerCase().includes(phrase.toLowerCase())) {
-      fail(`${path}: memory-first default prompt must preserve guide-call and fallback behavior (${phrase})`);
-    }
-  }
-  for (const phrase of [
-    "Apply explicit current-session corrections before deciding whether an old claim remains unresolved",
-    "a direct correction resolves it for this conversation",
-    "do not repeat the question or recommend a direction based on the superseded claim",
-    "only if its current status remains unresolved after applying current-session evidence",
-  ]) {
-    if (!prompt.toLowerCase().includes(phrase.toLowerCase())) {
-      fail(`${path}: default prompt must apply current-session corrections before clarifying old goals (${phrase})`);
+  for (const phrase of required) {
+    if (!body.toLowerCase().includes(phrase.toLowerCase())) {
+      fail(`${path}: canonical memory-first behavior is missing (${phrase})`);
     }
   }
 }
-const codexDefaultPrompt = codexPlugin.interface?.defaultPrompt?.[1] ?? "";
-for (const phrase of [
-  "Reply in the language I used for my request",
-  "Codex-specific boundary: use only this current task and excerpts I explicitly select or paste into it",
-  "never search other tasks, saved memories, workspace files, or account history",
-  "ordinary first-use distillation, do not call other Noesis tools, list/read stored Noesis records, save profile data",
-  "Apply explicit current-session corrections first",
-  "Label direct statements separately from AI-inferred candidates; inferred candidates stay unconfirmed until I confirm or edit them",
-]) {
-  if (!codexDefaultPrompt.toLowerCase().includes(phrase.toLowerCase())) {
-    fail(`.codex-plugin/plugin.json: Codex default prompt must stay within current-task context and preserve language/time guards (${phrase})`);
-  }
+if (!connectedChatPromptCompact.includes("Ask at most three consequential questions") ||
+    !memoryDistillation.includes("Ask no more than three follow-up questions") ||
+    !memoryDistillation.includes("only when the answer could change the next action")) {
+  fail("memory-first flow must ask at most three consequential questions, and only when they change the next action");
 }
-for (const phrase of [
-  "Only if I explicitly ask to use saved Noesis context",
-  "wait for my selection, then read only that grant's exact scope",
-  "Never list or read saved Noesis context during ordinary first-use distillation",
+for (const [path, prompts] of [
+  ["plugin.json", portableOpenAiInterface?.defaultPrompt],
+  [".codex-plugin/plugin.json", codexPlugin.interface?.defaultPrompt],
 ]) {
-  if (!codexSavedContextPrompt.toLowerCase().includes(phrase.toLowerCase())) {
-    fail(`.codex-plugin/plugin.json: saved Noesis context must remain explicit, scoped, and opt-in (${phrase})`);
-  }
-}
-for (const phrase of [
-  "Before drafting, actively use any built-in memory or past-chat retrieval this assistant exposes",
-  "do not treat the current chat or Noesis guide as a search of my history",
-  "Do not ask me to paste history before trying available retrieval",
-  "if none is exposed or it finds nothing relevant, say so briefly",
-]) {
-  if (!portableOpenAiInterface?.defaultPrompt?.[0]?.toLowerCase().includes(phrase.toLowerCase())) {
-    fail(`plugin.json: ChatGPT default prompt must attempt host history retrieval before fallback (${phrase})`);
+  if (!Array.isArray(prompts) || prompts.length !== 3 || prompts.some((prompt) => prompt.length > 128)) {
+    fail(`${path}: user-facing starters must remain three short prompts; detailed behavior belongs in skills`);
   }
 }
 

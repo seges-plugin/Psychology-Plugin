@@ -18,9 +18,12 @@ Distil the memories and past chats you choose, then reflect on what matters with
 
 **AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
 
-Connect Psychology in a chat with callable plugin/MCP tools, then paste the
-[quick-start prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md).
-Jump to [Claude.ai setup](#add-to-claude-ai) or [ChatGPT connection setup (private evaluation)](#use-psychology-in-chatgpt).
+Run the [quick-start prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md)
+in the AI chat you already use. It asks the assistant to try memory or past-chat retrieval that the current
+host actually exposes; if history is unavailable, it can continue with the current chat or excerpts you
+choose. A session-only draft does not require an MCP connection.
+Connect Psychology when you want Noesis tools or access to selected Noesis-stored context. Jump to
+[Claude.ai setup](#add-to-claude-ai) or [ChatGPT connection setup (private evaluation)](#use-psychology-in-chatgpt).
 The current published support record covers Claude.ai web and desktop; ChatGPT custom connectors and Codex
 remain evaluation/setup paths.
 It asks the assistant to first use any built-in memory or past-chat retrieval available for your goal,
@@ -130,10 +133,11 @@ credentials, availability, scope, jurisdiction, and suitability before relying o
 
 Installing `Psychology` in Codex loads its portable workflow and safety skills. It does **not** by itself
 complete the separate OAuth connection to the hosted Noesis MCP. A first-use response must make that distinction
-visible: if the current task has no callable `psychology_...` tool, it must offer secure Codex connection before
-offering a session-only reflection. It must not send a Codex user to ChatGPT Developer mode or a Claude setup page.
-The package's `skills/psychology/SKILL.md` is the mandatory `@Psychology` front door, so this connection verdict
-is not left to a later assessment or coaching skill.
+visible. If a person asks to distil memories or past chats, it can act on context available in the current task
+without MCP; the result stays session-only and it must say when older history is unavailable. Offer secure Codex
+connection when they ask for Noesis tools or account-backed data. It must not send a Codex user to ChatGPT
+Developer mode or a Claude setup page. The package's `skills/psychology/SKILL.md` is the mandatory `@Psychology`
+front door, so this distinction is not left to a later assessment or coaching skill.
 
 If Codex already lists a Noesis MCP server, select its normal **Sign in** or **Reconnect** action instead of
 creating another entry. If it was configured with a legacy protected-resource value, reconnect or replace that
@@ -359,9 +363,9 @@ https://noesis.seges.ai/support/.
 
 [MIT](LICENSE)
 
-## Local contract re-verification (2026-10-15)
+## Local contract re-verification (2026-10-16)
 
-`npm test` passed on the current `main` checkout: 94 public files and 30 mirrored skill files, including the historical-goal/current-correction fixture and 43 negative import fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive.
+`npm test` passed on the current local working tree: 90 public files and 30 mirrored skill files, including the historical-goal/current-correction fixture and 43 negative import fixtures. The contract check now keeps short starter prompts separate from detailed skill behavior. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive. These source changes are not yet pushed or released.
 
 ## Unreleased source package v1.2.20 (2026-10-15)
 

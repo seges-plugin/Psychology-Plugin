@@ -26,10 +26,14 @@ neither one proves the other succeeded, and neither authorizes an account-data r
 ### Codex desktop and CLI
 
 When the person is in Codex, do not redirect them to ChatGPT Developer mode, ChatGPT Plugin Management, or
-a Claude connector page. First inspect the current task's tool list. If no `psychology_...` tool is visible,
-say that the plugin is installed but the MCP is not connected in this task, then offer to set it up now.
-Do not begin a generic reflection exercise until the person either chooses the secure connection path or
-explicitly chooses a session-only reflection.
+a Claude connector page. First inspect the current task's tool list. If no `psychology_...` tool is visible
+and the person explicitly asks to distil memory or past-chat context for this session, use
+`skills/memory-distillation/SKILL.md` immediately with context the current task can actually access. Keep it
+session-only and disclose any unavailable history; do not require MCP setup or another choice.
+
+For tool-dependent requests without a callable `psychology_...` tool, say the MCP is not connected in this
+task and offer the secure setup path. Do not claim an account read or begin a tool-dependent exercise before
+the connector is available.
 
 The deterministic Codex setup path uses no copied credential. If an existing Noesis server already appears
 in Codex MCP settings, reconnect that existing server rather than creating a duplicate. Otherwise, after the
