@@ -71,22 +71,31 @@ presence of one as proof of the other.
 
 - If at least one `psychology_...` tool is visible, continue with the account-context check below.
 - If no `psychology_...` tool is visible at all, the Psychology connector is not set up in this session.
-  This verdict must be the **first substantive content** of the response (after any urgent-safety routing),
-  before a generic exercise, assessment recommendation, or long context brief. Say that the portable
-  Psychology plugin is loaded but its MCP tools are not callable in this Codex task; never imply that a
-  Psychology tool ran or that account data was read. Tool-dependent assessment, scoring, account-backed
-  interpretation, EMA, and account persistence must stop and route to `skills/onboarding/SKILL.md`.
+  Never imply that a Psychology tool ran or that account data was read. Tool-dependent assessment,
+  scoring, account-backed interpretation, EMA, and account persistence must stop and route to
+  `skills/onboarding/SKILL.md`.
+
+  If the person explicitly asks to distil memories, past chats, or material they selected or pasted for a
+  session-only result, route directly to `skills/memory-distillation/SKILL.md` and act on context the current
+  host can actually access. Do not ask them to choose that already-requested path or make MCP setup a
+  prerequisite. The result remains session-only; disclose unavailable history and continue with the visible
+  context or selected excerpts. Offer MCP setup only when they ask to use Noesis tools or account-backed data.
+
+  For other tool-dependent requests, this verdict must be the **first substantive content** of the response
+  (after any urgent-safety routing), before a generic exercise, assessment recommendation, or long context brief.
+  Say that the portable Psychology plugin is loaded but its MCP tools are not callable in this Codex task.
+  Route to `skills/onboarding/SKILL.md` for the secure connection flow.
 
   Use this short, action-first interstitial:
 
   > **Psychology MCP is not connected in this Codex task yet.** The plugin guidance is available, but no
   > `psychology_*` tool can be called, so I cannot use Noesis instruments, consent, or saved sources here.
   > Would you like to connect it now? The secure Codex flow opens an official Noesis browser sign-in; it
-  > does not ask you to paste a password, token, header, or authorization URL. If you prefer not to connect,
-  > say **session-only reflection** and I can help using only what you write in this chat.
+  > does not ask you to paste a password, token, header, or authorization URL. Session-only memory distillation
+  > can still use context this host can access or material you choose to paste.
 
-  Do not start the session-only alternative unless the person explicitly chooses it. Do not send a person
-  who is currently using Codex to ChatGPT Developer mode, ChatGPT Plugin Management, or a Claude setup flow.
+  Do not send a person who is currently using Codex to ChatGPT Developer mode, ChatGPT Plugin Management,
+  or a Claude setup flow.
 - Connector-free coaching may continue only as a clearly labelled **session-only** conversation using
   material already visible here. The same narrow exception applies to
   `skills/intimacy-self-understanding/SKILL.md`, under its adult-only, user-initiated, no-persistence
