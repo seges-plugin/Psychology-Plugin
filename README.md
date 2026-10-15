@@ -365,7 +365,7 @@ https://noesis.seges.ai/support/.
 
 ## Local contract re-verification (2026-10-16)
 
-`npm test` passes on source commit `3f0a1df4ae5dc798399300e19a79cf022bd01457` on `seges-plugin/Psychology-Plugin` main; GitHub CI run `38798554114` also passed. The contract suite covers 90 public files, 30 mirrored skill files, the historical-goal/current-correction fixture, and 43 negative import fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive. Manifest v1.2.20 is on main but has no tag or release; v1.2.19 remains the latest published release.
+`node tools/verify-plugin-contract.mjs --offline` passes on source commit `c00ae38fa485a6f12597f6e4933a9909edd527c5` on `seges-plugin/Psychology-Plugin` main; GitHub CI run `38819762283` also passed. The contract suite covers 90 public files and 30 mirrored skill files, including selected-context access gates and negative fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive. Manifest v1.2.20 is on main but has no tag or release; v1.2.19 remains the latest published release.
 
 ## Unreleased source package v1.2.20 (2026-10-15)
 
@@ -374,6 +374,10 @@ The repository manifests declare v1.2.20, but no v1.2.20 tag or GitHub source re
 ## Explicit selected-context distillation (2026-10-13)
 
 The v1.2.13 source prompt keeps ordinary distillation limited to material available in the current assistant conversation. Only when the user directly asks to use selected Noesis imports does it check current consent, list metadata for active grants tied to that exact OAuth connection, show the scope and ask the user to choose one, and then read only with those returned purpose, categories, date bounds, and time basis. Missing, revoked, expired, or mismatched grants stop the import flow. This does not provide full-account archive access. The prompt calls selected material a purpose-limited summary, not an account export, and caps fallback follow-up questions at three consequential gaps. The production catalog exposes the matching `psychology_list_my_selected_context_grants` tool; `npm test` passes against the live 34-tool catalog. The GitHub release is source distribution and does not claim official ChatGPT or Claude marketplace acceptance.
+
+## Selected-context session timing alignment (2026-10-16)
+
+The memory-distillation skill and its `.codex-plugin` mirror now allow the bounded selected-context read in any session only after the user explicitly asks to use retained candidates, the current consent and exact grant pass backend checks, and the user selects the matching scope. Session start never loads retained candidates automatically. This aligns the plugin wording with the service guide. Offline contract verification and GitHub CI passed; this source-level result is not live host acceptance or a proof of archive access. The root `.gitignore` patterns for `scripts/` and `fixtures/` are anchored so they cannot hide nested package helpers.
 
 ## Candidate evidence citations (source release v1.2.14)
 
