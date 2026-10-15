@@ -38,6 +38,11 @@ For changing goals, Psychology separates when a statement happened, when it was 
 uses your current corrections and does not guess when an older goal ended. See the advanced prompt for detailed
 timestamp handling.
 
+The copyable prompt and Codex's first-use default reply in the language of the request. Codex uses only the current
+task and excerpts you select or paste; it cannot search other tasks, saved memories, workspace files, or account
+history. Ordinary distillation does not list or read stored Noesis records. Reading selected Noesis imports requires
+an explicit request and an exact active grant.
+
 Psychology uses the memories and past chats your assistant can actually access, plus context you choose to share,
 to surface strengths, patterns, and candidate answers for your goal. It shows the examples behind suggestions and
 asks only about gaps that could change what comes next. You review each self-report response; the assistant says
