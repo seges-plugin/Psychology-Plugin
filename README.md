@@ -6,7 +6,7 @@
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Latest published plugin source release v1.2.19](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.19) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [Latest published plugin source release v1.2.20](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.20) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
@@ -365,11 +365,11 @@ https://noesis.seges.ai/support/.
 
 ## Local contract re-verification (2026-10-16)
 
-`node tools/verify-plugin-contract.mjs --offline` passes on source commit `c00ae38fa485a6f12597f6e4933a9909edd527c5` on `seges-plugin/Psychology-Plugin` main; GitHub CI run `38819762283` also passed. The contract suite covers 90 public files and 30 mirrored skill files, including selected-context access gates and negative fixtures. This verifies the portable package contract only; it does not establish that ChatGPT, Claude, or another host has refreshed its MCP schema or can access a user's full chat archive. Manifest v1.2.20 is on main but has no tag or release; v1.2.19 remains the latest published release.
+`npm test` passes the portable contract and verifies the current live catalog: 90 public files, 30 mirrored skills, 43 negative selected-summary fixtures, and 34 prefixed tools plus 18 prompts. This checks the source package and the catalog only; it does not establish that every ChatGPT, Claude, or other host has refreshed its MCP schema or can access a user's full chat archive.
 
-## Unreleased source package v1.2.20 (2026-10-15)
+## Source package v1.2.20 (2026-10-16)
 
-The repository manifests declare v1.2.20, but no v1.2.20 tag or GitHub source release exists yet; v1.2.19 remains the latest published release. This source version adds memory-first retrieval instructions for host-accessible ChatGPT and Claude memories/past chats, limits Codex distillation to the current task and user-selected or pasted excerpts, and tightens the corresponding prompt/schema contract checks. These are source-package changes, not proof that any host can retrieve historical sessions or that a live model follows the prompt. Coordinate the profile-write instructions and exact runtime tool schemas with the service-system owner before publishing a release; this note does not claim that the in-progress owner-review flow is deployed or accepted by a host.
+GitHub source release `v1.2.20` adds memory-first retrieval instructions for host-accessible ChatGPT and Claude memories/past chats, limits Codex distillation to the current task and user-selected or pasted excerpts, and tightens the corresponding prompt/schema contract checks. The live runtime catalog was checked at release time and retains its existing 34 tools and 18 prompts. This source package does not prove that any host can retrieve historical sessions, that a live model follows the prompt, or that the plugin is listed in an official marketplace.
 
 ## Explicit selected-context distillation (2026-10-13)
 
