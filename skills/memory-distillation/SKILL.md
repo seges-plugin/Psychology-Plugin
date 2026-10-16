@@ -96,6 +96,21 @@ Offer only the routes that the current environment can honestly support:
 The session-only route must remain available without a connector. Never ask the person to export or upload an
 entire account archive; use accessible context and user-selected summaries or conversation excerpts.
 
+### Optional qualitative profile-candidate preview
+
+Ordinary distillation stays in the current conversation and does not call profile tools. Only when the person
+explicitly asks to prepare qualitative profile/context candidates, check whether
+`psychology_prepare_profile_candidate_preview` is callable. If present, use it to preview only candidates grounded
+in a verbatim user-authored quote and an available source reference; identify each source as
+`current_session_user_supplied` or `user_selected_source` accurately. Do not turn an assistant paraphrase, inferred
+trait, or unsupported memory into a quote or source reference. Include event-time bounds only when the person
+reported them; otherwise use unknown precision with null bounds. Set `persist` and `owner_confirmed` to literal
+`false`, and each candidate to `pending_user_review`. Present the returned session-only preview and let the person
+confirm, revise, reject, or choose not to save. This tool does not save a profile, and persistence requires a
+separate owner-reviewed workflow and its applicable authorization. If the tool is absent or evidence cannot meet
+its contract, keep the draft in the conversation and explain the limitation briefly. Never assume that this staging
+tool exists in production. Never call it during routine memory distillation.
+
 The ChatGPT/Claude/Kimi selected-memory prompt emits `noesis.platform-memory-summary.v2` JSONL; the separate,
 Codex-only prompt emits `noesis.platform-memory-summary.v3` JSONL. Accept only a complete part containing one exact
 `export_header`, zero to 100 `memory_item` records, and one exact `export_completion`. Reject the entire part

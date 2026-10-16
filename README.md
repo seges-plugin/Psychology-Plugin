@@ -371,6 +371,10 @@ This candidate aligns the OpenAI portable manifest and Codex overlay with the cu
 
 `npm test` passes the portable contract and verifies the current live catalog: 62 public files, 14 root skills, 43 negative selected-summary fixtures, and 34 prefixed tools plus 18 prompts. This checks the source package and the catalog only; it does not establish that every ChatGPT, Claude, or other host has refreshed its MCP schema or can access a user's full chat archive.
 
+## Source package v1.2.22 candidate (2026-10-16)
+
+The distillation workflow now uses `psychology_prepare_profile_candidate_preview` only when a person explicitly asks to prepare qualitative profile/context candidates and the connected host reports that tool as callable. The preview requires verbatim user-authored evidence, leaves event time unknown unless supplied, keeps candidates pending review, and sets persistence and owner confirmation to false. Routine distillation remains session-only and does not invoke profile tools. This preserves compatibility with production catalogs where the staging-only preview tool is absent. The source contract checks these conditions; they do not prove a host has refreshed its catalog or that the tool is available in production.
+
 ## Source package v1.2.20 (2026-10-16)
 
 GitHub source release `v1.2.20` adds memory-first retrieval instructions for host-accessible ChatGPT and Claude memories/past chats, limits Codex distillation to the current task and user-selected or pasted excerpts, and tightens the corresponding prompt/schema contract checks. The live runtime catalog was checked at release time and retains its existing 34 tools and 18 prompts. This source package does not prove that any host can retrieve historical sessions, that a live model follows the prompt, or that the plugin is listed in an official marketplace.
