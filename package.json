@@ -9,6 +9,9 @@
     "url": "https://github.com/seges-plugin/Psychology-Plugin"
   },
   "files": [
+    "plugin.json",
+    "mcp.json",
+    ".codex-plugin/plugin.json",
     "openclaw.plugin.json",
     "skills",
     "README.md",

@@ -158,8 +158,66 @@ if (codexPlugin.mcpServers !== "./mcp.json") {
   }
 }
 const portableOpenAiInterface = portablePlugin.extensions?.["com.openai"]?.interface;
+const codexOpenAiInterface = codexPlugin.interface;
 if (portableOpenAiInterface?.displayName !== "Psychology") {
   fail("plugin.json: OpenAI extension must provide the Psychology interface metadata");
+}
+for (const [manifestPath, openAiInterface] of [
+  ["plugin.json", portableOpenAiInterface],
+  [".codex-plugin/plugin.json", codexOpenAiInterface],
+]) {
+  if (typeof openAiInterface?.shortDescription !== "string" || openAiInterface.shortDescription.trim().length === 0 || openAiInterface.shortDescription.length > 30) {
+    fail(`${manifestPath}: OpenAI shortDescription must be non-empty and at most 30 characters`);
+  }
+  if (openAiInterface?.category !== "Productivity") {
+    fail(`${manifestPath}: OpenAI category must exactly match the canonical Productivity category`);
+  }
+}
+const portableOpenAiReview = portablePlugin.extensions?.["com.openai"]?.review;
+const portablePositiveCases = portableOpenAiReview?.test_cases?.positive;
+const portableNegativeCases = portableOpenAiReview?.test_cases?.negative;
+if (!Array.isArray(portablePositiveCases) || portablePositiveCases.length !== 5) {
+  fail("plugin.json: OpenAI remote MCP review must define exactly five positive test cases");
+} else {
+  for (const [index, testCase] of portablePositiveCases.entries()) {
+    for (const field of ["description", "prompt", "tools_triggered", "expected_behavior"]) {
+      if (typeof testCase?.[field] !== "string" || testCase[field].trim().length === 0) {
+        fail(`plugin.json: positive review case ${index + 1} requires non-empty ${field}`);
+      }
+    }
+    if (typeof testCase?.tools_triggered === "string" && !testCase.tools_triggered.split(",").every((name) => /^psychology_[a-z0-9_]+$/.test(name.trim()))) {
+      fail(`plugin.json: positive review case ${index + 1} tools_triggered must contain comma-separated psychology tool names`);
+    }
+  }
+}
+if (!Array.isArray(portableNegativeCases) || portableNegativeCases.length !== 3) {
+  fail("plugin.json: OpenAI remote MCP review must define exactly three negative test cases");
+} else {
+  for (const [index, testCase] of portableNegativeCases.entries()) {
+    for (const field of ["description", "prompt"]) {
+      if (typeof testCase?.[field] !== "string" || testCase[field].trim().length === 0) {
+        fail(`plugin.json: negative review case ${index + 1} requires non-empty ${field}`);
+      }
+    }
+  }
+}
+const portableReleaseNotes = portablePlugin.extensions?.["com.openai"]?.publication?.release_notes ?? "";
+if (!portableReleaseNotes.includes(`v${portablePlugin.version}`)) {
+  fail("plugin.json: OpenAI publication release_notes must identify the current package version");
+}
+const packageFiles = packageJson.files;
+for (const requiredPackagePath of ["plugin.json", "mcp.json", ".codex-plugin/plugin.json"]) {
+  if (!Array.isArray(packageFiles) || !packageFiles.includes(requiredPackagePath) || !existsSync(join(root, requiredPackagePath))) {
+    fail(`package.json: files must include the existing ${requiredPackagePath} manifest path`);
+  }
+}
+for (const [field, assetPath] of [
+  ["composerIcon", portableOpenAiInterface?.composerIcon],
+  ["logo", portableOpenAiInterface?.logo],
+]) {
+  if (typeof assetPath !== "string" || assetPath.startsWith("/") || !existsSync(join(root, assetPath))) {
+    fail(`plugin.json: OpenAI ${field} must resolve to an existing package asset`);
+  }
 }
 const portableOpenAiDescription = portableOpenAiInterface?.longDescription ?? "";
 for (const phrase of [
@@ -2145,6 +2203,13 @@ async function verifyLiveCatalog() {
   if (!Array.isArray(info.prompt_names) || info.prompts !== info.prompt_names.length) fail("live /info prompt count is inconsistent");
   const liveTools = new Set(info.tool_names ?? []);
   const livePrompts = new Set(info.prompt_names ?? []);
+  for (const [caseIndex, testCase] of portablePositiveCases.entries()) {
+    for (const toolName of testCase.tools_triggered.split(",").map((name) => name.trim())) {
+      if (!liveTools.has(toolName)) {
+        fail(`plugin.json: positive review case ${caseIndex + 1} references a tool absent from the live catalog: ${toolName}`);
+      }
+    }
+  }
   for (const toolName of liveTools) {
     if (!toolName.startsWith("psychology_")) fail(`live catalog exposes an unprefixed tool: ${toolName}`);
   }

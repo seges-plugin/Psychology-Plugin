@@ -1,0 +1,64 @@
+# OpenAI ChatGPT listing readiness
+
+Status checked: 2026-10-16
+
+This document separates source-package preparation from OpenAI's remote MCP scan,
+review, approval, and publication. The repository's v1.2.20 GitHub source release
+does not mean the plugin has been submitted to, approved by, or published in the
+ChatGPT directory.
+
+The listing-preparation edits in this checkout are not part of the existing
+GitHub tag/release. Before packaging or publishing these edits as a new source
+release, bump every manifest/package version together and update the release
+notes for that new version. Do not move or rewrite the existing `v1.2.20` tag.
+
+## Prepared in source
+
+- Both OpenAI-facing manifest interfaces use a short description within the
+  30-character limit and the canonical `Productivity` category.
+- The root manifest contains five positive and three negative reviewer test
+  cases, plus source-release notes for v1.2.20.
+- Positive cases name the expected MCP tools and observable behavior. They are
+  proposed reviewer scenarios, not evidence that those cases have been run.
+- The npm package file allowlist includes the portable root manifests and the
+  Codex manifest. Use a curated OpenAI ZIP and inspect its contents; do not treat
+  `npm pack` output as an OpenAI submission artifact.
+
+## Remaining portal and human gates
+
+The following have not been completed or verified in the OpenAI developer
+portal:
+
+1. Create and inspect the curated ZIP in the portal; confirm manifest import,
+   package file paths, asset resolution, and all bundled skill safety/security
+   scans.
+2. Verify the developer/business identity, select the correct publisher
+   identity, confirm the required organization permissions, and complete the
+   portal policy attestations.
+3. Connect the production MCP endpoint, complete the portal-generated domain
+   challenge on the eligible Noesis host, and pass domain verification.
+4. Run a successful current production tool scan. Review every exposed tool's
+   `readOnlyHint`, `openWorldHint`, and `destructiveHint` values and provide a
+   justification for each annotation in the portal.
+5. Complete OAuth review access using a dedicated reviewer account with
+   synthetic/sample data. Enter its credentials and instructions only in the
+   portal's secure review-details form, not in this repository or ZIP. Ensure
+   access works without MFA approval, email/SMS codes, magic links, or private
+   network access.
+6. Record an accessible demo video showing the main supported workflows and
+   tools. No demo URL is included here because no recording has been provided
+   or verified.
+7. Run the five positive and three negative cases against the connected
+   production service and reviewer account; confirm the actual tool calls and
+   observable results match these proposed cases.
+8. Choose publication country availability and listing translations in the
+   package/portal, submit the draft for review, and address any review feedback.
+   Approval and publication are separate portal actions.
+
+## Current boundary
+
+The repository test and `/info` catalog check do not perform portal import,
+skill scans, authenticated OAuth, domain verification, a production tool scan,
+or reviewer-case execution. Marketplace submission, acceptance, and publication
+must not be reported as complete until their respective portal states are read
+back successfully.

@@ -16,9 +16,9 @@
   "mcpServers": "./mcp.json",
   "interface": {
     "displayName": "Psychology",
-    "shortDescription": "Find your strengths in the AI chats and memories you choose.",
+    "shortDescription": "Find strengths in AI chats",
     "longDescription": "Bring the memories and past chats available to your connected assistant, or a purpose-limited memory summary or selected conversations from another AI. Psychology helps distil strengths and likely answers for your goal, then asks only for the gaps that still matter. It also offers structured self-assessments and practical reflection.",
-    "category": "productivity",
+    "category": "Productivity",
     "capabilities": [
       "psychometric-scoring",
       "self-reflection",
