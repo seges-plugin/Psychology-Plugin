@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology",
-  "version": "1.2.21",
+  "version": "1.2.22",
   "description": "Connect Psychology to distil the memories and past chats you choose, surface candidate patterns and likely answers, and ask only about consequential gaps. Also supports non-clinical, source-aware self-reflection.",
   "author": {
     "name": "seges-plugin",
@@ -99,7 +99,7 @@
         }
       },
       "publication": {
-        "release_notes": "v1.2.21 submission candidate: align portable OpenAI and Codex manifests, use the canonical root skills and MCP configuration, add light and dark brand assets, and strengthen package-contract checks. Host archive access and marketplace approval are not claimed."
+        "release_notes": "v1.2.22 source candidate: make qualitative profile-candidate preview available only when explicitly requested and the tool is callable, with verbatim evidence, pending review, and persistence disabled. Preserve v1.2.21 package alignment and do not claim host acceptance or marketplace approval."
       }
     }
   }

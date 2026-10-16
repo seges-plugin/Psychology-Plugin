@@ -7,10 +7,10 @@ review, approval, and publication. The repository's v1.2.20 GitHub source releas
 does not mean the plugin has been submitted to, approved by, or published in the
 ChatGPT directory.
 
-The listing-preparation edits in this checkout are not part of the existing
-GitHub tag/release. Before packaging or publishing these edits as a new source
-release, bump every manifest/package version together and update the release
-notes for that new version. Do not move or rewrite the existing `v1.2.20` tag.
+The v1.2.21 listing-preparation package remains a historical candidate and is
+not the current source state. The v1.2.22 edits below are not part of the
+existing GitHub tag/release and have not been packaged or published. Do not move
+or rewrite the existing `v1.2.20` tag.
 
 ## v1.2.21 local package acceptance
 
@@ -36,6 +36,14 @@ These local checks do not include importing or scanning the ZIP in the OpenAI
 portal, verifying publisher identity or domain, an authenticated production
 tool scan, demo access, execution of all reviewer cases, approval, or
 publication. The ZIP is a submission candidate, not proof of acceptance.
+
+## v1.2.22 source changes (not packaged)
+
+- All manifests/package metadata now target `1.2.22` for the optional profile-candidate preview workflow.
+- The OpenAI release notes and canonical memory-distillation instructions make the preview explicitly opt-in,
+  callable-tool-dependent, evidence-grounded, pending-review, and non-persistent.
+- `npm test` must pass before building a new ZIP. The existing v1.2.21 ZIP and its hash above do not include these edits.
+- No claim is made that `psychology_prepare_profile_candidate_preview` is present in production or accepted by ChatGPT.
 
 ## Prepared in source
 
