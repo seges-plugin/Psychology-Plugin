@@ -14,6 +14,7 @@ notes for that new version. Do not move or rewrite the existing `v1.2.20` tag.
 
 ## v1.2.21 local package acceptance
 
+- Source commit `48b604cb5aad4c341af1a120f3e7bcd549b17ac7` is pushed to `main`; CI run `38834417295` passed.
 - All package manifests now agree on version `1.2.21`.
 - `npm test` passes: 62 public files, 14 root skills, and the expected 34-tool,
   18-prompt live catalog contract.
