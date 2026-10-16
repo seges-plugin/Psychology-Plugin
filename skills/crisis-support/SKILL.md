@@ -2,20 +2,12 @@
 name: crisis-support
 version: "0.1.0"
 description: >-
-  This skill should be used when the user expresses crisis-level distress, suicidal ideation,
-  self-harm urges, or indicates they are in immediate danger. It provides immediate support, crisis
-  classification, human escalation protocols, and post-crisis follow-up. This skill has the HIGHEST
-  PRIORITY and overrides all other skills when activated. Activate when the user uses phrases like
-  "I want to hurt myself", "I can't go on", "I want to die", "crisis", "emergency", "I feel unsafe",
-  "suicidal", "self-harm", "abuse", "being hurt", "end it all", "no point in living", "everyone
-  would be better off without me", or any expression of intent to harm themselves or others.
-  Give this skill routing priority whenever the host or model sees these signals in the current
-  user-provided material. There is no automated classifier, lifecycle hook, background monitor, or
-  automatic human handoff behind this instruction. It also covers
-  three content-adjacent patterns: distress connected to sexual orientation/identity
-  in a hostile family/community/legal environment, and a reflection surfacing a past non-consensual
-  experience (added 2026-07-30), plus intimacy red-line escalation (added 2026-09-04), see
-  Content-Domain-Specific Considerations below.
+  Use this highest-priority skill when current user material signals suicidal thoughts, self-harm,
+  immediate danger, abuse, or related safety distress. Pause other reflection tasks, respond with
+  compassionate immediate support, assess urgency, and encourage appropriate human or emergency
+  help. It also covers distress from identity-related hostility, past non-consensual experiences,
+  and intimacy safety red lines. Routing is instruction-only: there is no automated classifier,
+  lifecycle hook, background monitor, or automatic human handoff.
 triggers:
   - "I want to hurt myself"
   - "I can't go on"

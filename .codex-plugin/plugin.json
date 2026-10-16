@@ -1,6 +1,6 @@
 {
   "name": "psychology",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal before answering only the gaps that matter. Check callable psychology_* MCP tools before any tool-dependent task.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -13,7 +13,7 @@
     "mcp"
   ],
   "skills": "./skills/",
-  "mcpServers": "./mcp.json",
+  "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "Psychology",
     "shortDescription": "Find strengths in AI chats",
@@ -26,6 +26,7 @@
       "referral-leads"
     ],
     "websiteURL": "https://noesis.seges.ai",
+    "supportURL": "https://noesis.seges.ai/en/support/",
     "privacyPolicyURL": "https://noesis.seges.ai/privacy",
     "termsOfServiceURL": "https://noesis.seges.ai/terms",
     "defaultPrompt": [
@@ -34,8 +35,10 @@
       "I’ll paste a Kimi summary. Find strengths, examples, and key gaps."
     ],
     "brandColor": "#0d6efd",
+    "brandColorDark": "#78a9ff",
     "composerIcon": "./assets/icon.png",
+    "composerIconDark": "./assets/icon.png",
     "logo": "./assets/icon.png",
-    "screenshots": []
+    "logoDark": "./assets/icon.png"
   }
 }

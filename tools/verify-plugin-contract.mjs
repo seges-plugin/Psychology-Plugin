@@ -93,7 +93,7 @@ const openclawPlugin = json("openclaw.plugin.json");
 const portablePlugin = json("plugin.json");
 const portableMcp = json("mcp.json");
 const rootMcp = json(".mcp.json");
-const codexMcp = json(".codex-plugin/mcp.json");
+const codexMcp = rootMcp;
 const hooks = json("hooks/hooks.json");
 
 const versions = new Map([
@@ -109,19 +109,16 @@ for (const [path, version] of versions) {
   if (version !== packageJson.version) fail(`${path}: version ${version ?? "missing"} != ${packageJson.version}`);
 }
 
-if (JSON.stringify(canonical(rootMcp)) !== JSON.stringify(canonical(codexMcp))) {
-  fail(".mcp.json and .codex-plugin/mcp.json differ");
-}
 if (rootMcp.mcpServers?.psychology?.url !== portableMcp.mcpServers?.psychology?.url) {
   fail("mcp.json and .mcp.json must use the same Psychology endpoint");
 }
 if (codexMcp.mcpServers?.psychology?.url !== portableMcp.mcpServers?.psychology?.url) {
-  fail(".codex-plugin/mcp.json and mcp.json must use the same Psychology endpoint");
+  fail(".mcp.json and mcp.json must use the same Psychology endpoint");
 }
 
 const psychologyMcp = rootMcp.mcpServers?.psychology;
-if (psychologyMcp?.type !== "http" || psychologyMcp?.url !== canonicalMcpResource) {
-  fail(".mcp.json: Psychology must declare the canonical Streamable HTTP endpoint");
+if ("type" in (psychologyMcp ?? {}) || psychologyMcp?.url !== canonicalMcpResource) {
+  fail(".mcp.json: Psychology must use the Codex MCP format with the canonical URL and no transport type field");
 }
 if ("oauth_resource" in (psychologyMcp ?? {})) {
   fail(".mcp.json: omit the Codex-only OAuth resource override from the shared Claude/Codex HTTP config");
@@ -139,18 +136,18 @@ if (portablePlugin.$schema !== "https://agent-plugins.org/schemas/1.0.0/plugin.s
   fail("plugin.json: missing the portable Agent Plugins manifest schema");
 }
 if (portablePlugin.name !== "psychology") fail("plugin.json: portable plugin name must be psychology");
-if (codexPlugin.mcpServers !== "./mcp.json") {
-  fail(".codex-plugin/plugin.json: mcpServers must resolve to the sibling .codex-plugin/mcp.json");
+if (codexPlugin.mcpServers !== "./.mcp.json") {
+  fail(".codex-plugin/plugin.json: mcpServers must resolve to the root .mcp.json");
 } else {
-  const declaredCodexMcpPath = resolve(root, ".codex-plugin", codexPlugin.mcpServers);
-  const expectedCodexMcpPath = resolve(root, ".codex-plugin/mcp.json");
+  const declaredCodexMcpPath = resolve(root, codexPlugin.mcpServers);
+  const expectedCodexMcpPath = resolve(root, ".mcp.json");
   if (declaredCodexMcpPath !== expectedCodexMcpPath) {
-    fail(".codex-plugin/plugin.json: mcpServers must resolve to .codex-plugin/mcp.json");
+    fail(".codex-plugin/plugin.json: mcpServers must resolve to the root .mcp.json");
   } else {
     try {
       const declaredCodexMcp = JSON.parse(readFileSync(declaredCodexMcpPath, "utf8"));
-      if (JSON.stringify(canonical(declaredCodexMcp)) !== JSON.stringify(canonical(codexMcp))) {
-        fail(".codex-plugin/plugin.json: declared MCP file differs from .codex-plugin/mcp.json");
+      if (JSON.stringify(canonical(declaredCodexMcp)) !== JSON.stringify(canonical(rootMcp))) {
+        fail(".codex-plugin/plugin.json: declared MCP file differs from root .mcp.json");
       }
     } catch (error) {
       fail(`.codex-plugin/plugin.json: declared MCP file is missing or invalid (${error.message})`);
@@ -206,7 +203,7 @@ if (!portableReleaseNotes.includes(`v${portablePlugin.version}`)) {
   fail("plugin.json: OpenAI publication release_notes must identify the current package version");
 }
 const packageFiles = packageJson.files;
-for (const requiredPackagePath of ["plugin.json", "mcp.json", ".codex-plugin/plugin.json"]) {
+for (const requiredPackagePath of ["plugin.json", "mcp.json", ".mcp.json", ".codex-plugin/plugin.json"]) {
   if (!Array.isArray(packageFiles) || !packageFiles.includes(requiredPackagePath) || !existsSync(join(root, requiredPackagePath))) {
     fail(`package.json: files must include the existing ${requiredPackagePath} manifest path`);
   }
@@ -214,9 +211,17 @@ for (const requiredPackagePath of ["plugin.json", "mcp.json", ".codex-plugin/plu
 for (const [field, assetPath] of [
   ["composerIcon", portableOpenAiInterface?.composerIcon],
   ["logo", portableOpenAiInterface?.logo],
+  ["composerIconDark", portableOpenAiInterface?.composerIconDark],
+  ["logoDark", portableOpenAiInterface?.logoDark],
 ]) {
   if (typeof assetPath !== "string" || assetPath.startsWith("/") || !existsSync(join(root, assetPath))) {
     fail(`plugin.json: OpenAI ${field} must resolve to an existing package asset`);
+  }
+}
+for (const assetPath of ["assets/logo-light.svg", "assets/logo-dark.svg"]) {
+  const svg = text(assetPath);
+  if (!/^<svg\b/.test(svg.trim()) || !/viewBox="0 0 256 256"/.test(svg) || /<script\b|(?:href|src)=["']https?:\/\//i.test(svg)) {
+    fail(`${assetPath}: expected a self-contained square-viewBox SVG without scripts or remote references`);
   }
 }
 const portableOpenAiDescription = portableOpenAiInterface?.longDescription ?? "";
@@ -304,7 +309,6 @@ const publishedConnectorContractPaths = [
   "plugin.json",
   "mcp.json",
   ".mcp.json",
-  ".codex-plugin/mcp.json",
   ".codex-plugin/plugin.json",
   ".claude-plugin/plugin.json",
   ".claude-plugin/marketplace.json",
@@ -312,7 +316,6 @@ const publishedConnectorContractPaths = [
   "openclaw.plugin.json",
   "README.md",
   "skills/onboarding/SKILL.md",
-  ".codex-plugin/skills/onboarding/SKILL.md",
 ];
 for (const path of publishedConnectorContractPaths) {
   const body = text(path);
@@ -347,19 +350,9 @@ for (const [path, prompts] of [
   }
 }
 
-const rootSkills = walk("skills").map((path) => path.slice("skills/".length));
-const codexSkills = walk(".codex-plugin/skills").map((path) => path.slice(".codex-plugin/skills/".length));
-if (JSON.stringify(rootSkills) !== JSON.stringify(codexSkills)) {
-  fail("skills/ and .codex-plugin/skills/ have different file lists");
-} else {
-  for (const skillPath of rootSkills) {
-    const rootContent = bytes(`skills/${skillPath}`);
-    const codexContent = bytes(`.codex-plugin/skills/${skillPath}`);
-    if (!rootContent.equals(codexContent)) fail(`skill mirror working-tree raw bytes differ: ${skillPath}`);
-    const rootIndexBlob = indexBlob(`skills/${skillPath}`);
-    const codexIndexBlob = indexBlob(`.codex-plugin/skills/${skillPath}`);
-    if (!rootIndexBlob.equals(codexIndexBlob)) fail(`skill mirror index raw bytes differ: ${skillPath}`);
-  }
+const codexManifestDirectoryEntries = readdirSync(join(root, ".codex-plugin"), { withFileTypes: true });
+if (codexManifestDirectoryEntries.length !== 1 || !codexManifestDirectoryEntries[0].isFile() || codexManifestDirectoryEntries[0].name !== "plugin.json") {
+  fail(".codex-plugin/ must contain only plugin.json; portable skills and MCP configuration stay at the package root");
 }
 
 const localReviewSkill = text("skills/local-persistence/SKILL.md");
@@ -380,7 +373,7 @@ for (const path of ["skills/coaching/SKILL.md", "skills/ema-review/SKILL.md"]) {
   if (/local[- ]export/i.test(text(path))) fail(`${path}: do not offer local result export as a fallback`);
 }
 
-for (const base of ["skills", ".codex-plugin/skills"]) {
+for (const base of ["skills"]) {
   for (const skillFile of walk(base).filter((path) => path.endsWith("/SKILL.md"))) {
     const expectedName = posix.basename(posix.dirname(skillFile));
     const match = text(skillFile).match(/^---\s*\n([\s\S]*?)\n---/);
@@ -1973,7 +1966,6 @@ if (!hooks.description || !hooks.hooks || Object.keys(hooks.hooks).length !== 0)
 
 const intimacyPaths = [
   "skills/intimacy-self-understanding/SKILL.md",
-  ".codex-plugin/skills/intimacy-self-understanding/SKILL.md",
 ];
 const intimacyRequired = [
   "adult-only",
@@ -2266,5 +2258,6 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log(`Plugin contract verification passed (${trackable.length} public files, ${rootSkills.length} mirrored skill files).`);
+const publicSkillCount = readdirSync(join(root, "skills"), { withFileTypes: true }).filter((entry) => entry.isDirectory()).length;
+console.log(`Plugin contract verification passed (${trackable.length} public files, ${publicSkillCount} root skills).`);
 for (const message of notes) console.log(`- ${message}`);

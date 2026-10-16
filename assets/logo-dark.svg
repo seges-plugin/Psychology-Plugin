@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">Psychology context and reflection mark</title>
+  <path fill="#80d5b2" d="M108 27C62 30 29 63 27 108c22-5 42-19 55-39 10-15 18-30 26-42Zm40 0c46 3 79 36 81 81-22-5-42-19-55-39-10-15-18-30-26-42Zm81 94c-3 46-36 79-81 81 5-22 19-42 39-55 15-10 30-18 42-26Zm-121 108c-46-3-79-36-81-81 22 5 42 19 55 39 10 15 18 30 26 42Z"/>
+  <circle cx="128" cy="128" r="31" fill="#f3bf52"/>
+</svg>

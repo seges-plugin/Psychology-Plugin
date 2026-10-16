@@ -363,9 +363,13 @@ https://noesis.seges.ai/support/.
 
 [MIT](LICENSE)
 
+## Source package v1.2.21 submission candidate (2026-10-16)
+
+This candidate aligns the OpenAI portable manifest and Codex overlay with the current package contract, keeps one canonical root skills tree and portable MCP configuration, and includes light/dark listing assets. `npm test` verifies 62 public files and 14 root skills. The OpenAI Linux validator and directory-listing pack builder pass locally, but the validator still asks the publisher to confirm there are no internal-only capabilities. The OpenAI developer portal has not imported or scanned the ZIP, verified the publisher/domain, run reviewer cases, or approved/published this listing. This candidate does not prove host access to historical chat archives.
+
 ## Local contract re-verification (2026-10-16)
 
-`npm test` passes the portable contract and verifies the current live catalog: 90 public files, 30 mirrored skills, 43 negative selected-summary fixtures, and 34 prefixed tools plus 18 prompts. This checks the source package and the catalog only; it does not establish that every ChatGPT, Claude, or other host has refreshed its MCP schema or can access a user's full chat archive.
+`npm test` passes the portable contract and verifies the current live catalog: 62 public files, 14 root skills, 43 negative selected-summary fixtures, and 34 prefixed tools plus 18 prompts. This checks the source package and the catalog only; it does not establish that every ChatGPT, Claude, or other host has refreshed its MCP schema or can access a user's full chat archive.
 
 ## Source package v1.2.20 (2026-10-16)
 
