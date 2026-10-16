@@ -12,6 +12,30 @@ GitHub tag/release. Before packaging or publishing these edits as a new source
 release, bump every manifest/package version together and update the release
 notes for that new version. Do not move or rewrite the existing `v1.2.20` tag.
 
+## v1.2.21 local package acceptance
+
+- All package manifests now agree on version `1.2.21`.
+- `npm test` passes: 62 public files, 14 root skills, and the expected 34-tool,
+  18-prompt live catalog contract.
+- The curated candidate ZIP was built twice with the official local packager;
+  both files had the same SHA-256:
+  `64f3221d83ff4a95c607d46b15a24f7ed54bc75f5173aeeef70693b90d4cde56`.
+- The expanded ZIP passed the Linux validator: 40 files, 14 skills, zero
+  errors. It retains one warning to confirm that no internal-only capabilities
+  are included. The source was curated to public manifests, public MCP
+  configuration, the 14 advertised skills, public brand assets, README, and
+  license; the warning still needs publisher review.
+- Directory listing pack generation reports `listing_ready`, zero missing
+  fields, and one warning that `developerName` must match the identity verified
+  in OpenAI's portal.
+- Candidate artifact:
+  `Noesis-Psychology-1.2.21-OpenAI-candidate-20261016.zip`.
+
+These local checks do not include importing or scanning the ZIP in the OpenAI
+portal, verifying publisher identity or domain, an authenticated production
+tool scan, demo access, execution of all reviewer cases, approval, or
+publication. The ZIP is a submission candidate, not proof of acceptance.
+
 ## Prepared in source
 
 - Both OpenAI-facing manifest interfaces use a short description within the

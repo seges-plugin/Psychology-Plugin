@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "description": "Connect Psychology to distil the memories and past chats you choose, surface candidate patterns and likely answers, and ask only about consequential gaps. Also supports non-clinical, source-aware self-reflection.",
   "author": {
     "name": "seges-plugin",
@@ -41,9 +41,11 @@
           "I’ll paste a Kimi summary. Find my strengths, examples, and key gaps."
         ],
         "brandColor": "#0d6efd",
+        "brandColorDark": "#78a9ff",
         "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon.png",
         "logo": "./assets/icon.png",
-        "screenshots": [],
+        "logoDark": "./assets/icon.png",
         "supportURL": "https://noesis.seges.ai/en/support/"
       },
       "review": {
@@ -97,7 +99,7 @@
         }
       },
       "publication": {
-        "release_notes": "v1.2.20 source release: memory-first distillation guidance for host-accessible conversations and memories, explicit source and time boundaries, and updated MCP contract checks. This package release does not claim full archive access or marketplace approval."
+        "release_notes": "v1.2.21 submission candidate: align portable OpenAI and Codex manifests, use the canonical root skills and MCP configuration, add light and dark brand assets, and strengthen package-contract checks. Host archive access and marketplace approval are not claimed."
       }
     }
   }

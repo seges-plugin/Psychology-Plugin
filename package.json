@@ -1,6 +1,6 @@
 {
   "name": "psychology",
-  "version": "1.2.20",
+  "version": "1.2.21",
   "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments.",
   "private": true,
   "license": "MIT",
@@ -16,13 +16,17 @@
   "files": [
     "plugin.json",
     "mcp.json",
+    ".mcp.json",
     ".codex-plugin/plugin.json",
     "openclaw.plugin.json",
     "skills",
     "README.md",
     "LICENSE",
     "MCP-ROUTING-CONTRACT.md",
-    "assets/icon.png"
+    "assets/icon.png",
+    "assets/logo-light.svg",
+    "assets/logo-dark.svg",
+    "docs/openai-brand-rationale.md"
   ],
   "scripts": {
     "test": "npm run verify",
