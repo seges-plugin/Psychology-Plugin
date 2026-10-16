@@ -365,7 +365,7 @@ https://noesis.seges.ai/support/.
 
 ## Source package v1.2.21 submission candidate (2026-10-16)
 
-This candidate aligns the OpenAI portable manifest and Codex overlay with the current package contract, keeps one canonical root skills tree and portable MCP configuration, and includes light/dark listing assets. `npm test` verifies 62 public files and 14 root skills. The OpenAI Linux validator and directory-listing pack builder pass locally, but the validator still asks the publisher to confirm there are no internal-only capabilities. The OpenAI developer portal has not imported or scanned the ZIP, verified the publisher/domain, run reviewer cases, or approved/published this listing. This candidate does not prove host access to historical chat archives.
+This candidate aligns the OpenAI portable manifest and Codex overlay with the current package contract, keeps one canonical root skills tree and portable MCP configuration, and includes light/dark listing assets. Source commit `48b604cb5aad4c341af1a120f3e7bcd549b17ac7` is on `main`; GitHub CI run `38834417295` passed. `npm test` verifies 62 public files and 14 root skills. The OpenAI Linux validator and directory-listing pack builder pass locally, but the validator still asks the publisher to confirm there are no internal-only capabilities. The OpenAI developer portal has not imported or scanned the ZIP, verified the publisher/domain, run reviewer cases, or approved/published this listing. This candidate does not prove host access to historical chat archives.
 
 ## Local contract re-verification (2026-10-16)
 
