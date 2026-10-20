@@ -1,6 +1,6 @@
 # OpenAI ChatGPT listing readiness
 
-Status checked: 2026-10-20
+Status checked: 2026-10-21
 
 ## Current owner-review candidate: 1.3.0
 
@@ -18,6 +18,9 @@ Status checked: 2026-10-20
   proctor uses only the current eligible-save tool and a session-only fallback.
 - Ignore rules remain enforced. Maintainer routing documents, credentials,
   fixtures, deployment code, browser records, and local evidence stay out of Git.
+- The source implementation was merged in PR #21 as
+  `bee5069ea34ec82b1c8a5522ff2be31714601e4d`; main CI run `39454717113` passed.
+  This receipt covers source validation, not host or OpenAI acceptance.
 - State: **not_ready** for OpenAI submission. No ZIP will be generated from this
   revision until the owner reviews and approves the verified remote source.
   Required portal scans, reviewer access, live cases, demo URL, country targeting,
@@ -94,8 +97,9 @@ portal:
 3. Connect the production MCP endpoint, complete the portal-generated domain
    challenge on the eligible Noesis host, and pass domain verification.
 4. Run a successful current production tool scan. Review every exposed tool's
-   `readOnlyHint`, `openWorldHint`, and `destructiveHint` values and provide a
-   justification for each annotation in the portal.
+   boolean `readOnlyHint`, `openWorldHint`, and `destructiveHint` values against
+   its actual behavior. Resolve required scan findings; do not invent portal
+   fields or treat annotation justifications as an extra submission requirement.
 5. Complete OAuth review access using a dedicated reviewer account with
    synthetic/sample data. Enter its credentials and instructions only in the
    portal's secure review-details form, not in this repository or ZIP. Ensure
