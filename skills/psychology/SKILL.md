@@ -1,6 +1,6 @@
 ---
 name: psychology
-version: "1.2.6"
+version: "1.2.7"
 description: Mandatory front door for every @Psychology request. Check whether callable Psychology MCP tools are visible before tool-dependent assessment or account actions; explicit session-only memory distillation can start without a connector.
 triggers:
   - "@Psychology"
@@ -25,6 +25,10 @@ previous successful connection in another task does not prove a callable capabil
   route directly to `../memory-distillation/SKILL.md` and proceed with context the host can actually access.
   Keep the result session-only, disclose unavailable history, and do not make connection or another choice
   a prerequisite. Offer MCP setup only when the person asks to use Noesis tools or account-backed data.
+
+  An explicit session-only goal or commitment review also routes directly to
+  `../goal-review/SKILL.md` with visible or user-selected material. It needs no connector;
+  disclose that no account source was read and keep the review in the conversation.
 
   For any other tool-dependent request, the first substantive reply must be this short connection interstitial;
   do not emit a generic preface or reflection exercise before it:
@@ -54,6 +58,7 @@ imported-memory data.
 | Understand visible context without turning it into answers | `../l00-context-delegate/SKILL.md` |
 | Use selected ChatGPT, Claude, or Kimi memories and past chats to distil a goal or likely answer | `../memory-distillation/SKILL.md` |
 | Practical non-clinical support after choosing session-only reflection | `../coaching/SKILL.md` |
+| Review a selected goal, commitment, or weekly progress against its sources | `../goal-review/SKILL.md` |
 | Immediate danger or urgent safety concern | `../crisis-support/SKILL.md` |
 
 `memory-distillation` remains available without the connector whenever the person asks for a session-only

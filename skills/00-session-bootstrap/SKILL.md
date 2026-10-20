@@ -1,7 +1,7 @@
 ---
 name: 00-session-bootstrap
 description: Host-cooperated intent router for the first Psychology-relevant request in a session, including starting with user-chosen memories or past chats, self-understanding, intimacy self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
-version: "1.2.4"
+version: "1.2.5"
 ---
 
 # Psychology session bootstrap
@@ -112,6 +112,9 @@ presence of one as proof of the other.
   material already visible here. The same narrow exception applies to
   `skills/intimacy-self-understanding/SKILL.md`, under its adult-only, user-initiated, no-persistence
   boundary. Do not score an assessment, claim an account read, or save anything through this exception.
+- An explicit goal or commitment review may use `skills/goal-review/SKILL.md` without a connector.
+  Keep it session-only with visible or deliberately selected material; no account read,
+  persistence, external action, scheduling, or continuing monitoring is implied.
 - `memory-distillation` and `local-persistence` retain their own explicit-request and confirmation
   requirements. Their availability never proves that the Psychology connector is connected, and their
   output must never be represented as Psychology account data.

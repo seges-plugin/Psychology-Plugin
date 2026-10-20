@@ -41,8 +41,8 @@ person agrees to make the local configuration change, add the stable server name
 flow:
 
 ```powershell
-codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
-codex mcp login psychology --oauth-client-registration dcr
+codex mcp add psychology_mcp --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
+codex mcp login psychology_mcp --oauth-client-registration dcr
 ```
 
 The second command opens the browser authorization flow. Immediately before it starts, state that the

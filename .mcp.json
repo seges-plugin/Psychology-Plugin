@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "psychology": {
+    "psychology_mcp": {
       "url": "https://noesis.seges.ai/mcp"
     }
   }

@@ -1,6 +1,29 @@
 # OpenAI ChatGPT listing readiness
 
-Status checked: 2026-10-16
+Status checked: 2026-10-20
+
+## Current owner-review candidate: 1.3.0
+
+- Display names are **Psychology Plugin** and **Psychology MCP**. Machine IDs
+  are `psychology-plugin` and `psychology_mcp`; the deployed tool namespace
+  remains `psychology_`. See [naming and ownership](naming-and-ownership.md).
+- The owner is **吳遠佛界**, with source published through `seges-plugin`.
+  Public hosted privacy/terms must be corrected and read back separately;
+  source metadata does not repair stale production pages or prove developer verification.
+- OpenAI and Codex interfaces are synchronized. Claude declares its own HTTP
+  transport; Codex retains its URL-only configuration. Installation identifiers
+  changed, so existing installations need their host-specific migration checks.
+- Root skills include session-only goal review. The results-interpreter and
+  coaching agents follow the canonical identity and measurement limits; the
+  proctor uses only the current eligible-save tool and a session-only fallback.
+- Ignore rules remain enforced. Maintainer routing documents, credentials,
+  fixtures, deployment code, browser records, and local evidence stay out of Git.
+- State: **not_ready** for OpenAI submission. No ZIP will be generated from this
+  revision until the owner reviews and approves the verified remote source.
+  Required portal scans, reviewer access, live cases, demo URL, country targeting,
+  policy attestations, review, and publication are separate remaining gates.
+
+The versioned evidence below is historical; it does not validate 1.3.0.
 
 This document separates source-package preparation from OpenAI's remote MCP scan,
 review, approval, and publication. The repository's v1.2.20 GitHub source release

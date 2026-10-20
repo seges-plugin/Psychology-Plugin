@@ -1,24 +1,24 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "psychology",
+  "name": "psychology-plugin",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal. Psychology also offers published self-assessments and practical reflection.",
   "owner": {
-    "name": "seges-plugin",
+    "name": "吳遠佛界",
     "url": "https://github.com/seges-plugin",
     "email": "problems@noesis.seges.ai"
   },
   "plugins": [
     {
-      "name": "psychology",
+      "name": "psychology-plugin",
       "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal. Psychology also offers published self-assessments and practical reflection.",
       "author": {
-        "name": "seges-plugin",
+        "name": "吳遠佛界",
         "url": "https://github.com/seges-plugin",
         "email": "problems@noesis.seges.ai"
       },
       "category": "productivity",
       "source": "./",
-      "version": "1.2.23",
+      "version": "1.3.0",
       "keywords": [
         "psychology",
         "psychometrics",
