@@ -59,8 +59,11 @@ change the draft or next step. Let me correct, reject, or skip a candidate. Do n
 
 If I directly ask to use selected Noesis imports, follow the existing consent and exact-scope grant checks before
 any read. Do not save or update anything unless I separately ask and confirm it.
-Do not offer persistence or call `psychology_save_my_profile` during this first-use distillation. If I separately
-ask to save a profile, use only eligible direct current-session statements through the normal profile consent and
+After I review and correct this session-only draft, tell me whether the dedicated Noesis selected-import flow is
+available and offer it as a separate optional next step. Do not send or save anything unless I choose that step,
+review eligible items individually, complete the current purpose-specific consent, and confirm the final write.
+Keep sensitive or third-party content out of this general import. Never call `psychology_save_my_profile` for
+imported material. If I separately ask to save a profile, use only eligible direct current-session statements through the normal profile consent and
 age-gate requirements; show me the exact fields and obtain my final confirmation before calling the tool. Never
 send imported memory candidates through the generic profile tool. The current tool writes an append-only snapshot
 immediately; say it was saved only if the result returns `saved: true`. Never infer a save from an unrelated tool

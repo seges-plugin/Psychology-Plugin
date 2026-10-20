@@ -23,14 +23,17 @@ This skill has two deliberately separate outcomes:
 
 1. **Immediate, session-only distillation** — turn deliberately supplied text into a short, correctable
    working context brief now. It requires no connector and writes nothing.
-2. **Optional dedicated selected-candidate retention** — retain only individually reviewed, eligible candidates
+2. **Optional dedicated selected-candidate retention** — if the person chooses retention after reviewing the brief,
+   retain only individually reviewed, eligible candidates
    in the separate import store. It requires current `selected_context.v1` purpose consent and the website flow
+   to recheck current purpose-specific consent and obtain final confirmation before any write
    below; it never creates or updates an ordinary profile.
 
 The person chooses which assistant's memories or past chats to use and runs the selected-memory summary prompt
 there. The prompt asks that assistant to use relevant context it can actually access, then the person pastes the
 purpose-limited summary here. This is not an account archive export. The user-selected context is the starting
-point; Psychology should build on it before asking for new information.
+point; Psychology should build on it before asking for new information. After showing the session-only brief,
+offer the separate selected-candidate retention flow when available; offering it does not authorize a write.
 
 For time-sensitive goals, roles, preferences, and plans, distinguish the original statement/event time, each
 source-memory saved/updated time, the time the summary was generated, when the claim applied (its valid-time
@@ -231,8 +234,9 @@ never establish currentness.
 
 ## Step 3: Offer only the dedicated selected-candidate retention path
 
-Do not ask for persistence before the person can see and correct the useful brief. If they do not ask to retain
-anything, keep working from the session-only brief and do not call a persistence tool.
+Do not ask for persistence before the person can see and correct the useful brief. After the review, explain that
+they can either continue session-only or choose to prepare eligible items for the dedicated import flow. If they
+decline, skip it, or the flow is unavailable, keep working from the session-only brief and do not call a write tool.
 
 This skill must never call `psychology_save_my_profile`, `psychology_get_my_profile`, or use the generic profile
 schema to retain imported material. That schema is broader than this import contract and is not a safe storage
@@ -240,8 +244,9 @@ target for platform-memory candidates, even after a keep, confirmation, edit, or
 statement can enter the ordinary profile workflow only in a separate interaction that does not carry imported
 text forward as evidence; this skill never performs or shortcuts that transition.
 
-The first-use connected-chat distillation is always session-only and must never call a profile-save tool. Do not
-offer persistence unless the person explicitly asks. For a separate, explicit request to save an eligible profile
+The first-use connected-chat distillation is session-only until the person reviews it and explicitly chooses the
+separate selected-import retention flow; it must never call a profile-save tool. Do not write anything merely
+because the person accepted the distillation offer. For a separate, explicit request to save an eligible profile
 made only from direct current-session statements, show the exact fields to be saved and obtain the person's final
 confirmation, then follow the current profile-consent and age-gate requirements before calling the currently
 exposed tool. Imported platform-memory candidates remain ineligible for `psychology_save_my_profile` and can only
@@ -249,7 +254,7 @@ use the dedicated selected-candidate retention path above. The current tool writ
 immediately when it returns `saved: true`; it does not create a pending draft or approval link. Never say data was
 saved before the tool returns `saved: true`, and never claim an unrelated tool result approved or saved it.
 
-If the person asks to retain reviewed import candidates, direct them to the Psychology site's dedicated import
+If the person chooses to retain reviewed import candidates, direct them to the Psychology site's dedicated import
 page when it is available. The site must parse the raw export locally, keep unselected material on the device,
 show every candidate for keep/edit/drop, require separate secret, sensitive-content, and third-party-data review,
 and request the independently revocable `selected_context.v1` purpose consent before sending selected rows. A
