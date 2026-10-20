@@ -1,6 +1,6 @@
 {
   "name": "psychology",
-  "version": "1.2.22",
+  "version": "1.2.23",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal before answering only the gaps that matter. Check callable psychology_* MCP tools before any tool-dependent task.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -30,7 +30,7 @@
     "privacyPolicyURL": "https://noesis.seges.ai/privacy",
     "termsOfServiceURL": "https://noesis.seges.ai/terms",
     "defaultPrompt": [
-      "Find my strengths and examples in the AI chats you can access.",
+      "Start with the AI memories/chats I choose for my goal, then let me review Noesis candidates.",
       "Use my AI chats and memories to suggest likely answers for my next step.",
       "I’ll paste a Kimi summary. Find strengths, examples, and key gaps."
     ],

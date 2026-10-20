@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology",
-  "version": "1.2.22",
+  "version": "1.2.23",
   "description": "Connect Psychology to distil the memories and past chats you choose, surface candidate patterns and likely answers, and ask only about consequential gaps. Also supports non-clinical, source-aware self-reflection.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -30,7 +30,7 @@
         "privacyPolicyURL": "https://noesis.seges.ai/privacy",
         "termsOfServiceURL": "https://noesis.seges.ai/terms",
         "defaultPrompt": [
-          "Find my strengths and real examples in the AI chats you can access.",
+          "Start with the AI memories/chats I choose for my goal, then let me review Noesis candidates.",
           "Use my AI chats and memories to suggest a likely answer for my goal.",
           "I’ll paste a Kimi summary. Find my strengths, examples, and key gaps."
         ],
@@ -93,7 +93,7 @@
         }
       },
       "publication": {
-        "release_notes": "v1.2.22 source candidate: make qualitative profile-candidate preview available only when explicitly requested and the tool is callable, with verbatim evidence, pending review, and persistence disabled. Preserve v1.2.21 package alignment and do not claim host acceptance or marketplace approval."
+        "release_notes": "v1.2.23 source candidate: make user-selected host-accessible memories and past chats the first-run distillation path, keep imported material session-only by default, and offer separate reviewed, purpose-specific consent before Noesis retention. Installation alone grants no archive access. This source release does not claim host archive access, production bitemporal write/readback, or marketplace approval."
       }
     }
   }
