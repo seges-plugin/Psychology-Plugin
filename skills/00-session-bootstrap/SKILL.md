@@ -1,6 +1,6 @@
 ---
 name: 00-session-bootstrap
-description: Host-cooperated intent router for the first Psychology-relevant request in a session, including self-understanding, intimacy self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
+description: Host-cooperated intent router for the first Psychology-relevant request in a session, including starting with user-chosen memories or past chats, self-understanding, intimacy self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
 version: "1.2.4"
 ---
 
@@ -14,6 +14,18 @@ host-cooperated instruction, not a hidden runtime hook or a guaranteed lifecycle
 
 If the current message indicates immediate danger, run the crisis-support flow first. Do not load account
 context merely to continue an assessment or coaching flow during an urgent safety situation.
+
+## First-session priority: offer user-chosen memory distillation
+
+After plugin installation, when the person begins a Psychology session and has not yet named a different
+immediate task, briefly offer to start from memories or past chats they choose for a stated goal. This is an
+invitation, not an automatic read or a requirement to continue. Ask which source/host and goal they want to use;
+use only memory or conversation retrieval that the current host actually exposes. Plugin installation, MCP
+connection, or general account consent never authorizes reading another platform's private history. If they
+choose this path, follow `skills/memory-distillation/SKILL.md`; after showing and correcting the session-only
+distillation, make the separate Noesis retention path available when supported, and require the user's explicit
+choice, current purpose-specific consent, eligible reviewed items, and final confirmation before any write.
+Never imply that a host can search its full archive unless that exact capability is exposed and verified.
 
 ## 1. Distil visible context immediately, without persistence
 

@@ -14,7 +14,7 @@ Distil the memories and past chats you choose, then reflect on what matters with
 
 </div>
 
-## Start from what you've already told your AI
+## First session: start from what you've already told your AI
 
 **AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
 
@@ -41,6 +41,14 @@ For changing goals, Psychology separates when a statement happened, when it was 
 uses your current corrections and does not guess when an older goal ended. See the advanced prompt for detailed
 timestamp handling.
 
+After installing Psychology, using context you choose from an AI's accessible memories or past chats is the
+recommended first task. Installation alone does not authorize a read. Start it by running the prompt above in
+the source AI, choose the goal and source you want used, then review or correct the resulting candidates. If you
+want selected eligible candidates retained in Noesis, explicitly choose that separate step after review; the
+dedicated import flow checks its purpose-specific consent and records source time separately from the server's
+`observed_at`. If the source host cannot expose the requested history, Psychology must say so and offer selected
+excerpts or a purpose-limited summary. It never claims to read another account's history or to import a full archive.
+
 The copyable prompt and Codex's first-use default reply in the language of the request. Codex uses only the current
 task and excerpts you select or paste; it cannot search other tasks, saved memories, workspace files, or account
 history. Ordinary distillation does not list or read stored Noesis records. Reading selected Noesis imports requires
@@ -64,6 +72,18 @@ does not publish a host version identifier. ChatGPT custom connectors and Codex 
 paths; Claude Code, Kimi Code, Kimi.ai, and OpenClaw are evaluation/setup paths, not accepted hosts. A
 manifest, installation, visible server, or login screen does not establish host acceptance or an
 authenticated connection. See [host acceptance](#host-acceptance) and the [public support record](https://noesis.seges.ai/ai/supported-clients.json).
+
+### What the source AI can retrieve
+
+The memory-distillation prompt runs in the AI account the person chooses as a source. It does not give the
+Psychology plugin an API for enumerating that account's archive. In ChatGPT, Memory may use relevant past-chat
+information when the account's plan, region, settings, and workspace allow it; it does not retain or return every
+detail from every chat. See [OpenAI's Memory guide](https://help.openai.com/en/articles/8590148-memory-in-chatgpt).
+Claude's past-chat search is available only where Anthropic has rolled it out and the account's settings permit it;
+project chat search is limited to the selected project. See [Anthropic's personalization guide](https://support.anthropic.com/en/articles/10185728-understanding-claude-s-personalization-features).
+Ask the source AI for the user-selected topic or conversation and treat its response as a partial, unverified
+summary. If the feature is unavailable, use only excerpts or summaries the person deliberately supplies.
+Psychology cannot force either host to search, recover, or export the full account history.
 
 ## What Psychology is
 
@@ -362,6 +382,10 @@ https://noesis.seges.ai/support/.
 ## License
 
 [MIT](LICENSE)
+
+## Source package v1.2.23 candidate (2026-10-20)
+
+First-run guidance now starts with memories and past chats that the connected host can actually expose or that the user chooses to provide. The assistant drafts a session-only distillation first. Retaining selected material in Noesis is a separate step that requires item review, current purpose-specific consent, and final confirmation. Installing the plugin does not grant access to a full ChatGPT, Claude, or other account archive. This source update does not prove that a host can enumerate historical chats or that production accepted a bitemporal write and exact readback; the live OAuth connection currently has no active selected-context grants and the production MCP catalog has no dedicated selected-import write tool.
 
 ## Source package v1.2.21 submission candidate (2026-10-16)
 
