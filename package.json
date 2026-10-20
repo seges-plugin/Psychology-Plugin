@@ -1,11 +1,11 @@
 {
-  "name": "psychology",
-  "version": "1.2.23",
+  "name": "psychology-plugin",
+  "version": "1.3.0",
   "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments.",
   "private": true,
   "license": "MIT",
   "author": {
-    "name": "seges-plugin",
+    "name": "吳遠佛界",
     "email": "problems@noesis.seges.ai",
     "url": "https://github.com/seges-plugin"
   },
@@ -22,11 +22,16 @@
     "skills",
     "README.md",
     "LICENSE",
-    "MCP-ROUTING-CONTRACT.md",
     "assets/icon.png",
     "assets/logo-light.svg",
     "assets/logo-dark.svg",
-    "docs/openai-brand-rationale.md"
+    "docs/openai-brand-rationale.md",
+    ".claude-plugin/plugin.json",
+    ".claude-plugin/marketplace.json",
+    "kimi.plugin.json",
+    "agents",
+    "hooks/hooks.json",
+    "docs/naming-and-ownership.md"
   ],
   "scripts": {
     "test": "npm run verify",

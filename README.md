@@ -2,7 +2,12 @@
 
 <img src="assets/readme/banner.jpg" alt="Psychology wordmark" width="100%" />
 
-# Psychology
+# Psychology Plugin
+
+Independently maintained by **吳遠佛界** and published from the `seges-plugin`
+GitHub account. The plugin is **Psychology Plugin**; its hosted connector is
+**Psychology MCP**. See the [naming and ownership contract](docs/naming-and-ownership.md)
+for schema IDs, the 1.3.0 rename, and installation migration.
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
@@ -149,9 +154,9 @@ credentials, availability, scope, jurisdiction, and suitability before relying o
 <img src="assets/readme/divider.svg" alt="" width="100%" />
 </div>
 
-## Use Psychology in Codex
+## Use Psychology Plugin in Codex
 
-Installing `Psychology` in Codex loads its portable workflow and safety skills. It does **not** by itself
+Installing `Psychology Plugin` in Codex loads its portable workflow and safety skills. It does **not** by itself
 complete the separate OAuth connection to the hosted Noesis MCP. A first-use response must make that distinction
 visible. If a person asks to distil memories or past chats, it can act on context available in the current task
 without MCP; the result stays session-only and it must say when older history is unavailable. Offer secure Codex
@@ -165,8 +170,8 @@ one entry with the canonical root resource below; do not keep both resource vari
 to make this local configuration change, run:
 
 ```powershell
-codex mcp add psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
-codex mcp login psychology --oauth-client-registration dcr
+codex mcp add psychology_mcp --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
+codex mcp login psychology_mcp --oauth-client-registration dcr
 ```
 
 The login command opens the official Noesis browser sign-in and consent flow. Do not paste a password, client ID,
@@ -191,7 +196,7 @@ repository URL. The link above opens the Plugins page only; it does not sync or 
 
 After installing the plugin, add its hosted connector if Claude has not already asked you to do so.
 You can open the
-[prefilled custom-connector form](https://claude.ai/new?modal=add-custom-connector&connectorName=Psychology&connectorUrl=https%3A%2F%2Fnoesis.seges.ai%2Fmcp#settings/customize-connectors)
+[prefilled custom-connector form](https://claude.ai/new?modal=add-custom-connector&connectorName=Psychology%20MCP&connectorUrl=https%3A%2F%2Fnoesis.seges.ai%2Fmcp#settings/customize-connectors)
 or enter `https://noesis.seges.ai/mcp` yourself. Review the displayed name and URL before continuing.
 This is a two-step setup: install the plugin, then connect the hosted MCP. When Claude asks which OAuth client to use, choose **No client ID — register one automatically**.
 Noesis intentionally supports Dynamic Client Registration (DCR) for this flow and does not support
@@ -201,27 +206,30 @@ These links and steps are setup conveniences, not evidence of sync, installation
 completion, or a particular account's connection. The public support record lists Claude.ai web and
 desktop with a 2026-08-30 acceptance date; it does not cover Claude Code or Claude mobile.
 
-## Use Psychology in Claude Code
+## Use Psychology Plugin in Claude Code
 
 Claude Code is a separate product from Claude.ai. In a Claude Code session, add this [Claude Code
-marketplace](https://code.claude.com/docs/en/plugins/install) and install its `psychology` plugin:
+marketplace](https://code.claude.com/docs/en/plugins/install) and install its `psychology-plugin` plugin:
 
 ```text
 /plugin marketplace add seges-plugin/Psychology-Plugin
-/plugin install psychology@psychology
+/plugin install psychology-plugin@psychology-plugin
 ```
 
-Review the plugin and choose an install scope. The plugin's root `.mcp.json` declares the hosted HTTP
-server. Approve it if Claude Code prompts, then run `claude mcp login psychology` or use **Sign in**
-in `/mcp`. Check the result with `claude mcp get psychology`. If you install it from the shell or
-add it during a session, start a new session or run `/reload-plugins` to apply it.
+Review the plugin and choose an install scope. The Claude manifest explicitly declares
+Psychology MCP using Claude's `http` transport; the root `.mcp.json` retains Codex's
+URL-only format. In Claude Code, open `/mcp`, select the plugin-provided server, and
+use its normal authentication action. Its scoped name is
+`plugin:psychology-plugin:psychology_mcp`; use the exact name shown by the host rather
+than a bare CLI alias. If you install it from the shell or add it during a session,
+start a new session or run `/reload-plugins` to apply it.
 
 Claude Code and Claude.ai manage connector authorization separately. Installing this plugin in
 Claude Code does not connect a Claude.ai account, and adding the Claude.ai connector does not install
 this repository's plugin. The public acceptance record covers Claude.ai web and desktop only; Claude
 Code remains an unverified evaluation target until it completes its own acceptance sequence.
 
-## Use Psychology in Kimi Code
+## Use Psychology Plugin in Kimi Code
 
 Install this repository as a custom [Kimi Code plugin](https://github.com/MoonshotAI/kimi-code/blob/main/docs/en/customization/plugins.md):
 
@@ -231,7 +239,7 @@ Install this repository as a custom [Kimi Code plugin](https://github.com/Moonsh
 
 Enable it in `/plugins`, then run `/reload` or start a new session. The `kimi.plugin.json` manifest
 declares both `./skills/` and the hosted MCP server. Complete browser authorization with
-`/mcp-config login psychology`; then confirm the server is connected in `/mcp` and that its tools
+`/mcp-config login psychology_mcp`; then confirm the server is connected in `/mcp` and that its tools
 are available. The Kimi.ai consumer app and Kimi Code CLI have different plugin and MCP
 configuration surfaces; these steps apply to Kimi Code CLI only.
 
@@ -239,7 +247,7 @@ Plugin installation, reload, or a visible server entry does not prove OAuth comp
 acceptance. Kimi Code is not listed in the current public support record. Use only the authenticated
 `psychology_…` tool names returned by the connected server.
 
-## Use Psychology in ChatGPT
+## Use Psychology Plugin in ChatGPT
 
 <a id="use-psychology-in-chatgpt"></a>
 
@@ -291,19 +299,19 @@ there is no supported credential workaround.
 **OpenClaw (an unverified evaluation target, not a supported host):** OpenClaw's [native plugin
 manifest](https://docs.openclaw.ai/plugins/manifest) and [MCP OAuth flow](https://docs.openclaw.ai/cli/mcp/transports) can
 declare static MCP servers. Install this repository as a plugin from GitHub, review
-and confirm the source when OpenClaw prompts, then enable `psychology`:
+and confirm the source when OpenClaw prompts, then enable `psychology-plugin`:
 
 ```sh
 openclaw plugins install git:github.com/seges-plugin/Psychology-Plugin
-openclaw plugins enable psychology
+openclaw plugins enable psychology-plugin
 ```
 
-Inspect it with `openclaw plugins inspect psychology`. The manifest contributes the skills and a
+Inspect it with `openclaw plugins inspect psychology-plugin`. The manifest contributes the skills and a
 remote Streamable HTTP MCP server using OpenClaw's native OAuth configuration; it does not require a
 second manual server entry in `openclaw.json`.
 
-Complete browser authorization with `openclaw mcp login psychology`. Check the saved connection
-with `openclaw mcp status --verbose` and run `openclaw mcp doctor psychology --probe` to verify
+Complete browser authorization with `openclaw mcp login psychology_mcp`. Check the saved connection
+with `openclaw mcp status --verbose` and run `openclaw mcp doctor psychology_mcp --probe` to verify
 reachability and tool discovery. Plugin install, enablement, or saved credentials alone do not
 prove that authenticated tools work or that this host version has passed acceptance.
 
@@ -383,7 +391,22 @@ https://noesis.seges.ai/support/.
 
 [MIT](LICENSE)
 
-## Source package v1.2.23 candidate (2026-10-20)
+## Source package v1.3.0 review candidate (2026-10-20)
+
+The package display name is **Psychology Plugin**, and the hosted connector display
+name is **Psychology MCP**. Package IDs are `psychology-plugin`; all bundled MCP
+configuration keys are `psychology_mcp`. The deployed tool namespace remains
+`psychology_`. This changes installation identifiers; follow the
+[migration and ownership contract](docs/naming-and-ownership.md) before reconnecting.
+
+This source revision aligns the OpenAI/Codex listings, provides a Claude-specific
+HTTP MCP definition, corrects independent ownership, integrates session-only goal
+review, and applies the canonical interpretation safeguards to the bundled agents.
+Ignored maintainer files and private runtime code are not distribution inputs.
+The linked hosted policies and each actual host connection require separate live
+verification. No submission ZIP will be built from this revision before owner review.
+
+### Previous source package v1.2.23 candidate
 
 First-run guidance now starts with memories and past chats that the connected host can actually expose or that the user chooses to provide. The assistant drafts a session-only distillation first. Retaining selected material in Noesis is a separate step that requires item review, current purpose-specific consent, and final confirmation. Installing the plugin does not grant access to a full ChatGPT, Claude, or other account archive. This source update does not prove that a host can enumerate historical chats or that production accepted a bitemporal write and exact readback; the live OAuth connection currently has no active selected-context grants and the production MCP catalog has no dedicated selected-import write tool.
 

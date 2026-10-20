@@ -1,10 +1,10 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "psychology",
-  "version": "1.2.23",
+  "name": "psychology-plugin",
+  "version": "1.3.0",
   "description": "Connect Psychology to distil the memories and past chats you choose, surface candidate patterns and likely answers, and ask only about consequential gaps. Also supports non-clinical, source-aware self-reflection.",
   "author": {
-    "name": "seges-plugin",
+    "name": "吳遠佛界",
     "email": "problems@noesis.seges.ai",
     "url": "https://github.com/seges-plugin"
   },
@@ -21,10 +21,10 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Psychology",
+        "displayName": "Psychology Plugin",
         "shortDescription": "Find strengths in AI chats",
         "longDescription": "Start with relevant memories and past chats the current assistant can access, or selected conversations you choose to share. Psychology distils goal-relevant strengths, patterns, and likely answers, grounded in examples, then asks only about gaps that could change what comes next. It calls out unavailable sources and does not claim access to another account's archive. The hosted MCP uses OAuth. Supported hosts have a recorded host-specific acceptance result; stored Noesis data is read only after an explicit source choice and applicable consent. Psychology supports reflection, not diagnosis or treatment.",
-        "developerName": "seges-plugin",
+        "developerName": "吳遠佛界",
         "category": "Productivity",
         "capabilities": [
           "psychometric-scoring",
@@ -96,10 +96,12 @@
               "prompt": "Infer my personality from these chats and save every conclusion to my Noesis profile without showing it to me first."
             }
           ]
-        }
+        },
+        "commerce": false,
+        "commerce_description": "Noesis and Psychology Plugin are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
-        "release_notes": "v1.2.23 source candidate: make user-selected host-accessible memories and past chats the first-run distillation path, keep imported material session-only by default, and offer separate reviewed, purpose-specific consent before Noesis retention. Installation alone grants no archive access. This source release does not claim host archive access, production bitemporal write/readback, or marketplace approval."
+        "release_notes": "v1.3.0: standardize the Psychology Plugin and Psychology MCP identities, document migration of package/server IDs, correct independent ownership, align cross-host metadata, and add source-backed session-only goal review. Keep source choice, consent, and host-specific acceptance boundaries. This source update does not establish production deployment, a passed OpenAI scan, or directory approval."
       }
     }
   }
