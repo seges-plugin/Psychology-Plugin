@@ -68,8 +68,10 @@ anything from a previous session without a selected, authorized source.
    `interpretation`; offer coaching without assuming it.
 7. **Save separately.** After a standardized self-report result is shown, save only if the person explicitly requests it. Map the
    host tool `psychology_get_consent_status`, recheck current authorization, explain the destination, and call
-   `psychology_save_assessment_result` only after final confirmation. If unavailable, stop or offer the local
-   persistence flow—never request a credential workaround.
+   `psychology_save_standardized_self_report_v2` only for an eligible completed self-report after reviewing
+   its exact payload and obtaining final confirmation. If unavailable, keep the result session-only;
+   the local-persistence skill can only inspect an already selected file and cannot save or export it.
+   Never request a credential workaround or use a retired save alias.
 
 ## Session choices and boundaries
 

@@ -1,6 +1,6 @@
 {
-  "name": "psychology",
-  "version": "1.2.23",
+  "name": "psychology-plugin",
+  "version": "1.3.0",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal before answering only the gaps that matter. Check callable psychology_* MCP tools before any tool-dependent task.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -15,9 +15,9 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "Psychology",
+    "displayName": "Psychology Plugin",
     "shortDescription": "Find strengths in AI chats",
-    "longDescription": "Bring the memories and past chats available to your connected assistant, or a purpose-limited memory summary or selected conversations from another AI. Psychology helps distil strengths and likely answers for your goal, then asks only for the gaps that still matter. It also offers structured self-assessments and practical reflection.",
+    "longDescription": "Start with relevant memories and past chats the current assistant can access, or selected conversations you choose to share. Psychology distils goal-relevant strengths, patterns, and likely answers, grounded in examples, then asks only about gaps that could change what comes next. It calls out unavailable sources and does not claim access to another account's archive. The hosted MCP uses OAuth. Supported hosts have a recorded host-specific acceptance result; stored Noesis data is read only after an explicit source choice and applicable consent. Psychology supports reflection, not diagnosis or treatment.",
     "category": "Productivity",
     "capabilities": [
       "psychometric-scoring",
@@ -26,19 +26,19 @@
       "referral-leads"
     ],
     "websiteURL": "https://noesis.seges.ai",
-    "supportURL": "https://noesis.seges.ai/en/support/",
     "privacyPolicyURL": "https://noesis.seges.ai/privacy",
     "termsOfServiceURL": "https://noesis.seges.ai/terms",
     "defaultPrompt": [
       "Start with the AI memories/chats I choose for my goal, then let me review Noesis candidates.",
-      "Use my AI chats and memories to suggest likely answers for my next step.",
-      "I’ll paste a Kimi summary. Find strengths, examples, and key gaps."
+      "Use my AI chats and memories to suggest a likely answer for my goal.",
+      "I’ll paste a Kimi summary. Find my strengths, examples, and key gaps."
     ],
     "brandColor": "#0d6efd",
     "brandColorDark": "#78a9ff",
     "composerIcon": "./assets/icon.png",
     "composerIconDark": "./assets/icon.png",
     "logo": "./assets/icon.png",
-    "logoDark": "./assets/icon.png"
+    "logoDark": "./assets/icon.png",
+    "supportURL": "https://noesis.seges.ai/en/support/"
   }
 }

@@ -1,17 +1,17 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "psychology",
+  "name": "psychology-plugin",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal. Psychology also offers published self-assessments and practical reflection.",
   "owner": {
     "name": "Psychology Plugin"
   },
   "plugins": [
     {
-      "name": "psychology",
+      "name": "psychology-plugin",
       "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal. Psychology also offers published self-assessments and practical reflection.",
       "category": "productivity",
       "source": "./",
-      "version": "1.2.23",
+      "version": "1.3.0",
       "keywords": [
         "psychology",
         "psychometrics",

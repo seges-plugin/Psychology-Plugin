@@ -1,6 +1,6 @@
 {
-  "name": "psychology",
-  "version": "1.2.23",
+  "name": "psychology-plugin",
+  "version": "1.3.0",
   "description": "AI getting stronger while your own advantage feels unclear? Distil accessible memories and past chats—or selected context you choose to share—into grounded strengths and likely answers, then focus on gaps that matter. Kimi Code remains an evaluation/setup path, not an accepted host.",
   "keywords": [
     "psychology",
@@ -13,14 +13,14 @@
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
   "interface": {
-    "displayName": "Psychology",
+    "displayName": "Psychology Plugin",
     "shortDescription": "Distil your chosen AI memories and chats into strengths and likely next answers.",
     "longDescription": "Distil memories and past chats your connected assistant can access—or selected conversations you choose to share—into strengths and likely answers for your goal. Ground candidates in examples, then ask only consequential gaps. Kimi Code is an evaluation/setup path, not a supported host; this does not claim a direct Kimi.ai consumer archive. Stored-data reads require the applicable consent and an explicit source choice for the session.",
     "websiteURL": "https://noesis.seges.ai"
   },
   "skills": "./skills/",
   "mcpServers": {
-    "psychology": {
+    "psychology_mcp": {
       "url": "https://noesis.seges.ai/mcp"
     }
   }
