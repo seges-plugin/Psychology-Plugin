@@ -96,6 +96,30 @@ const rootMcp = json(".mcp.json");
 const codexMcp = rootMcp;
 const hooks = json("hooks/hooks.json");
 
+// Product manifests must not publish personal or corporate attribution metadata.
+function checkAttribution(value, path) {
+  if (Array.isArray(value)) {
+    value.forEach((entry, index) => checkAttribution(entry, `${path}[${index}]`));
+  } else if (value && typeof value === "object") {
+    for (const [key, entry] of Object.entries(value)) {
+      if (["author", "authors", "developerName", "publisher", "contributors", "maintainers", "funding"].includes(key)) {
+        fail(`${path}.${key}: attribution metadata must be omitted`);
+      }
+      checkAttribution(entry, `${path}.${key}`);
+    }
+  }
+}
+for (const path of ["package.json", "plugin.json", ".codex-plugin/plugin.json", ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json", "kimi.plugin.json", "openclaw.plugin.json"]) {
+  checkAttribution(json(path), path);
+}
+if (JSON.stringify(marketplace.owner) !== JSON.stringify({ name: "Psychology Plugin" })) {
+  fail("Claude marketplace requires only a product-name label, without contact or affiliation metadata");
+}
+if (!/^Copyright \(c\) 2026$/m.test(text("LICENSE"))) {
+  fail("LICENSE must retain an anonymous copyright notice");
+}
+
+
 // Human-facing names and machine IDs intentionally have separate schema roles.
 const pluginDisplayName = "Psychology Plugin";
 const pluginId = "psychology-plugin";
@@ -108,7 +132,7 @@ for (const [path, manifest] of [
   if (manifest.name !== pluginId) fail(`${path}: package name must be ${pluginId}`);
 }
 if (marketplace.name !== pluginId || marketplace.owner?.name !== pluginDisplayName || Object.keys(marketplace.owner ?? {}).length !== 1) {
-  fail(".claude-plugin/marketplace.json: marketplace ID and ownership must match the plugin");
+  fail(".claude-plugin/marketplace.json: marketplace ID and product-only label must match the plugin");
 }
 if (openclawPlugin.id !== pluginId || openclawPlugin.name !== pluginDisplayName) {
   fail("openclaw.plugin.json: plugin ID and display name must match the naming contract");
@@ -131,7 +155,7 @@ if (JSON.stringify(canonical(rootInterface)) !== JSON.stringify(canonical(codexP
 }
 for (const [path, ui] of [["plugin.json", rootInterface], [".codex-plugin/plugin.json", codexPlugin.interface], ["kimi.plugin.json", kimiPlugin.interface]]) {
   if (ui?.displayName !== pluginDisplayName) {
-    fail(`${path}: human-facing plugin and owner names must match the naming contract`);
+    fail(`${path}: human-facing plugin name must match the naming contract`);
   }
 }
 const ignoredButTracked = execFileSync("git", ["ls-files", "-ci", "--exclude-standard"], { cwd: root, encoding: "utf8" }).trim();
@@ -139,7 +163,7 @@ if (ignoredButTracked) fail(`ignored files must not remain tracked: ${ignoredBut
 for (const path of packageJson.files ?? []) {
   if (!existsSync(join(root, path))) fail(`package.json: advertised file path does not exist: ${path}`);
 }
-note("Naming: Psychology Plugin / psychology-plugin; Psychology MCP / psychology_mcp; product naming and ignore boundaries checked");
+note("Naming: Psychology Plugin / psychology-plugin; Psychology MCP / psychology_mcp; attribution-free metadata and ignore boundaries checked");
 
 const versions = new Map([
   ["package.json", packageJson.version],

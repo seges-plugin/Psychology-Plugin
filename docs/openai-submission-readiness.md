@@ -6,7 +6,7 @@ Status checked: 2026-10-21
 
 - Display names are **Psychology Plugin** and **Psychology MCP**. Machine IDs
   are `psychology-plugin` and `psychology_mcp`; the deployed tool namespace
-  remains `psychology_`. See [naming and ownership](naming.md).
+  remains `psychology_`. See [naming](naming.md).
 - Review hosted privacy and terms separately; source metadata does not update production pages.
 - OpenAI and Codex interfaces are synchronized. Claude declares its own HTTP
   transport; Codex retains its URL-only configuration. Installation identifiers
