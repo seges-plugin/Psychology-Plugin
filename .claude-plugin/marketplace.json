@@ -1,17 +1,17 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "psychology-plugin",
-  "description": "Free, noncommercial reflection using memories and past chats you choose. Review grounded suggestions in your AI chat; use the separate Today website to track action. Not diagnosis or treatment.",
+  "description": "Reflection using memories and past chats you choose. Review grounded suggestions in your AI chat; use the separate Today website to track action. Not diagnosis or treatment.",
   "owner": {
     "name": "Psychology Plugin"
   },
   "plugins": [
     {
       "name": "psychology-plugin",
-      "description": "Free, noncommercial reflection using memories and past chats you choose. Review grounded suggestions in your AI chat; use the separate Today website to track action. Not diagnosis or treatment.",
+      "description": "Reflection using memories and past chats you choose. Review grounded suggestions in your AI chat; use the separate Today website to track action. Not diagnosis or treatment.",
       "category": "productivity",
       "source": "./",
-      "version": "1.4.0",
+      "version": "1.4.1",
       "keywords": [
         "psychology",
         "psychometrics",

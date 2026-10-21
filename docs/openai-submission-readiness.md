@@ -1,6 +1,6 @@
 # OpenAI submission preparation
 
-Checked: 2026-10-22. Source candidate: 1.4.0. Source preparation, host acceptance,
+Checked: 2026-10-22. Source candidate: 1.4.1. Source preparation, host acceptance,
 Portal upload, scans, review and publication are separate states.
 
 ## Source and package checks

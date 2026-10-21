@@ -686,28 +686,59 @@ const positioningManifests = [
 ];
 function positioningCopyErrors(description) {
   const errors = [];
-  if (!/\bfree\b/i.test(description) || !/\bnoncommercial\b/i.test(description)) errors.push("free/noncommercial boundary");
+  errors.push(...publicListingCopyErrors(description));
   if (!/not diagnosis or treatment/i.test(description)) errors.push("non-clinical boundary");
   if (!/Today website/i.test(description)) errors.push("separate website destination");
   if (/\u2014/.test(description)) errors.push("em dash");
   if (/\b(?:all hosts supported|automatically manages your workspace|YC.backed|guaranteed outcomes)\b/i.test(description)) errors.push("unsupported acceptance or outcome claim");
   return errors;
 }
-for (const path of positioningManifests) {
-  for (const error of positioningCopyErrors(json(path).description ?? "")) fail(`${path}: positioning copy missing or unsafe: ${error}`);
+function publicListingCopyErrors(description) {
+  const errors = [];
+  if (/\b(?:free|non[- ]?commercial|pricing|subscriptions?|subscribe|paid plans?|trial|credits? for sale)\b/i.test(description) || /(?:[$€£¥]\s*\d|\b(?:USD|EUR|GBP|TWD|NTD)\s*\$?\s*\d|\d\s*(?:USD|EUR|GBP|TWD|NTD)\b)/i.test(description)) {
+    errors.push("pricing or subscription statement in public description");
+  }
+  if (/\b(?:limited[- ]time|temporary promotion|special offer|discount|coupon|promo(?:tion)? code|sale ends|offer ends)\b/i.test(description) || /\b\d+\s*%\s*off\b/i.test(description)) {
+    errors.push("temporary promotion in public description");
+  }
+  return errors;
 }
-const goodPositioning = "Free, noncommercial reflection; use the separate Today website. Not diagnosis or treatment.";
+for (const path of positioningManifests) {
+  const manifest = json(path);
+  for (const error of positioningCopyErrors(manifest.description ?? "")) fail(`${path}: positioning copy missing or unsafe: ${error}`);
+  const publicSurfaces = [["manifest", manifest], ...((manifest.plugins ?? []).map((plugin, index) => [`plugins[${index}]`, plugin]))];
+  for (const [label, surface] of publicSurfaces) {
+    const ui = surface.interface ?? surface.extensions?.["com.openai"]?.interface;
+    for (const [field, value] of [["description", surface.description], ["shortDescription", ui?.shortDescription], ["longDescription", ui?.longDescription]]) {
+      if (typeof value !== "string") continue;
+      for (const error of publicListingCopyErrors(value)) fail(`${path}:${label}.${field}: ${error}`);
+    }
+  }
+}
+const goodPositioning = "Reflection using selected context; use the separate Today website. Not diagnosis or treatment.";
 for (const [name, value] of [
-  ["commercial", goodPositioning.replace("noncommercial", "commercial")],
   ["clinical", goodPositioning.replace("Not diagnosis or treatment.", "")],
   ["website", goodPositioning.replace("Today website", "automatic workspace manager")],
   ["em dash", `${goodPositioning} \u2014 extra`],
   ["host", `${goodPositioning} All hosts supported.`],
   ["endorsement", `${goodPositioning} YC-backed.`],
+  ["outcome", `${goodPositioning} Guaranteed outcomes.`],
 ]) {
   if (positioningCopyErrors(value).length === 0) fail(`positioning guard accepted weakened ${name} fixture`);
 }
 if (positioningCopyErrors(goodPositioning).length !== 0) fail("positioning guard rejected bounded copy");
+const pricingFixtures = ["Free reflection.", "Noncommercial reflection.", "Non-commercial reflection.", "Plans start at $9.", "Only EUR 10.", "9 USD per month.", "Start a subscription.", "Subscribe for updates.", "Try a paid plan.", "Start your trial.", "Limited-time access.", "Temporary promotion.", "Use this promo code.", "20% off this week."];
+for (const promotion of pricingFixtures) {
+  if (publicListingCopyErrors(`${goodPositioning} ${promotion}`).length === 0) fail(`public pricing guard accepted fixture: ${promotion}`);
+}
+for (const bounded of [goodPositioning, "Reflect, then take a next step", "Review selected experiences in your AI chat."]) {
+  if (publicListingCopyErrors(bounded).length !== 0) fail("public pricing guard rejected capability-only copy");
+}
+const commerceReview = portablePlugin.extensions?.["com.openai"]?.review;
+if (commerceReview?.commerce !== false || !/\bnoncommercial\b/i.test(commerceReview?.commerce_description ?? "")) {
+  fail("plugin.json: retain the truthful noncommercial policy in review metadata, separate from public descriptions");
+}
+note(`Public listing copy: ${pricingFixtures.length} pricing/promotion negative fixtures passed; nonclinical, website and host-scope guards retained`);
 if (!readme.includes("[Install in your AI](#install-in-your-ai)") || !readme.includes("[Try Today first](https://noesis.seges.ai/en/today/)")) fail("README.md: keep AI installation primary and Today secondary");
 if (!readme.includes('id="add-to-claude-ai"') || !readme.includes('id="use-psychology-in-chatgpt"')) fail("README.md: retain working legacy setup anchors");
 function readmeNavigationErrors(body) {

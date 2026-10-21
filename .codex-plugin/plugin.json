@@ -1,7 +1,7 @@
 {
   "name": "psychology-plugin",
-  "version": "1.4.0",
-  "description": "Think it through, then take the next step. Free, noncommercial reflection using memories and past chats you choose. Review grounded suggestions in your AI chat; use the separate Today website to track action. Check callable psychology_* MCP tools before any tool-dependent task. Not diagnosis or treatment.",
+  "version": "1.4.1",
+  "description": "Reflection using memories and past chats you choose. Review grounded suggestions in your AI chat; use the separate Today website to track action. Check callable psychology_* MCP tools before any tool-dependent task. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -17,7 +17,7 @@
   "interface": {
     "displayName": "Psychology Plugin",
     "shortDescription": "Reflect, then take a next step",
-    "longDescription": "Free, noncommercial reflection for people who use AI to clarify ideas and choose a next step. Use relevant memories and past chats the current assistant can access to review goal-relevant strengths, patterns, and likely answers, grounded in examples. Ask only about gaps that could change what comes next; use the separate Today website to track action. Psychology does not claim access to another account's archive. The hosted MCP uses OAuth. Supported hosts require a recorded host-specific acceptance result; stored-data reads require an explicit source choice and applicable consent. Not diagnosis or treatment.",
+    "longDescription": "Reflection for people who use AI to clarify ideas and choose a next step. Use relevant memories and past chats the current assistant can access to review goal-relevant strengths, patterns, and likely answers, grounded in examples. Ask only about gaps that could change what comes next; use the separate Today website to track action. Psychology does not claim access to another account's archive. The hosted MCP uses OAuth. Supported hosts require a recorded host-specific acceptance result; stored-data reads require an explicit source choice and applicable consent. Not diagnosis or treatment.",
     "category": "Productivity",
     "capabilities": [
       "psychometric-scoring",
@@ -39,7 +39,7 @@
     "composerIconDark": "./assets/icon.png",
     "logo": "./assets/icon.png",
     "logoDark": "./assets/icon.png",
-    "supportURL": "https://noesis.seges.ai/en/support/"
+    "supportURL": "https://noesis.seges.ai/support/"
   },
   "extensions": {
     "com.openai": {

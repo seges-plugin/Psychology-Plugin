@@ -1,7 +1,7 @@
 {
   "name": "psychology-plugin",
-  "version": "1.4.0",
-  "description": "Free, noncommercial reflection for people who use AI to clarify ideas and choose a next step. Use selected context in your AI chat and the Today website to track action. Not diagnosis or treatment.",
+  "version": "1.4.1",
+  "description": "Reflection for people who use AI to clarify ideas and choose a next step. Use selected context in your AI chat and the Today website to track action. Not diagnosis or treatment.",
   "private": true,
   "license": "MIT",
   "repository": {
