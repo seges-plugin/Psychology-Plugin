@@ -1,7 +1,7 @@
 ---
 name: 00-session-bootstrap
 description: Host-cooperated intent router for the first Psychology-relevant request in a session, including starting with user-chosen memories or past chats, self-understanding, intimacy self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
-version: "1.2.5"
+version: "1.2.6"
 ---
 
 # Psychology session bootstrap
@@ -26,6 +26,12 @@ choose this path, follow `skills/memory-distillation/SKILL.md`; after showing an
 distillation, make the separate Noesis retention path available when supported, and require the user's explicit
 choice, current purpose-specific consent, eligible reviewed items, and final confirmation before any write.
 Never imply that a host can search its full archive unless that exact capability is exposed and verified.
+
+For requests to retain goals, relationship/contact records, or manual financial records in the personal
+workspace, follow `../psychology/SKILL.md` section 3. The current MCP catalog has no workspace write tools;
+offer the reviewed Today website flow without requiring a connector here. A workspace grant is separate
+from profile, journal, assessment, and selected-import consent. Never silently redirect a workspace save
+into one of those other stores or report the chat draft as persisted.
 
 ## 1. Distil visible context immediately, without persistence
 

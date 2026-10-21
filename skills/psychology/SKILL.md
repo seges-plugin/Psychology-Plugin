@@ -1,21 +1,35 @@
 ---
 name: psychology
-version: "1.2.7"
-description: Mandatory front door for every @Psychology request. Check whether callable Psychology MCP tools are visible before tool-dependent assessment or account actions; explicit session-only memory distillation can start without a connector.
+version: "1.2.8"
+description: Mandatory front door for every @Psychology request and relevant personal growth, non-clinical emotional reflection, relationship concerns, life goals, journaling, or selected-chat memory requests, even without @Psychology. Routes explicit personal workspace record requests to Today. Check callable Psychology MCP tools before tool-dependent assessment or account actions; session-only distillation can start without a connector.
 triggers:
   - "@Psychology"
   - "help me choose a non-clinical self-reflection exercise"
   - "psychology assessment"
   - "use Psychology"
+  - "help me understand my recurring relationship patterns"
+  - "幫我整理最近的煩惱和人生目標"
+  - "記下我選擇分享的回憶與近況"
+  - "save these selected goals or financial records to my Noesis workspace"
 ---
 
 # Psychology front door
 
-Run this router for every `@Psychology` request before selecting another Psychology skill. It exists because
+Run this router for every `@Psychology` request and relevant personal reflection or selected-memory request,
+including natural-language requests that do not name the plugin. Do not ask the person to repeat the request
+with an invocation name. Skill selection depends on the host; installation does not guarantee activation in
+every conversation. Do not divert unrelated work, general medical questions, or investment advice into this
+workflow. Respond to the stated need using available context; source access and persistence require their own
+applicable authorization.
+
+This router exists because
 an installed plugin and a callable Noesis MCP connection are separate states. Never let a generic reflection,
 assessment recommendation, or claim about saved Psychology data appear before that distinction is visible.
 
 ## 1. Check the current task, not plugin metadata
+
+For an explicit request to save personal goals, relationship/contact records, or manual financial records
+in the Noesis workspace, use section 3. The website handoff does not require an MCP connection in this chat.
 
 Inspect the tools actually visible in the current Codex task. A plugin card, an MCP URL in a manifest, or a
 previous successful connection in another task does not prove a callable capability now.
@@ -64,3 +78,28 @@ imported-memory data.
 `memory-distillation` remains available without the connector whenever the person asks for a session-only
 distillation; coaching remains available when explicitly chosen. Neither is evidence that the MCP is connected
 or a substitute for a published assessment or account-backed tool.
+
+## 3. Personal workspace saving uses the verified destination
+
+The current 34-tool Psychology MCP catalog does not expose workspace record, relationship graph, or finance
+write tools. A working profile/journal MCP tool is not workspace write access. Never invent a tool, construct
+an authenticated REST request from a claimed owner ID, or ask for a browser token to bridge this gap.
+
+When the person explicitly wants to retain selected information in that workspace:
+
+1. Prepare a brief, reviewable draft in the chat using only available or selected material. Mark direct
+   statements, interpretations, source references, unknown dates, and proposed corrections separately.
+   Do not infer financial balances, contact verification, consent, or claim-validity bounds.
+2. Offer [Noesis Today](https://noesis.seges.ai/en/today/) or, for Traditional Chinese,
+   [Noesis Today](https://noesis.seges.ai/zh-tw/today/). Explain that the person signs in, chooses the applicable
+   scope, reviews the exact record, and confirms the save there. Registration and MCP consent do not grant
+   workspace access. The draft is still session-only until the website confirms persistence.
+3. Do not silently write these candidates through profile, journal, assessment, or selected-import tools.
+   Those are separate stores and purposes. If the person explicitly chooses one of those supported stores
+   instead, follow its own skill, current consent, review, and actual tool-result requirements.
+4. Report only the operation and destination actually confirmed. A page link, installed plugin, draft,
+   database schema, or successful guide call does not prove a record was saved or a relationship graph built.
+
+This handoff enables a reviewed website workflow; it is not automatic history ingestion or an MCP-to-workspace
+bridge. If future tools expose a workspace bridge, verify their actual callable schemas and authorization
+contract before using them. Do not infer support from a newer version number.
