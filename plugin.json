@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology-plugin",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Connect Psychology to distil the memories and past chats you choose, surface candidate patterns and likely answers, and ask only about consequential gaps. Also supports non-clinical, source-aware self-reflection.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -58,10 +58,10 @@
               "expected_behavior": "List instruments returned by the catalog with their available descriptions and sources. Do not administer items, infer answers, or score the user."
             },
             {
-              "description": "Retrieve exact instrument materials before an explicitly requested self-report assessment.",
-              "prompt": "I want to take the CAT-Q. Show me the exact questions and response options before I answer.",
+              "description": "Retrieve current CAT-Q questions before administration and disclose any missing response scale. Setup: no answers or save request are supplied.",
+              "prompt": "Show me the current CAT-Q questions. Before I answer, tell me whether the tool also provides the response options.",
               "tools_triggered": "psychology_get_item_bank",
-              "expected_behavior": "Retrieve the current CAT-Q item bank and present the exact supported wording and response options without reconstructing or changing items. Do not score or save anything before the user's answers and confirmation."
+              "expected_behavior": "Call psychology_get_item_bank with instrument=cat_q. Present only returned respondent-facing question text, without reverse-scoring or answer-key metadata. If response options or scale labels are absent, disclose the omission and do not invent them, administer scored responses, score, or save. Preserve an exact returned scale without modification."
             },
             {
               "description": "Check current authorization before the user chooses to read their saved assessment history.",
@@ -95,7 +95,7 @@
         "commerce_description": "Noesis and Psychology Plugin are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
-        "release_notes": "v1.3.0: standardize the Psychology Plugin and Psychology MCP identities, document migration of package/server IDs, align cross-host metadata, and add source-backed session-only goal review. Keep source choice, consent, and host-specific acceptance boundaries. This source update does not establish production deployment, a passed OpenAI scan, or directory approval."
+        "release_notes": "v1.3.1: prioritize urgent safety support before connector setup, use host-specific connection guidance, disclose missing instrument response scales, and preserve attribution-free source metadata. No workspace MCP write bridge or expanded archive access is added. Source validation is separate from Portal scans, reviewer access, and approval."
       }
     }
   }

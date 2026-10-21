@@ -101,19 +101,23 @@ presence of one as proof of the other.
 
   For other tool-dependent requests, this verdict must be the **first substantive content** of the response
   (after any urgent-safety routing), before a generic exercise, assessment recommendation, or long context brief.
-  Say that the portable Psychology plugin is loaded but its MCP tools are not callable in this Codex task.
+  Say that the portable Psychology plugin guidance is available but its MCP tools are not callable in this session.
   Route to `skills/onboarding/SKILL.md` for the secure connection flow.
 
   Use this short, action-first interstitial:
 
-  > **Psychology MCP is not connected in this Codex task yet.** The plugin guidance is available, but no
+  > **Psychology MCP tools are not callable in this session yet.** The plugin guidance is available, but no
   > `psychology_*` tool can be called, so I cannot use Noesis instruments, consent, or saved sources here.
-  > Would you like to connect it now? The secure Codex flow opens an official Noesis browser sign-in; it
+  > Would you like to connect it here? Use this host's native connection interface and official Noesis browser sign-in; it
   > does not ask you to paste a password, token, header, or authorization URL. Session-only memory distillation
   > can still use context this host can access or material you choose to paste.
 
-  Do not send a person who is currently using Codex to ChatGPT Developer mode, ChatGPT Plugin Management,
-  or a Claude setup flow.
+  - **If the current host is Codex:** follow the Codex desktop and CLI section in
+    `../onboarding/SKILL.md`. Do not send a person who is currently using Codex to ChatGPT Developer mode,
+    ChatGPT Plugin Management, or a Claude setup flow.
+  - **For any other host:** use that host's native connection interface and the matching section in
+    `../onboarding/SKILL.md`; do not give Codex commands or another platform's setup directions.
+    If no supported connection flow is available, disclose that limit and keep eligible work session-only.
 - Connector-free coaching may continue only as a clearly labelled **session-only** conversation using
   material already visible here. The same narrow exception applies to
   `skills/intimacy-self-understanding/SKILL.md`, under its adult-only, user-initiated, no-persistence
