@@ -39,7 +39,9 @@ visible configuration, or renamed entry does not prove OAuth or tool acceptance.
 
 ## Policy and release boundary
 
-Review linked privacy and terms separately before submission.
+Review the linked privacy and terms pages before submission, including their retention,
+geographic availability, consent, and data-rights disclosures. Source-package changes do not
+update hosted pages or establish platform approval.
 
 The plugin is free and noncommercial. It does not offer diagnosis, treatment,
 paid subscriptions, data sales, or commercial health referrals. Skills are
