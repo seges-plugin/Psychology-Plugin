@@ -22,6 +22,8 @@ references:
 
 # Coaching Guide
 
+For a meaningful new personal decision, correction or life change on later turns, follow `../memory-updates/SKILL.md`. Do not stop the loop after bootstrap or save assessment answers as general memory. Preserve this skill's source, authorization and no-persistence boundaries.
+
 Provide AI coaching that is personalized to the user's psychometric profile, grounded in evidence-based techniques, and adapted for neurodivergent adults.
 
 ## Session context comes first

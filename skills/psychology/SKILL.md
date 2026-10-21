@@ -1,7 +1,7 @@
 ---
 name: psychology
-version: "1.2.8"
-description: Mandatory front door for every @Psychology request and relevant personal growth, non-clinical emotional reflection, relationship concerns, life goals, journaling, or selected-chat memory requests, even without @Psychology. Routes explicit personal workspace record requests to Today. Check callable Psychology MCP tools before tool-dependent assessment or account actions; session-only distillation can start without a connector.
+version: "1.3.0"
+description: Use proactively for personal decisions, corrected goals, career or relationship changes, habits, wellbeing, learning, financial context, growth and selected past chats or memories, even without Psychology or remember keywords. Route meaningful updates to memory-updates and the smallest useful MCP. Keep unrelated technical work out; verify the exact store and authorization before persistence.
 triggers:
   - "@Psychology"
   - "help me choose a non-clinical self-reflection exercise"
@@ -25,6 +25,15 @@ applicable authorization.
 This router exists because
 an installed plugin and a callable Noesis MCP connection are separate states. Never let a generic reflection,
 assessment recommendation, or claim about saved Psychology data appear before that distinction is visible.
+
+## Ongoing activation, not just first use
+
+After urgent-safety routing, run `../memory-updates/SKILL.md` on each meaningful new personal signal,
+including a decision, correction, milestone, pattern or request to build on selected context. Do not wait
+for an explicit memory request, another @mention, a complete assessment or the end of the conversation.
+The bootstrap establishes connection/source state; it does not mark later updates as already handled.
+Reuse still-applicable choices and avoid duplicate calls for unchanged facts. Continue the user's task
+while candidates await review. Meaningful changes start distillation, not unapproved account writes.
 
 ## 0. Safety before connection or source choice
 
@@ -81,6 +90,7 @@ imported-memory data.
 
 | Person's chosen goal | Next skill |
 |---|---|
+| New decision, corrected goal, life event or ongoing personal-context change | `../memory-updates/SKILL.md` |
 | Choose, administer, or interpret one instrument | `../assessment-guide/SKILL.md` |
 | Understand visible context without turning it into answers | `../l00-context-delegate/SKILL.md` |
 | Use selected ChatGPT, Claude, or Kimi memories and past chats to distil a goal or likely answer | `../memory-distillation/SKILL.md` |

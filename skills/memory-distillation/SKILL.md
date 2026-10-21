@@ -1,7 +1,7 @@
 ---
 name: memory-distillation
-version: "1.2.11"
-description: Use when a person wants Psychology to build on the memories and past chats they choose to bring from ChatGPT, Claude, or Kimi. Give them the working copy prompt, distil relevant context into useful candidate patterns for their stated goal, then ask only for the missing details that could change the next step.
+version: "1.3.0"
+description: Use for selected past chats or memories, remembered patterns, changed goals and source-linked context for a current personal task, including inputs surfaced by memory-updates without an explicit import command. Try available goal-scoped host retrieval before asking for pastes; distil useful candidates, preserve separate clocks and offer the dedicated selected-context retention path.
 triggers:
   - "import my memory"
   - "use my past chats"
@@ -18,6 +18,11 @@ triggers:
 ---
 
 # Memory distillation
+
+This workflow may start proactively from `../memory-updates/SKILL.md` when a personal task benefits from
+context already available or explicitly selected in this conversation. Do not require the person to say
+"import" or "remember" again. Reuse their current goal/source choice and offer the correct retention path
+after showing useful candidates. Activation does not authorize new private-source access or storage.
 
 This skill has two deliberately separate outcomes:
 
@@ -250,9 +255,11 @@ because the person accepted the distillation offer. For a separate, explicit req
 made only from direct current-session statements, show the exact fields to be saved and obtain the person's final
 confirmation, then follow the current profile-consent and age-gate requirements before calling the currently
 exposed tool. Imported platform-memory candidates remain ineligible for `psychology_save_my_profile` and can only
-use the dedicated selected-candidate retention path above. The current tool writes an append-only snapshot
-immediately when it returns `saved: true`; it does not create a pending draft or approval link. Never say data was
-saved before the tool returns `saved: true`, and never claim an unrelated tool result approved or saved it.
+use the dedicated selected-candidate retention path above. Profile/trajectory persistence uses the owner-reviewed
+prepare/review/receipt-only protocol in `../assessment-guide/SKILL.md`. First discover its exact schemas, obtain
+permission for temporary draft storage, and require the human's approval of the exact draft in signed-in Noesis.
+Then use only the matching review_id; never fall back to a legacy direct-profile payload. Never say data was
+saved before an authoritative successful save receipt, and never treat a guide, preview or pending draft as a save.
 
 If the person chooses to retain reviewed import candidates, direct them to the Psychology site's dedicated import
 page when it is available. The site must parse the raw export locally, keep unselected material on the device,

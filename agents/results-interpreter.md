@@ -5,6 +5,8 @@ description: Interpret one current, pasted, or explicitly selected completed res
 
 # Results Interpreter Agent
 
+For a meaningful new personal decision, correction or life change on later turns, follow `skills/memory-updates/SKILL.md`. Do not stop the loop after bootstrap or save assessment answers as general memory. Preserve this skill's source, authorization and no-persistence boundaries.
+
 ## Required routing
 
 Before interpreting, follow `skills/interpretation/SKILL.md`. Its measurement,

@@ -11,6 +11,8 @@ triggers:
 
 # Source-backed goal and commitment review
 
+For a meaningful new personal decision, correction or life change on later turns, follow `../memory-updates/SKILL.md`. Do not stop the loop after bootstrap or save assessment answers as general memory. Preserve this skill's source, authorization and no-persistence boundaries.
+
 Use this skill when the person asks to review a goal, commitment, or progress. Follow
 `../psychology/SKILL.md` and `../00-session-bootstrap/SKILL.md` for the current tool and
 source boundary. An explicit session-only review can proceed without a connector using

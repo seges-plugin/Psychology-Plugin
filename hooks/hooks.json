@@ -1,4 +1,7 @@
 {
-  "description": "Psychology Plugin deliberately ships no executable lifecycle hook. The portable session contract in skills/00-session-bootstrap/SKILL.md is a host-cooperated instruction repeated by each user-facing skill and agent; it is not a guaranteed lifecycle event. Do not add a hook that silently reads private context.",
-  "hooks": {}
+  "description": "Optional trusted local runtime routing for Codex, ChatGPT Work and compatible Claude Code installations. Requires Node.js and host hook trust; never reads transcripts/accounts or saves data. Public OpenAI directory ZIPs must exclude the entire hooks directory; their implicit skills remain available without executable hooks.",
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/intent-router.cjs\"", "timeout": 5}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/intent-router.cjs\"", "timeout": 5}]}]
+  }
 }

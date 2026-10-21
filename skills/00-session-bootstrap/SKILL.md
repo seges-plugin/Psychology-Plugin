@@ -1,7 +1,7 @@
 ---
 name: 00-session-bootstrap
 description: Host-cooperated intent router for the first Psychology-relevant request in a session, including starting with user-chosen memories or past chats, self-understanding, intimacy self-understanding, continuing work, coaching, interpreting a result, deciding on an assessment, using known context, or saving a result. Build a session-only working context brief from visible material first; read account sources only after consent status and a current-session source choice. This is not an executable lifecycle hook.
-version: "1.2.6"
+version: "1.3.0"
 ---
 
 # Psychology session bootstrap
@@ -9,6 +9,12 @@ version: "1.2.6"
 When the host selects or follows this skill for the first Psychology-relevant request in a session, run it once,
 and again only after reconnecting or after context compaction removed the recorded result. This is a
 host-cooperated instruction, not a hidden runtime hook or a guaranteed lifecycle event.
+
+This once-per-connection bootstrap is not the lifetime of the memory workflow. On every subsequent
+meaningful personal change, correction, commitment, or selected-memory input, run
+`../memory-updates/SKILL.md` using the still-applicable source choice and working brief. Do not rerun
+onboarding, repeat answered questions, or drop an update because bootstrap already ran. Optional trusted
+local hooks can supply routing hints; public directory installs use implicit skill selection instead.
 
 ## 0. Safety before recall
 

@@ -6,6 +6,19 @@ version: "1.2.4"
 
 # Psychology connection guide
 
+## After installation: enable the useful loop
+
+Explain that `../psychology/SKILL.md` and `../memory-updates/SKILL.md` match relevant natural-language
+personal decisions and corrections without an invocation name. Ask for the current goal only if absent;
+begin with visible or already selected context immediately. Show which retention destinations are actually
+available, rather than requiring a complete profile or questionnaire. Connection and storage remain separate.
+
+For a manual local runtime install, check whether the host exposes the bundled SessionStart/UserPromptSubmit
+hooks, Node.js and an exact-definition trust review. Let the person review and trust the hook themselves;
+never bypass hook trust. A successful standalone script test is not proof that the host loaded it.
+Public OpenAI directory packages exclude hooks and rely on implicit skills instead. See
+`../../docs/activation-and-memory.md` for the variant and acceptance checklist.
+
 ## Use the lowest-friction path that matches the person's goal
 
 If the person only wants Psychology to use context they deliberately paste now, a connector is not required.

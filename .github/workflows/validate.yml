@@ -27,3 +27,9 @@ jobs:
 
       - name: Verify package, mirrors, references, safety gates, and live catalog
         run: npm run verify
+
+      - name: Validate memory schema, YAML, and archive variants with synthetic data
+        run: |
+          python3 -m venv "$RUNNER_TEMP/psychology-validation"
+          "$RUNNER_TEMP/psychology-validation/bin/python" -m pip install -r tools/requirements-validation.txt
+          "$RUNNER_TEMP/psychology-validation/bin/python" tools/test-memory-contract.py

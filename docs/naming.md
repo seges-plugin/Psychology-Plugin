@@ -45,6 +45,10 @@ update hosted pages or establish platform approval.
 
 The plugin is free and noncommercial. It does not offer diagnosis, treatment,
 paid subscriptions, data sales, or commercial health referrals. Skills are
-host-cooperated instructions; `hooks/hooks.json` intentionally declares no
-executable lifecycle action. Installation never authorizes silent account reads.
+host-cooperated instructions. The manual/runtime variant adds trusted local
+`SessionStart` and `UserPromptSubmit` routing hooks, requiring Node and host
+approval of the exact hook definitions. The Portal variant excludes the whole
+`hooks/` directory because lifecycle hooks are ineligible for public directory
+submission. Installation never authorizes silent account reads. See
+[activation and memory](activation-and-memory.md) for the variant and trust boundaries.
 

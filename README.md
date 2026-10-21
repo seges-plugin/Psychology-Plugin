@@ -13,7 +13,7 @@ Use chosen experiences and goals in your usual AI chat, then track your next ste
 
 Free, noncommercial health and growth tools. Reflection, not diagnosis or treatment.
 
-Source package **v1.3.3** simplifies setup and positioning. GitHub releases and host acceptance are
+Source package **v1.4.0** adds ongoing personal-change routing and structured memory workflows. GitHub releases and host acceptance are
 separate; check the [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and linked public records for current publication and support. A source version does not update an
 installed plugin or a host's tool schema.
@@ -339,6 +339,19 @@ target.
 
 ## Personal workspace and natural-language requests
 
+Psychology now has an ongoing [memory-update loop](skills/memory-updates/SKILL.md): meaningful personal
+decisions, corrections, life changes and growth needs can activate it without typing "remember" or another
+@mention. It distils source-linked changes, uses the smallest useful available MCP and offers the proper
+structured retention path. It revisits new signals after bootstrap, reuses current source choices and
+continues the task while candidates await review. A correction is immediately useful in the conversation;
+the assistant reports whether it was actually saved, awaits review or is blocked.
+
+Manual runtime installs also include an optional local SessionStart/UserPromptSubmit routing hook. It only
+adds bounded workflow hints, never reads private transcripts or writes memory. Node.js, compatible host
+support and exact-definition hook trust are required. Public OpenAI directory packages exclude hooks and
+use implicit skills instead; **the runtime ZIP is not the Portal ZIP**. See
+[activation, storage destinations and host acceptance](docs/activation-and-memory.md).
+
 The front-door skill applies to relevant personal-growth, non-clinical reflection, life-goal, journaling,
 and selected-memory requests even when you do not type `@Psychology`. Actual skill selection depends on
 the host; installation does not guarantee a call in every chat or grant access to past conversations.
@@ -354,7 +367,7 @@ or financial graph after installation.
 
 ## Consent and storage
 
-The published v1.3.2 package requires the owner-review protocol for profile and trajectory persistence.
+Profile and trajectory persistence require the owner-review protocol introduced in v1.3.2.
 Use it only when authenticated discovery exposes the preparation tool and matching receipt-only save schema.
 A person must explicitly permit temporary draft storage and review the exact draft in their signed-in
 Noesis account before the matching save. Missing, pending, rejected, expired or stale reviews stop writes.
@@ -418,7 +431,8 @@ catalog, or login screen is not a substitute.
 - `.claude-plugin` contains Claude Code marketplace metadata; Claude.ai connector setup is separate.
 - `kimi.plugin.json` declares the Kimi Code CLI skills and MCP server; `openclaw.plugin.json` declares OpenClaw-native skills and OAuth MCP wiring.
 - skills and agents contain portable instruction contracts.
-- hooks/hooks.json intentionally contains no executable lifecycle hook.
+- `hooks/hooks.json` and `hooks/intent-router.cjs` provide the trusted local runtime routing hooks; the public Portal ZIP excludes the whole hooks directory.
+- `schemas/memory-update.schema.json` defines the local working envelope; it is not an MCP payload or database migration.
 
 ## Support
 

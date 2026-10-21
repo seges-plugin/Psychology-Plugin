@@ -6,6 +6,8 @@ version: "1.0.0"
 
 # Context-aware reflection session
 
+For a meaningful new personal decision, correction or life change on later turns, follow `../memory-updates/SKILL.md`. Do not stop the loop after bootstrap or save assessment answers as general memory. Preserve this skill's source, authorization and no-persistence boundaries.
+
 ## First run the session bootstrap
 
 When the host selects this skill for the first Psychology-relevant request in a session, follow

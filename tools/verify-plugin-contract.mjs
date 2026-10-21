@@ -887,7 +887,7 @@ for (const [path, body, required] of [
     "missing per-item platform-record time stay unknown",
   ]],
   ["skills/psychology/SKILL.md", psychologyRouter, [
-    "Mandatory front door for every @Psychology request",
+    "Use proactively for personal decisions",
     "No `psychology_...` tool is visible",
     "If the person explicitly asks to distil memories, past chats, or selected/pasted material for this session",
     "route directly to `../memory-distillation/SKILL.md`",
@@ -939,9 +939,10 @@ for (const required of [
   "current purpose-specific consent",
   "final confirmation before any write",
   "show the exact fields to be saved and obtain the person's final",
-  "writes an append-only snapshot",
-  "it does not create a pending draft or approval link",
-  "before the tool returns `saved: true`",
+  "owner-reviewed prepare/review/receipt-only protocol",
+  "permission for temporary draft storage",
+  "never fall back to a legacy direct-profile payload",
+  "before an authoritative successful save receipt",
 ]) {
   if (!memoryDistillation.includes(required)) {
     fail(`skills/memory-distillation/SKILL.md: missing dedicated-import invariant: ${required}`);
@@ -2267,7 +2268,7 @@ for (const [path, body, requiredPhrases] of [
   }
 }
 
-const textExtensions = new Set([".json", ".md", ".mjs", ".js", ".ts", ".yml", ".yaml", ".toml", ".txt"]);
+const textExtensions = new Set([".json", ".md", ".mjs", ".cjs", ".js", ".ts", ".py", ".yml", ".yaml", ".toml", ".txt"]);
 const secretPatterns = [
   /-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----/,
   /\bgh[pousr]_[A-Za-z0-9]{20,}\b/,
@@ -2289,9 +2290,43 @@ for (const path of trackable) {
 if (Object.keys(hooks).some((key) => !["description", "hooks"].includes(key))) {
   fail("hooks/hooks.json: unexpected top-level executable hook configuration");
 }
-if (!hooks.description || !hooks.hooks || Object.keys(hooks.hooks).length !== 0) {
-  fail("hooks/hooks.json must remain description-only with an empty hooks object");
+if (!hooks.description || JSON.stringify(Object.keys(hooks.hooks ?? {}).sort()) !== JSON.stringify(["SessionStart", "UserPromptSubmit"])) {
+  fail("hooks/hooks.json: provide only the two bounded local routing events");
 }
+for (const event of ["SessionStart", "UserPromptSubmit"]) {
+  const handlers = hooks.hooks?.[event];
+  const command = handlers?.[0]?.hooks?.[0];
+  if (!Array.isArray(handlers) || handlers.length !== 1 || handlers[0].hooks?.length !== 1 ||
+      command?.type !== "command" || command.command !== 'node "${CLAUDE_PLUGIN_ROOT}/hooks/intent-router.cjs"' ||
+      command.timeout !== 5 || Object.keys(command).some((key) => !["type", "command", "timeout"].includes(key))) {
+    fail(`hooks/hooks.json: ${event} must use the exact synchronous bounded local router`);
+  }
+}
+for (const path of ["plugin.json", ".codex-plugin/plugin.json"]) {
+  if (json(path).extensions?.["com.openai"]?.onboardingSkill !== "./skills/onboarding/SKILL.md") {
+    fail(`${path}: onboarding must point to the packaged source`);
+  }
+}
+for (const name of ["psychology", "memory-updates", "memory-distillation"]) {
+  if (!/^\s+allow_implicit_invocation:\s+true\s*$/m.test(text(`skills/${name}/agents/openai.yaml`))) {
+    fail(`${name}: explicitly preserve implicit invocation`);
+  }
+}
+const memoryUpdates = text("skills/memory-updates/SKILL.md");
+for (const phrase of ["every meaningful new personal signal", "source-linked candidates", "not an MCP argument schema",
+  "owner-reviewed", "receipt-only", "selected-context", "No workspace MCP write bridge", "unknown_result",
+  "Only the server assigns", "not permission", "never move review IDs"]) {
+  if (!memoryUpdates.toLowerCase().includes(phrase.toLowerCase())) fail(`memory-updates: missing activation/persistence boundary ${phrase}`);
+}
+const workingSchema = json("schemas/memory-update.schema.json");
+if (workingSchema.$schema !== "https://json-schema.org/draft/2020-12/schema" ||
+    workingSchema.$defs?.candidate?.properties?.clocks?.properties?.server_observed_at?.type?.join() !== "string,null") {
+  fail("memory-update schema: preserve the versioned local contract and nullable server clock");
+}
+for (const field of ["source_event", "memory_record", "summary_generation", "valid_from", "valid_until", "server_observed_at"]) {
+  if (!workingSchema.$defs?.candidate?.properties?.clocks?.required?.includes(field)) fail(`memory-update schema: missing clock ${field}`);
+}
+if (!text("docs/activation-and-memory.md").includes("Portal")) fail("document the runtime/directory distinction");
 
 const intimacyPaths = [
   "skills/intimacy-self-understanding/SKILL.md",
@@ -2633,6 +2668,16 @@ if (offline) {
   } catch (error) {
     fail(`live catalog verification failed: ${error.message}`);
   }
+}
+
+try {
+  const report = execFileSync(process.execPath, ["--test", "tools/test-memory-routing.mjs"], {
+    cwd: root, encoding: "utf8", timeout: 20000, stdio: ["ignore", "pipe", "pipe"],
+  });
+  const count = report.match(/\btests (\d+)/)?.[1] ?? "executed";
+  note(`Ongoing activation: ${count} hook behavior/negative/stdio/relocation/privacy tests passed`);
+} catch (error) {
+  fail(`ongoing activation regression failed: ${String(error.stdout ?? error.message).slice(-3000)}`);
 }
 
 if (failures.length) {
