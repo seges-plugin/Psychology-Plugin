@@ -216,3 +216,12 @@ Before every save, grant, revoke, or other persistent action: explain the outcom
 explicit agreement, call `psychology_get_consent_status()` again, and use only the tool whose source-specific
 authorization is current. An authorization error or 401 means reconnect or stop; never suggest a copied
 token, a static header, or another credential workaround.
+
+For a separately requested profile or trait/trajectory write, hand off to the **owner-reviewed profile protocol**
+in `../assessment-guide/SKILL.md`. Discover the exact preparation and receipt-only save schemas first; an older
+host without them must stop writes and keep the draft session-only, never fall back to a direct-payload save.
+Preparation temporarily stores a draft, so it needs explicit draft-storage permission and current purpose consent.
+The human owner reviews and approves the exact draft in the signed-in Noesis interface; chat confirmation or
+ToolPermission acceptance cannot replace that approval. Save only the matching server-issued `review_id` after
+a fresh consent check and an explicit request to finish. Pending, rejected, expired, stale, unavailable, or uncertain
+results stop the workflow; do not infer success, automatically accept ToolPermission, or grant any optional purpose.
