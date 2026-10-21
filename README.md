@@ -317,6 +317,21 @@ Before an installation guide, marketplace listing, or support claim names a host
 version must have a passed acceptance record. Until then, describe it only as an unverified evaluation
 target.
 
+## Personal workspace and natural-language requests
+
+The front-door skill applies to relevant personal-growth, non-clinical reflection, life-goal, journaling,
+and selected-memory requests even when you do not type `@Psychology`. Actual skill selection depends on
+the host; installation does not guarantee a call in every chat or grant access to past conversations.
+
+The website workspace and the Psychology MCP have different capabilities. The current 34-tool MCP catalog
+does not expose workspace record, relationship graph, or finance write tools. For an explicit workspace
+save request, the assistant can prepare a session-only draft and direct you to
+[Today](https://noesis.seges.ai/en/today/) ([繁體中文](https://noesis.seges.ai/zh-tw/today/)), where you sign in,
+choose the applicable scope, review the exact information, and confirm its save. Profile, journal,
+assessment, and selected-import consent do not authorize workspace access. A draft or page link is not
+proof that a record was saved. The plugin does not automatically ingest all past chats or build a CRM
+or financial graph after installation.
+
 ## Consent and storage
 
 Psychology does not load stored results, profiles, or journal content by default. In every relevant session,
