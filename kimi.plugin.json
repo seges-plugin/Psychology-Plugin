@@ -9,10 +9,6 @@
     "self-reflection",
     "mcp"
   ],
-  "author": {
-    "name": "吳遠佛界",
-    "email": "problems@noesis.seges.ai"
-  },
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -20,7 +16,6 @@
     "displayName": "Psychology Plugin",
     "shortDescription": "Distil your chosen AI memories and chats into strengths and likely next answers.",
     "longDescription": "Distil memories and past chats your connected assistant can access—or selected conversations you choose to share—into strengths and likely answers for your goal. Ground candidates in examples, then ask only consequential gaps. Kimi Code is an evaluation/setup path, not a supported host; this does not claim a direct Kimi.ai consumer archive. Stored-data reads require the applicable consent and an explicit source choice for the session.",
-    "developerName": "吳遠佛界",
     "websiteURL": "https://noesis.seges.ai"
   },
   "skills": "./skills/",

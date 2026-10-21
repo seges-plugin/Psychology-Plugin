@@ -4,9 +4,7 @@
 
 # Psychology Plugin
 
-Independently maintained by **吳遠佛界** and published from the `seges-plugin`
-GitHub account. The plugin is **Psychology Plugin**; its hosted connector is
-**Psychology MCP**. See the [naming and ownership contract](docs/naming-and-ownership.md)
+The plugin is named **Psychology Plugin** and the hosted connector is named **Psychology MCP**. See the [naming contract](docs/naming.md)
 for schema IDs, the 1.3.0 rename, and installation migration.
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
@@ -412,10 +410,10 @@ The package display name is **Psychology Plugin**, and the hosted connector disp
 name is **Psychology MCP**. Package IDs are `psychology-plugin`; all bundled MCP
 configuration keys are `psychology_mcp`. The deployed tool namespace remains
 `psychology_`. This changes installation identifiers; follow the
-[migration and ownership contract](docs/naming-and-ownership.md) before reconnecting.
+[migration and naming contract](docs/naming.md) before reconnecting.
 
 This source revision aligns the OpenAI/Codex listings, provides a Claude-specific
-HTTP MCP definition, corrects independent ownership, integrates session-only goal
+HTTP MCP definition, integrates session-only goal
 review, and applies the canonical interpretation safeguards to the bundled agents.
 Ignored maintainer files and private runtime code are not distribution inputs.
 The linked hosted policies and each actual host connection require separate live

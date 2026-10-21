@@ -6,10 +6,8 @@ Status checked: 2026-10-21
 
 - Display names are **Psychology Plugin** and **Psychology MCP**. Machine IDs
   are `psychology-plugin` and `psychology_mcp`; the deployed tool namespace
-  remains `psychology_`. See [naming and ownership](naming-and-ownership.md).
-- The owner is **吳遠佛界**, with source published through `seges-plugin`.
-  Public hosted privacy/terms must be corrected and read back separately;
-  source metadata does not repair stale production pages or prove developer verification.
+  remains `psychology_`. See [naming](naming.md).
+- Review hosted privacy and terms separately; source metadata does not update production pages.
 - OpenAI and Codex interfaces are synchronized. Claude declares its own HTTP
   transport; Codex retains its URL-only configuration. Installation identifiers
   changed, so existing installations need their host-specific migration checks.

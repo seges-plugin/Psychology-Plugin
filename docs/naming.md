@@ -1,8 +1,4 @@
-# Psychology Plugin naming and ownership
-
-Psychology Plugin is independently maintained by **吳遠佛界**. The public GitHub
-publisher account is `seges-plugin`. No company registration, registered address,
-corporate affiliation, or OpenAI endorsement is asserted by this repository.
+# Psychology Plugin naming
 
 ## Names by schema role
 
@@ -14,8 +10,6 @@ corporate affiliation, or OpenAI endorsement is asserted by this repository.
 | MCP configuration key on every packaged harness | `psychology_mcp` |
 | Public MCP tool and prompt namespace | `psychology_` |
 | MCP endpoint and protected resource | `https://noesis.seges.ai/mcp` |
-| Owner / author | `吳遠佛界` |
-| Source publisher / repository | `seges-plugin/Psychology-Plugin` |
 
 Plugin manifests require a lowercase machine identifier; Codex MCP server IDs
 cannot contain spaces. These IDs therefore differ deliberately from display
@@ -45,18 +39,12 @@ visible configuration, or renamed entry does not prove OAuth or tool acceptance.
 
 ## Policy and release boundary
 
-The hosted service's privacy and terms URLs in the manifests must identify the
-same independent operator before an OpenAI submission. A repository owner label
-does not correct a stale deployed policy. Review the current published pages and
-their retention, geographic availability, consent, and data-rights disclosures.
-Never invent a legal entity, address, retention deadline, or compliance claim to
-fill a submission field.
+Review the linked privacy and terms pages before submission, including their retention,
+geographic availability, consent, and data-rights disclosures. Source-package changes do not
+update hosted pages or establish platform approval.
 
 The plugin is free and noncommercial. It does not offer diagnosis, treatment,
 paid subscriptions, data sales, or commercial health referrals. Skills are
 host-cooperated instructions; `hooks/hooks.json` intentionally declares no
 executable lifecycle action. Installation never authorizes silent account reads.
 
-An OpenAI verified developer identity is selected separately in the submission
-portal. `author.name` and listing metadata do not establish that verification or
-guarantee which name the portal publishes.

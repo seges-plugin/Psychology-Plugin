@@ -3,19 +3,12 @@
   "name": "psychology-plugin",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal. Psychology also offers published self-assessments and practical reflection.",
   "owner": {
-    "name": "吳遠佛界",
-    "url": "https://github.com/seges-plugin",
-    "email": "problems@noesis.seges.ai"
+    "name": "Psychology Plugin"
   },
   "plugins": [
     {
       "name": "psychology-plugin",
       "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal. Psychology also offers published self-assessments and practical reflection.",
-      "author": {
-        "name": "吳遠佛界",
-        "url": "https://github.com/seges-plugin",
-        "email": "problems@noesis.seges.ai"
-      },
       "category": "productivity",
       "source": "./",
       "version": "1.3.0",

@@ -2,11 +2,6 @@
   "name": "psychology-plugin",
   "version": "1.3.0",
   "description": "AI getting stronger while your own advantage feels unclear? Connect Psychology in a supported chat, bring memories and past chats you choose, and distil grounded strengths and likely answers for your goal before answering only the gaps that matter. Check callable psychology_* MCP tools before any tool-dependent task.",
-  "author": {
-    "name": "吳遠佛界",
-    "url": "https://github.com/seges-plugin",
-    "email": "problems@noesis.seges.ai"
-  },
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -23,7 +18,6 @@
     "displayName": "Psychology Plugin",
     "shortDescription": "Find strengths in AI chats",
     "longDescription": "Start with relevant memories and past chats the current assistant can access, or selected conversations you choose to share. Psychology distils goal-relevant strengths, patterns, and likely answers, grounded in examples, then asks only about gaps that could change what comes next. It calls out unavailable sources and does not claim access to another account's archive. The hosted MCP uses OAuth. Supported hosts have a recorded host-specific acceptance result; stored Noesis data is read only after an explicit source choice and applicable consent. Psychology supports reflection, not diagnosis or treatment.",
-    "developerName": "吳遠佛界",
     "category": "Productivity",
     "capabilities": [
       "psychometric-scoring",
