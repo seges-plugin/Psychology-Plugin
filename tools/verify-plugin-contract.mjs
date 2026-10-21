@@ -724,6 +724,75 @@ const assessmentGuide = text("skills/assessment-guide/SKILL.md");
 const sessionBootstrap = text("skills/00-session-bootstrap/SKILL.md");
 const psychologyRouter = text("skills/psychology/SKILL.md");
 
+// A disconnected host must still reach immediate safety support. Validate both
+// priority and the absence of a connector/source-choice prerequisite.
+function routerSafetyViolations(body) {
+  const violations = [];
+  const safetyAt = body.indexOf("## 0. Safety before connection or source choice");
+  const connectionAt = body.indexOf("## 1. Check the current task, not plugin metadata");
+  if (safetyAt < 0 || connectionAt < 0 || safetyAt >= connectionAt) {
+    violations.push("urgent safety must precede the connection verdict");
+  }
+  const safetySection = safetyAt < 0 ? "" : body.slice(safetyAt, connectionAt);
+  const compactSafety = safetySection.replace(/\s+/g, " ");
+  for (const phrase of [
+    "route immediately to `../crisis-support/SKILL.md` before checking the connector",
+    "Crisis support is available without MCP",
+    "Do not wait for connection, consent, or a source choice before offering immediate safety support",
+    "Do not read account data, continue an assessment, or attempt a save",
+  ]) {
+    if (!compactSafety.includes(phrase)) violations.push(`missing safety priority: ${phrase}`);
+  }
+  return violations;
+}
+for (const violation of routerSafetyViolations(psychologyRouter)) {
+  fail(`skills/psychology/SKILL.md: ${violation}`);
+}
+const routerSafetyNegativeFixtures = [
+  ["missing safety route", psychologyRouter.replace(/## 0\. Safety before connection or source choice[\s\S]*?(?=## 1\.)/, "")],
+  ["connection prerequisite", psychologyRouter.replace("Crisis support is available without MCP", "Crisis support requires a connected MCP")],
+  ["source-choice prerequisite", psychologyRouter.replace("Do not wait for connection, consent, or a source choice before offering immediate safety support", "Wait for connection, consent, and a source choice before offering immediate safety support")],
+];
+for (const [label, fixture] of routerSafetyNegativeFixtures) {
+  if (fixture === psychologyRouter || routerSafetyViolations(fixture).length === 0) {
+    fail(`skills/psychology/SKILL.md: urgent-safety negative fixture was not rejected: ${label}`);
+  }
+}
+notes.push(`Front-door safety priority: ${routerSafetyNegativeFixtures.length}/${routerSafetyNegativeFixtures.length} disconnected-host regression fixtures rejected`);
+
+function hostConnectionViolations(body) {
+  const compact = body.replace(/\s+/g, " ");
+  const violations = [];
+  for (const phrase of [
+    "Psychology MCP tools are not callable in this session yet",
+    "If the current host is Codex",
+    "For any other host",
+    "use that host's native connection interface",
+    "do not give Codex commands or another platform's setup directions",
+  ]) {
+    if (!compact.includes(phrase)) violations.push(`missing host-aware connection routing: ${phrase}`);
+  }
+  if (/not (?:connected|callable) in this Codex task|secure Codex flow opens/.test(body)) {
+    violations.push("portable connection message assumes every host is Codex");
+  }
+  return violations;
+}
+for (const [path, body] of [
+  ["skills/psychology/SKILL.md", psychologyRouter],
+  ["skills/00-session-bootstrap/SKILL.md", sessionBootstrap],
+]) {
+  for (const violation of hostConnectionViolations(body)) fail(`${path}: ${violation}`);
+  for (const [label, fixture] of [
+    ["unconditional Codex message", body.replace("Psychology MCP tools are not callable in this session yet", "Psychology MCP is not connected in this Codex task yet")],
+    ["missing native-host route", body.replace("use that host's native connection interface", "use a different platform's setup")],
+  ]) {
+    if (fixture === body || hostConnectionViolations(fixture).length === 0) {
+      fail(`${path}: host-routing negative fixture was not rejected: ${label}`);
+    }
+  }
+}
+notes.push("Portable host routing: 4/4 Codex-assumption/native-interface regression fixtures rejected");
+
 for (const phrase of [
   "treat native formats only as session-only selected pastes",
   "v2 for ChatGPT, Claude, or Kimi, and v3 only for explicitly selected Codex excerpts",
@@ -759,7 +828,7 @@ for (const [path, body, required] of [
     "route directly to `../memory-distillation/SKILL.md`",
     "do not make connection or another choice a prerequisite",
     "Offer MCP setup only when the person asks to use Noesis tools or account-backed data",
-    "For any other tool-dependent request, the first substantive reply must be this short connection interstitial",
+    "After urgent-safety routing, for any other tool-dependent request, the first substantive reply must be this short connection interstitial",
     "No route may ask for a password, client ID, redirect URI, token, header, authorization code, or callback URL",
   ]],
   ["skills/onboarding/SKILL.md", onboarding, [

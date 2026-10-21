@@ -26,12 +26,20 @@ This router exists because
 an installed plugin and a callable Noesis MCP connection are separate states. Never let a generic reflection,
 assessment recommendation, or claim about saved Psychology data appear before that distinction is visible.
 
+## 0. Safety before connection or source choice
+
+If the current message signals immediate danger, self-harm, abuse, or an urgent safety concern,
+route immediately to `../crisis-support/SKILL.md` before checking the connector, offering a connection
+interstitial, collecting context, or following a save request. Crisis support is available without MCP.
+Do not wait for connection, consent, or a source choice before offering immediate safety support.
+Do not read account data, continue an assessment, or attempt a save to respond to the urgent situation.
+
 ## 1. Check the current task, not plugin metadata
 
 For an explicit request to save personal goals, relationship/contact records, or manual financial records
 in the Noesis workspace, use section 3. The website handoff does not require an MCP connection in this chat.
 
-Inspect the tools actually visible in the current Codex task. A plugin card, an MCP URL in a manifest, or a
+Inspect the tools actually visible in the current host session. A plugin card, an MCP URL in a manifest, or a
 previous successful connection in another task does not prove a callable capability now.
 
 - **No `psychology_...` tool is visible:** never imply that a Psychology tool ran or account data was read.
@@ -44,17 +52,22 @@ previous successful connection in another task does not prove a callable capabil
   `../goal-review/SKILL.md` with visible or user-selected material. It needs no connector;
   disclose that no account source was read and keep the review in the conversation.
 
-  For any other tool-dependent request, the first substantive reply must be this short connection interstitial;
+  After urgent-safety routing, for any other tool-dependent request, the first substantive reply must be this short connection interstitial;
   do not emit a generic preface or reflection exercise before it:
 
-  > **Psychology MCP is not connected in this Codex task yet.** The plugin guidance is available, but no
+  > **Psychology MCP tools are not callable in this session yet.** The plugin guidance is available, but no
   > `psychology_*` tool can be called, so I cannot use Noesis instruments, consent, or saved sources here.
-  > Would you like to connect it now? The secure Codex flow opens an official Noesis browser sign-in; it
+  > Would you like to connect it here? Use this host's native connection interface and official Noesis browser sign-in; it
   > does not ask you to paste a password, token, header, or authorization URL. Session-only memory distillation
   > can still use context this host can access or material you choose to paste.
 
-  Stop there until they choose. Do not start a tool-dependent exercise just to be helpful. Do not send a Codex
-  user to ChatGPT Developer mode, ChatGPT Plugin Management, or a Claude connector page.
+  Stop there until they choose. Do not start a tool-dependent exercise just to be helpful.
+  - **If the current host is Codex:** follow the Codex desktop and CLI section in
+    `../onboarding/SKILL.md`. Do not send a Codex user to ChatGPT Developer mode,
+    ChatGPT Plugin Management, or a Claude connector page.
+  - **For any other host:** use that host's native connection interface and the matching section in
+    `../onboarding/SKILL.md`; do not give Codex commands or another platform's setup directions.
+    If no supported connection flow is available, disclose that limit and keep eligible work session-only.
 - **At least one `psychology_...` tool is visible:** follow
   `../00-session-bootstrap/SKILL.md`. Start from the current conversation; use
   `psychology_get_consent_status` only when an account source would materially help, then require a
@@ -64,7 +77,7 @@ No route may ask for a password, client ID, redirect URI, token, header, authori
 No route may claim that connection itself reads, saves, or authorizes access to profile, journal, result, or
 imported-memory data.
 
-## 2. Route only after the connection verdict
+## 2. Route after the connection verdict, except urgent safety
 
 | Person's chosen goal | Next skill |
 |---|---|

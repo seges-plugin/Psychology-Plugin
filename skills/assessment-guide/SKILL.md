@@ -155,7 +155,11 @@ and its provenance separate from the formal response record.
 
 After the person confirms one instrument:
 
-1. Call `psychology_get_item_bank` for that exact instrument. Use its construct information privately to keep
+1. Call `psychology_get_item_bank` for that exact instrument. If the response omits response options or scale
+   labels, disclose that they were not provided. You may show retrieved questions when requested, but do not
+   reconstruct a scale from memory, collect scored answers, or begin scoring until the exact current response
+   scale is available from an authoritative instrument source. An item list alone is not a complete administration.
+   Use its construct information privately to keep
    the plan coherent; do not expose reverse-scoring or answer-key details that would bias answers.
 2. Fetch the matching visible prompt, such as `psychology_big_five_prompt` or
    `psychology_personalized_intake_prompt`, for the exact respondent-facing wording when the server provides one.
