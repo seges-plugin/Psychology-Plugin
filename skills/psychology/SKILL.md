@@ -94,7 +94,7 @@ or a substitute for a published assessment or account-backed tool.
 
 ## 3. Personal workspace saving uses the verified destination
 
-The current 34-tool Psychology MCP catalog does not expose workspace record, relationship graph, or finance
+The Psychology MCP catalog does not expose workspace record, relationship graph, or finance
 write tools. A working profile/journal MCP tool is not workspace write access. Never invent a tool, construct
 an authenticated REST request from a claimed owner ID, or ask for a browser token to bridge this gap.
 

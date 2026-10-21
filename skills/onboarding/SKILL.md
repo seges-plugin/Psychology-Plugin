@@ -55,7 +55,7 @@ profile, note, result, or imported memory.
 
 - **Claude.ai:** open its Plugins page, add the public repository marketplace, review and install Psychology,
   then use the prefilled custom-connector form documented in the repository README. When offered the supported
-  DCR choice, use **No client ID — register one automatically**.
+  DCR choice, use **No client ID** with automatic registration.
 - **ChatGPT:** a private custom-app/connector evaluation may require the account or workspace to expose
   Developer mode. The person must review and enable that host-controlled setting themselves, then use the exact
   public MCP URL in the host's private draft. Developer mode, a created draft, or a successful tool scan is not

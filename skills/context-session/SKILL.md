@@ -53,14 +53,14 @@ summary. Preserve a source label and confidence for each added signal.
 
 Create the working context brief with these sections:
 
-1. **Aim** — the outcome the user wants from this session.
-2. **Known context** — relevant facts and recurring themes already present.
-3. **Tensions or conflicts** — statements that point in different directions, without treating either as
+1. **Aim**: the outcome the user wants from this session.
+2. **Known context**: relevant facts and recurring themes already present.
+3. **Tensions or conflicts**: statements that point in different directions, without treating either as
    an error.
-4. **Coverage and left gaps** — use only `known_direct`, `candidate_unverified`, `missing_required`,
+4. **Coverage and left gaps**: use only `known_direct`, `candidate_unverified`, `missing_required`,
    `conflicting_required`, `needs_current_confirmation`, or `not_requested`. Only the three `*_required`
    or confirmation states may become questions, and only when the answer could change the next action.
-5. **Provisional output** — what the user will receive after the gaps are resolved.
+5. **Provisional output**: what the user will receive after the gaps are resolved.
 
 Show this brief and ask for correction before continuing. An empty read means no usable saved material,
 not that the person is new or that any source failed. The correction is part of the context: do not treat a

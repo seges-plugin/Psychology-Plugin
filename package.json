@@ -1,7 +1,7 @@
 {
   "name": "psychology-plugin",
-  "version": "1.3.2",
-  "description": "Psychology is a non-clinical, source-aware self-reflection connector for published or clearly labelled psychometric instruments.",
+  "version": "1.3.3",
+  "description": "Free, noncommercial reflection for people who use AI to clarify ideas and choose a next step. Use selected context in your AI chat and the Today website to track action. Not diagnosis or treatment.",
   "private": true,
   "license": "MIT",
   "repository": {
