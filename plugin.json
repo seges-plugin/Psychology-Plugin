@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology-plugin",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Reflection using memories and past chats you choose. Review grounded suggestions in your AI chat; use the separate Today website to track action. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -95,7 +95,7 @@
         "commerce_description": "Noesis and Psychology Plugin are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
-        "release_notes": "v1.4.1: use capability-focused public descriptions without pricing or promotional statements and canonicalize the support URL. Keep the Psychology Plugin and Psychology MCP names, non-clinical limits, host-specific acceptance boundaries, noncommercial review policy, and all v1.4.0 source, consent, owner-review and persistence safeguards unchanged. This source update does not establish a passed Portal scan or directory approval."
+        "release_notes": "v1.4.2: add an explicit MCP-only public package with contextual user-requested tool descriptions and no bundled workflow or local automation components. Preserve the complete manual/runtime distribution, existing consent and owner-review requirements, psychometric and professional-listing disclosures. No automatic account-history read, automatic write, passed Portal scan or directory approval is claimed."
       },
       "onboardingSkill": "./skills/onboarding/SKILL.md"
     }

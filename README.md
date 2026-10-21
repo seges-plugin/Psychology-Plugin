@@ -13,7 +13,7 @@ Use chosen experiences and goals in your usual AI chat, then track your next ste
 
 Free, noncommercial health and growth tools. Reflection, not diagnosis or treatment.
 
-Source package **v1.4.1** uses capability-focused listing descriptions while preserving ongoing personal-change routing and structured memory workflows. GitHub releases and host acceptance are
+Source package **v1.4.2** adds a separate MCP-only public distribution while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
 separate; check the [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and linked public records for current publication and support. A source version does not update an
 installed plugin or a host's tool schema.
@@ -336,6 +336,10 @@ prove that authenticated tools work or that this host version has passed accepta
 Before an installation guide, marketplace listing, or support claim names a host, that host and exact
 version must have a passed acceptance record. Until then, describe it only as an unverified evaluation
 target.
+
+## Public MCP-only distribution
+
+The `portal-mcp` package connects Psychology MCP for explicitly requested reflection guides, psychometric instruments, and authorized selected Noesis records. It does not include bundled skills, agents, hooks, or onboarding automation. It does not promise automatic invocation or automatic memory writes. The full source/manual runtime below remains a separate distribution with 16 skills and optional trusted hooks. See [package variants](docs/package-variants.md).
 
 ## Personal workspace and natural-language requests
 

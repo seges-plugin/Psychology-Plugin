@@ -1,7 +1,7 @@
 {
   "id": "psychology-plugin",
   "name": "Psychology Plugin",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Reflection using memories and past chats you choose. Review goal-relevant strengths and likely answers, then ask only consequential gaps; use the separate Today website to track action. OpenClaw is an evaluation/setup path, not a supported host. The hosted MCP uses OAuth; stored-data reads require consent and an explicit source choice. Not diagnosis or treatment.",
   "configSchema": {
     "type": "object",

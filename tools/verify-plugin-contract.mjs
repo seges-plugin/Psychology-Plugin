@@ -739,6 +739,19 @@ if (commerceReview?.commerce !== false || !/\bnoncommercial\b/i.test(commerceRev
   fail("plugin.json: retain the truthful noncommercial policy in review metadata, separate from public descriptions");
 }
 note(`Public listing copy: ${pricingFixtures.length} pricing/promotion negative fixtures passed; nonclinical, website and host-scope guards retained`);
+const publicMcpProfile = json("packaging/portal-mcp/plugin.json");
+const publicMcpUi = publicMcpProfile.extensions?.["com.openai"]?.interface;
+if (publicMcpProfile.name !== pluginId || publicMcpProfile.version !== packageJson.version || publicMcpUi?.displayName !== pluginDisplayName) {
+  fail("portal-mcp: preserve source identity and version without assuming bundled workflows");
+}
+for (const [field, value] of [["description", publicMcpProfile.description], ["shortDescription", publicMcpUi?.shortDescription], ["longDescription", publicMcpUi?.longDescription]]) {
+  if (typeof value !== "string") fail(`portal-mcp: missing ${field}`);
+  else for (const error of publicListingCopyErrors(value)) fail(`portal-mcp:${field}: ${error}`);
+}
+if (!/user-requested/i.test(publicMcpProfile.description ?? "") || !/explicit source choice/.test(publicMcpUi?.longDescription ?? "") || !/not diagnosis or treatment/.test(publicMcpUi?.longDescription ?? "") || !/unverified leads/.test(publicMcpUi?.longDescription ?? "")) {
+  fail("portal-mcp: retain contextual use, consent, psychometric and professional-listing disclosures");
+}
+note("Public MCP-only profile: separate contextual metadata and truthful disclosures checked; archive membership is validated by the Python suite");
 if (!readme.includes("[Install in your AI](#install-in-your-ai)") || !readme.includes("[Try Today first](https://noesis.seges.ai/en/today/)")) fail("README.md: keep AI installation primary and Today secondary");
 if (!readme.includes('id="add-to-claude-ai"') || !readme.includes('id="use-psychology-in-chatgpt"')) fail("README.md: retain working legacy setup anchors");
 function readmeNavigationErrors(body) {

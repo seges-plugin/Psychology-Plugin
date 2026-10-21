@@ -1,4 +1,4 @@
-"""Build an exact Git revision as a Portal or manual-runtime package (stdlib only)."""
+"""Build exact Git blobs as a full Portal, MCP-only Portal, or runtime package."""
 import argparse
 import hashlib
 import io
@@ -7,8 +7,21 @@ from pathlib import Path
 import subprocess
 import zipfile
 
+MCP_ONLY_SOURCES = {
+    "plugin.json": "packaging/portal-mcp/plugin.json",
+    "README.md": "packaging/portal-mcp/README.md",
+    "mcp.json": "mcp.json",
+    ".mcp.json": ".mcp.json",
+    "LICENSE": "LICENSE",
+    "assets/icon.png": "assets/icon.png",
+    "assets/logo-light.svg": "assets/logo-light.svg",
+    "assets/logo-dark.svg": "assets/logo-dark.svg",
+}
+
 
 def build(repo, revision, variant):
+    if variant not in {"portal", "portal-mcp", "runtime"}:
+        raise ValueError("Unknown package variant")
     def git(*args):
         return subprocess.check_output(["git", "-C", str(repo), *args])
 
@@ -16,10 +29,18 @@ def build(repo, revision, variant):
     rows = git("ls-tree", "-r", "--full-tree", commit).decode().splitlines()
     excluded = {".gitignore", "package.json", ".claude-plugin/marketplace.json", "docs/openai-submission-readiness.md"}
     contents = {}
+    source_paths = {}
     for row in rows:
         metadata, name = row.split("\t", 1)
         mode, kind, _ = metadata.split()
-        if name in excluded or name.startswith(("tools/", ".github/")):
+        if variant == "portal-mcp":
+            destinations = [target for target, source in MCP_ONLY_SOURCES.items() if source == name]
+            if not destinations:
+                continue
+            target = destinations[0]
+        else:
+            target = name
+        if variant != "portal-mcp" and (name in excluded or name.startswith(("tools/", ".github/", "packaging/"))):
             continue
         if variant == "portal" and name.startswith("hooks/"):
             continue
@@ -27,13 +48,25 @@ def build(repo, revision, variant):
             raise ValueError(f"Unsupported package entry: {name}")
         if name.startswith("/") or ".." in Path(name).parts or name == ".app.json":
             raise ValueError(f"Unsafe or non-public entry: {name}")
-        contents[name] = git("show", f"{commit}:{name}")
+        contents[target] = git("show", f"{commit}:{name}")
+        source_paths[target] = name
+
+    if variant == "portal-mcp" and set(contents) != set(MCP_ONLY_SOURCES):
+        raise ValueError("MCP-only source profile or referenced asset missing")
 
     manifest = json.loads(contents["plugin.json"])
     version = manifest["version"]
     if manifest.get("$schema") != "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json":
         raise ValueError("Portable schema declaration missing")
+    if variant == "portal-mcp":
+        canonical = json.loads(git("show", f"{commit}:plugin.json"))
+        if any(manifest.get(key) != canonical.get(key) for key in ("name", "version")):
+            raise ValueError("MCP-only profile identity/version differs from source release")
     for name, value in list(contents.items()):
+        if variant == "portal-mcp" and name.endswith((".json", ".md")):
+            public_text = value.decode("utf-8").lower()
+            if any(part in public_text for part in ("skills/", "agents/", "hooks/", "skill.md", "onboardingskill")):
+                raise ValueError(f"Non-MCP component reference in {name}")
         if not name.endswith(".json"):
             continue
         data = json.loads(value)
@@ -49,13 +82,26 @@ def build(repo, revision, variant):
                 for item in node:
                     inspect(item)
         inspect(data)
-        if variant == "portal":
+        if variant in {"portal", "portal-mcp"}:
             # Explicit references also disable default discovery only on some hosts;
             # a public package must have no hook declaration at all.
             if isinstance(data, dict) and ("hooks" in data or "hooks" in data.get("extensions", {}).get("com.openai", {})):
                 raise ValueError(f"Hook declaration remains in Portal package: {name}")
+        if variant == "portal-mcp":
+            def inspect_mcp_only(node):
+                if isinstance(node, dict):
+                    for key, item in node.items():
+                        if key.lower() in {"skills", "agents", "hooks", "onboardingskill", "sessionstart", "skillinstructions", "systemprompt", "systempromptpath"}:
+                            raise ValueError(f"Non-MCP activation declaration in {name}: {key}")
+                        inspect_mcp_only(item)
+                elif isinstance(node, list):
+                    for item in node:
+                        inspect_mcp_only(item)
+                elif isinstance(node, str) and any(part in node.lower() for part in ("skills/", "agents/", "hooks/", "skill.md", "onboardingskill")):
+                    raise ValueError(f"Non-MCP component reference in {name}")
+            inspect_mcp_only(data)
     skill_names = sorted(name.split("/")[1] for name in contents if name.startswith("skills/") and name.count("/") == 2 and name.endswith("/SKILL.md"))
-    if not skill_names or "memory-updates" not in skill_names:
+    if variant != "portal-mcp" and (not skill_names or "memory-updates" not in skill_names):
         raise ValueError("Ongoing memory skill missing")
     if variant == "runtime" and not {"hooks/hooks.json", "hooks/intent-router.cjs"} <= contents.keys():
         raise ValueError("Runtime routing hook missing")
@@ -75,15 +121,16 @@ def build(repo, revision, variant):
                 raise ValueError(f"Changed source bytes in {name}")
     return result, {"commit": commit, "version": version, "variant": variant,
                     "bytes": len(result), "sha256": hashlib.sha256(result).hexdigest(),
-                    "files": [{"path": name, "sha256": hashlib.sha256(data).hexdigest()} for name, data in sorted(contents.items())],
+                    "files": [{"path": name, "sourcePath": source_paths[name], "sha256": hashlib.sha256(data).hexdigest()} for name, data in sorted(contents.items())],
                     "skillCount": len(skill_names), "skills": skill_names,
                     "hooksIncluded": variant == "runtime",
+                    "portalFlow": "existing With MCP; verify saved Portal inventory" if variant == "portal-mcp" else None,
                     "boundary": "Exact source package; no host refresh, account write, database migration, Portal scan or publication implied."}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--variant", required=True, choices=["portal", "runtime"])
+    parser.add_argument("--variant", required=True, choices=["portal", "portal-mcp", "runtime"])
     parser.add_argument("--ref", default="HEAD")
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
@@ -93,7 +140,8 @@ def main():
         parser.error("Write package artifacts outside the source checkout")
     data, receipt = build(repo, args.ref, args.variant)
     output.mkdir(parents=True, exist_ok=True)
-    name = f"Psychology-Plugin-{receipt['version']}-{args.variant.title()}.zip"
+    variant_label = {"portal": "Portal", "portal-mcp": "Portal-MCP", "runtime": "Runtime"}[args.variant]
+    name = f"Psychology-Plugin-{receipt['version']}-{variant_label}.zip"
     (output / name).write_bytes(data)
     receipt["zip"] = str(output / name)
     (output / f"{args.variant}-receipt.json").write_text(json.dumps(receipt, ensure_ascii=False, indent=2), encoding="utf-8")

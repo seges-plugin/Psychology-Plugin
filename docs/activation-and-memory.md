@@ -1,5 +1,7 @@
 # Activation and structured memory
 
+The selected v1.4.2 public `portal-mcp` distribution does not contain the local loop described below. These instructions apply to the separate full source/manual packages; see [package variants](package-variants.md). The public MCP connection uses contextual user-requested operations instead of bundled per-turn routing.
+
 Psychology checks meaningful personal changes throughout a conversation: decisions, corrected goals,
 career and relationship events, habits, wellbeing, learning and financial context. An explicit memory
 command or @mention is not required to start working from visible or already selected context. Unrelated

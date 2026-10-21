@@ -1,7 +1,9 @@
 # OpenAI submission preparation
 
-Checked: 2026-10-22. Source candidate: 1.4.1. Source preparation, host acceptance,
+Checked: 2026-10-22. Source candidate: 1.4.2. Source preparation, host acceptance,
 Portal upload, scans, review and publication are separate states.
+
+The selected public release is the explicit `portal-mcp` variant described in [package variants](package-variants.md). The full source/manual variants below are separate artifacts; their skills and hooks are not public MCP-only components.
 
 ## Source and package checks
 

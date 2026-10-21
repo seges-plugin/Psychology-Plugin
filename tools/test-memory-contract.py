@@ -29,6 +29,28 @@ def candidate():
 
 
 class MemoryContract(unittest.TestCase):
+    def test_actual_public_mcp_profile_is_contextual_and_separate_from_manual(self):
+        profile = json.loads((ROOT / "packaging/portal-mcp/plugin.json").read_text(encoding="utf-8"))
+        canonical = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
+        self.assertEqual(profile["$schema"], "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json")
+        self.assertEqual(profile["name"], canonical["name"])
+        self.assertEqual(profile["version"], canonical["version"])
+        self.assertEqual(set(profile), {"$schema", "name", "version", "description", "homepage", "repository", "license", "keywords", "extensions"})
+        ui = profile["extensions"]["com.openai"]["interface"]
+        self.assertEqual(ui["displayName"], "Psychology Plugin")
+        self.assertLessEqual(len(ui["shortDescription"]), 30)
+        self.assertEqual(len(ui["defaultPrompt"]), 3)
+        for prompt in ui["defaultPrompt"]:
+            self.assertLessEqual(len(prompt), 128)
+        self.assertIn("user-requested", profile["description"])
+        self.assertIn("explicit source choice", ui["longDescription"])
+        self.assertIn("not diagnosis or treatment", ui["longDescription"])
+        self.assertIn("unverified leads", ui["longDescription"])
+        self.assertNotIn("onboardingSkill", profile["extensions"]["com.openai"])
+        self.assertIn("onboardingSkill", canonical["extensions"]["com.openai"])
+        self.assertIn("psychometric-scoring", ui["capabilities"])
+        self.assertIn("referral-leads", ui["capabilities"])
+
     @classmethod
     def setUpClass(cls):
         schema = json.loads((ROOT / "schemas/memory-update.schema.json").read_text(encoding="utf-8"))
@@ -110,7 +132,18 @@ class PackageVariants(unittest.TestCase):
         self.git("init", "-q")
         (self.repo / "empty-hooks").mkdir()
         self.git("config", "core.hooksPath", str(self.repo / "empty-hooks"))
-        self.write("plugin.json", json.dumps({"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json", "name": "psychology-plugin", "version": "1.4.0"}))
+        profile = json.loads((ROOT / "packaging/portal-mcp/plugin.json").read_text(encoding="utf-8"))
+        self.write("plugin.json", json.dumps({"$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json", "name": profile["name"], "version": profile["version"]}))
+        for target, source in PACKAGER.MCP_ONLY_SOURCES.items():
+            if target == "plugin.json":
+                value = json.dumps(profile)
+            elif source.endswith(".json") or source.endswith(".md") or source == "LICENSE":
+                value = (ROOT / source).read_text(encoding="utf-8")
+            else:
+                value = "TEST-only asset bytes"
+            self.write(source, value)
+        for alternate in [".codex-plugin/plugin.json", ".claude-plugin/plugin.json", "kimi.plugin.json", "openclaw.plugin.json"]:
+            self.write(alternate, '{"skills":"./skills/","agents":"./agents/","extensions":{"com.openai":{"onboardingSkill":"./skills/setup/SKILL.md"}}}')
         self.write("skills/memory-updates/SKILL.md", "---\nname: memory-updates\ndescription: Test only\n---\n")
         self.write("hooks/hooks.json", '{"hooks":{}}')
         self.write("hooks/intent-router.cjs", "// TEST-only source bytes\n")
@@ -146,6 +179,8 @@ class PackageVariants(unittest.TestCase):
         self.assertTrue(receipt["hooksIncluded"])
 
     def test_public_bindings_and_hook_references_fail_instead_of_silent_rewrite(self):
+        for alternate in [".codex-plugin/plugin.json", ".claude-plugin/plugin.json", "kimi.plugin.json", "openclaw.plugin.json"]:
+            self.write(alternate, '{}')
         self.write("extra.json", '{"apps":{"private":"binding"}}')
         self.commit()
         with self.assertRaisesRegex(ValueError, "app binding"):
@@ -154,6 +189,57 @@ class PackageVariants(unittest.TestCase):
         self.commit()
         with self.assertRaisesRegex(ValueError, "Hook declaration"):
             PACKAGER.build(self.repo, "HEAD", "portal")
+
+    def test_mcp_only_archive_has_exact_members_source_receipts_and_no_alternate_discovery(self):
+        result, receipt = PACKAGER.build(self.repo, "HEAD", "portal-mcp")
+        again, _ = PACKAGER.build(self.repo, "HEAD", "portal-mcp")
+        self.assertEqual(result, again)
+        self.assertEqual(receipt["skillCount"], 0)
+        self.assertFalse(receipt["hooksIncluded"])
+        self.assertIn("With MCP", receipt["portalFlow"])
+        with zipfile.ZipFile(io.BytesIO(result)) as archive:
+            self.assertEqual(set(archive.namelist()), set(PACKAGER.MCP_ONLY_SOURCES))
+            for item in receipt["files"]:
+                self.assertEqual(item["sourcePath"], PACKAGER.MCP_ONLY_SOURCES[item["path"]])
+                committed = subprocess.check_output(["git", "-C", str(self.repo), "show", f"HEAD:{item['sourcePath']}"])
+                self.assertEqual(archive.read(item["path"]), committed)
+        self.write("packaging/portal-mcp/README.md", "UNCOMMITTED MUST NOT LEAK")
+        unchanged, _ = PACKAGER.build(self.repo, "HEAD", "portal-mcp")
+        self.assertEqual(result, unchanged)
+
+    def test_mcp_profile_rejects_nested_activation_and_component_references(self):
+        original = json.loads((self.repo / "packaging/portal-mcp/plugin.json").read_text())
+        for field in ["skills", "agents", "hooks", "onboardingSkill", "sessionStart", "skillInstructions"]:
+            with self.subTest(field=field):
+                value = json.loads(json.dumps(original))
+                value["extensions"]["com.openai"][field] = "./skills/setup/SKILL.md"
+                self.write("packaging/portal-mcp/plugin.json", json.dumps(value))
+                self.commit()
+                with self.assertRaisesRegex(ValueError, "Non-MCP activation|Non-MCP component|Hook declaration"):
+                    PACKAGER.build(self.repo, "HEAD", "portal-mcp")
+        value = json.loads(json.dumps(original))
+        value["description"] = "Load skills/hidden/SKILL.md"
+        self.write("packaging/portal-mcp/plugin.json", json.dumps(value))
+        self.commit()
+        with self.assertRaisesRegex(ValueError, "Non-MCP component reference"):
+            PACKAGER.build(self.repo, "HEAD", "portal-mcp")
+        self.write("packaging/portal-mcp/plugin.json", json.dumps(original))
+        self.write("packaging/portal-mcp/README.md", "Read skills/setup/SKILL.md")
+        self.commit()
+        with self.assertRaisesRegex(ValueError, "Non-MCP component reference in README"):
+            PACKAGER.build(self.repo, "HEAD", "portal-mcp")
+
+    def test_mcp_profile_version_and_required_files_cannot_drift(self):
+        profile = json.loads((self.repo / "packaging/portal-mcp/plugin.json").read_text())
+        profile["version"] = "0.0.0"
+        self.write("packaging/portal-mcp/plugin.json", json.dumps(profile))
+        self.commit()
+        with self.assertRaisesRegex(ValueError, "identity/version"):
+            PACKAGER.build(self.repo, "HEAD", "portal-mcp")
+        (self.repo / "assets/icon.png").unlink()
+        self.commit()
+        with self.assertRaisesRegex(ValueError, "source profile or referenced asset missing"):
+            PACKAGER.build(self.repo, "HEAD", "portal-mcp")
 
 
 if __name__ == "__main__":
