@@ -21,9 +21,9 @@ triggers:
 
 This skill has two deliberately separate outcomes:
 
-1. **Immediate, session-only distillation** — turn deliberately supplied text into a short, correctable
+1. **Immediate, session-only distillation**: turn deliberately supplied text into a short, correctable
    working context brief now. It requires no connector and writes nothing.
-2. **Optional dedicated selected-candidate retention** — if the person chooses retention after reviewing the brief,
+2. **Optional dedicated selected-candidate retention**: if the person chooses retention after reviewing the brief,
    retain only individually reviewed, eligible candidates
    in the separate import store. It requires current `selected_context.v1` purpose consent and the website flow
    to recheck current purpose-specific consent and obtain final confirmation before any write
@@ -61,7 +61,7 @@ ambiguous, or conflicting. Do not treat "everything you know" as permission to r
 
 Offer only the routes that the current environment can honestly support:
 
-1. **Current connected chat** — first actively use any built-in memory or past-chat retrieval the current ChatGPT
+1. **Current connected chat**: first actively use any built-in memory or past-chat retrieval the current ChatGPT
    or Claude host exposes for the stated goal; do not treat the current conversation or the Noesis guide as a search
    of account history, and do not ask the person to paste history before trying available retrieval. Use retrieved
    memories or past-chat context only when that host makes them available. If no retrieval is exposed or it returns
@@ -76,7 +76,7 @@ Offer only the routes that the current environment can honestly support:
    and do not add a long plan unless requested. If the guide tool is unavailable or the call fails, it says so briefly
    and continues with context it can access. It must never imply a complete
    history search when a source is unavailable.
-2. **Selected context from another AI** — if the current assistant cannot access the desired context or the
+2. **Selected context from another AI**: if the current assistant cannot access the desired context or the
    person wants another platform's history, offer the ready-to-paste prompt in
    the [v2 summary prompt](references/selected-memory-summary-prompt.md) for ChatGPT, Claude, or Kimi, or the
    [v3 Codex-only prompt](references/selected-memory-summary-prompt-v3.md) for explicitly selected Codex excerpts.
@@ -94,7 +94,7 @@ Offer only the routes that the current environment can honestly support:
    connected Noesis service explicitly exposes and accepts Codex as a selected-import source. Stored Memory, past-chat context, and account-data archives are separate
    capabilities on Claude and ChatGPT; plan, region, managed-workspace, and administrator policy can restrict each
    one. Never call an unavailable or unknown scope complete.
-3. **Selected conversations** — accept only text or files the person deliberately selects. Direct evidence
+3. **Selected conversations**: accept only text or files the person deliberately selects. Direct evidence
    requires verbatim user-authored text plus platform, author role, stable source reference, and source time.
 The session-only route must remain available without a connector. Never ask the person to export or upload an
 entire account archive; use accessible context and user-selected summaries or conversation excerpts.
@@ -177,15 +177,15 @@ place crisis detail into a profile merely because it appeared in supplied text.
 Without calling any account or write tool, produce a compact **session-only working context brief** from the supplied
 material and the visible conversation:
 
-1. **Aim** — what the person wants from this interaction.
-2. **Known signals** — directly supported facts, preferences, current activities, strengths, and constraints.
-3. **Tensions** — relevant points that appear to pull in different directions.
-4. **Coverage and left gaps** — mark only `known_direct`, `candidate_unverified`, `missing_required`,
+1. **Aim**: what the person wants from this interaction.
+2. **Known signals**: directly supported facts, preferences, current activities, strengths, and constraints.
+3. **Tensions**: relevant points that appear to pull in different directions.
+4. **Coverage and left gaps**: mark only `known_direct`, `candidate_unverified`, `missing_required`,
    `conflicting_required`, `needs_current_confirmation`, or `not_requested`. Use `conflicting_required` when
    incompatible candidates must be resolved for the stated purpose; use `needs_current_confirmation` when a
    candidate's currentness is unknown and that uncertainty could change the next action. Otherwise leave the
    candidate unverified and session-only instead of asking a redundant question.
-5. **Provisional next output** — what this context can help with next.
+5. **Provisional next output**: what this context can help with next.
 
 Label every item as supplied, current-conversation, or uncertain. Show the brief, ask the person to correct
 it, and use the correction for the present interaction. This is the default result even if the person is
@@ -307,11 +307,11 @@ When the dedicated website confirms a commit, show the server-returned `observed
 candidate's original source-time literal and semantics. A client preview time is neither timestamp. On a later
 bounded read, preserve both values again; never overwrite source time with observation time or use one as a
 fallback for the other. If a commit outcome is unknown, retain the same idempotency request for readback/retry
-and say that the outcome is unknown—never claim that nothing was saved without a definitive response.
+and say that the outcome is unknown; never claim that nothing was saved without a definitive response.
 
 ## Handoff and limits
 
-The next task—assessment, interpretation, coaching, or retrospective review—uses the corrected working
+The next task (assessment, interpretation, coaching, or retrospective review) uses the corrected working
 context brief and its left gaps. A later session must run the normal bootstrap and source-choice flow; retained
 selected candidates are never loaded automatically.
 

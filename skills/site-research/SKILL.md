@@ -22,10 +22,10 @@ Use this guide before describing Psychology, onboarding a host, or answering a p
 
 Use these labels:
 
-- **Observed** — visibly present on the current public page.
-- **Verified integration** — a named host and version completed the relevant connection checks.
-- **Planned** — an intention with no completed acceptance record.
-- **Unknown** — do not infer an answer from a similar host or an old document.
+- **Observed**: visibly present on the current public page.
+- **Verified integration**: a named host and version completed the relevant connection checks.
+- **Planned**: an intention with no completed acceptance record.
+- **Unknown**: do not infer an answer from a similar host or an old document.
 
 ## Public contact
 

@@ -4,26 +4,44 @@
 
 # Psychology Plugin
 
-The plugin is named **Psychology Plugin** and the hosted connector is named **Psychology MCP**. See the [naming contract](docs/naming.md)
-for schema IDs, the 1.3.0 rename, and installation migration.
+**Think it through. Then take the next step.**
 
-Distil the memories and past chats you choose, then reflect on what matters with Psychology.
+For people who use AI to sort through ideas and want to act on what they decide.
+Use chosen experiences and goals in your usual AI chat, then track your next step in Today.
 
-[Website](https://noesis.seges.ai) · [GitHub source releases](https://github.com/seges-plugin/Psychology-Plugin/releases) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+**[Install in your AI](#install-in-your-ai)** · [Try Today first](https://noesis.seges.ai/en/today/)
 
-Source package v1.3.2 aligns profile and trajectory persistence with the owner-review protocol. It uses that workflow only when authenticated discovery exposes the preparation tool and matching receipt-only save schema. A person must explicitly permit temporary draft storage and review the exact draft in their signed-in Noesis account before the matching save; missing, pending, rejected, expired or stale reviews stop writes. An assistant never approves the draft or accepts a ToolPermission prompt for the person.
+Free, noncommercial health and growth tools. Reflection, not diagnosis or treatment.
 
-This source update adds no assessment, automatic archive access or new host-support claim. Package validation and a published GitHub release remain separate from a host refreshing its tool schema and completing a real owner-review flow.
+Source package **v1.3.3** simplifies setup and positioning. GitHub releases and host acceptance are
+separate; check the [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
+and linked public records for current publication and support. A source version does not update an
+installed plugin or a host's tool schema.
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)
 [![Protocol: MCP](https://img.shields.io/badge/protocol-MCP-4b8bbe.svg)](.mcp.json)
 
 </div>
 
-## First session: start from what you've already told your AI
+| What you can do | What that changes | What you keep control of |
+|---|---|---|
+| Reflect on memories and past chats you choose | Start from available examples instead of repeating your background | Review suggestions and correct or skip them |
+| Review a goal and one next step | Connect reflection to a concrete action you choose | Keep the draft in the chat unless you separately choose storage |
+| Use the Today website | Track a task, mark it complete, and choose timezone and email reminder preferences | Separate website consent and settings; no automatic MCP workspace writes |
 
-**AI is getting stronger. Hard to see what makes you different? Start by understanding yourself.**
+The plugin is **Psychology Plugin**; its hosted connector is **Psychology MCP**. See the
+[naming contract](docs/naming.md), [public release records](https://noesis.seges.ai/ai/release-records.json),
+and [supported-client record](https://noesis.seges.ai/ai/supported-clients.json) for their separate boundaries.
+Source releases and catalog entries are not proof that every tool works in every host.
+
+## Install in your AI
+
+Choose [Claude.ai](#add-to-claude-ai), [Codex](#use-psychology-plugin-in-codex),
+[Claude Code](#use-psychology-plugin-in-claude-code), [Kimi Code](#use-psychology-plugin-in-kimi-code),
+or [ChatGPT](#use-psychology-plugin-in-chatgpt). Check [host availability](#host-availability)
+before setup. Installation and OAuth connection are separate; neither grants access to all past chats.
+
+## First session: start from what you've already told your AI
 
 Run the [quick-start prompt](skills/memory-distillation/references/connected-chat-distillation-prompt.md)
 in the AI chat you already use. It asks the assistant to try memory or past-chat retrieval that the current
@@ -33,15 +51,16 @@ Connect Psychology when you want Noesis tools or access to selected Noesis-store
 [Claude.ai setup](#add-to-claude-ai) or [ChatGPT connection setup (private evaluation)](#use-psychology-in-chatgpt).
 The current published support record covers Claude.ai web and desktop; ChatGPT custom connectors and Codex
 remain evaluation/setup paths.
-It asks the assistant to first use any built-in memory or past-chat retrieval available for your goal,
-then use the memories and past chats it can actually access—or conversations
-you select and paste—to distil strengths, patterns, preferences, and likely answers for your goal.
-It shows examples behind candidate insights and asks only about gaps that could change what comes
-next. For ChatGPT, Claude, or Kimi, use the [v2 selected-memory summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt.md).
+Psychology shows the examples behind suggestions and asks only consequential gaps.
+For ChatGPT, Claude, or Kimi, use the [v2 selected-memory summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt.md).
 For Codex, use the [v3 Codex-selected summary prompt](skills/memory-distillation/references/selected-memory-summary-prompt-v3.md): it processes only excerpts you select or paste in the current Codex task and never searches other tasks or account history. Codex is a source format here, not a claim that Codex is an accepted connected host. For detailed timestamp and selected-import cases, see the [advanced bitemporal prompt](skills/memory-distillation/references/connected-chat-distillation-prompt-advanced.md).
 The quick-start prompt asks no more than three follow-up questions, and only when an answer could change the next step.
 If the connected assistant cannot access older chats or finds no relevant past chats, it says so before
 continuing with the context already visible or a few conversations you select; do not upload a full account archive.
+
+<details>
+<summary>Source, timestamp and optional storage details</summary>
+
 Only when you choose the selected-summary fallback, ChatGPT, Claude, and Kimi use v2; Codex uses v3 only for excerpts you select or paste from the current task. The v3 contract rejects a claimed Codex memory saved/updated timestamp because this workflow has no separate Codex memory-record clock.
 
 For changing goals, Psychology separates when a statement happened, when it was saved, and when it applied. It
@@ -67,10 +86,7 @@ not saved through the generic profile tools, even when you confirm or edit them.
 for eligible direct statements from a separate current-session interaction that does not carry imported text as
 evidence.
 
-Psychology uses the memories and past chats your assistant can actually access, plus context you choose to share,
-to surface strengths, patterns, and candidate answers for your goal. It shows the examples behind suggestions and
-asks only about gaps that could change what comes next. You review each self-report response; the assistant says
-when a requested source is unavailable. Psychology supports reflection, not diagnosis or treatment.
+</details>
 
 ### Host availability
 
@@ -200,7 +216,7 @@ After installing the plugin, add its hosted connector if Claude has not already 
 You can open the
 [prefilled custom-connector form](https://claude.ai/new?modal=add-custom-connector&connectorName=Psychology%20MCP&connectorUrl=https%3A%2F%2Fnoesis.seges.ai%2Fmcp#settings/customize-connectors)
 or enter `https://noesis.seges.ai/mcp` yourself. Review the displayed name and URL before continuing.
-This is a two-step setup: install the plugin, then connect the hosted MCP. When Claude asks which OAuth client to use, choose **No client ID — register one automatically**.
+This is a two-step setup: install the plugin, then connect the hosted MCP. When Claude asks which OAuth client to use, choose the **No client ID** option that registers a client automatically.
 Noesis intentionally supports Dynamic Client Registration (DCR) for this flow and does not support
 Client ID Metadata Documents (CIMD).
 
@@ -265,7 +281,7 @@ use `https://noesis.seges.ai/mcp` in ChatGPT's MCP connection form, not the GitH
 the MCP tools from the hosted server and completes OAuth on Noesis pages. The repository's plugin manifests
 are not read by that direct-connector flow.
 
-If the account or workspace requires it for custom MCP connections, review [ChatGPT Security settings —
+If the account or workspace requires it for custom MCP connections, review [ChatGPT Security settings:
 Developer mode](https://chatgpt.com/#settings/Security?section=developer-mode) and open [ChatGPT Plugin
 Management](https://chatgpt.com/#settings/Plugins). Read any host warning before changing this persistent
 setting; Psychology cannot enable it for you.
@@ -327,7 +343,7 @@ The front-door skill applies to relevant personal-growth, non-clinical reflectio
 and selected-memory requests even when you do not type `@Psychology`. Actual skill selection depends on
 the host; installation does not guarantee a call in every chat or grant access to past conversations.
 
-The website workspace and the Psychology MCP have different capabilities. The current 34-tool MCP catalog
+The website workspace and the Psychology MCP have different capabilities. The Psychology MCP catalog
 does not expose workspace record, relationship graph, or finance write tools. For an explicit workspace
 save request, the assistant can prepare a session-only draft and direct you to
 [Today](https://noesis.seges.ai/en/today/) ([繁體中文](https://noesis.seges.ai/zh-tw/today/)), where you sign in,
@@ -337,6 +353,13 @@ proof that a record was saved. The plugin does not automatically ingest all past
 or financial graph after installation.
 
 ## Consent and storage
+
+The published v1.3.2 package requires the owner-review protocol for profile and trajectory persistence.
+Use it only when authenticated discovery exposes the preparation tool and matching receipt-only save schema.
+A person must explicitly permit temporary draft storage and review the exact draft in their signed-in
+Noesis account before the matching save. Missing, pending, rejected, expired or stale reviews stop writes.
+An assistant never approves the draft or accepts a ToolPermission prompt for the person.
+Package validation and a GitHub release do not establish a host schema refresh or a completed review flow.
 
 Psychology does not load stored results, profiles, or journal content by default. In every relevant session,
 the assistant must:
@@ -408,7 +431,13 @@ https://noesis.seges.ai/support/.
 
 [MIT](LICENSE)
 
-## Source package v1.3.0 review candidate (2026-10-20)
+## Historical source and verification notes
+
+These dated records describe the package and acceptance boundary at their original checkpoint.
+Old tool counts, account-grant observations and release-candidate states are historical, not current
+account state or a new host acceptance result. Current setup follows the sections above and the linked public records.
+
+### Source package v1.3.0 review candidate (2026-10-20)
 
 The package display name is **Psychology Plugin**, and the hosted connector display
 name is **Psychology MCP**. Package IDs are `psychology-plugin`; all bundled MCP

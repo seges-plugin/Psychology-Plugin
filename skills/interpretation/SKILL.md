@@ -21,19 +21,19 @@ references:
   - path: "references/2e-archetypes.md"
     description: "Optional self-identified 2e reflection prompts; never used to infer identity from scores"
   - path: "references/cat-q-interpretation.md"
-    description: "Strength-framed, non-diagnostic interpretation of raw result-schema ID score_cat_q — a data ID, not a public MCP invocation — and its three subscales (Compensation, Masking, Assimilation)"
+    description: "Strength-framed, non-diagnostic interpretation of raw result-schema ID score_cat_q (a data ID, not a public MCP invocation) and its three subscales (Compensation, Masking, Assimilation)"
   - path: "references/asrs-interpretation.md"
-    description: "Strength-framed, explicitly non-diagnostic interpretation of raw result-schema ID score_asrs_part_a — a data ID, not a public MCP invocation — and its 6-item ADHD screener result"
+    description: "Strength-framed, explicitly non-diagnostic interpretation of raw result-schema ID score_asrs_part_a (a data ID, not a public MCP invocation) and its 6-item ADHD screener result"
   - path: "references/ecr-r-interpretation.md"
-    description: "Strength-framed interpretation of raw result-schema ID score_ecr_r — a data ID, not a public MCP invocation — and its two attachment dimensions (Anxiety, Avoidance), no categorical style label"
+    description: "Strength-framed interpretation of raw result-schema ID score_ecr_r (a data ID, not a public MCP invocation) and its two attachment dimensions (Anxiety, Avoidance), no categorical style label"
   - path: "references/swls-interpretation.md"
-    description: "Strength-framed interpretation of raw result-schema ID score_swls — a data ID, not a public MCP invocation — and its life-satisfaction bands"
+    description: "Strength-framed interpretation of raw result-schema ID score_swls (a data ID, not a public MCP invocation) and its life-satisfaction bands"
   - path: "references/ipip-via-r-interpretation.md"
-    description: "Strength-framed interpretation of raw result-schema ID score_ipip_via_r — a data ID, not a public MCP invocation — and its 3 global dimensions (Positivity, Dependability, Mastery), NOT the full 24-strength VIA"
+    description: "Strength-framed interpretation of raw result-schema ID score_ipip_via_r (a data ID, not a public MCP invocation) and its 3 global dimensions (Positivity, Dependability, Mastery), NOT the full 24-strength VIA"
   - path: "references/financial-calibration-interpretation.md"
-    description: "Strength-framed interpretation of raw result-schema ID score_financial_calibration — a data ID, not a public MCP invocation — and its literacy + calibration sub-scores"
+    description: "Strength-framed interpretation of raw result-schema ID score_financial_calibration (a data ID, not a public MCP invocation) and its literacy + calibration sub-scores"
   - path: "references/wellness-tracking-interpretation.md"
-    description: "Strength-framed, non-diagnostic interpretation of raw result-schema ID score_wellness_tracking — a data ID, not a public MCP invocation — and its sleepiness + medication-adherence components"
+    description: "Strength-framed, non-diagnostic interpretation of raw result-schema ID score_wellness_tracking (a data ID, not a public MCP invocation) and its sleepiness + medication-adherence components"
 ---
 
 # Interpretation Guide
@@ -240,12 +240,12 @@ might suggest (see each file's own opening section):
 | Instrument | Raw result-schema ID (not a public MCP call) | Reference file |
 |---|---|---|
 | CAT-Q (camouflaging/masking) | `score_cat_q` | `references/cat-q-interpretation.md` |
-| ASRS v1.1 Part A (ADHD screener) — **not in the current public catalog** | `score_asrs_part_a` | `references/asrs-interpretation.md` |
-| ECR-R (adult attachment) — **not in the current public catalog** | `score_ecr_r` | `references/ecr-r-interpretation.md` |
+| ASRS v1.1 Part A (ADHD screener): **not in the current public catalog** | `score_asrs_part_a` | `references/asrs-interpretation.md` |
+| ECR-R (adult attachment): **not in the current public catalog** | `score_ecr_r` | `references/ecr-r-interpretation.md` |
 | SWLS (life satisfaction) | `score_swls` | `references/swls-interpretation.md` |
 | IPIP-VIA-R Core Strengths | `score_ipip_via_r` | `references/ipip-via-r-interpretation.md` |
 | Financial Forecasting & Management Ability | `score_financial_calibration` | `references/financial-calibration-interpretation.md` |
-| Wellness Self-Tracking — **not in the current public catalog** | `score_wellness_tracking` | `references/wellness-tracking-interpretation.md` |
+| Wellness Self-Tracking: **not in the current public catalog** | `score_wellness_tracking` | `references/wellness-tracking-interpretation.md` |
 
 Every one of these files leads with an explicit non-diagnostic/non-clinical statement specific to that
 instrument (e.g. ASRS: "a high score describes an attention-pattern tendency, it is NOT a diagnosis"; CAT-Q:

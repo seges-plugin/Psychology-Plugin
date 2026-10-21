@@ -678,13 +678,78 @@ if (/\bsee coaching-protocols\.md\b/.test(coaching)) {
 }
 
 const readme = text("README.md");
+// Keep positioning useful without upgrading source metadata into runtime acceptance.
+const positioningManifests = [
+  "package.json", "plugin.json", ".codex-plugin/plugin.json",
+  ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json",
+  "kimi.plugin.json", "openclaw.plugin.json",
+];
+function positioningCopyErrors(description) {
+  const errors = [];
+  if (!/\bfree\b/i.test(description) || !/\bnoncommercial\b/i.test(description)) errors.push("free/noncommercial boundary");
+  if (!/not diagnosis or treatment/i.test(description)) errors.push("non-clinical boundary");
+  if (!/Today website/i.test(description)) errors.push("separate website destination");
+  if (/\u2014/.test(description)) errors.push("em dash");
+  if (/\b(?:all hosts supported|automatically manages your workspace|YC.backed|guaranteed outcomes)\b/i.test(description)) errors.push("unsupported acceptance or outcome claim");
+  return errors;
+}
+for (const path of positioningManifests) {
+  for (const error of positioningCopyErrors(json(path).description ?? "")) fail(`${path}: positioning copy missing or unsafe: ${error}`);
+}
+const goodPositioning = "Free, noncommercial reflection; use the separate Today website. Not diagnosis or treatment.";
+for (const [name, value] of [
+  ["commercial", goodPositioning.replace("noncommercial", "commercial")],
+  ["clinical", goodPositioning.replace("Not diagnosis or treatment.", "")],
+  ["website", goodPositioning.replace("Today website", "automatic workspace manager")],
+  ["em dash", `${goodPositioning} \u2014 extra`],
+  ["host", `${goodPositioning} All hosts supported.`],
+  ["endorsement", `${goodPositioning} YC-backed.`],
+]) {
+  if (positioningCopyErrors(value).length === 0) fail(`positioning guard accepted weakened ${name} fixture`);
+}
+if (positioningCopyErrors(goodPositioning).length !== 0) fail("positioning guard rejected bounded copy");
+if (!readme.includes("[Install in your AI](#install-in-your-ai)") || !readme.includes("[Try Today first](https://noesis.seges.ai/en/today/)")) fail("README.md: keep AI installation primary and Today secondary");
+if (!readme.includes('id="add-to-claude-ai"') || !readme.includes('id="use-psychology-in-chatgpt"')) fail("README.md: retain working legacy setup anchors");
+function readmeNavigationErrors(body) {
+  const ids = [];
+  for (const match of body.matchAll(/\bid=["']([^"']+)["']/g)) ids.push(match[1]);
+  for (const match of body.matchAll(/^#{1,6}\s+(.+)$/gm)) {
+    ids.push(match[1].toLowerCase().replace(/<[^>]*>/g, "").replace(/[^\p{L}\p{N}\-\s]/gu, "").trim().replace(/\s/g, "-"));
+  }
+  const errors = [];
+  const known = new Set();
+  for (const id of ids) {
+    if (known.has(id)) errors.push(`duplicate anchor ${id}`);
+    known.add(id);
+  }
+  for (const match of body.matchAll(/(?:\]\(|href=["'])#([^\s)"']+)/g)) {
+    if (!known.has(match[1])) errors.push(`unresolved fragment ${match[1]}`);
+  }
+  return errors;
+}
+for (const error of readmeNavigationErrors(readme)) fail(`README.md: ${error}`);
+const navigationControl = '# Setup\n<a id="legacy-setup"></a>\n[Open](#setup) [Legacy](#legacy-setup)';
+if (readmeNavigationErrors(navigationControl).length !== 0) fail("README navigation guard rejected valid headings and explicit anchors");
+for (const [name, broken] of [
+  ["duplicate explicit ID", `${navigationControl}\n<a id="legacy-setup"></a>`],
+  ["heading/explicit collision", `${navigationControl}\n<a id="setup"></a>`],
+  ["missing target", `${navigationControl}\n[Missing](#not-present)`],
+]) {
+  if (readmeNavigationErrors(broken).length === 0) fail(`README navigation guard accepted ${name}`);
+}
+const visibleProsePaths = ["README.md", ...walk("skills").filter((path) => path.endsWith(".md"))];
+for (const path of visibleProsePaths) if (/\u2014/.test(text(path))) fail(`${path}: use a sentence, colon or parentheses instead of an em dash`);
+if (!readme.includes(`Source package **v${packageJson.version}**`) || !readme.includes("GitHub releases and host acceptance are")) fail("README.md: identify the source version separately from publication and host acceptance");
+note("README navigation: unique anchors and fragment resolution; three broken-navigation fixtures rejected");
+note("Public positioning: seven descriptive manifests, six unsafe-copy fixtures, and bounded-copy control checked");
 const readmeCompact = readme.replace(/\s+/g, " ");
 const claudeSetupRequired = [
   "https://claude.ai/new#settings/customize-plugins",
   "https://github.com/seges-plugin/Psychology-Plugin",
   "https://claude.ai/new?modal=add-custom-connector&connectorName=Psychology%20MCP&connectorUrl=https%3A%2F%2Fnoesis.seges.ai%2Fmcp#settings/customize-connectors",
   "https://noesis.seges.ai/mcp",
-  "No client ID — register one automatically",
+  "No client ID",
+  "option that registers a client automatically",
   "does not support Client ID Metadata Documents (CIMD)",
   "The public support record lists Claude.ai web and desktop with a 2026-08-30 acceptance date",
   "it does not cover Claude Code or Claude mobile",

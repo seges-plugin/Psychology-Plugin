@@ -17,7 +17,7 @@ instrument, ask items, score, or wait for a provider lookup.
 
 Before anything below, confirm at least one `psychology_...` tool (for example `psychology_list_instruments`
 or `psychology_get_item_bank`) is actually visible in this session's tool list. If none is visible, the
-connector is not set up here — stop, say so plainly, and follow `skills/onboarding/SKILL.md` instead of
+connector is not set up here: stop, say so plainly, and follow `skills/onboarding/SKILL.md` instead of
 substituting a generic, non-Psychology self-reflection exercise. Never present improvised content as this
 skill's output; loaded plugin/skill metadata is not proof that any tool is callable.
 
