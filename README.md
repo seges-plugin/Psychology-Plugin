@@ -9,7 +9,11 @@ for schema IDs, the 1.3.0 rename, and installation migration.
 
 Distil the memories and past chats you choose, then reflect on what matters with Psychology.
 
-[Website](https://noesis.seges.ai) · [Latest published plugin source release v1.2.23](https://github.com/seges-plugin/Psychology-Plugin/releases/tag/v1.2.23) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+[Website](https://noesis.seges.ai) · [GitHub source releases](https://github.com/seges-plugin/Psychology-Plugin/releases) · [Public release records](https://noesis.seges.ai/ai/release-records.json) · [Connector endpoint](https://noesis.seges.ai/mcp) · [License](LICENSE)
+
+Source package v1.3.2 aligns profile and trajectory persistence with the owner-review protocol. It uses that workflow only when authenticated discovery exposes the preparation tool and matching receipt-only save schema. A person must explicitly permit temporary draft storage and review the exact draft in their signed-in Noesis account before the matching save; missing, pending, rejected, expired or stale reviews stop writes. An assistant never approves the draft or accepts a ToolPermission prompt for the person.
+
+This source update adds no assessment, automatic archive access or new host-support claim. Package validation and a published GitHub release remain separate from a host refreshing its tool schema and completing a real owner-review flow.
 
 [![License](https://img.shields.io/github/license/seges-plugin/Psychology-Plugin)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/seges-plugin/Psychology-Plugin)](https://github.com/seges-plugin/Psychology-Plugin/stargazers)

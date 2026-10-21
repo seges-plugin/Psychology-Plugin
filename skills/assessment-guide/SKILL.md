@@ -217,17 +217,19 @@ in-progress-resume mechanism.
 
 ## 8. Persistence is separate
 
-Scoring, context selection, and interpretation do not save anything. This persistence section applies only to a
-reviewed completed standardized self-report result; an AI-assisted conversational estimate remains session-only
-under the two-track contract above. A save requires a separate user request, a fresh
+Scoring, context selection, and interpretation do not save anything. Assessment-result persistence applies only
+to a reviewed completed standardized self-report result; an AI-assisted conversational estimate remains session-only
+under the two-track contract above. A separately requested profile or trait/trajectory write follows the owner-review
+procedure below; it never converts an assessment estimate or imported candidate into an eligible profile. A save requires a separate user request, a fresh
 `psychology_get_consent_status` check, an explanation of the exact destination and fields, and a final confirmation.
 
 - Use only a versioned result-save tool that is visible in the authenticated `tools/list`, and only for a user-requested, reviewed, eligible completed self-report. Use `psychology_save_standardized_self_report_v2` only when that exact tool is visible. Performance results and conversational estimates are not save-eligible.
-- Use `psychology_get_my_profile` before `psychology_save_my_profile`, after a per-field review and profile-specific
-  authorization.
-- For any separately requested save of a time-sensitive, user-reviewed profile claim, inspect the current host's
-  `psychology_save_my_profile` input schema first. If it exposes `profile.claim_temporal_json`, use only that exact
-  schema and preserve source time, valid-time, and platform record/save time as distinct values. Populate
+- For a separately requested profile or trait/trajectory write, use the **owner-reviewed profile protocol** below.
+  The eligible evidence is direct current-session user statements, with per-field review and current profile-specific
+  authorization. Imported summaries, platform-memory candidates, and model predictions are not eligible.
+- Inspect the discovered preparation tool's exact profile schema, not a legacy save payload. If it exposes
+  `profile.claim_temporal_json`, use only that exact schema and preserve source time, valid-time, and platform
+  record/save time as distinct values. Populate
   `source_time_raw`, `source_time_kind`, `source_time_form`, and `source_time_precision` only from visible evidence;
   set `valid_from` or `valid_until` only when the user explicitly gives that boundary, and never infer a boundary
   from an event date, memory saved/updated date, or the time of a later correction. A current correction can
@@ -239,6 +241,42 @@ under the two-track contract above. A save requires a separate user request, a f
 - Use `psychology_journal_write_entry` only for the exact entry the person requested and after its matching authorization is current. Use `psychology_journal_revoke_access` only for a known grant identifier after explicit confirmation. Do not create or expand journal grants through MCP; direct the person to configure or change grant scope in the signed-in Noesis website. MCP tools cannot grant or expand consent.
 - A failed or expired authorization means reconnect through the host's normal OAuth flow or stop. Never
   retry broadly, request a static credential, or suggest a token workaround.
+
+### Owner-reviewed profile protocol
+
+This is a conditional protocol, not a claim that the current host or production service exposes it.
+
+1. **Discover before preparing.** Use exact names and input schemas from authenticated `tools/list`.
+   Continue only if `psychology_prepare_profile_write` is visible and the intended `psychology_save_my_profile`
+   or `psychology_save_trait_assertion` tool has a receipt-only schema requiring `review_id`, with no profile,
+   context, or assertion payload accepted by that save tool. If preparation, the matching receipt-only save schema,
+   or the signed-in owner-review interface is unavailable, stop the write and keep the draft session-only.
+   An older 34-tool host is not evidence that this protocol exists. Never fall back to direct-payload profile or trait saves.
+2. **Ask before storing a draft.** Explain that preparation temporarily stores the proposed draft and review receipt
+   on Noesis, although it does not save profile memory. Obtain explicit permission for this draft storage, then call
+   `psychology_get_consent_status` again and require current purpose-specific authorization. Do not grant consent
+   or infer it from connection, registration, an assessment, or a general request to remember. Before preparing a
+   profile update, use the authorized `psychology_get_my_profile` read to review the current profile and proposed changes.
+3. **Prepare the exact reviewed proposal.** Follow the discovered prepare schema: `kind: profile` carries its
+   declared profile and context; `kind: trait_assertion` carries its declared assertion for a separately requested
+   trait/trajectory write. Preserve source and applicability uncertainty. Do not invent a tool, field, quote, date,
+   client/connection identifier, or a prediction about the person. Preparation returns a server-issued `review_id`,
+   digest, expiry, and status; pending is not approved or saved.
+4. **Wait for the human owner.** The person must review the exact draft in the signed-in Noesis owner-review
+   interface and explicitly approve or reject it there. Explain how to find that interface only when its location
+   is actually known; never fabricate a review URL. Chat confirmation alone is not the server's owner approval.
+   Never automatically accept ToolPermission, approve the review for the person, or treat tool permission as owner approval.
+   A changed draft requires a new preparation and owner review; do not reuse the previous approval.
+5. **Consume only the matching receipt.** After the person explicitly asks to finish the approved write, recheck
+   `psychology_get_consent_status`. Call the discovered matching save tool with only the exact server-issued
+   `review_id` for that draft and target kind; do not attach the draft again or manufacture a receipt. The server
+   must validate owner approval, expiry, current consent, client/connection binding, and current predecessor.
+   Treat only a successful save response as persistence evidence; preparation and approval alone are not a saved profile.
+6. **Stop on uncertainty.** Pending, rejected, expired, stale, revoked authorization, mismatched receipts, or an
+   unavailable owner-review interface stop consumption. Do not switch tools, client, account, or connection to
+   bypass the refusal. After an uncertain save response, do not start a fresh draft or claim success; use only a
+   documented receipt-status/readback or retry of that same receipt when the discovered contract explicitly permits it.
+   If no such recovery exists, stop and explain the uncertainty. A new or corrected proposal needs fresh review.
 
 ## 9. Required acceptance traces
 
