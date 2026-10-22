@@ -370,8 +370,9 @@ The front-door skill applies to relevant personal-growth, non-clinical reflectio
 and selected-memory requests even when you do not type `@Psychology`. Actual skill selection depends on
 the host; installation does not guarantee a call in every chat or grant access to past conversations.
 
-The website workspace and the Psychology MCP have different capabilities. The Psychology MCP catalog
-does not expose workspace record, relationship graph, or finance write tools. For an explicit workspace
+The website workspace and the Psychology MCP have different capabilities. This distribution does not
+claim a live workspace MCP bridge. Check the current authenticated capability and exact schema before a
+task/reminder action; absent, old or refused capability must fall back rather than invent a tool. For an explicit workspace
 save request, the assistant can prepare a session-only draft and direct you to
 [Today](https://noesis.seges.ai/en/today/) ([繁體中文](https://noesis.seges.ai/zh-tw/today/)), where you sign in,
 choose the applicable scope, review the exact information, and confirm its save. Profile, journal,
@@ -385,6 +386,8 @@ Profile and trajectory persistence require the owner-review protocol introduced 
 Use it only when authenticated discovery exposes the preparation tool and matching receipt-only save schema.
 A person must explicitly permit temporary draft storage and review the exact draft in their signed-in
 Noesis account before the matching save. Missing, pending, rejected, expired or stale reviews stop writes.
+Preparation and save must use the same exact integration namespace, with only the matching server-issued
+`review_id` sent to the receipt-only save. An old profile/context-content save schema is not a fallback.
 An assistant never approves the draft or accepts a ToolPermission prompt for the person.
 Package validation and a GitHub release do not establish a host schema refresh or a completed review flow.
 

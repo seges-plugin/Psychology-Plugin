@@ -1,7 +1,7 @@
 ---
 name: psychology
 version: "1.3.0"
-description: Use proactively for personal decisions, corrected goals, career or relationship changes, habits, wellbeing, learning, financial context, growth and selected past chats or memories, even without Psychology or remember keywords. Route meaningful updates to memory-updates and the smallest useful MCP. Keep unrelated technical work out; verify the exact store and authorization before persistence.
+description: Use proactively for personal decisions, commitments, reminders, rescheduling, completion, corrected goals, career or relationship changes, habits, wellbeing, learning progress, financial context and selected memories, even without Psychology or remember keywords. Technical subject matter does not exclude a personal commitment. Route to memory-updates; verify the exact store and capability before persistence.
 triggers:
   - "@Psychology"
   - "help me choose a non-clinical self-reflection exercise"
@@ -34,6 +34,9 @@ for an explicit memory request, another @mention, a complete assessment or the e
 The bootstrap establishes connection/source state; it does not mark later updates as already handled.
 Reuse still-applicable choices and avoid duplicate calls for unchanged facts. Continue the user's task
 while candidates await review. Meaningful changes start distillation, not unapproved account writes.
+General commitments and learning milestones count even when they mention code, SQL or an API. Distinguish
+them from requests to edit code, quoted examples, translation, other people's facts and hypotheticals.
+Reminders, rescheduling and "done" may refer to a selected task; never infer its identity or mutate every task.
 
 ## 0. Safety before connection or source choice
 
@@ -104,8 +107,10 @@ or a substitute for a published assessment or account-backed tool.
 
 ## 3. Personal workspace saving uses the verified destination
 
-The Psychology MCP catalog does not expose workspace record, relationship graph, or finance
-write tools. A working profile/journal MCP tool is not workspace write access. Never invent a tool, construct
+This distribution does not claim a live workspace MCP bridge. Before any account-backed task or reminder
+action, inspect the current authenticated capability and exact input schema in the same integration namespace.
+A newer package version, a Psychology profile/journal tool, or an old schema is not workspace write access.
+If the required capability is absent, incompatible or refused, use the Today fallback below. Never invent a tool, construct
 an authenticated REST request from a claimed owner ID, or ask for a browser token to bridge this gap.
 
 When the person explicitly wants to retain selected information in that workspace:
@@ -122,6 +127,12 @@ When the person explicitly wants to retain selected information in that workspac
    instead, follow its own skill, current consent, review, and actual tool-result requirements.
 4. Report only the operation and destination actually confirmed. A page link, installed plugin, draft,
    database schema, or successful guide call does not prove a record was saved or a relationship graph built.
+
+For create/change/complete/cancel/delete requests, preserve the exact selected task and current version;
+ask only when the target or intended change is ambiguous. Start and deadline are independently optional:
+none, date-only, or an exact time. Do not require a clock time or infer midnight/09:00. A task save is not
+a reminder subscription or delivery receipt. If the callable schema cannot represent the choice, keep the
+draft session-only and hand off to Today; never silently lower its precision or use another store.
 
 This handoff enables a reviewed website workflow; it is not automatic history ingestion or an MCP-to-workspace
 bridge. If future tools expose a workspace bridge, verify their actual callable schemas and authorization

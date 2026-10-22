@@ -1,6 +1,6 @@
 ---
 name: memory-updates
-description: Use proactively when the user states or corrects a personal decision, goal, career, relationship, habit, wellbeing, education or financial situation, asks for growth or reflection, or brings selected past chats/memories. Detect meaningful changes without requiring the words Psychology or remember. Distil and route structured candidates; persistence uses the exact supported destination and authorization.
+description: Use proactively for personal decisions, commitments, reminders, rescheduling, task completion, learning progress, habits, relationships, wellbeing or financial changes, including commitments about technical work. Also use for selected past chats/memories. Distil and route candidates without requiring Psychology or remember keywords; persistence needs the exact supported destination and authorization.
 version: "1.0.0"
 ---
 
@@ -11,6 +11,12 @@ Run on every meaningful new personal signal, not only the first turn and not onl
 on selected past chats is enough to start useful session-only distillation. Do not wait for an assessment,
 completed profile, end of conversation, or repeated @mention. Do not divert unrelated technical work.
 Urgent safety goes to `../crisis-support/SKILL.md` before memory capture; no account read/write for that response.
+
+A commitment to deliver an API, learning SQL, finishing a chapter, or asking to move a deadline can be a
+personal signal even in a technical conversation. A code question alone is not one. Quoted examples,
+translation/proofreading requests, other people's statements and hypothetical scenarios are not the user's
+own facts. A hook miss is not a veto on this skill; use the actual conversation intent. An opt-out wins over
+ordinary tracking. A completion statement is a reported milestone, not independent evidence of an outcome.
 
 ## 1. Detect the delta and act now
 
@@ -64,7 +70,8 @@ Profile and trajectory writes are owner-reviewed and receipt-only; the local env
 | Separately requested direct-current-session self-description | Profile owner-review path in `../assessment-guide/SKILL.md`; read current profile only as required by that authorized workflow. |
 | Platform-memory or past-chat summary | Dedicated selected-context retention in `../memory-distillation/SKILL.md`; never launder it into profile/trajectory or journal. |
 | Life event explicitly chosen as a diary entry | Exact requested journal action, current journal authorization and reviewed minimal content; not a substitute for the other stores. |
-| Relationship/contact graph, financial records or personal task records | Verified Today workspace path in `../psychology/SKILL.md` section 3; separate workspace scopes. No workspace MCP write bridge is currently claimed. |
+| Task, commitment, reminder, reschedule, completion, cancellation or deletion | Check the actual callable workspace capability and schema first. No workspace MCP write bridge is currently claimed. Use the Today fallback in `../psychology/SKILL.md` section 3 when absent, old or refused; never repurpose profile or journal tools. |
+| Relationship/contact graph or financial records | Verified Today workspace path in `../psychology/SKILL.md` section 3; separate workspace scopes, not psychological profile fields. |
 | Scored assessment | Only an eligible completed assessment's existing scoring/storage workflow. Never turn a conversational candidate into a psychometric score. |
 
 Offer the correct retention action once a useful candidate is visible; do not end with a vague "I'll remember."
@@ -73,12 +80,22 @@ asking the same preference again. Profile/trajectory **preparation stores a temp
 permission for that before calling prepare_profile_write. The human reviews the exact draft in signed-in
 Noesis. Save only the matching server review_id after approval and a fresh authorization check. If the user
 already explicitly requested final saving after that approval, do not add another redundant chat confirmation.
+Discover preparation and receipt-only save in the same exact integration namespace. The save schema must
+accept only the server-issued `review_id`, not profile/context content. If either schema is missing or old,
+stop that write; never copy a review ID to another integration or fall back to a direct-content save.
 Pending/rejected/expired/stale/unknown reviews stop writes. Never approve for the human or accept their
 ToolPermission prompt. A diagnostic question about missing updates is not permission to create a draft/write.
 
 An explicit save of exact user-supplied journal text can itself express the action; assistant-composed or
 ambiguous content needs review. Imported summaries remain on their dedicated path even after restatement.
 Do not silently switch destinations to make a persistence call succeed.
+
+For a task change, reuse the current selected target only when unambiguous. Otherwise ask one consequential
+question before changing anything; "done" does not complete every task. Preserve no-time, date-only and
+exact-time choices independently for start and deadline. Never invent midnight, 09:00, a timezone or a
+reminder subscription. A reminder request is not proof that email was scheduled or delivered. Keep the
+task/session-only draft visible and report the authoritative result or blocker; an unknown write result
+requires the supported status/readback recovery, not another additive write.
 
 ## 4. Close the loop and revisit when new information arrives
 
