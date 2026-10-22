@@ -81,6 +81,12 @@ Check [source releases](https://github.com/seges-plugin/Psychology-Plugin/releas
 and the [public records](https://noesis.seges.ai/ai/release-records.json) for current status.
 An installed host does not automatically pick up a source change.
 
+## Project context and research
+
+[Noesis](https://noesis.seges.ai/) provides the public setup, support and source records for this non-clinical reflection tool. [Seges](https://seges.ai/) provides broader project context.
+
+For related research perspectives, read [Zereo's personal publication](https://zereo.me/) and [Beyond the Average: Toward a Dynamic Psychology of the Individual](https://zereo.me/en/blog/psychology-beyond-the-average/) ([Traditional Chinese](https://zereo.me/zh-TW/blog/psychology-beyond-the-average/)). These are personal research essays, not evidence that the plugin can diagnose, predict an individual's psychology or provide treatment. [Zereo's public LinkedIn profile](https://www.linkedin.com/in/zereo/) provides a separate personal background reference.
+
 ## More setup, contracts and history
 
 [Full setup and source contracts](docs/setup-and-contract.md) retain the detailed host,
