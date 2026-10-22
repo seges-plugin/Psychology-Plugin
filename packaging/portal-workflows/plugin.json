@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology-plugin-workflows",
   "version": "1.4.2",
-  "description": "Reflection workflows for goals, selected context and psychometric self-report using Psychology MCP. Review personal candidates before any authorized save. Not diagnosis or treatment.",
+  "description": "Reflection workflows for goals, selected context and self-report. Review candidates before an authorized save. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -18,7 +18,7 @@
       "interface": {
         "displayName": "Psychology Plugin",
         "shortDescription": "Reflection workflows and MCP",
-        "longDescription": "Use focused reflection workflows when you want to clarify a personal goal, review a meaningful change or understand patterns in context you choose. The bundled skills guide source selection, non-clinical psychometric self-report, interpretation, practical coaching and owner-reviewed memory candidates. Use only context and tools available in the current host. Psychology MCP uses OAuth; stored-data reads require current consent and an explicit source choice, and writes require the applicable review and authorization. There is no automatic account-history access or automatic save. Scoring is not diagnosis or treatment. Professional listings are unverified leads, not vetted clinical referrals. Skills can match relevant requests where the host supports them; installation does not guarantee invocation or host acceptance.",
+        "longDescription": "Use reflection workflows to clarify a goal, review a change or explore chosen context. Skills guide source selection, self-report and owner-reviewed candidates. Stored reads require consent and an explicit source choice; writes require review and authorization. No automatic archive access or save. Scoring is not diagnosis or treatment. Professional listings are unverified leads. Installation does not guarantee invocation or host acceptance.",
         "category": "Productivity",
         "capabilities": [
           "psychometric-scoring",
