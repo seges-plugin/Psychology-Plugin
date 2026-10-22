@@ -13,7 +13,7 @@ Use chosen experiences and goals in your usual AI chat, then track your next ste
 
 Free, noncommercial health and growth tools. Reflection, not diagnosis or treatment.
 
-Source package **v1.4.2** keeps the selected MCP-only distribution and adds a distinct workflows application source profile while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
+Source package **v1.4.3** keeps the selected MCP-only distribution and adds a distinct workflows application source profile while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
 separate; check the [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and linked public records for current publication and support. A source version does not update an
 installed plugin or a host's tool schema.

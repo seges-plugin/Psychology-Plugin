@@ -1,6 +1,6 @@
 # Source and distribution variants
 
-Version 1.4.2 keeps **portal-mcp** as the selected MCP-only public review package and
+Version 1.4.3 keeps **portal-mcp** as the selected MCP-only public review package and
 adds **portal-workflows** as a separate full-workflows application source proposal.
 Both display **Psychology Plugin** and connect the same **Psychology MCP** server,
 key `psychology_mcp`, endpoint `https://noesis.seges.ai/mcp`, with the existing
