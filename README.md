@@ -76,7 +76,7 @@ for the exact recorded host coverage. A connection in one account does not estab
 Today is a separate website flow, not automatic MCP workspace management.
 Manage permissions, request a data copy or request deletion in your [Noesis account](https://noesis.seges.ai/en/account/).
 
-Source package **v1.4.2**. GitHub releases and host acceptance are separate.
+Source package **v1.4.3**. GitHub releases and host acceptance are separate.
 Check [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and the [public records](https://noesis.seges.ai/ai/release-records.json) for current status.
 An installed host does not automatically pick up a source change.

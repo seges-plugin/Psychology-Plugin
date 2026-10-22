@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology-plugin",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Use memories and past chats you choose to clarify a goal. Review suggestions in your AI; track a next step on the Today website. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -95,7 +95,7 @@
         "commerce_description": "Noesis and Psychology Plugin are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
-        "release_notes": "v1.4.2: add an explicit MCP-only public package with contextual user-requested tool descriptions and no bundled workflow or local automation components. Preserve the complete manual/runtime distribution, existing consent and owner-review requirements, psychometric and professional-listing disclosures. No automatic account-history read, automatic write, passed Portal scan or directory approval is claimed."
+        "release_notes": "v1.4.3: improve personal commitment, task and learning routing in the manual/runtime package. Preserve the separate MCP-only and workflows profiles, optional start/deadline precision, receipt-only profile writes, explicit owner review and Today fallback when workspace tools are unavailable. No host refresh, directory approval or automatic account write is claimed."
       },
       "onboardingSkill": "./skills/onboarding/SKILL.md"
     }
