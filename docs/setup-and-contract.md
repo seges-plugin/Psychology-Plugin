@@ -13,7 +13,7 @@ Use chosen experiences and goals in your usual AI chat, then track your next ste
 
 Free, noncommercial health and growth tools. Reflection, not diagnosis or treatment.
 
-Source package **v1.4.3** keeps the selected MCP-only distribution and adds a distinct workflows application source profile while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
+Source package **v1.4.4** is an unreleased candidate that keeps the selected MCP-only distribution and adds a distinct workflows application source profile while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
 separate; check the [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and linked public records for current publication and support. A source version does not update an
 installed plugin or a host's tool schema.
@@ -567,3 +567,13 @@ The current quick-start actively asks ChatGPT, Claude, or Codex to search host-a
 
 
 pm test passed locally: 94 public files and 30 mirrored skill files verified; the suite includes old-goal/current-correction temporal fixtures and the selected-memory summary negative fixtures. This validates the prompt/manifest contract only. It does not demonstrate that a connected ChatGPT, Claude, or Codex account can retrieve past sessions or that a live model follows the prompt.
+
+
+## Source candidate: connected Life tasks and review recovery
+
+The published 1.4.3 setup and host evidence above remain dated baselines. This additional path requires
+accepted thin11 deployment and actual same-namespace discovery; it is not available merely because this
+document exists. Use the concise [three-language Life setup](workspace-mcp.md) and its exact
+[JSON journey contract](../schemas/workspace-mcp-journey.contract.json). This candidate updates the
+source package to 1.4.4. OAuth scopes, the instrument catalog and recorded host acceptance remain
+as documented in the dated baselines above.

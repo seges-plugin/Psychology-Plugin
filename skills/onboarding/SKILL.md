@@ -121,3 +121,14 @@ review. Never include an authorization code, browser URL, token, password, or ac
 - Do not suggest a raw infrastructure address, a manual header, or an unofficial bypass.
 - Do not call a host supported merely because it can display an MCP settings page.
 - Do not store a user's account data in this repository or in a chat transcript without their clear approval.
+
+
+## Source candidate: one additional Life choice
+
+After normal OAuth connection, only if matching Life tools are actually exposed and available, explain:
+"Approve this AI connection for Life tasks and reminder preferences in Account." Use the matching short
+zh-TW/zh-CN/en copy in `../../schemas/workspace-mcp-journey.contract.json` and guide
+`../../docs/workspace-mcp.md`. Present a concrete single-purpose owner review, not a multi-scope grid.
+Do not accept the checkbox for the user, or treat login/terms as permission. Reminder enablement needs
+its separate exact-settings confirmation. If capability is absent, keep the published Today handoff.
+This candidate does not change the host support record or install a new connector.

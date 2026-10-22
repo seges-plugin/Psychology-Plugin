@@ -1,6 +1,6 @@
 {
   "name": "psychology-plugin",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Use memories and past chats you choose to clarify a goal. Review suggestions in your AI; track a next step on the Today website. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",

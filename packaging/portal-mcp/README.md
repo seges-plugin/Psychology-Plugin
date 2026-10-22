@@ -28,3 +28,12 @@ checked in the actual connection. No universal host support is claimed.
 Read the [privacy policy](https://noesis.seges.ai/privacy),
 [terms](https://noesis.seges.ai/terms) and
 [support guidance](https://noesis.seges.ai/support/).
+
+## Version 1.4.4 candidate
+
+After the matching backend is deployed and the connected host exposes the tools,
+Life tasks can be added, rescheduled, completed or deleted through an approved AI
+connection. Start and deadline are optional. Reminder enablement needs its own
+signed-in review. Check an unknown write before creating another task in Today.
+Private profile review status can recover a known review without approving or
+saving it. This is source preparation, not a published or installed update.

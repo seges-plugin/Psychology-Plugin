@@ -59,6 +59,8 @@ WORKFLOW_COMPONENTS = (
     'schemas/memory-update.schema.json',
     'docs/activation-and-memory.md',
     'docs/package-variants.md',
+    'docs/workspace-mcp.md',
+    'schemas/workspace-mcp-journey.contract.json',
 )
 WORKFLOW_SOURCES = {
     **MCP_ONLY_SOURCES,

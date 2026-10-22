@@ -46,8 +46,8 @@ class WorkflowProfile(unittest.TestCase):
         self.assertEqual(ai['review'],canonical['extensions']['com.openai']['review'])
         self.assertEqual(ui['capabilities'],canonical['extensions']['com.openai']['interface']['capabilities'])
         for text in ('not diagnosis or treatment','unverified leads','explicit source choice','does not guarantee'):self.assertIn(text,ui['longDescription'])
-    def test_exact_46_members_16_skills_three_skill_metadata_files_and_all_references(self):
-        raw,receipt=self.build();self.assertEqual(len(receipt['files']),46);self.assertEqual(receipt['skillCount'],16);self.assertFalse(receipt['hooksIncluded'])
+    def test_exact_48_members_16_skills_three_skill_metadata_files_and_all_references(self):
+        raw,receipt=self.build();self.assertEqual(len(receipt['files']),48);self.assertEqual(receipt['skillCount'],16);self.assertFalse(receipt['hooksIncluded'])
         with zipfile.ZipFile(io.BytesIO(raw)) as z:
             self.assertEqual(set(z.namelist()),set(P.WORKFLOW_SOURCES))
             metadata=[name for name in z.namelist() if name.endswith('/agents/openai.yaml')];self.assertEqual(len(metadata),3)
@@ -87,7 +87,7 @@ class WorkflowProfile(unittest.TestCase):
             self.rewrite_profile(v)
             with self.subTest(field=field),self.assertRaisesRegex(ValueError,'identity|display name|onboarding'):self.build()
     def test_missing_supporting_reference_schema_or_metadata_fails_closed(self):
-        for name in ('skills/psychology/agents/openai.yaml','skills/interpretation/references/asrs-interpretation.md','schemas/memory-update.schema.json','docs/activation-and-memory.md'):
+        for name in ('skills/psychology/agents/openai.yaml','skills/interpretation/references/asrs-interpretation.md','schemas/memory-update.schema.json','docs/activation-and-memory.md','docs/workspace-mcp.md','schemas/workspace-mcp-journey.contract.json'):
             original=(self.repo/name).read_bytes();(self.repo/name).unlink();self.commit()
             with self.subTest(name=name),self.assertRaisesRegex(ValueError,'closure changed|required supporting file missing'):self.build()
             self.write(name,original);self.commit()
