@@ -1,0 +1,9 @@
+# Psychology Plugin working rules
+
+- Always edit, review, test and perform Git operations in the existing user-designated Psychology-Plugin worktree, identified by `git rev-parse --show-toplevel` at task start. Keep that exact location for the whole task and future work. Do not create another worktree or clone, move the checkout, or discard another task's changes. Assign non-overlapping files to agents. A later explicit user instruction is required to change this rule.
+- Read README.md and CLAUDE.md before work. Preserve user-selected context, explicit consent, source records, non-clinical boundaries, host/package distinctions and the current instrument baseline.
+- Contextual public links may point to Noesis setup/source records, the Seges portfolio, Zereo's personal research publication and the explicitly authorized LinkedIn profile. A research essay is not product validation, a clinical claim or host acceptance. Keep Person identity separate from products; do not add fabricated founder, credentials or shared-data relationships.
+- Keep source/package versions unchanged for documentation-only backlink updates. Do not claim an installed host or marketplace listing changed because repository documentation changed.
+- Stage named files only; never include credentials, private research, generated receipts or unrelated local changes. Run the pre-commit audit gate and appropriate contract checks before push.
+- Run `node tools/verify-plugin-contract.mjs --offline` for documentation/contract changes. Preserve the existing release process for actual package changes; do not tag or republish packages for a README-only update.
+- Any new imagery must use approved existing GCS asset locations with versioned paths and checksum verification. Do not modify bucket permissions or replace existing image versions. This backlink update adds no artwork.
