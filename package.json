@@ -1,7 +1,7 @@
 {
   "name": "psychology-plugin",
   "version": "1.4.2",
-  "description": "Reflection for people who use AI to clarify ideas and choose a next step. Use selected context in your AI chat and the Today website to track action. Not diagnosis or treatment.",
+  "description": "Use memories and past chats you choose to clarify a goal. Review suggestions in your AI; track a next step on the Today website. Not diagnosis or treatment.",
   "private": true,
   "license": "MIT",
   "repository": {
@@ -29,7 +29,8 @@
     "hooks",
     "schemas",
     "docs/activation-and-memory.md",
-    "docs/package-variants.md"
+    "docs/package-variants.md",
+    "docs/setup-and-contract.md"
   ],
   "scripts": {
     "test": "npm run verify",

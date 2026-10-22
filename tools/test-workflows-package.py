@@ -121,13 +121,17 @@ class WorkflowProfile(unittest.TestCase):
 class Documentation(unittest.TestCase):
     def test_four_variants_and_separate_identities_are_documented_without_import_claims(self):
         readme=(ROOT/'README.md').read_text(encoding='utf-8')
+        self.assertIn('docs/setup-and-contract.md',readme)
+        advanced=ROOT/'docs/setup-and-contract.md'
+        self.assertTrue(advanced.is_file())
+        contract=readme+'\n'+advanced.read_text(encoding='utf-8')
         variants=(ROOT/'docs/package-variants.md').read_text(encoding='utf-8')
         for name in ('portal-mcp','portal-workflows','portal','runtime'):
             self.assertIn('| `'+name+'` |',variants)
         for text in ('psychology-plugin-workflows','Psychology Plugin','Psychology MCP','psychology_mcp'):
-            self.assertIn(text,readme);self.assertIn(text,variants)
+            self.assertIn(text,contract);self.assertIn(text,variants)
         self.assertIn('packaging/portal-workflows/README.md',readme)
-        self.assertIn('do not upload it over the existing MCP-only draft',readme)
+        self.assertIn('do not upload it over the existing MCP-only draft',contract)
         self.assertIn('does not establish import acceptance',variants)
         self.assertIn('does not resolve existing',variants)
         self.assertIn('separate full-workflows application source proposal',variants)

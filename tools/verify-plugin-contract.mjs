@@ -27,6 +27,15 @@ function text(path) {
   return readFileSync(join(root, repoPath(path)), "utf8");
 }
 
+const advancedSetupPath = "docs/setup-and-contract.md";
+function readmeContract() {
+  if (!existsSync(join(root, advancedSetupPath))) {
+    fail(`${advancedSetupPath}: linked setup and safety contract is missing`);
+    return text("README.md");
+  }
+  return `${text("README.md")}\n\n${text(advancedSetupPath)}`;
+}
+
 function bytes(path) {
   return readFileSync(join(root, repoPath(path)));
 }
@@ -360,7 +369,7 @@ for (const phrase of [
     fail(`openclaw.plugin.json: description must lead with memory-first value and keep the host boundary (${phrase})`);
   }
 }
-const hostIntegrationReadme = text("README.md");
+const hostIntegrationReadme = readmeContract();
 if (hostIntegrationReadme.includes("plugin manifest has no field for declaring an MCP server")) {
   fail("README.md: remove the outdated claim that OpenClaw manifests cannot declare MCP servers");
 }
@@ -384,6 +393,7 @@ const publishedConnectorContractPaths = [
   "kimi.plugin.json",
   "openclaw.plugin.json",
   "README.md",
+  advancedSetupPath,
   "skills/onboarding/SKILL.md",
 ];
 for (const path of publishedConnectorContractPaths) {
@@ -392,7 +402,7 @@ for (const path of publishedConnectorContractPaths) {
     fail(`${path}: deprecated protected-resource value must not be published`);
   }
 }
-const routingReadme = text("README.md");
+const routingReadme = readmeContract();
 if (!routingReadme.includes("both client configuration and the protected resource")) {
   fail("README.md: canonical MCP routing statement must describe both endpoint roles");
 }
@@ -537,7 +547,7 @@ if (proctor.includes("psychology_save_assessment_result") || !proctor.includes("
   fail("assessment-proctor: use the current eligible save tool and a truthful session-only fallback");
 }
 for (const retiredCommand of ["/plugin install psychology@psychology", "claude mcp login", "openclaw plugins enable psychology\n", "openclaw plugins inspect psychology`", "openclaw mcp login psychology`", "openclaw mcp doctor psychology --probe"]) {
-  if (text("README.md").includes(retiredCommand)) fail(`README.md: obsolete installation command: ${retiredCommand}`);
+  if (readmeContract().includes(retiredCommand)) fail(`README.md: obsolete installation command: ${retiredCommand}`);
 }
 note(`B1-8 interpretation contract: ${interpretationFiles.length} measurement-bounded files checked`);
 
@@ -677,7 +687,8 @@ if (/\bsee coaching-protocols\.md\b/.test(coaching)) {
   fail("skills/coaching/SKILL.md: contains an unscoped coaching-protocols.md reference");
 }
 
-const readme = text("README.md");
+const frontReadme = text("README.md");
+const readme = readmeContract();
 // Keep positioning useful without upgrading source metadata into runtime acceptance.
 const positioningManifests = [
   "package.json", "plugin.json", ".codex-plugin/plugin.json",
@@ -752,8 +763,8 @@ if (!/user-requested/i.test(publicMcpProfile.description ?? "") || !/explicit so
   fail("portal-mcp: retain contextual use, consent, psychometric and professional-listing disclosures");
 }
 note("Public MCP-only profile: separate contextual metadata and truthful disclosures checked; archive membership is validated by the Python suite");
-if (!readme.includes("[Install in your AI](#install-in-your-ai)") || !readme.includes("[Try Today first](https://noesis.seges.ai/en/today/)")) fail("README.md: keep AI installation primary and Today secondary");
-if (!readme.includes('id="add-to-claude-ai"') || !readme.includes('id="use-psychology-in-chatgpt"')) fail("README.md: retain working legacy setup anchors");
+if (!frontReadme.includes("[Install in your AI](#install-in-your-ai)") || !frontReadme.includes("[Try Today first](https://noesis.seges.ai/en/today/)")) fail("README.md: keep AI installation primary and Today secondary");
+if (!frontReadme.includes('id="add-to-claude-ai"') || !frontReadme.includes('id="use-psychology-in-chatgpt"')) fail("README.md: retain working legacy setup anchors");
 function readmeNavigationErrors(body) {
   const ids = [];
   for (const match of body.matchAll(/\bid=["']([^"']+)["']/g)) ids.push(match[1]);
@@ -771,7 +782,29 @@ function readmeNavigationErrors(body) {
   }
   return errors;
 }
-for (const error of readmeNavigationErrors(readme)) fail(`README.md: ${error}`);
+for (const path of ["README.md", advancedSetupPath]) {
+  if (!existsSync(join(root, path))) continue;
+  for (const error of readmeNavigationErrors(text(path))) fail(`${path}: ${error}`);
+}
+function linkedSetupErrors(body, document) {
+  const errors = [];
+  const links = [...body.matchAll(/\]\(docs\/setup-and-contract\.md(?:#([^\s)]+))?\)/g)];
+  if (!links.length) errors.push("missing reachable advanced setup contract");
+  if (typeof document !== "string") return [...errors, "missing linked advanced setup file"];
+  const known = new Set([
+    ...[...document.matchAll(/\bid=["']([^"']+)["']/g)].map(match => match[1]),
+    ...[...document.matchAll(/^#{1,6}\s+(.+)$/gm)].map(match => match[1].toLowerCase().replace(/<[^>]*>/g, "").replace(/[^\p{L}\p{N}\-\s]/gu, "").trim().replace(/\s/g, "-")),
+  ]);
+  for (const link of links) if (link[1] && !known.has(link[1])) errors.push(`missing linked setup fragment ${link[1]}`);
+  return errors;
+}
+const advancedSetup = existsSync(join(root, advancedSetupPath)) ? text(advancedSetupPath) : null;
+for (const error of linkedSetupErrors(frontReadme, advancedSetup)) fail(`README.md: ${error}`);
+const linkedControl = "[Setup](docs/setup-and-contract.md#setup)";
+if (linkedSetupErrors(linkedControl, "# Setup").length) fail("Linked setup guard rejected a valid document");
+for (const [body, doc] of [[linkedControl, null], [linkedControl, "# Missing"], ["No contract link", "# Setup"]]) {
+  if (!linkedSetupErrors(body, doc).length) fail("Linked setup guard accepted a missing file, fragment or link");
+}
 const navigationControl = '# Setup\n<a id="legacy-setup"></a>\n[Open](#setup) [Legacy](#legacy-setup)';
 if (readmeNavigationErrors(navigationControl).length !== 0) fail("README navigation guard rejected valid headings and explicit anchors");
 for (const [name, broken] of [
@@ -781,9 +814,9 @@ for (const [name, broken] of [
 ]) {
   if (readmeNavigationErrors(broken).length === 0) fail(`README navigation guard accepted ${name}`);
 }
-const visibleProsePaths = ["README.md", ...walk("skills").filter((path) => path.endsWith(".md"))];
+const visibleProsePaths = ["README.md", advancedSetupPath, ...walk("skills").filter((path) => path.endsWith(".md"))];
 for (const path of visibleProsePaths) if (/\u2014/.test(text(path))) fail(`${path}: use a sentence, colon or parentheses instead of an em dash`);
-if (!readme.includes(`Source package **v${packageJson.version}**`) || !readme.includes("GitHub releases and host acceptance are")) fail("README.md: identify the source version separately from publication and host acceptance");
+if (!frontReadme.includes(`Source package **v${packageJson.version}**`) || !frontReadme.includes("GitHub releases and host acceptance are")) fail("README.md: identify the source version separately from publication and host acceptance");
 note("README navigation: unique anchors and fragment resolution; three broken-navigation fixtures rejected");
 note("Public positioning: seven descriptive manifests, six unsafe-copy fixtures, and bounded-copy control checked");
 const readmeCompact = readme.replace(/\s+/g, " ");

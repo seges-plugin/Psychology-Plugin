@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology-plugin",
   "version": "1.4.2",
-  "description": "Clarify a personal goal or understand recurring patterns in context available to this chat with user-requested Psychology MCP tools. Not diagnosis or treatment.",
+  "description": "Use user-requested Psychology MCP tools to clarify a goal and reflect on chosen context. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -18,7 +18,7 @@
       "interface": {
         "displayName": "Psychology Plugin",
         "shortDescription": "Reflection tools via MCP",
-        "longDescription": "When you want to clarify a personal goal or understand recurring patterns in context available to this chat, use Psychology MCP for reflection guidance, psychometric instruments, exact item materials and authorized selected Noesis records. Use only the tools and schemas exposed by the connected host. Stored-data reads require current consent and an explicit source choice; writes require their applicable review and authorization. The service cannot search an unavailable account archive or save a new fact automatically. Scoring supports non-clinical reflection, not diagnosis or treatment. Professional listings are unverified leads, not vetted clinical referrals. Connection and tool availability vary by host; installation does not establish host acceptance.",
+        "longDescription": "Use Psychology MCP for reflection guides, instruments and authorized Noesis records in your current request. Tools depend on the connected host. Stored reads require consent and an explicit source choice; writes require review and authorization. No automatic archive access or save. Scoring is not diagnosis or treatment. Professional listings are unverified leads. Installation does not establish host acceptance.",
         "category": "Productivity",
         "capabilities": [
           "psychometric-scoring",
