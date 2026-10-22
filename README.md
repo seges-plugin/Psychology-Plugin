@@ -343,6 +343,9 @@ The `portal-mcp` package connects Psychology MCP for explicitly requested reflec
 
 ## Personal workspace and natural-language requests
 
+The local workflow below belongs to the separate full source/manual distribution with 16 skills;
+it is not included in the public `portal-mcp` package.
+
 Psychology now has an ongoing [memory-update loop](skills/memory-updates/SKILL.md): meaningful personal
 decisions, corrections, life changes and growth needs can activate it without typing "remember" or another
 @mention. It distils source-linked changes, uses the smallest useful available MCP and offers the proper
@@ -352,8 +355,9 @@ the assistant reports whether it was actually saved, awaits review or is blocked
 
 Manual runtime installs also include an optional local SessionStart/UserPromptSubmit routing hook. It only
 adds bounded workflow hints, never reads private transcripts or writes memory. Node.js, compatible host
-support and exact-definition hook trust are required. Public OpenAI directory packages exclude hooks and
-use implicit skills instead; **the runtime ZIP is not the Portal ZIP**. See
+support and exact-definition hook trust are required. The selected public `portal-mcp` package has
+zero skills and no hooks, agents or onboarding automation; it does not guarantee implicit activation.
+The separate full `portal` workflow variant excludes hooks; **the runtime ZIP is not the public MCP-only ZIP**. See
 [activation, storage destinations and host acceptance](docs/activation-and-memory.md).
 
 The front-door skill applies to relevant personal-growth, non-clinical reflection, life-goal, journaling,
@@ -391,13 +395,13 @@ per-session source choice. No MCP tool grants consent. Consent is completed in t
 experience; journal grant creation and scope changes are managed there, not through MCP. A refused or unavailable
 source must not be retried or bypassed.
 
-The portable user-need-to-skill-to-MCP flow is published with the plugin itself: start with the
+The full source/manual distribution includes the user-need-to-skill-to-MCP flow: start with the
 [session bootstrap](skills/00-session-bootstrap/SKILL.md), use the
 [context-session contract](skills/context-session/SKILL.md) for source-bounded context, and follow the
 [assessment guide](skills/assessment-guide/SKILL.md) or [coaching guide](skills/coaching/SKILL.md) for
 the requested workflow. These tracked files define session-only context distillation, minimum source
 reads, adaptive assessment gaps, and exact visible public tool names without relying on an unpublished
-maintainer document.
+maintainer document. These workflow files are absent from the public MCP-only ZIP.
 
 <div align="center">
 <img src="assets/readme/reflection-contours.png" alt="Abstract layered contour art in warm and cool tones, symbolizing depth of reflection" width="55%" />

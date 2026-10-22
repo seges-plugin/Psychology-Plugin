@@ -29,7 +29,10 @@ database tables. The plugin does not grant SQL access or add missing remote writ
 
 ## Two activation mechanisms and package variants
 
-**Portable directory package:** implicit skill matching through concise descriptions and
+**Public MCP-only package (`portal-mcp`):** zero skills, agents, hooks or onboarding automation.
+It uses contextual user-requested MCP operations and does not guarantee implicit activation.
+
+**Separate full workflow package (`portal`):** 16 skills with implicit matching through concise descriptions and
 `agents/openai.yaml` with `allow_implicit_invocation: true`. Setup is discoverable through
 `extensions.com.openai.onboardingSkill`. This improves matching but does not guarantee model selection.
 
