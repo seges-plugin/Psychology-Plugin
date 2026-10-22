@@ -13,7 +13,7 @@ Use chosen experiences and goals in your usual AI chat, then track your next ste
 
 Free, noncommercial health and growth tools. Reflection, not diagnosis or treatment.
 
-Source package **v1.4.2** adds a separate MCP-only public distribution while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
+Source package **v1.4.2** keeps the selected MCP-only distribution and adds a distinct workflows application source profile while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
 separate; check the [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and linked public records for current publication and support. A source version does not update an
 installed plugin or a host's tool schema.
@@ -339,12 +339,17 @@ target.
 
 ## Public MCP-only distribution
 
-The `portal-mcp` package connects Psychology MCP for explicitly requested reflection guides, psychometric instruments, and authorized selected Noesis records. It does not include bundled skills, agents, hooks, or onboarding automation. It does not promise automatic invocation or automatic memory writes. The full source/manual runtime below remains a separate distribution with 16 skills and optional trusted hooks. See [package variants](docs/package-variants.md).
+The selected `portal-mcp` package uses machine ID `psychology-plugin` and connects Psychology MCP for explicitly requested reflection guides, psychometric instruments, and authorized selected Noesis records. It does not include bundled skills, agents, hooks, or onboarding automation. It does not promise automatic invocation or automatic memory writes.
+
+A separate `portal-workflows` application source profile uses machine ID `psychology-plugin-workflows`. It includes all 16 skills, supporting references, the memory working schema and three skill-local `agents/openai.yaml` UI/policy files. Root agent bundles, lifecycle hooks, app bindings and alternate host manifests are excluded. Both profiles display **Psychology Plugin** and use the same **Psychology MCP** server, key `psychology_mcp`, endpoint and OAuth configuration. See the [workflows profile](packaging/portal-workflows/README.md) and all four [package variants](docs/package-variants.md).
+
+The workflows profile is a separate application proposal; do not upload it over the existing MCP-only draft. Its source definition and local checks do not establish Portal import, invocation, eligibility or approval. Both applications retain the actual psychometric, health-related, professional-listing and account-write review requirements. The legacy `portal` package and full manual `runtime` package remain separate distributions; only the runtime includes optional trusted hooks.
 
 ## Personal workspace and natural-language requests
 
 The local workflow below belongs to the separate full source/manual distribution with 16 skills;
-it is not included in the public `portal-mcp` package.
+it is not included in the public `portal-mcp` package. The separate `portal-workflows`
+source profile bundles these skills for its own application review; host selection remains conditional.
 
 Psychology now has an ongoing [memory-update loop](skills/memory-updates/SKILL.md): meaningful personal
 decisions, corrections, life changes and growth needs can activate it without typing "remember" or another
@@ -357,7 +362,8 @@ Manual runtime installs also include an optional local SessionStart/UserPromptSu
 adds bounded workflow hints, never reads private transcripts or writes memory. Node.js, compatible host
 support and exact-definition hook trust are required. The selected public `portal-mcp` package has
 zero skills and no hooks, agents or onboarding automation; it does not guarantee implicit activation.
-The separate full `portal` workflow variant excludes hooks; **the runtime ZIP is not the public MCP-only ZIP**. See
+The separate `portal-workflows` source profile and legacy full `portal` variant exclude hooks;
+**the runtime ZIP is not the public MCP-only ZIP**. See
 [activation, storage destinations and host acceptance](docs/activation-and-memory.md).
 
 The front-door skill applies to relevant personal-growth, non-clinical reflection, life-goal, journaling,

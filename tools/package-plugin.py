@@ -1,4 +1,4 @@
-"""Build exact Git blobs as a full Portal, MCP-only Portal, or runtime package."""
+"""Build exact Git blobs as an MCP, workflow, legacy Portal or runtime package."""
 import argparse
 import hashlib
 import io
@@ -19,8 +19,58 @@ MCP_ONLY_SOURCES = {
 }
 
 
+# Reviewed workflow closure: new resources require an explicit source-profile update.
+WORKFLOW_COMPONENTS = (
+    'skills/00-session-bootstrap/SKILL.md',
+    'skills/assessment-guide/SKILL.md',
+    'skills/coaching/SKILL.md',
+    'skills/coaching/references/coaching-protocols.md',
+    'skills/coaching/references/safety-guidelines.md',
+    'skills/context-session/SKILL.md',
+    'skills/crisis-support/SKILL.md',
+    'skills/ema-review/SKILL.md',
+    'skills/goal-review/SKILL.md',
+    'skills/interpretation/SKILL.md',
+    'skills/interpretation/references/2e-archetypes.md',
+    'skills/interpretation/references/asrs-interpretation.md',
+    'skills/interpretation/references/cat-q-interpretation.md',
+    'skills/interpretation/references/ecr-r-interpretation.md',
+    'skills/interpretation/references/financial-calibration-interpretation.md',
+    'skills/interpretation/references/ipip-via-r-interpretation.md',
+    'skills/interpretation/references/ocean-facets.md',
+    'skills/interpretation/references/strength-frames.md',
+    'skills/interpretation/references/swls-interpretation.md',
+    'skills/interpretation/references/wellness-tracking-interpretation.md',
+    'skills/intimacy-self-understanding/SKILL.md',
+    'skills/l00-context-delegate/SKILL.md',
+    'skills/local-persistence/SKILL.md',
+    'skills/memory-distillation/SKILL.md',
+    'skills/memory-distillation/agents/openai.yaml',
+    'skills/memory-distillation/references/connected-chat-distillation-prompt-advanced.md',
+    'skills/memory-distillation/references/connected-chat-distillation-prompt.md',
+    'skills/memory-distillation/references/selected-memory-summary-prompt-v3.md',
+    'skills/memory-distillation/references/selected-memory-summary-prompt.md',
+    'skills/memory-updates/SKILL.md',
+    'skills/memory-updates/agents/openai.yaml',
+    'skills/onboarding/SKILL.md',
+    'skills/psychology/SKILL.md',
+    'skills/psychology/agents/openai.yaml',
+    'skills/site-research/SKILL.md',
+    'schemas/memory-update.schema.json',
+    'docs/activation-and-memory.md',
+    'docs/package-variants.md',
+)
+WORKFLOW_SOURCES = {
+    **MCP_ONLY_SOURCES,
+    "plugin.json": "packaging/portal-workflows/plugin.json",
+    "README.md": "packaging/portal-workflows/README.md",
+    **{name: name for name in WORKFLOW_COMPONENTS},
+}
+WORKFLOW_ID = "psychology-plugin-workflows"
+
+
 def build(repo, revision, variant):
-    if variant not in {"portal", "portal-mcp", "runtime"}:
+    if variant not in {"portal", "portal-mcp", "portal-workflows", "runtime"}:
         raise ValueError("Unknown package variant")
     def git(*args):
         return subprocess.check_output(["git", "-C", str(repo), *args])
@@ -30,17 +80,22 @@ def build(repo, revision, variant):
     excluded = {".gitignore", "package.json", ".claude-plugin/marketplace.json", "docs/openai-submission-readiness.md"}
     contents = {}
     source_paths = {}
+    profile = {"portal-mcp": MCP_ONLY_SOURCES, "portal-workflows": WORKFLOW_SOURCES}.get(variant)
+    if variant == "portal-workflows":
+        tracked_skills = {row.split("\t", 1)[1] for row in rows if row.split("\t", 1)[1].startswith("skills/")}
+        if tracked_skills != {name for name in WORKFLOW_COMPONENTS if name.startswith("skills/")}:
+            raise ValueError("Workflow supporting-file closure changed; review the explicit allowlist")
     for row in rows:
         metadata, name = row.split("\t", 1)
         mode, kind, _ = metadata.split()
-        if variant == "portal-mcp":
-            destinations = [target for target, source in MCP_ONLY_SOURCES.items() if source == name]
+        if profile is not None:
+            destinations = [target for target, source in profile.items() if source == name]
             if not destinations:
                 continue
             target = destinations[0]
         else:
             target = name
-        if variant != "portal-mcp" and (name in excluded or name.startswith(("tools/", ".github/", "packaging/"))):
+        if profile is None and (name in excluded or name.startswith(("tools/", ".github/", "packaging/"))):
             continue
         if variant == "portal" and name.startswith("hooks/"):
             continue
@@ -54,6 +109,9 @@ def build(repo, revision, variant):
     if variant == "portal-mcp" and set(contents) != set(MCP_ONLY_SOURCES):
         raise ValueError("MCP-only source profile or referenced asset missing")
 
+    if variant == "portal-workflows" and set(contents) != set(WORKFLOW_SOURCES):
+        raise ValueError("Workflow source profile or required supporting file missing")
+
     manifest = json.loads(contents["plugin.json"])
     version = manifest["version"]
     if manifest.get("$schema") != "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json":
@@ -62,6 +120,13 @@ def build(repo, revision, variant):
         canonical = json.loads(git("show", f"{commit}:plugin.json"))
         if any(manifest.get(key) != canonical.get(key) for key in ("name", "version")):
             raise ValueError("MCP-only profile identity/version differs from source release")
+    if variant == "portal-workflows":
+        canonical = json.loads(git("show", f"{commit}:plugin.json"))
+        settings = manifest.get("extensions", {}).get("com.openai", {})
+        if manifest.get("name") != WORKFLOW_ID or manifest["name"] == canonical.get("name") or manifest.get("version") != canonical.get("version"):
+            raise ValueError("Workflow profile requires its distinct identity and source release version")
+        if settings.get("interface", {}).get("displayName") != "Psychology Plugin" or settings.get("onboardingSkill") != "./skills/onboarding/SKILL.md":
+            raise ValueError("Workflow display name or canonical onboarding entry changed")
     for name, value in list(contents.items()):
         if variant == "portal-mcp" and name.endswith((".json", ".md")):
             public_text = value.decode("utf-8").lower()
@@ -75,6 +140,8 @@ def build(repo, revision, variant):
                 if "apps" in node and node["apps"] is not None:
                     raise ValueError(f"Public app binding in {name}")
                 for key, item in node.items():
+                    if variant == "portal-workflows" and key in {"agents", "hooks"}:
+                        raise ValueError(f"Root agent or hook declaration in workflow profile: {name}")
                     if key in {"author", "authors", "publisher", "developerName", "contributors", "maintainers", "funding"}:
                         raise ValueError(f"Attribution metadata in {name}")
                     inspect(item)
@@ -82,7 +149,7 @@ def build(repo, revision, variant):
                 for item in node:
                     inspect(item)
         inspect(data)
-        if variant in {"portal", "portal-mcp"}:
+        if variant in {"portal", "portal-mcp", "portal-workflows"}:
             # Explicit references also disable default discovery only on some hosts;
             # a public package must have no hook declaration at all.
             if isinstance(data, dict) and ("hooks" in data or "hooks" in data.get("extensions", {}).get("com.openai", {})):
@@ -103,6 +170,8 @@ def build(repo, revision, variant):
     skill_names = sorted(name.split("/")[1] for name in contents if name.startswith("skills/") and name.count("/") == 2 and name.endswith("/SKILL.md"))
     if variant != "portal-mcp" and (not skill_names or "memory-updates" not in skill_names):
         raise ValueError("Ongoing memory skill missing")
+    if variant == "portal-workflows" and len(skill_names) != 16:
+        raise ValueError("Workflow profile requires the reviewed 16-skill inventory")
     if variant == "runtime" and not {"hooks/hooks.json", "hooks/intent-router.cjs"} <= contents.keys():
         raise ValueError("Runtime routing hook missing")
     stream = io.BytesIO()
@@ -124,13 +193,13 @@ def build(repo, revision, variant):
                     "files": [{"path": name, "sourcePath": source_paths[name], "sha256": hashlib.sha256(data).hexdigest()} for name, data in sorted(contents.items())],
                     "skillCount": len(skill_names), "skills": skill_names,
                     "hooksIncluded": variant == "runtime",
-                    "portalFlow": "existing With MCP; verify saved Portal inventory" if variant == "portal-mcp" else None,
+                    "portalFlow": "existing With MCP; verify saved Portal inventory" if variant == "portal-mcp" else "separate With MCP application; verify all 16 saved skills and its connection" if variant == "portal-workflows" else None,
                     "boundary": "Exact source package; no host refresh, account write, database migration, Portal scan or publication implied."}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--variant", required=True, choices=["portal", "portal-mcp", "runtime"])
+    parser.add_argument("--variant", required=True, choices=["portal", "portal-mcp", "portal-workflows", "runtime"])
     parser.add_argument("--ref", default="HEAD")
     parser.add_argument("--out", required=True, type=Path)
     args = parser.parse_args()
@@ -140,7 +209,7 @@ def main():
         parser.error("Write package artifacts outside the source checkout")
     data, receipt = build(repo, args.ref, args.variant)
     output.mkdir(parents=True, exist_ok=True)
-    variant_label = {"portal": "Portal", "portal-mcp": "Portal-MCP", "runtime": "Runtime"}[args.variant]
+    variant_label = {"portal": "Portal", "portal-mcp": "Portal-MCP", "portal-workflows": "Portal-Workflows", "runtime": "Runtime"}[args.variant]
     name = f"Psychology-Plugin-{receipt['version']}-{variant_label}.zip"
     (output / name).write_bytes(data)
     receipt["zip"] = str(output / name)
