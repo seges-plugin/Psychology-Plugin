@@ -295,3 +295,15 @@ A supported host/version must prove these traces in a private acceptance receipt
 The receipt records the exact visible `psychology_…` name from authenticated `tools/list`. Until a
 receipt passes for an exact host, version, surface, and plugin commit, this is a portable design contract,
 not a host-support claim.
+
+
+## Source candidate: status readback, not assessment authority
+
+For the existing explicitly requested profile/trait owner-review journey only, a matching exposed
+`psychology_get_profile_write_review_status` may read one exact review by kind and exactly one
+review_id/request_id. Pending waits; approved still needs the original explicit final-save request and
+receipt-only save; consumed must not be saved again; expired/stale/rejected stop. The read never approves,
+consumes, commits or renews a review, and does not authorize assessment scoring or new source access.
+A supported optional UUID4 request_id can recover a lost PREPARE response using that same key and
+unchanged draft; legacy preparations without it do not gain an unknown-ID recovery promise. See
+`../../docs/workspace-mcp.md`. All existing 16 instruments, assessment flows and OAuth rules stay unchanged.

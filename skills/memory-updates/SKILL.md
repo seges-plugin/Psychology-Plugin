@@ -70,7 +70,7 @@ Profile and trajectory writes are owner-reviewed and receipt-only; the local env
 | Separately requested direct-current-session self-description | Profile owner-review path in `../assessment-guide/SKILL.md`; read current profile only as required by that authorized workflow. |
 | Platform-memory or past-chat summary | Dedicated selected-context retention in `../memory-distillation/SKILL.md`; never launder it into profile/trajectory or journal. |
 | Life event explicitly chosen as a diary entry | Exact requested journal action, current journal authorization and reviewed minimal content; not a substitute for the other stores. |
-| Task, commitment, reminder, reschedule, completion, cancellation or deletion | Check the actual callable workspace capability and schema first. No workspace MCP write bridge is currently claimed. Use the Today fallback in `../psychology/SKILL.md` section 3 when absent, old or refused; never repurpose profile or journal tools. |
+| Task, commitment, reminder, reschedule, completion, cancellation or deletion | Check the actual callable workspace capability and schema first. No workspace MCP write bridge may be assumed from installation or OAuth. When exact callable Life tools and matching schemas are available, follow `../../docs/workspace-mcp.md` with the separately owner-approved delegation and current action authorization. Otherwise use the Today fallback in `../psychology/SKILL.md` section 3; never repurpose profile or journal tools. |
 | Relationship/contact graph or financial records | Verified Today workspace path in `../psychology/SKILL.md` section 3; separate workspace scopes, not psychological profile fields. |
 | Scored assessment | Only an eligible completed assessment's existing scoring/storage workflow. Never turn a conversational candidate into a psychometric score. |
 
@@ -109,3 +109,24 @@ Continue helping with the person's task while a candidate waits. Revisit the del
 commitment, selected source, or actual review result arrives; do not abandon the loop because bootstrap
 already ran. Reuse decisions already made within their scope, respect declines, and ask only questions that
 would change the next action. No background monitoring or hidden cross-session scan is implied.
+
+
+## Source candidate: task and review recovery refinement
+
+Natural personal intent still starts useful session-only work; it is not permission to save. Once a user
+explicitly requests a current Life action and the exact exposed capability is available, follow
+`../../docs/workspace-mcp.md`. The fixed candidate public names are `psychology_get_workspace_capabilities`,
+`psychology_prepare_workspace_access`,`psychology_get_my_today`,`psychology_list_my_tasks`,
+`psychology_create_my_task`,`psychology_update_my_task`,`psychology_delete_my_task`,
+`psychology_get_my_reminder_settings` and `psychology_update_my_reminder_settings`.
+Do not call these names unless actually exposed. OAuth/profile/journal/browser Life grants do not replace
+the separate owner-approved client/connection delegation. Never approve its review for the person.
+
+When a supported profile preparation is explicitly permitted, retain its fresh UUID4 `request_id` before
+the first call. For a lost response, use the exact exposed `psychology_get_profile_write_review_status`
+with `kind` and exactly one original `review_id`/`request_id`; it never approves or saves. Preserve the same
+key and normalized draft for any supported idempotent replay. A changed draft conflicts, it does not
+renew or widen a prior approval. `consumed` means already saved, so do not save again. All other blocked
+or unknown states preserve the original no-write rules. Calls without request_id do not gain recovery.
+An unknown task write must be reconciled before any Today duplicate; unavailable recovery remains
+`unknown_result`, not `saved`. This is an unreleased source contract, not live host acceptance.

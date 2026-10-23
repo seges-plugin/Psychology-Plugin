@@ -137,3 +137,17 @@ draft session-only and hand off to Today; never silently lower its precision or 
 This handoff enables a reviewed website workflow; it is not automatic history ingestion or an MCP-to-workspace
 bridge. If future tools expose a workspace bridge, verify their actual callable schemas and authorization
 contract before using them. Do not infer support from a newer version number.
+
+
+## 3a. Conditional Life MCP path, source candidate only
+
+The published 1.4.3 no-bridge baseline remains the default. After accepted backend deployment, if actual
+authenticated discovery exposes all required `psychology_` tools with matching schemas and
+`psychology_get_workspace_capabilities` returns `available:true`, follow
+`../../docs/workspace-mcp.md` and `../../schemas/workspace-mcp-journey.contract.json` for Life tasks only.
+Do not derive availability from package version, source catalog, OAuth or browser Life consent.
+`psychology_prepare_workspace_access` creates a pending client/connection-bound owner review; it never
+approves itself. Use the returned exact delegation only after the person confirms it in signed-in Account.
+Keep relationship, finance, Learning and assessment requests on their own currently authorized routes.
+Absent/refused/incompatible tools keep section 3's Today fallback. If an earlier write is unknown, first
+reconcile it; do not cause a second task by openingToday and adding the same draft again.

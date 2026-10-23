@@ -1,0 +1,234 @@
+{
+  "schema": "noesis.plugin.workspace-journey.contract.v1",
+  "status": "SOURCE_CANDIDATE_NOT_LIVE_OR_RELEASE_ACCEPTANCE",
+  "base_package_version": "1.4.3",
+  "release_version_changed": true,
+  "public_tool_prefix": "psychology_",
+  "discovery": {
+    "required": true,
+    "same_authenticated_integration": true,
+    "capability_tool": "psychology_get_workspace_capabilities",
+    "available_must_be_true": true,
+    "missing_or_refused_fallback": "Today",
+    "source_catalog_is_not_live_discovery": true
+  },
+  "tools": {
+    "psychology_get_workspace_capabilities": {
+      "kind": "capability",
+      "required": [],
+      "optional": []
+    },
+    "psychology_prepare_workspace_access": {
+      "kind": "prepare_access",
+      "required": [
+        "idempotency_key",
+        "expires_at"
+      ],
+      "optional": []
+    },
+    "psychology_get_my_today": {
+      "kind": "private_read",
+      "required": [
+        "delegation_id"
+      ],
+      "optional": [
+        "limit"
+      ]
+    },
+    "psychology_list_my_tasks": {
+      "kind": "private_read",
+      "required": [
+        "delegation_id"
+      ],
+      "optional": [
+        "limit"
+      ]
+    },
+    "psychology_create_my_task": {
+      "kind": "task_write",
+      "required": [
+        "delegation_id",
+        "title",
+        "idempotency_key",
+        "current_request_confirmed"
+      ],
+      "optional": [
+        "status",
+        "planned_start_date",
+        "planned_start_at",
+        "due_date",
+        "due_at",
+        "task_timezone"
+      ]
+    },
+    "psychology_update_my_task": {
+      "kind": "task_write",
+      "required": [
+        "delegation_id",
+        "title",
+        "idempotency_key",
+        "current_request_confirmed",
+        "task_id",
+        "expected_version"
+      ],
+      "optional": [
+        "status",
+        "planned_start_date",
+        "planned_start_at",
+        "due_date",
+        "due_at",
+        "task_timezone"
+      ]
+    },
+    "psychology_delete_my_task": {
+      "kind": "task_delete",
+      "required": [
+        "delegation_id",
+        "task_id",
+        "expected_version",
+        "idempotency_key"
+      ],
+      "optional": []
+    },
+    "psychology_get_my_reminder_settings": {
+      "kind": "private_read",
+      "required": [
+        "delegation_id"
+      ],
+      "optional": []
+    },
+    "psychology_update_my_reminder_settings": {
+      "kind": "reminder_update",
+      "required": [
+        "delegation_id",
+        "idempotency_key",
+        "settings"
+      ],
+      "optional": []
+    }
+  },
+  "access": {
+    "oauth_is_not_delegation": true,
+    "browser_life_grant_is_not_client_delegation": true,
+    "requires_exact_owner_client_connection": true,
+    "owner_approval_in_signed_in_account": true,
+    "assistant_approval_forbidden": true,
+    "bundle": "Life tasks and reminder preferences only",
+    "purpose_expansion_forbidden": [
+      "relationship",
+      "finance",
+      "learning",
+      "assessment"
+    ],
+    "explicit_expiry_required": true,
+    "max_days": 30
+  },
+  "task": {
+    "explicit_current_action_required": true,
+    "current_request_confirmed": true,
+    "complete_new_fields_on_update": true,
+    "selected_id_and_version_required_for_update_delete": true,
+    "event_time": "unknown",
+    "start_and_deadline_independently_optional": true,
+    "calendar_format": "YYYY-MM-DD",
+    "instant_format": "RFC3339 with explicit offset",
+    "never_infer_midnight_timezone_or_reminder": true,
+    "unknown_write": "read_and_reconcile_before_any_new_write",
+    "Today_after_unknown": "do_not_create_until_absence_or_existing_result_is_resolved"
+  },
+  "reminders": {
+    "enable_requires_separate_signed_in_exact_settings_review": true,
+    "settings_read_is_not_email_delivery": true,
+    "no_send_tool": true,
+    "disable_not_processing_grant_renewal": true,
+    "settings_fields": {
+      "required": [
+        "daily_enabled",
+        "due_enabled",
+        "expected_version"
+      ],
+      "optional": [
+        "timezone",
+        "daily_time",
+        "locale"
+      ],
+      "enabled_requires_explicit_IANA_timezone": true,
+      "daily_requires_HH_mm": true,
+      "recipient_sender_URL_fields_forbidden": true
+    }
+  },
+  "review_status": {
+    "tool": "psychology_get_profile_write_review_status",
+    "required": [
+      "kind"
+    ],
+    "exactly_one": [
+      "review_id",
+      "request_id"
+    ],
+    "kind": [
+      "profile",
+      "trait_assertion"
+    ],
+    "states": [
+      "pending",
+      "approved",
+      "expired",
+      "consumed",
+      "stale",
+      "rejected"
+    ],
+    "private_owner_client_connection_read": true,
+    "never_approve_or_save_from_status_read": true,
+    "consumed_means_no_second_save": true
+  },
+  "prepare_recovery": {
+    "tool": "psychology_prepare_profile_write",
+    "request_id_optional": true,
+    "new_request_id": "fresh canonical UUID4 persisted in this conversation before first prepare",
+    "retry": "same request_id and exact normalized draft only after current authorization checks",
+    "lost_response": "status read by same request_id and kind if actually exposed",
+    "no_new_key_on_unknown": true,
+    "same_key_changed_payload_is_conflict": true,
+    "legacy_without_request_id": "no idempotent unknown-ID recovery claim",
+    "save_payload": "server review_id only; explicit approval and final-save intent required"
+  },
+  "locales": {
+    "zh-TW": {
+      "brand": "把想清楚的事，接著做。",
+      "setup": "先連接，再到Account核准這個AI連線管理Life待辦與提醒。",
+      "review": "我會先準備待審內容；請你在Noesis確認，之後才執行。",
+      "fallback": "這裡尚未提供相容工具，先保留草稿，到Today處理。",
+      "unknown": "結果還不明；先查回原操作，不重複新增。"
+    },
+    "zh-CN": {
+      "brand": "把想清楚的事，接着做。",
+      "setup": "先连接，再到Account批准这个AI连接管理Life待办与提醒。",
+      "review": "我会先准备待审内容；请你在Noesis确认，之后才执行。",
+      "fallback": "这里尚未提供兼容工具，先保留草稿，到Today处理。",
+      "unknown": "结果还不明确；先查询原操作，不重复新增。"
+    },
+    "en": {
+      "brand": "Think it through. Then take the next step.",
+      "setup": "Connect, then approve this AI connection for Life tasks and reminders in Account.",
+      "review": "I will prepare the review. Confirm it in Noesis before the action continues.",
+      "fallback": "Compatible tools are unavailable here. Keep the draft and continue in Today.",
+      "unknown": "The outcome is unknown. Check the original action before creating anything else."
+    }
+  },
+  "Today": {
+    "zh-TW": "https://noesis.seges.ai/zh-tw/today/",
+    "zh-CN": "https://noesis.seges.ai/zh-cn/today/",
+    "en": "https://noesis.seges.ai/en/today/"
+  },
+  "candidate_package_version": "1.4.4",
+  "backend_deployment_verified": false,
+  "authenticated_host_discovery_verified": false,
+  "catalog_target": {
+    "public_tools": 46,
+    "new_workspace_tools": 9,
+    "new_review_status_tools": 1,
+    "prompts": 18,
+    "instruments": 16
+  }
+}

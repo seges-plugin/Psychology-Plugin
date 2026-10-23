@@ -112,3 +112,8 @@ venv/
 *.tmp
 *.bak
 
+
+# Private local release evidence and disposable test fixtures; never publish.
+/output/noesis-1.4.4-20261023a/
+/output/noesis-1.4.4-20261023b/
+/output/noesis-1.4.4-peer-20261023a/

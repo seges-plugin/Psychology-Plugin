@@ -1,6 +1,6 @@
 {
   "name": "psychology-plugin",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "Use memories and past chats you choose to clarify a goal. Review suggestions in your AI; track a next step on the Today website. Not diagnosis or treatment.",
   "private": true,
   "license": "MIT",
@@ -30,7 +30,9 @@
     "schemas",
     "docs/activation-and-memory.md",
     "docs/package-variants.md",
-    "docs/setup-and-contract.md"
+    "docs/setup-and-contract.md",
+    "docs/workspace-mcp.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "test": "npm run verify",

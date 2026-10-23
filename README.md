@@ -73,10 +73,10 @@ See [package variants](docs/package-variants.md) and the
 
 Use the [supported-client record](https://noesis.seges.ai/ai/supported-clients.json)
 for the exact recorded host coverage. A connection in one account does not establish support everywhere.
-Today is a separate website flow, not automatic MCP workspace management.
+Today is a separate website flow; [connected task management](docs/workspace-mcp.md) requires compatible callable tools and your approval for that AI connection, and never runs automatically.
 Manage permissions, request a data copy or request deletion in your [Noesis account](https://noesis.seges.ai/en/account/).
 
-Source package **v1.4.3**. GitHub releases and host acceptance are separate.
+Source package **v1.4.4**, unreleased candidate. GitHub releases and host acceptance are separate.
 Check [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and the [public records](https://noesis.seges.ai/ai/release-records.json) for current status.
 An installed host does not automatically pick up a source change.
@@ -135,3 +135,11 @@ source-selection, owner-review, psychometric and storage rules.
 - <a id="distillation-workflow-audit-refresh-2026-10-15"></a> [Distillation workflow audit refresh (2026-10-15)](docs/setup-and-contract.md#distillation-workflow-audit-refresh-2026-10-15)
 - <a id="plugin-prompt-contract-verification-2026-10-15"></a> [Plugin prompt contract verification (2026-10-15)](docs/setup-and-contract.md#plugin-prompt-contract-verification-2026-10-15)
 </details>
+
+
+## Connected Life workflow candidate
+
+When compatible Life tools become available, approve this AI connection in Account, then add or correct
+one selected task. Start and deadline remain optional; enabling reminders has its own review.
+Until accepted backend deployment and authenticated discovery, keep the existing Today fallback.
+[繁體中文 · 简体中文 · English setup and recovery](docs/workspace-mcp.md).
