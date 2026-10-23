@@ -127,7 +127,7 @@ def build(repo, revision, variant):
         settings = manifest.get("extensions", {}).get("com.openai", {})
         if manifest.get("name") != WORKFLOW_ID or manifest["name"] == canonical.get("name") or manifest.get("version") != canonical.get("version"):
             raise ValueError("Workflow profile requires its distinct identity and source release version")
-        if settings.get("interface", {}).get("displayName") != "Psychology Plugin" or settings.get("onboardingSkill") != "./skills/onboarding/SKILL.md":
+        if settings.get("interface", {}).get("displayName") != "Psychology" or settings.get("onboardingSkill") != "./skills/onboarding/SKILL.md":
             raise ValueError("Workflow display name or canonical onboarding entry changed")
     for name, value in list(contents.items()):
         if variant == "portal-mcp" and name.endswith((".json", ".md")):
@@ -137,6 +137,8 @@ def build(repo, revision, variant):
         if not name.endswith(".json"):
             continue
         data = json.loads(value)
+        if isinstance(data, dict) and isinstance(data.get("mcpServers"), dict) and set(data["mcpServers"]) != {"Psychology"}:
+            raise ValueError(f"MCP server naming must use only Psychology, without aliases: {name}")
         def inspect(node):
             if isinstance(node, dict):
                 if "apps" in node and node["apps"] is not None:

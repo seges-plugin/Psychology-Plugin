@@ -8,7 +8,7 @@ The selected public release is the explicit `portal-mcp` variant described in [p
 ## Source and package checks
 
 - One portable plugin with root `plugin.json`, `mcp.json`, 16 skills and referenced
-  assets. Product display name is Psychology Plugin; hosted connector is Psychology MCP.
+  assets. Product display name is Psychology; hosted connector is Psychology.
 - Ongoing personal-change routing, selected-source distillation, exact destination
   selection, owner review and receipt-only saves are specified in
   [activation and memory](activation-and-memory.md). The local memory envelope

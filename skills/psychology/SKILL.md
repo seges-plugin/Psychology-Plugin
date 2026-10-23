@@ -67,7 +67,7 @@ previous successful connection in another task does not prove a callable capabil
   After urgent-safety routing, for any other tool-dependent request, the first substantive reply must be this short connection interstitial;
   do not emit a generic preface or reflection exercise before it:
 
-  > **Psychology MCP tools are not callable in this session yet.** The plugin guidance is available, but no
+  > **Psychology tools are not callable in this session yet.** The plugin guidance is available, but no
   > `psychology_*` tool can be called, so I cannot use Noesis instruments, consent, or saved sources here.
   > Would you like to connect it here? Use this host's native connection interface and official Noesis browser sign-in; it
   > does not ask you to paste a password, token, header, or authorization URL. Session-only memory distillation

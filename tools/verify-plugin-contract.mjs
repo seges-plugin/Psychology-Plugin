@@ -121,7 +121,7 @@ function checkAttribution(value, path) {
 for (const path of ["package.json", "plugin.json", ".codex-plugin/plugin.json", ".claude-plugin/plugin.json", ".claude-plugin/marketplace.json", "kimi.plugin.json", "openclaw.plugin.json"]) {
   checkAttribution(json(path), path);
 }
-if (JSON.stringify(marketplace.owner) !== JSON.stringify({ name: "Psychology Plugin" })) {
+if (JSON.stringify(marketplace.owner) !== JSON.stringify({ name: "Psychology" })) {
   fail("Claude marketplace requires only a product-name label, without contact or affiliation metadata");
 }
 if (!/^Copyright \(c\) 2026$/m.test(text("LICENSE"))) {
@@ -130,9 +130,9 @@ if (!/^Copyright \(c\) 2026$/m.test(text("LICENSE"))) {
 
 
 // Human-facing names and machine IDs intentionally have separate schema roles.
-const pluginDisplayName = "Psychology Plugin";
+const pluginDisplayName = "Psychology";
 const pluginId = "psychology-plugin";
-const mcpId = "psychology_mcp";
+const mcpId = "Psychology";
 for (const [path, manifest] of [
   ["package.json", packageJson], ["plugin.json", portablePlugin],
   [".codex-plugin/plugin.json", codexPlugin], [".claude-plugin/plugin.json", claudePlugin],
@@ -152,11 +152,11 @@ for (const [path, servers] of [
   ["kimi.plugin.json", kimiPlugin.mcpServers], ["openclaw.plugin.json", openclawPlugin.mcpServers],
 ]) {
   if (JSON.stringify(Object.keys(servers ?? {})) !== JSON.stringify([mcpId])) {
-    fail(`${path}: declare exactly one Psychology MCP server under ${mcpId}`);
+    fail(`${path}: declare exactly one Psychology server under ${mcpId}`);
   }
 }
 if (claudePlugin.mcpServers?.[mcpId]?.type !== "http" || claudePlugin.mcpServers?.[mcpId]?.url !== canonicalMcpResource) {
-  fail(".claude-plugin/plugin.json: explicitly use Claude HTTP transport for Psychology MCP");
+  fail(".claude-plugin/plugin.json: explicitly use Claude HTTP transport for Psychology");
 }
 const rootInterface = portablePlugin.extensions?.["com.openai"]?.interface;
 if (JSON.stringify(canonical(rootInterface)) !== JSON.stringify(canonical(codexPlugin.interface))) {
@@ -172,7 +172,34 @@ if (ignoredButTracked) fail(`ignored files must not remain tracked: ${ignoredBut
 for (const path of packageJson.files ?? []) {
   if (!existsSync(join(root, path))) fail(`package.json: advertised file path does not exist: ${path}`);
 }
-note("Naming: Psychology Plugin / psychology-plugin; Psychology MCP / psychology_mcp; attribution-free metadata and ignore boundaries checked");
+function legacyProductNameErrors(value, path = "$") {
+  const errors = [];
+  if (typeof value === "string") {
+    if (/\bPsychology (?:Plugin|MCP)\b/.test(value)) errors.push(path);
+  } else if (Array.isArray(value)) {
+    value.forEach((entry, index) => errors.push(...legacyProductNameErrors(entry, `${path}[${index}]`)));
+  } else if (value && typeof value === "object") {
+    for (const [key, entry] of Object.entries(value)) {
+      errors.push(...legacyProductNameErrors(key, `${path}.[key]`));
+      errors.push(...legacyProductNameErrors(entry, `${path}.${key}`));
+    }
+  }
+  return errors;
+}
+// Git's tracked inventory includes hidden manifests without walking local output.
+const trackedJsonPaths = execFileSync("git", ["ls-files", "-z", "--", "*.json"], { cwd: root, encoding: "utf8" }).split("\0").filter(Boolean);
+for (const path of trackedJsonPaths) {
+  for (const location of legacyProductNameErrors(json(path))) fail(`${path}:${location}: product and MCP display names must use Psychology`);
+}
+for (const formerName of ["Psychology Plugin", "Psychology MCP"]) {
+  for (const fixture of [{ interface: { displayName: formerName } }, { nested: [null, { description: `Connect ${formerName}.` }] }, { [formerName]: {} }]) {
+    if (legacyProductNameErrors(fixture).length === 0) fail(`naming guard accepted former display name: ${formerName}`);
+  }
+}
+if (legacyProductNameErrors({ displayName: pluginDisplayName, name: pluginId, workflow: "psychology-plugin-workflows", mcpServers: { [mcpId]: { url: canonicalMcpResource } } }).length !== 0) {
+  fail("naming guard rejected Psychology or compatible technical IDs");
+}
+note(`Naming: Psychology for plugin display and MCP server key; ${trackedJsonPaths.length} tracked JSON files including hidden manifests checked; package IDs and tool namespace unchanged`);
 
 const versions = new Map([
   ["package.json", packageJson.version],
@@ -187,14 +214,14 @@ for (const [path, version] of versions) {
   if (version !== packageJson.version) fail(`${path}: version ${version ?? "missing"} != ${packageJson.version}`);
 }
 
-if (rootMcp.mcpServers?.psychology_mcp?.url !== portableMcp.mcpServers?.psychology_mcp?.url) {
+if (rootMcp.mcpServers?.[mcpId]?.url !== portableMcp.mcpServers?.[mcpId]?.url) {
   fail("mcp.json and .mcp.json must use the same Psychology endpoint");
 }
-if (codexMcp.mcpServers?.psychology_mcp?.url !== portableMcp.mcpServers?.psychology_mcp?.url) {
+if (codexMcp.mcpServers?.[mcpId]?.url !== portableMcp.mcpServers?.[mcpId]?.url) {
   fail(".mcp.json and mcp.json must use the same Psychology endpoint");
 }
 
-const psychologyMcp = rootMcp.mcpServers?.psychology_mcp;
+const psychologyMcp = rootMcp.mcpServers?.[mcpId];
 if ("type" in (psychologyMcp ?? {}) || psychologyMcp?.url !== canonicalMcpResource) {
   fail(".mcp.json: Psychology must use the Codex MCP format with the canonical URL and no transport type field");
 }
@@ -234,7 +261,7 @@ if (codexPlugin.mcpServers !== "./.mcp.json") {
 }
 const portableOpenAiInterface = portablePlugin.extensions?.["com.openai"]?.interface;
 const codexOpenAiInterface = codexPlugin.interface;
-if (portableOpenAiInterface?.displayName !== "Psychology Plugin") {
+if (portableOpenAiInterface?.displayName !== pluginDisplayName) {
   fail("plugin.json: OpenAI extension must provide the Psychology interface metadata");
 }
 for (const [manifestPath, openAiInterface] of [
@@ -325,15 +352,15 @@ for (const phrase of [
     fail(`plugin.json: move detailed workflow caveats out of the front-door description (${phrase})`);
   }
 }
-const portablePsychologyMcp = portableMcp.mcpServers?.psychology_mcp;
+const portablePsychologyMcp = portableMcp.mcpServers?.[mcpId];
 if (portableMcp.$schema !== "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json") {
   fail("mcp.json: missing the portable Agent Plugins MCP schema");
 }
 if (portablePsychologyMcp?.type !== "streamable-http" || portablePsychologyMcp?.url !== canonicalMcpResource) {
   fail("mcp.json: Psychology must declare the canonical Streamable HTTP endpoint");
 }
-if (kimiPlugin.skills !== "./skills/" || kimiPlugin.mcpServers?.psychology_mcp?.url !== canonicalMcpResource) {
-  fail("kimi.plugin.json: Kimi Code must declare the root skills directory and canonical Psychology MCP URL");
+if (kimiPlugin.skills !== "./skills/" || kimiPlugin.mcpServers?.[mcpId]?.url !== canonicalMcpResource) {
+  fail("kimi.plugin.json: Kimi Code must declare the root skills directory and canonical Psychology URL");
 }
 for (const phrase of [
   "memories and past chats",
@@ -351,10 +378,10 @@ for (const phrase of [
 if (
   !Array.isArray(openclawPlugin.skills) ||
   !openclawPlugin.skills.includes("./skills") ||
-  openclawPlugin.mcpServers?.psychology_mcp?.url !== canonicalMcpResource ||
-  openclawPlugin.mcpServers?.psychology_mcp?.transport !== "streamable-http" ||
-  openclawPlugin.mcpServers?.psychology_mcp?.auth !== "oauth" ||
-  "type" in (openclawPlugin.mcpServers?.psychology_mcp ?? {})
+  openclawPlugin.mcpServers?.[mcpId]?.url !== canonicalMcpResource ||
+  openclawPlugin.mcpServers?.[mcpId]?.transport !== "streamable-http" ||
+  openclawPlugin.mcpServers?.[mcpId]?.auth !== "oauth" ||
+  "type" in (openclawPlugin.mcpServers?.[mcpId] ?? {})
 ) {
   fail("openclaw.plugin.json: native OpenClaw manifest must declare root skills and Streamable HTTP OAuth MCP config");
 }
@@ -764,7 +791,7 @@ if (!/user-requested/i.test(publicMcpProfile.description ?? "") || !/explicit so
 }
 note("Public MCP-only profile: separate contextual metadata and truthful disclosures checked; archive membership is validated by the Python suite");
 if (!frontReadme.includes("[Install in your AI](#install-in-your-ai)") || !frontReadme.includes("[Try Today first](https://noesis.seges.ai/en/today/)")) fail("README.md: keep AI installation primary and Today secondary");
-if (!frontReadme.includes('id="add-to-claude-ai"') || !frontReadme.includes('id="use-psychology-in-chatgpt"')) fail("README.md: retain working legacy setup anchors");
+if (!frontReadme.includes('id="add-to-claude-ai"') || !frontReadme.includes('id="use-psychology-plugin-in-chatgpt"') || !/^### Use Psychology in ChatGPT\s*$/m.test(frontReadme)) fail("README.md: retain legacy setup anchors and the current Psychology ChatGPT heading");
 function readmeNavigationErrors(body) {
   const ids = [];
   for (const match of body.matchAll(/\bid=["']([^"']+)["']/g)) ids.push(match[1]);
@@ -906,7 +933,7 @@ function hostConnectionViolations(body) {
   const compact = body.replace(/\s+/g, " ");
   const violations = [];
   for (const phrase of [
-    "Psychology MCP tools are not callable in this session yet",
+    "Psychology tools are not callable in this session yet",
     "If the current host is Codex",
     "For any other host",
     "use that host's native connection interface",
@@ -925,7 +952,7 @@ for (const [path, body] of [
 ]) {
   for (const violation of hostConnectionViolations(body)) fail(`${path}: ${violation}`);
   for (const [label, fixture] of [
-    ["unconditional Codex message", body.replace("Psychology MCP tools are not callable in this session yet", "Psychology MCP is not connected in this Codex task yet")],
+    ["unconditional Codex message", body.replace("Psychology tools are not callable in this session yet", "Psychology is not connected in this Codex task yet")],
     ["missing native-host route", body.replace("use that host's native connection interface", "use a different platform's setup")],
   ]) {
     if (fixture === body || hostConnectionViolations(fixture).length === 0) {
@@ -975,8 +1002,8 @@ for (const [path, body, required] of [
   ]],
   ["skills/onboarding/SKILL.md", onboarding, [
     "Codex desktop and CLI",
-    "codex mcp add psychology_mcp --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp",
-    "codex mcp login psychology_mcp --oauth-client-registration dcr",
+    "codex mcp add Psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp",
+    "codex mcp login Psychology --oauth-client-registration dcr",
     "official `noesis.seges.ai` sign-in/consent page",
     "Never ask them to paste a password, client ID, redirect URI, token, header, authorization code, or browser callback URL",
   ]],
@@ -988,10 +1015,10 @@ for (const [path, body, required] of [
     "The memory-distillation prompt runs in the AI account the person chooses as a source",
     "does not give the Psychology plugin an API for enumerating that account's archive",
     "cannot force either host to search, recover, or export the full account history",
-    "## Use Psychology Plugin in Codex",
-    "codex mcp add psychology_mcp --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp",
-    "codex mcp login psychology_mcp --oauth-client-registration dcr",
-    "## Use Psychology Plugin in ChatGPT",
+    "## Use Psychology in Codex",
+    "codex mcp add Psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp",
+    "codex mcp login Psychology --oauth-client-registration dcr",
+    "## Use Psychology in ChatGPT",
     "portable Agent Plugins package files at its root",
     "GitHub repository URL by itself is not an MCP server URL",
   ]],
@@ -2720,8 +2747,9 @@ async function verifyLiveCatalog() {
     "psychology_prepare_profile_write",
   ]);
   for (const id of [...documented].sort()) {
-    // The configured server ID is a harness namespace, not an MCP tool invocation.
-    if (id === mcpId || id === "psychology_" || id.endsWith("_")) continue;
+    // Current and exact historical server IDs are harness namespaces, not tool invocations.
+    // Do not generalize this exception to other psychology_* names.
+    if (id === mcpId || id === "psychology_mcp" || id === "psychology_" || id.endsWith("_")) continue;
     if (!liveTools.has(id) && !livePrompts.has(id) && !allowedDataOnly.has(id) && !optionalStagingTools.has(id)) {
       fail(`documented psychology identifier is absent from the live catalog: ${id}`);
     }

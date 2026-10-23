@@ -6,7 +6,7 @@
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
   "mcpServers": {
-    "psychology_mcp": {
+    "Psychology": {
       "type": "http",
       "url": "https://noesis.seges.ai/mcp"
     }

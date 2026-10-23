@@ -16,7 +16,7 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Psychology Plugin",
+        "displayName": "Psychology",
         "shortDescription": "Reflect, then take a next step",
         "longDescription": "Review relevant memories and past chats the current assistant can access for goal-relevant strengths, patterns, and likely answers. Ask only about gaps that could change what comes next. Use the Today website for your next step. Psychology does not claim access to another account's archive. Connected hosts need a recorded host-specific acceptance result; stored reads need explicit source choice and applicable consent. Not diagnosis or treatment.",
         "category": "Productivity",
@@ -92,7 +92,7 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "Noesis and Psychology Plugin are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
+        "commerce_description": "Noesis and Psychology are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
         "release_notes": "v1.4.4 candidate: add owner-approved Life task and reminder workflows, read-only profile review status and same-request recovery. Start and deadline remain optional. Use only tools actually exposed after backend deployment; keep Today fallback. No automatic approval, save, reminder delivery, installed-host refresh or directory approval is claimed."

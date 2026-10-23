@@ -15,7 +15,7 @@
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
   "interface": {
-    "displayName": "Psychology Plugin",
+    "displayName": "Psychology",
     "shortDescription": "Reflect, then take a next step",
     "longDescription": "Review relevant memories and past chats the current assistant can access for goal-relevant strengths, patterns, and likely answers. Ask only about gaps that could change what comes next. Use the Today website for your next step. Psychology does not claim access to another account's archive. Connected hosts need a recorded host-specific acceptance result; stored reads need explicit source choice and applicable consent. Not diagnosis or treatment.",
     "category": "Productivity",

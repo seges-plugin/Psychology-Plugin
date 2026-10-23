@@ -1,4 +1,4 @@
-# Psychology Plugin
+# Psychology
 
 **Think it through. Then take the next step.**
 
@@ -24,15 +24,15 @@ Free, noncommercial reflection tools. Not diagnosis or treatment.
 1. Open [Claude Plugins](https://claude.ai/new#settings/customize-plugins).
 2. Choose **Add → Add marketplace → Add from a repository**.
 3. Paste `https://github.com/seges-plugin/Psychology-Plugin`, sync, and install Psychology.
-4. Connect Psychology MCP and finish the Noesis browser sign-in. If asked, choose **No client ID**.
+4. Connect Psychology and finish the Noesis browser sign-in. If asked, choose **No client ID**.
 
 [Detailed Claude setup](docs/setup-and-contract.md#add-to-claude-ai)
 includes the optional connector shortcut and account-specific requirements.
 The plugin is installed from GitHub; it is not listed in the official Plugin Store.
 
-### Use Psychology Plugin in ChatGPT
+### Use Psychology in ChatGPT
 
-<a id="use-psychology-in-chatgpt"></a>
+<a id="use-psychology-plugin-in-chatgpt"></a>
 
 For an available custom MCP connection, use `https://noesis.seges.ai/mcp` and finish
 the Noesis browser authorization. Availability depends on your account and workspace.
@@ -104,9 +104,9 @@ source-selection, owner-review, psychometric and storage rules.
 - <a id="public-claims"></a> [Public claims](docs/setup-and-contract.md#public-claims)
 - <a id="self-assessment-and-conversational-reflection"></a> [Self-assessment and conversational reflection](docs/setup-and-contract.md#self-assessment-and-conversational-reflection)
 - <a id="what-psychology-helps-with"></a> [What Psychology helps with](docs/setup-and-contract.md#what-psychology-helps-with)
-- <a id="use-psychology-plugin-in-codex"></a> [Use Psychology Plugin in Codex](docs/setup-and-contract.md#use-psychology-plugin-in-codex)
-- <a id="use-psychology-plugin-in-claude-code"></a> [Use Psychology Plugin in Claude Code](docs/setup-and-contract.md#use-psychology-plugin-in-claude-code)
-- <a id="use-psychology-plugin-in-kimi-code"></a> [Use Psychology Plugin in Kimi Code](docs/setup-and-contract.md#use-psychology-plugin-in-kimi-code)
+- <a id="use-psychology-plugin-in-codex"></a> [Use Psychology in Codex](docs/setup-and-contract.md#use-psychology-plugin-in-codex)
+- <a id="use-psychology-plugin-in-claude-code"></a> [Use Psychology in Claude Code](docs/setup-and-contract.md#use-psychology-plugin-in-claude-code)
+- <a id="use-psychology-plugin-in-kimi-code"></a> [Use Psychology in Kimi Code](docs/setup-and-contract.md#use-psychology-plugin-in-kimi-code)
 - <a id="connect-a-host"></a> [Connect a host](docs/setup-and-contract.md#connect-a-host)
 - <a id="public-mcp-only-distribution"></a> [Public MCP-only distribution](docs/setup-and-contract.md#public-mcp-only-distribution)
 - <a id="personal-workspace-and-natural-language-requests"></a> [Personal workspace and natural-language requests](docs/setup-and-contract.md#personal-workspace-and-natural-language-requests)

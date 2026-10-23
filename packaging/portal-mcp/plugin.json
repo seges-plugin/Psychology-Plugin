@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology-plugin",
   "version": "1.4.4",
-  "description": "Use user-requested Psychology MCP tools to clarify a goal and reflect on chosen context. Not diagnosis or treatment.",
+  "description": "Use user-requested Psychology tools to clarify a goal and reflect on chosen context. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -16,9 +16,9 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Psychology Plugin",
+        "displayName": "Psychology",
         "shortDescription": "Reflection tools via MCP",
-        "longDescription": "Use Psychology MCP for reflection guides, instruments and authorized Noesis records in your current request. Tools depend on the connected host. Stored reads require consent and an explicit source choice; writes require review and authorization. No automatic archive access or save. Scoring is not diagnosis or treatment. Professional listings are unverified leads. Installation does not establish host acceptance.",
+        "longDescription": "Use Psychology for reflection guides, instruments and authorized Noesis records in your current request. Tools depend on the connected host. Stored reads require consent and an explicit source choice; writes require review and authorization. No automatic archive access or save. Scoring is not diagnosis or treatment. Professional listings are unverified leads. Installation does not establish host acceptance.",
         "category": "Productivity",
         "capabilities": [
           "psychometric-scoring",
@@ -31,7 +31,7 @@
         "termsOfServiceURL": "https://noesis.seges.ai/terms",
         "defaultPrompt": [
           "Help me clarify my current goal using relevant context available in this chat.",
-          "Use Psychology MCP to get the guide for reflecting on context I choose.",
+          "Use Psychology to get the guide for reflecting on context I choose.",
           "Check my current Noesis permissions before I select saved results to read."
         ],
         "brandColor": "#0d6efd",
@@ -92,7 +92,7 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "Noesis and Psychology Plugin are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
+        "commerce_description": "Noesis and Psychology are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
         "release_notes": "v1.4.4 candidate: retain the MCP-only connection. When exposed after backend deployment, support exact approved Life tasks, reminder preferences and private review status. This package does not approve an AI connection or enable reminders. Existing consent, review, scoring and host-acceptance boundaries remain."

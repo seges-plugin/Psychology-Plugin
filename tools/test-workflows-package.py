@@ -41,7 +41,7 @@ class WorkflowProfile(unittest.TestCase):
         value=self.profile();canonical=json.loads((ROOT/'plugin.json').read_bytes());mcp=json.loads((ROOT/'packaging/portal-mcp/plugin.json').read_bytes())
         self.assertEqual(value['name'],'psychology-plugin-workflows');self.assertNotEqual(value['name'],mcp['name'])
         self.assertEqual(value['version'],canonical['version']);ai=value['extensions']['com.openai'];ui=ai['interface']
-        self.assertEqual(ui['displayName'],'Psychology Plugin');self.assertLessEqual(len(ui['shortDescription']),30)
+        self.assertEqual(ui['displayName'],'Psychology');self.assertLessEqual(len(ui['shortDescription']),30)
         self.assertEqual(len(set(ui['defaultPrompt'])),3);self.assertTrue(all(0<len(p)<=128 for p in ui['defaultPrompt']))
         self.assertEqual(ai['review'],canonical['extensions']['com.openai']['review'])
         self.assertEqual(ui['capabilities'],canonical['extensions']['com.openai']['interface']['capabilities'])
@@ -67,8 +67,8 @@ class WorkflowProfile(unittest.TestCase):
         with zipfile.ZipFile(io.BytesIO(workflows)) as a,zipfile.ZipFile(io.BytesIO(minimal)) as b:
             self.assertEqual(len(b.namelist()),8)
             for name in ('mcp.json','.mcp.json'):self.assertEqual(a.read(name),b.read(name));self.assertEqual(a.read(name),subprocess.check_output(['git','-C',str(ROOT),'show','HEAD:'+name]))
-            server=json.loads(a.read('mcp.json'))['mcpServers'];self.assertEqual(set(server),{'psychology_mcp'})
-            self.assertEqual(server['psychology_mcp']['url'],'https://noesis.seges.ai/mcp');self.assertEqual(server['psychology_mcp']['extensions']['com.openai']['auth'],{'type':'oauth','client':{'mode':'dcr'}})
+            server=json.loads(a.read('mcp.json'))['mcpServers'];self.assertEqual(set(server),{'Psychology'})
+            self.assertEqual(server['Psychology']['url'],'https://noesis.seges.ai/mcp');self.assertEqual(server['Psychology']['extensions']['com.openai']['auth'],{'type':'oauth','client':{'mode':'dcr'}})
     def test_receipt_maps_exact_committed_source_without_hidden_identity_rewrite(self):
         raw,receipt=self.build();again,_=self.build();self.assertEqual(raw,again)
         with zipfile.ZipFile(io.BytesIO(raw)) as z:
@@ -76,13 +76,24 @@ class WorkflowProfile(unittest.TestCase):
                 self.assertEqual(entry['sourcePath'],P.WORKFLOW_SOURCES[entry['path']]);self.assertEqual(z.read(entry['path']),self.git('show','HEAD:'+entry['sourcePath']))
             self.assertEqual(json.loads(z.read('plugin.json'))['name'],'psychology-plugin-workflows')
         self.write('packaging/portal-workflows/plugin.json','UNCOMMITTED MUST NOT LEAK');unchanged,_=self.build();self.assertEqual(raw,unchanged)
+    def test_mcp_former_key_and_aliases_are_refused_in_both_public_profiles(self):
+        original=json.loads((self.repo/'mcp.json').read_bytes())
+        connection=original['mcpServers']['Psychology']
+        for keys in (('psychology_mcp',),('Psychology MCP',),('Psychology','psychology_mcp')):
+            value=json.loads(json.dumps(original));value['mcpServers']={key:connection for key in keys}
+            self.write('mcp.json',json.dumps(value));self.commit()
+            for variant in ('portal-mcp','portal-workflows'):
+                with self.subTest(keys=keys,variant=variant),self.assertRaisesRegex(ValueError,'MCP server naming'):
+                    P.build(self.repo,'HEAD',variant)
     def test_profile_identity_version_and_onboarding_drift_refused(self):
         original=self.profile()
-        for field in ('name','version','display','onboarding'):
+        for field in ('name','version','display','former-plugin-display','former-mcp-display','onboarding'):
             v=json.loads(json.dumps(original))
             if field=='name':v['name']='psychology-plugin'
             if field=='version':v['version']='9.9.9'
             if field=='display':v['extensions']['com.openai']['interface']['displayName']='unreviewed'
+            if field=='former-plugin-display':v['extensions']['com.openai']['interface']['displayName']='Psychology Plugin'
+            if field=='former-mcp-display':v['extensions']['com.openai']['interface']['displayName']='Psychology MCP'
             if field=='onboarding':v['extensions']['com.openai']['onboardingSkill']='./agents/unsafe.md'
             self.rewrite_profile(v)
             with self.subTest(field=field),self.assertRaisesRegex(ValueError,'identity|display name|onboarding'):self.build()
@@ -128,7 +139,7 @@ class Documentation(unittest.TestCase):
         variants=(ROOT/'docs/package-variants.md').read_text(encoding='utf-8')
         for name in ('portal-mcp','portal-workflows','portal','runtime'):
             self.assertIn('| `'+name+'` |',variants)
-        for text in ('psychology-plugin-workflows','Psychology Plugin','Psychology MCP','psychology_mcp'):
+        for text in ('psychology-plugin-workflows','Psychology'):
             self.assertIn(text,contract);self.assertIn(text,variants)
         self.assertIn('packaging/portal-workflows/README.md',readme)
         self.assertIn('do not upload it over the existing MCP-only draft',contract)

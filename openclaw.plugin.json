@@ -1,6 +1,6 @@
 {
   "id": "psychology-plugin",
-  "name": "Psychology Plugin",
+  "name": "Psychology",
   "version": "1.4.4",
   "description": "Use memories and past chats you choose for goal-relevant strengths and likely answers; ask consequential gaps. Track action on the Today website. OpenClaw is an evaluation/setup path, not a supported host. Not diagnosis or treatment.",
   "configSchema": {
@@ -13,7 +13,7 @@
     "./skills"
   ],
   "mcpServers": {
-    "psychology_mcp": {
+    "Psychology": {
       "url": "https://noesis.seges.ai/mcp",
       "transport": "streamable-http",
       "auth": "oauth"

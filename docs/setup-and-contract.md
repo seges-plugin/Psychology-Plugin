@@ -2,7 +2,7 @@
 
 <img src="../assets/readme/banner.jpg" alt="Psychology wordmark" width="100%" />
 
-# Psychology Plugin
+# Psychology
 
 **Think it through. Then take the next step.**
 
@@ -29,7 +29,7 @@ installed plugin or a host's tool schema.
 | Review a goal and one next step | Connect reflection to a concrete action you choose | Keep the draft in the chat unless you separately choose storage |
 | Use the Today website | Track a task, mark it complete, and choose timezone and email reminder preferences | Separate website consent and settings; no automatic MCP workspace writes |
 
-The plugin is **Psychology Plugin**; its hosted connector is **Psychology MCP**. See the
+The plugin is **Psychology**; its hosted connector is **Psychology**. See the
 [naming contract](../docs/naming.md), [public release records](https://noesis.seges.ai/ai/release-records.json),
 and [supported-client record](https://noesis.seges.ai/ai/supported-clients.json) for their separate boundaries.
 Source releases and catalog entries are not proof that every tool works in every host.
@@ -172,9 +172,11 @@ credentials, availability, scope, jurisdiction, and suitability before relying o
 <img src="../assets/readme/divider.svg" alt="" width="100%" />
 </div>
 
-## Use Psychology Plugin in Codex
+<a id="use-psychology-plugin-in-codex"></a>
 
-Installing `Psychology Plugin` in Codex loads its portable workflow and safety skills. It does **not** by itself
+## Use Psychology in Codex
+
+Installing `Psychology` in Codex loads its portable workflow and safety skills. It does **not** by itself
 complete the separate OAuth connection to the hosted Noesis MCP. A first-use response must make that distinction
 visible. If a person asks to distil memories or past chats, it can act on context available in the current task
 without MCP; the result stays session-only and it must say when older history is unavailable. Offer secure Codex
@@ -188,8 +190,8 @@ one entry with the canonical root resource below; do not keep both resource vari
 to make this local configuration change, run:
 
 ```powershell
-codex mcp add psychology_mcp --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
-codex mcp login psychology_mcp --oauth-client-registration dcr
+codex mcp add Psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
+codex mcp login Psychology --oauth-client-registration dcr
 ```
 
 The login command opens the official Noesis browser sign-in and consent flow. Do not paste a password, client ID,
@@ -224,7 +226,9 @@ These links and steps are setup conveniences, not evidence of sync, installation
 completion, or a particular account's connection. The public support record lists Claude.ai web and
 desktop with a 2026-08-30 acceptance date; it does not cover Claude Code or Claude mobile.
 
-## Use Psychology Plugin in Claude Code
+<a id="use-psychology-plugin-in-claude-code"></a>
+
+## Use Psychology in Claude Code
 
 Claude Code is a separate product from Claude.ai. In a Claude Code session, add this [Claude Code
 marketplace](https://code.claude.com/docs/en/plugins/install) and install its `psychology-plugin` plugin:
@@ -235,10 +239,10 @@ marketplace](https://code.claude.com/docs/en/plugins/install) and install its `p
 ```
 
 Review the plugin and choose an install scope. The Claude manifest explicitly declares
-Psychology MCP using Claude's `http` transport; the root `.mcp.json` retains Codex's
+Psychology using Claude's `http` transport; the root `.mcp.json` retains Codex's
 URL-only format. In Claude Code, open `/mcp`, select the plugin-provided server, and
 use its normal authentication action. Its scoped name is
-`plugin:psychology-plugin:psychology_mcp`; use the exact name shown by the host rather
+`plugin:psychology-plugin:Psychology`; use the exact name shown by the host rather
 than a bare CLI alias. If you install it from the shell or add it during a session,
 start a new session or run `/reload-plugins` to apply it.
 
@@ -247,7 +251,9 @@ Claude Code does not connect a Claude.ai account, and adding the Claude.ai conne
 this repository's plugin. The public acceptance record covers Claude.ai web and desktop only; Claude
 Code remains an unverified evaluation target until it completes its own acceptance sequence.
 
-## Use Psychology Plugin in Kimi Code
+<a id="use-psychology-plugin-in-kimi-code"></a>
+
+## Use Psychology in Kimi Code
 
 Install this repository as a custom [Kimi Code plugin](https://github.com/MoonshotAI/kimi-code/blob/main/docs/en/customization/plugins.md):
 
@@ -257,7 +263,7 @@ Install this repository as a custom [Kimi Code plugin](https://github.com/Moonsh
 
 Enable it in `/plugins`, then run `/reload` or start a new session. The `kimi.plugin.json` manifest
 declares both `./skills/` and the hosted MCP server. Complete browser authorization with
-`/mcp-config login psychology_mcp`; then confirm the server is connected in `/mcp` and that its tools
+`/mcp-config login Psychology`; then confirm the server is connected in `/mcp` and that its tools
 are available. The Kimi.ai consumer app and Kimi Code CLI have different plugin and MCP
 configuration surfaces; these steps apply to Kimi Code CLI only.
 
@@ -265,9 +271,9 @@ Plugin installation, reload, or a visible server entry does not prove OAuth comp
 acceptance. Kimi Code is not listed in the current public support record. Use only the authenticated
 `psychology_…` tool names returned by the connected server.
 
-## Use Psychology Plugin in ChatGPT
+## Use Psychology in ChatGPT
 
-<a id="use-psychology-in-chatgpt"></a>
+<a id="use-psychology-plugin-in-chatgpt"></a>
 
 This repository includes the portable Agent Plugins package files at its root: `plugin.json` describes the
 plugin and `mcp.json` declares its hosted MCP server and OAuth Dynamic Client Registration. Use an
@@ -328,8 +334,8 @@ Inspect it with `openclaw plugins inspect psychology-plugin`. The manifest contr
 remote Streamable HTTP MCP server using OpenClaw's native OAuth configuration; it does not require a
 second manual server entry in `openclaw.json`.
 
-Complete browser authorization with `openclaw mcp login psychology_mcp`. Check the saved connection
-with `openclaw mcp status --verbose` and run `openclaw mcp doctor psychology_mcp --probe` to verify
+Complete browser authorization with `openclaw mcp login Psychology`. Check the saved connection
+with `openclaw mcp status --verbose` and run `openclaw mcp doctor Psychology --probe` to verify
 reachability and tool discovery. Plugin install, enablement, or saved credentials alone do not
 prove that authenticated tools work or that this host version has passed acceptance.
 
@@ -339,9 +345,9 @@ target.
 
 ## Public MCP-only distribution
 
-The selected `portal-mcp` package uses machine ID `psychology-plugin` and connects Psychology MCP for explicitly requested reflection guides, psychometric instruments, and authorized selected Noesis records. It does not include bundled skills, agents, hooks, or onboarding automation. It does not promise automatic invocation or automatic memory writes.
+The selected `portal-mcp` package uses machine ID `psychology-plugin` and connects Psychology for explicitly requested reflection guides, psychometric instruments, and authorized selected Noesis records. It does not include bundled skills, agents, hooks, or onboarding automation. It does not promise automatic invocation or automatic memory writes.
 
-A separate `portal-workflows` application source profile uses machine ID `psychology-plugin-workflows`. It includes all 16 skills, supporting references, the memory working schema and three skill-local `agents/openai.yaml` UI/policy files. Root agent bundles, lifecycle hooks, app bindings and alternate host manifests are excluded. Both profiles display **Psychology Plugin** and use the same **Psychology MCP** server, key `psychology_mcp`, endpoint and OAuth configuration. See the [workflows profile](../packaging/portal-workflows/README.md) and all four [package variants](../docs/package-variants.md).
+A separate `portal-workflows` application source profile uses machine ID `psychology-plugin-workflows`. It includes all 16 skills, supporting references, the memory working schema and three skill-local `agents/openai.yaml` UI/policy files. Root agent bundles, lifecycle hooks, app bindings and alternate host manifests are excluded. Both profiles display **Psychology** and use the same **Psychology** server, key `Psychology`, endpoint and OAuth configuration. See the [workflows profile](../packaging/portal-workflows/README.md) and all four [package variants](../docs/package-variants.md).
 
 The workflows profile is a separate application proposal; do not upload it over the existing MCP-only draft. Its source definition and local checks do not establish Portal import, invocation, eligibility or approval. Both applications retain the actual psychometric, health-related, professional-listing and account-write review requirements. The legacy `portal` package and full manual `runtime` package remain separate distributions; only the runtime includes optional trusted hooks.
 
@@ -370,8 +376,7 @@ The front-door skill applies to relevant personal-growth, non-clinical reflectio
 and selected-memory requests even when you do not type `@Psychology`. Actual skill selection depends on
 the host; installation does not guarantee a call in every chat or grant access to past conversations.
 
-The website workspace and the Psychology MCP have different capabilities. This distribution does not
-claim a live workspace MCP bridge. Check the current authenticated capability and exact schema before a
+The website workspace and the Psychology connector have different capabilities. This distribution does not claim a live workspace MCP bridge. Check the current authenticated capability and exact schema before a
 task/reminder action; absent, old or refused capability must fall back rather than invent a tool. For an explicit workspace
 save request, the assistant can prepare a session-only draft and direct you to
 [Today](https://noesis.seges.ai/en/today/) ([繁體中文](https://noesis.seges.ai/zh-tw/today/)), where you sign in,
