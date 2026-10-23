@@ -2747,8 +2747,9 @@ async function verifyLiveCatalog() {
     "psychology_prepare_profile_write",
   ]);
   for (const id of [...documented].sort()) {
-    // The configured server ID is a harness namespace, not an MCP tool invocation.
-    if (id === mcpId || id === "psychology_" || id.endsWith("_")) continue;
+    // Current and exact historical server IDs are harness namespaces, not tool invocations.
+    // Do not generalize this exception to other psychology_* names.
+    if (id === mcpId || id === "psychology_mcp" || id === "psychology_" || id.endsWith("_")) continue;
     if (!liveTools.has(id) && !livePrompts.has(id) && !allowedDataOnly.has(id) && !optionalStagingTools.has(id)) {
       fail(`documented psychology identifier is absent from the live catalog: ${id}`);
     }

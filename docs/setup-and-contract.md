@@ -376,8 +376,7 @@ The front-door skill applies to relevant personal-growth, non-clinical reflectio
 and selected-memory requests even when you do not type `@Psychology`. Actual skill selection depends on
 the host; installation does not guarantee a call in every chat or grant access to past conversations.
 
-The website workspace and the Psychology connector have different capabilities. This distribution does not
-claim a live workspace MCP bridge. Check the current authenticated capability and exact schema before a
+The website workspace and the Psychology connector have different capabilities. This distribution does not claim a live workspace MCP bridge. Check the current authenticated capability and exact schema before a
 task/reminder action; absent, old or refused capability must fall back rather than invent a tool. For an explicit workspace
 save request, the assistant can prepare a session-only draft and direct you to
 [Today](https://noesis.seges.ai/en/today/) ([繁體中文](https://noesis.seges.ai/zh-tw/today/)), where you sign in,
