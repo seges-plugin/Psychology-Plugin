@@ -231,3 +231,7 @@ The human owner reviews and approves the exact draft in the signed-in Noesis int
 ToolPermission acceptance cannot replace that approval. Save only the matching server-issued `review_id` after
 a fresh consent check and an explicit request to finish. Pending, rejected, expired, stale, unavailable, or uncertain
 results stop the workflow; do not infer success, automatically accept ToolPermission, or grant any optional purpose.
+
+## Connected objects when actually available
+
+For an explicit owned-object read or edit, use semantic intent and the exact discovered schema; the optional hook is only a hint and never vetoes an explicit MCP request. See `../../docs/connected-objects.md`. First select the object, fields and applicable independent purpose. Life consent does not grant domain or typed-object access. Prepare only after the current user asks; signed-in owner review remains separate, and an unknown response requires same-operation reconciliation before another write. Do not infer religion/health, create mutual-user edges or share private Noesis data with Kairos. Unavailable tools leave a session draft.

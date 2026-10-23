@@ -32,7 +32,8 @@
     "docs/package-variants.md",
     "docs/setup-and-contract.md",
     "docs/workspace-mcp.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "docs/connected-objects.md"
   ],
   "scripts": {
     "test": "npm run verify",

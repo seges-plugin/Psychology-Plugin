@@ -61,6 +61,8 @@ WORKFLOW_COMPONENTS = (
     'docs/package-variants.md',
     'docs/workspace-mcp.md',
     'schemas/workspace-mcp-journey.contract.json',
+    'docs/connected-objects.md',
+    'schemas/connected-object-journey.contract.json',
 )
 WORKFLOW_SOURCES = {
     **MCP_ONLY_SOURCES,

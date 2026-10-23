@@ -92,3 +92,7 @@ Use the fields returned by the same authenticated host. Do not supply an owner, 
 For reminder `settings`, provide `daily_enabled`, `due_enabled` and `expected_version`; enabling a mode also needs the explicitly chosen IANA `timezone`, and daily reminders need `daily_time` in `HH:mm`. `locale` is optional. Never add a recipient, sender or URL. A pending settings review is not an enabled reminder.
 
 The existing `psychology_prepare_profile_write` may accept optional UUID4 `request_id` only if its actual input schema exposes it. Keep all other required fields from that schema unchanged; this candidate adds no alternate save payload.
+
+## Future object and domain extension
+
+The next source-only extension adds separately authorized domain and typed-object journeys, plus exact Task read/partial patch. See [connected objects](connected-objects.md). It does not change the Life or profile-review protocol above, and its future 66-tool catalog is not the current 46-tool server.
