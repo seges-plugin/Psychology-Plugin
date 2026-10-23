@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology-plugin-workflows",
-  "version": "1.4.4",
+  "version": "1.5.0",
   "description": "Reflection workflows for goals, selected context and self-report. Review candidates before an authorized save. Not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
@@ -95,7 +95,7 @@
         "commerce_description": "Noesis and Psychology are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
-        "release_notes": "v1.4.4 candidate: retain 16 skills and add their explicit Life journey guide and contract. Guide task creation, optional start/deadline, separate reminder review and same-request profile recovery only when compatible tools are exposed. No lifecycle hooks, automatic writes, host acceptance or directory approval is claimed."
+        "release_notes": "v1.5.0 candidate: keep 16 skills in the 50-file workflows package and add connected-object guidance. Review domain and typed changes in Account, read selected records and patch exact tasks only with matching permissions and callable tools. The optional hook is a hint, not an automatic write or a host acceptance result."
       },
       "onboardingSkill": "./skills/onboarding/SKILL.md"
     }

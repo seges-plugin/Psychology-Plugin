@@ -1,6 +1,6 @@
-# Psychology — reflection workflows
+# Psychology: reflection workflows
 
-This is the source-defined **portal-workflows** distribution of Psychology, version 1.4.4 (unreleased source candidate). Its machine identifier is `psychology-plugin-workflows`. It is a separate application proposal from the MCP-only package (`psychology-plugin`); it must not replace that application's existing draft. The connected server remains **Psychology**, key `Psychology`, endpoint `https://noesis.seges.ai/mcp`, Streamable HTTP with OAuth/DCR.
+This is the source-defined **portal-workflows** distribution of Psychology, version 1.5.0 (unreleased source candidate). Its machine identifier is `psychology-plugin-workflows`. It is a separate application proposal from the MCP-only package (`psychology-plugin`); it must not replace that application's existing draft. The connected server remains **Psychology**, key `Psychology`, endpoint `https://noesis.seges.ai/mcp`, Streamable HTTP with OAuth/DCR.
 
 ## Included workflow components
 
@@ -14,7 +14,7 @@ Root agent bundles, lifecycle hooks, app bindings and alternate host manifests a
 
 Work from current visible or deliberately selected context. The host may have limited memory or past-chat retrieval; do not claim access to an unavailable account archive. New decisions and corrections can produce source-linked session-only candidates. Reading stored Noesis records requires the relevant current consent and an explicit source choice. Persistence requires the actual supported destination, review and authorization workflow; an inferred claim, local draft or successful guide call is not a saved record. Imported context, profile/trajectory, journal and separately scoped workspace records remain distinct. The local `schemas/memory-update.schema.json` is a working envelope, not a server payload or a migration.
 
-Psychometric tools support non-clinical reflection, not diagnosis or treatment. Exact item wording, permitted scope, user-endorsed answers and instrument-specific rights remain required. Professional listings are unverified leads, not vetted clinical referrals. Urgent safety takes precedence over ordinary reflection and memory work. The Today website is a separate flow; no missing workspace MCP write bridge is supplied by this package.
+Psychometric tools support non-clinical reflection, not diagnosis or treatment. Exact item wording, permitted scope, user-endorsed answers and instrument-specific rights remain required. Professional listings are unverified leads, not vetted clinical referrals. Urgent safety takes precedence over ordinary reflection and memory work. Today remains a separate website and a fallback when compatible tools are unavailable. When exposed, connected tools use the matching permissions and owner-review flow; this package does not supply or approve backend access.
 
 ## Separate application review
 
@@ -25,3 +25,7 @@ The source profile is committed at `packaging/portal-workflows/plugin.json` and 
 After source review, build the separate profile from the reviewed commit with `python tools/package-plugin.py --variant portal-workflows --ref <reviewed-commit> --out <external-folder>`. Use a separate **With MCP** application flow. Do not reupload this package over the existing MCP-only draft. After import, inspect all 16 saved skills, all three optional skill metadata files where surfaced, the onboarding entry and the authorized MCP connection. Local validation does not establish import, authentication, tool-call, model invocation or publication acceptance. Complete applicable demo/reviewer access, cases, scans and attestations separately; put private reviewer credentials only in secure dashboard fields.
 
 Official references: [Build skills](https://developers.openai.com/plugins/build/skills), [Package your plugin](https://developers.openai.com/plugins/build/plugins), and [Submission](https://developers.openai.com/plugins/deploy/submission).
+
+## Connected objects in this candidate
+
+The 50-file source package includes the three-language connected-object guide and its 20-tool contract: 12 domain tools, six typed-object tools and two exact Task tools. It preserves the original Life/profile workflow and 16 skills. Natural-language hints help find relevant tools; they do not approve or save a change. Backend deployment, activated features and matching authenticated discovery are still required.

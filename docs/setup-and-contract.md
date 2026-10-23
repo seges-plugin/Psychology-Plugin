@@ -13,7 +13,7 @@ Use chosen experiences and goals in your usual AI chat, then track your next ste
 
 Free, noncommercial health and growth tools. Reflection, not diagnosis or treatment.
 
-Source package **v1.4.4** is an unreleased candidate that keeps the selected MCP-only distribution and adds a distinct workflows application source profile while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
+Source package **v1.5.0** is an unreleased candidate that keeps the selected MCP-only distribution and adds a distinct workflows application source profile while preserving the complete manual/runtime workflows. GitHub releases and host acceptance are
 separate; check the [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and linked public records for current publication and support. A source version does not update an
 installed plugin or a host's tool schema.
@@ -580,5 +580,5 @@ The published 1.4.3 setup and host evidence above remain dated baselines. This a
 accepted thin11 deployment and actual same-namespace discovery; it is not available merely because this
 document exists. Use the concise [three-language Life setup](workspace-mcp.md) and its exact
 [JSON journey contract](../schemas/workspace-mcp-journey.contract.json). This candidate updates the
-source package to 1.4.4. OAuth scopes, the instrument catalog and recorded host acceptance remain
+source package to 1.5.0; the additional [connected-object guide](connected-objects.md) describes the separately reviewed domain and typed-object extension. OAuth scopes, the instrument catalog and recorded host acceptance remain
 as documented in the dated baselines above.

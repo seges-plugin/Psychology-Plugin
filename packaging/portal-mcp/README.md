@@ -29,7 +29,7 @@ Read the [privacy policy](https://noesis.seges.ai/privacy),
 [terms](https://noesis.seges.ai/terms) and
 [support guidance](https://noesis.seges.ai/support/).
 
-## Version 1.4.4 candidate
+## Version 1.5.0 candidate
 
 After the matching backend is deployed and the connected host exposes the tools,
 Life tasks can be added, rescheduled, completed or deleted through an approved AI
@@ -37,3 +37,5 @@ connection. Start and deadline are optional. Reminder enablement needs its own
 signed-in review. Check an unknown write before creating another task in Today.
 Private profile review status can recover a known review without approving or
 saving it. This is source preparation, not a published or installed update.
+
+The 1.5.0 source candidate also describes 20 additional domain, typed-object and exact Task read/patch tools. Use them only when exposed by the connection. Domain and typed changes need their separate permissions and Account review; existing Life permissions remain separate. No new host acceptance is claimed.

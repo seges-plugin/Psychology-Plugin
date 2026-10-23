@@ -1,0 +1,5026 @@
+{
+  "actual_tuple": null,
+  "authority": {
+    "chat_does_not_approve": true,
+    "life_is_not_domain_or_typed_grant": true,
+    "no_external_sends_or_bank_writes": true,
+    "no_mutual_user_edge": true,
+    "no_private_Kairos_bridge": true,
+    "oauth_is_not_purpose_grant": true,
+    "owner_review_in_signed_in_account": true,
+    "prepared_is_not_committed": true,
+    "purpose_kind_action_separate": true,
+    "unknown_requires_same_key_readback": true,
+    "verified_server_owner_client_connection_required": true
+  },
+  "current_server_public_tool_count_root_reported": 46,
+  "domain_bundles": [
+    "relationships",
+    "finance",
+    "learning",
+    "outcomes",
+    "orchestrator"
+  ],
+  "existing_life_profile_journey_preserved": "schemas/workspace-mcp-journey.contract.json",
+  "future_native_count": 51,
+  "future_public_count": 66,
+  "instruments": 16,
+  "prompts": 18,
+  "release_candidate_version": "1.5.0",
+  "release_ready": false,
+  "schema": "noesis.plugin.connected-object-journey.source-candidate.v1",
+  "sensitive_owner_confirmation_kinds": [
+    "Culture",
+    "HealthSelfReport",
+    "Religion"
+  ],
+  "source_contract_pins": {
+    "noesis_persistence/task_object_facade/contracts.py": "0ddc29787f5e6a342542599e083ec07cbdfa785ee273f144429ee53a3f2eccca",
+    "noesis_persistence/task_object_facade/native.py": "3eb349a1352452ee89d957d715090cb7fbfa59e1a870f854b4d116584909d8aa",
+    "noesis_persistence/typed_objects/contracts.py": "1431f83412f0b6bbc1ff1064a9bf3b0644999a5178c970eea2bfea63304e3fd2",
+    "noesis_persistence/typed_objects/native.py": "e9fea8ad8437b785442f3a3c47eb37c0e9742ba0778cf5351a2b9991db45ee3b",
+    "noesis_persistence/typed_objects/owner_reviews.py": "5f78db7c14c35c105260555e5b8bbb7a6db3e0c3d5653530ebb06bdfe239609d",
+    "noesis_persistence/typed_objects/registry.py": "9acb97fa28f1d8e261f687b86ec9f685729bbee1399c3d5a186c1c9767c944aa",
+    "noesis_persistence/workspace_domains_mcp/contracts.py": "7d9b9f848b2cb9fececc2d2036635776657ba12fcd976515fb998dc7bb9f5fd3",
+    "noesis_persistence/workspace_domains_mcp/native.py": "7632b575ac1d9cde58cf61384f220051c4b4a814733ff499dd427e4c2f9c4e93"
+  },
+  "status": "FUTURE_SOURCE_ONLY_NOT_CURRENT_SERVER_OR_HOST_ACCEPTANCE",
+  "task_patch": {
+    "current_expected_version_required": true,
+    "date_time_explicit_null": "only_if_actual_schema_allows",
+    "omitted_field": "unchanged",
+    "preserve_original_create_update_delete": true,
+    "same_idempotency_key_and_payload_for_unknown_replay": true,
+    "title_status_explicit_null": "refuse"
+  },
+  "tools": {
+    "psychology_get_domain_workspace_capabilities": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "title": "Strict",
+        "type": "object"
+      },
+      "journey": "domain_availability",
+      "optional": [],
+      "required": []
+    },
+    "psychology_get_my_domain_operation_status": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "delegation_id": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{32}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Delegation Id"
+          },
+          "idempotency_key": {
+            "anyOf": [
+              {
+                "pattern": "^[A-Za-z0-9_-]{1,80}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Idempotency Key"
+          },
+          "operation_id": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{32}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Operation Id"
+          }
+        },
+        "title": "Status",
+        "type": "object"
+      },
+      "journey": "exact_operation_status",
+      "optional": [
+        "delegation_id",
+        "idempotency_key",
+        "operation_id"
+      ],
+      "required": []
+    },
+    "psychology_get_my_finance_records": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "pattern": "^(account|record):[0-9a-f]{32}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cursor"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id"
+        ],
+        "title": "Listing",
+        "type": "object"
+      },
+      "journey": "private_domain_read:finance",
+      "optional": [
+        "cursor",
+        "limit",
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id"
+      ]
+    },
+    "psychology_get_my_learning_records": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "pattern": "^(account|record):[0-9a-f]{32}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cursor"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id"
+        ],
+        "title": "Listing",
+        "type": "object"
+      },
+      "journey": "private_domain_read:learning",
+      "optional": [
+        "cursor",
+        "limit",
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id"
+      ]
+    },
+    "psychology_get_my_outcome_records": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "pattern": "^(account|record):[0-9a-f]{32}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cursor"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id"
+        ],
+        "title": "Listing",
+        "type": "object"
+      },
+      "journey": "private_domain_read:outcomes",
+      "optional": [
+        "cursor",
+        "limit",
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id"
+      ]
+    },
+    "psychology_get_my_relationship_records": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "pattern": "^(account|record):[0-9a-f]{32}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cursor"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id"
+        ],
+        "title": "Listing",
+        "type": "object"
+      },
+      "journey": "private_domain_read:relationships",
+      "optional": [
+        "cursor",
+        "limit",
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id"
+      ]
+    },
+    "psychology_get_my_task_object": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "task_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "delegation_id",
+          "task_id"
+        ],
+        "title": "Selection",
+        "type": "object"
+      },
+      "journey": "exact_existing_life_task_read",
+      "optional": [],
+      "required": [
+        "delegation_id",
+        "task_id"
+      ]
+    },
+    "psychology_get_my_typed_object": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "authority_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Authority Id",
+            "type": "string"
+          },
+          "object_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Object Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "authority_id",
+          "object_id"
+        ],
+        "title": "Selection",
+        "type": "object"
+      },
+      "journey": "private_typed_read",
+      "optional": [],
+      "required": [
+        "authority_id",
+        "object_id"
+      ]
+    },
+    "psychology_get_my_typed_object_change_status": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "review_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Review Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "review_id"
+        ],
+        "title": "Status",
+        "type": "object"
+      },
+      "journey": "exact_typed_review_status",
+      "optional": [],
+      "required": [
+        "review_id"
+      ]
+    },
+    "psychology_get_my_typed_object_edge": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "edge_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Edge Id",
+            "type": "string"
+          },
+          "left_authority_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Left Authority Id",
+            "type": "string"
+          },
+          "right_authority_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Right Authority Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "left_authority_id",
+          "right_authority_id",
+          "edge_id"
+        ],
+        "title": "EdgeSelection",
+        "type": "object"
+      },
+      "journey": "private_edge_read",
+      "optional": [],
+      "required": [
+        "left_authority_id",
+        "right_authority_id",
+        "edge_id"
+      ]
+    },
+    "psychology_get_my_typed_object_history": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "after_assertion_id": {
+            "anyOf": [
+              {
+                "pattern": "^[0-9a-f]{32}$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "After Assertion Id"
+          },
+          "authority_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Authority Id",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 50,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          },
+          "object_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Object Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "authority_id",
+          "object_id"
+        ],
+        "title": "HistorySelection",
+        "type": "object"
+      },
+      "journey": "bounded_typed_history",
+      "optional": [
+        "after_assertion_id",
+        "limit"
+      ],
+      "required": [
+        "authority_id",
+        "object_id"
+      ]
+    },
+    "psychology_patch_my_task_object": {
+      "input_schema": {
+        "$defs": {
+          "Changes": {
+            "additionalProperties": false,
+            "properties": {
+              "due_at": {
+                "anyOf": [
+                  {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Due At"
+              },
+              "due_date": {
+                "anyOf": [
+                  {
+                    "format": "date",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Due Date"
+              },
+              "planned_start_at": {
+                "anyOf": [
+                  {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Planned Start At"
+              },
+              "planned_start_date": {
+                "anyOf": [
+                  {
+                    "format": "date",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Planned Start Date"
+              },
+              "status": {
+                "enum": [
+                  "OPEN",
+                  "DONE"
+                ],
+                "title": "Status",
+                "type": "string"
+              },
+              "task_timezone": {
+                "anyOf": [
+                  {
+                    "maxLength": 100,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Task Timezone"
+              },
+              "title": {
+                "maxLength": 240,
+                "minLength": 1,
+                "title": "Title",
+                "type": "string"
+              }
+            },
+            "title": "Changes",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "changes": {
+            "$ref": "#/$defs/Changes"
+          },
+          "current_request_confirmed": {
+            "const": true,
+            "title": "Current Request Confirmed",
+            "type": "boolean"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "expected_version": {
+            "minimum": 1,
+            "title": "Expected Version",
+            "type": "integer"
+          },
+          "idempotency_key": {
+            "maxLength": 80,
+            "minLength": 1,
+            "pattern": "^[A-Za-z0-9_-]+$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "task_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Task Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "delegation_id",
+          "task_id",
+          "expected_version",
+          "idempotency_key",
+          "current_request_confirmed",
+          "changes"
+        ],
+        "title": "Patch",
+        "type": "object"
+      },
+      "journey": "explicit_existing_life_task_patch",
+      "optional": [],
+      "required": [
+        "delegation_id",
+        "task_id",
+        "expected_version",
+        "idempotency_key",
+        "current_request_confirmed",
+        "changes"
+      ]
+    },
+    "psychology_prepare_domain_workspace_access": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "domain": {
+            "enum": [
+              "relationships",
+              "finance",
+              "learning",
+              "outcomes",
+              "orchestrator"
+            ],
+            "title": "Domain",
+            "type": "string"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "title": "Expires At",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Idempotency Key",
+            "type": "string"
+          }
+        },
+        "required": [
+          "domain",
+          "idempotency_key",
+          "expires_at"
+        ],
+        "title": "PrepareAccess",
+        "type": "object"
+      },
+      "journey": "pending_domain_delegation",
+      "optional": [],
+      "required": [
+        "domain",
+        "idempotency_key",
+        "expires_at"
+      ]
+    },
+    "psychology_prepare_my_finance_operation": {
+      "input_schema": {
+        "$defs": {
+          "FinanceDetails": {
+            "additionalProperties": false,
+            "properties": {
+              "account_ref": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Account Ref"
+              },
+              "annual_interest_bps": {
+                "anyOf": [
+                  {
+                    "maximum": 100000,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Annual Interest Bps"
+              },
+              "claim_state": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "pending_invoice",
+                      "verbal_commitment",
+                      "planned"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Claim State"
+              },
+              "creditor_label": {
+                "anyOf": [
+                  {
+                    "maxLength": 80,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Creditor Label"
+              },
+              "essential": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Essential"
+              },
+              "expense_approval_ref": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Expense Approval Ref"
+              },
+              "financial_scope": {
+                "default": "unknown",
+                "enum": [
+                  "personal",
+                  "business",
+                  "unknown"
+                ],
+                "title": "Financial Scope",
+                "type": "string"
+              },
+              "fx_base_currency": {
+                "anyOf": [
+                  {
+                    "enum": [
+                      "TWD",
+                      "USD",
+                      "EUR",
+                      "JPY"
+                    ],
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Fx Base Currency"
+              },
+              "fx_quote_date": {
+                "anyOf": [
+                  {
+                    "format": "date",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Fx Quote Date"
+              },
+              "fx_rate": {
+                "anyOf": [
+                  {
+                    "pattern": "^[0-9]{1,7}(\\.[0-9]{1,12})?$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Fx Rate"
+              },
+              "fx_source_ref": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Fx Source Ref"
+              },
+              "income_class": {
+                "default": "unknown",
+                "enum": [
+                  "earned",
+                  "borrowing",
+                  "internal_transfer",
+                  "unknown"
+                ],
+                "title": "Income Class",
+                "type": "string"
+              },
+              "interest_method": {
+                "anyOf": [
+                  {
+                    "const": "simple_act_365",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Interest Method"
+              },
+              "interest_start_at": {
+                "anyOf": [
+                  {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Interest Start At"
+              },
+              "liability_ref": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Liability Ref"
+              },
+              "overdue_interest_bps": {
+                "anyOf": [
+                  {
+                    "maximum": 100000,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Overdue Interest Bps"
+              },
+              "repayment_interest_minor": {
+                "anyOf": [
+                  {
+                    "maximum": 10000000000000,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Repayment Interest Minor"
+              },
+              "repayment_principal_minor": {
+                "anyOf": [
+                  {
+                    "maximum": 10000000000000,
+                    "minimum": 0,
+                    "type": "integer"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Repayment Principal Minor"
+              },
+              "scenario_ref": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Scenario Ref"
+              },
+              "schedule_ref": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Schedule Ref"
+              },
+              "transfer_ref": {
+                "anyOf": [
+                  {
+                    "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Transfer Ref"
+              }
+            },
+            "title": "FinanceDetails",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "action": {
+                    "const": "finance_account"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "availability": {
+                        "enum": [
+                          "unrestricted",
+                          "earmarked",
+                          "unknown"
+                        ],
+                        "title": "Availability",
+                        "type": "string"
+                      },
+                      "currency": {
+                        "enum": [
+                          "TWD",
+                          "USD",
+                          "EUR",
+                          "JPY"
+                        ],
+                        "title": "Currency",
+                        "type": "string"
+                      },
+                      "financial_scope": {
+                        "enum": [
+                          "personal",
+                          "business",
+                          "unknown"
+                        ],
+                        "title": "Financial Scope",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "label": {
+                        "maxLength": 80,
+                        "minLength": 1,
+                        "title": "Label",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "currency",
+                      "financial_scope",
+                      "availability",
+                      "source_ref",
+                      "idempotency_key"
+                    ],
+                    "title": "AccountBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "finance_entry"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "amount_minor": {
+                        "maximum": 10000000000000,
+                        "minimum": 0,
+                        "title": "Amount Minor",
+                        "type": "integer"
+                      },
+                      "currency": {
+                        "enum": [
+                          "TWD",
+                          "USD",
+                          "EUR",
+                          "JPY"
+                        ],
+                        "title": "Currency",
+                        "type": "string"
+                      },
+                      "due_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Due At"
+                      },
+                      "finance": {
+                        "$ref": "#/$defs/FinanceDetails"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "balance",
+                          "income",
+                          "expense",
+                          "forecast_income",
+                          "forecast_expense",
+                          "monthly_budget",
+                          "liability",
+                          "due_schedule",
+                          "income_claim"
+                        ],
+                        "title": "Kind",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ref": {
+                        "maxLength": 160,
+                        "minLength": 1,
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "kind",
+                      "amount_minor",
+                      "currency",
+                      "finance",
+                      "source_ref",
+                      "idempotency_key"
+                    ],
+                    "title": "FinanceEntry",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "finance_reconcile"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      },
+                      "statement_at": {
+                        "format": "date-time",
+                        "title": "Statement At",
+                        "type": "string"
+                      },
+                      "statement_balance_minor": {
+                        "maximum": 10000000000000,
+                        "minimum": -10000000000000,
+                        "title": "Statement Balance Minor",
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "statement_balance_minor",
+                      "statement_at",
+                      "record_id"
+                    ],
+                    "title": "Reconcile",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "delete_domain_record"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expected_version": {
+                        "minimum": 1,
+                        "title": "Expected Version",
+                        "type": "integer"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "expected_version"
+                    ],
+                    "title": "Delete",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "action": {
+            "maxLength": 48,
+            "minLength": 1,
+            "title": "Action",
+            "type": "string"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id",
+          "action",
+          "payload",
+          "idempotency_key"
+        ],
+        "title": "PrepareOperation",
+        "type": "object"
+      },
+      "journey": "pending_domain_operation:finance",
+      "optional": [
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id",
+        "action",
+        "payload",
+        "idempotency_key"
+      ]
+    },
+    "psychology_prepare_my_learning_operation": {
+      "input_schema": {
+        "$defs": {
+          "ObjectiveProposal": {
+            "additionalProperties": false,
+            "properties": {
+              "affected_decision": {
+                "maxLength": 1200,
+                "minLength": 1,
+                "title": "Affected Decision",
+                "type": "string"
+              },
+              "exercise": {
+                "maxLength": 1200,
+                "minLength": 1,
+                "title": "Exercise",
+                "type": "string"
+              },
+              "next_review_at": {
+                "anyOf": [
+                  {
+                    "format": "date-time",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Next Review At"
+              },
+              "origin": {
+                "const": "owner_authored",
+                "default": "owner_authored",
+                "title": "Origin",
+                "type": "string"
+              },
+              "relevance": {
+                "maxLength": 1200,
+                "minLength": 1,
+                "title": "Relevance",
+                "type": "string"
+              },
+              "skill_gap_hypothesis": {
+                "anyOf": [
+                  {
+                    "maxLength": 1200,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Skill Gap Hypothesis"
+              },
+              "source_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                  "type": "string"
+                },
+                "maxItems": 10,
+                "title": "Source Ids",
+                "type": "array"
+              },
+              "title": {
+                "maxLength": 240,
+                "minLength": 1,
+                "title": "Title",
+                "type": "string"
+              }
+            },
+            "required": [
+              "title",
+              "relevance",
+              "affected_decision",
+              "exercise"
+            ],
+            "title": "ObjectiveProposal",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "action": {
+                    "const": "learning_plan"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expires_at": {
+                        "format": "date-time",
+                        "title": "Expires At",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "objectives": {
+                        "anyOf": [
+                          {
+                            "items": {
+                              "$ref": "#/$defs/ObjectiveProposal"
+                            },
+                            "maxItems": 3,
+                            "minItems": 1,
+                            "type": "array"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Objectives"
+                      },
+                      "task_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 3,
+                        "minItems": 1,
+                        "title": "Task Ids",
+                        "type": "array"
+                      },
+                      "week_start": {
+                        "format": "date-time",
+                        "title": "Week Start",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "task_ids",
+                      "week_start",
+                      "expires_at",
+                      "idempotency_key"
+                    ],
+                    "title": "LearningPlanBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "learning_plan_approve"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "proposed_digest": {
+                        "pattern": "^[a-f0-9]{64}$",
+                        "title": "Proposed Digest",
+                        "type": "string"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      },
+                      "version": {
+                        "minimum": 1,
+                        "title": "Version",
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "proposed_digest",
+                      "version",
+                      "record_id"
+                    ],
+                    "title": "LearningApprove",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "learning_feedback"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "artifact_ref": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Artifact Ref"
+                      },
+                      "feedback": {
+                        "maxLength": 1200,
+                        "minLength": 1,
+                        "title": "Feedback",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "next_review_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Next Review At"
+                      },
+                      "objective_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Objective Ref",
+                        "type": "string"
+                      },
+                      "self_report": {
+                        "anyOf": [
+                          {
+                            "maxLength": 1200,
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Self Report"
+                      }
+                    },
+                    "required": [
+                      "objective_ref",
+                      "feedback",
+                      "idempotency_key"
+                    ],
+                    "title": "LearningFeedbackBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "delete_domain_record"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expected_version": {
+                        "minimum": 1,
+                        "title": "Expected Version",
+                        "type": "integer"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "expected_version"
+                    ],
+                    "title": "Delete",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "action": {
+            "maxLength": 48,
+            "minLength": 1,
+            "title": "Action",
+            "type": "string"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id",
+          "action",
+          "payload",
+          "idempotency_key"
+        ],
+        "title": "PrepareOperation",
+        "type": "object"
+      },
+      "journey": "pending_domain_operation:learning",
+      "optional": [
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id",
+        "action",
+        "payload",
+        "idempotency_key"
+      ]
+    },
+    "psychology_prepare_my_local_render_operation": {
+      "input_schema": {
+        "$defs": {},
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "action": {
+                    "const": "local_relationship_render"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "proposed_digest": {
+                        "pattern": "^[0-9a-f]{64}$",
+                        "title": "Proposed Digest",
+                        "type": "string"
+                      },
+                      "run_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Run Id",
+                        "type": "string"
+                      },
+                      "version": {
+                        "minimum": 1,
+                        "title": "Version",
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "run_id",
+                      "proposed_digest",
+                      "version"
+                    ],
+                    "title": "LocalRender",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "delete_domain_record"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expected_version": {
+                        "minimum": 1,
+                        "title": "Expected Version",
+                        "type": "integer"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "expected_version"
+                    ],
+                    "title": "Delete",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "action": {
+            "maxLength": 48,
+            "minLength": 1,
+            "title": "Action",
+            "type": "string"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id",
+          "action",
+          "payload",
+          "idempotency_key"
+        ],
+        "title": "PrepareOperation",
+        "type": "object"
+      },
+      "journey": "pending_domain_operation:orchestrator",
+      "optional": [
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id",
+        "action",
+        "payload",
+        "idempotency_key"
+      ]
+    },
+    "psychology_prepare_my_outcome_operation": {
+      "input_schema": {
+        "$defs": {
+          "CostToServe": {
+            "additionalProperties": false,
+            "properties": {
+              "basis": {
+                "enum": [
+                  "owner_estimate",
+                  "owner_reviewed_receipt"
+                ],
+                "title": "Basis",
+                "type": "string"
+              },
+              "currency": {
+                "enum": [
+                  "TWD",
+                  "USD",
+                  "EUR",
+                  "JPY"
+                ],
+                "title": "Currency",
+                "type": "string"
+              },
+              "financial_scope": {
+                "enum": [
+                  "personal",
+                  "business",
+                  "unknown"
+                ],
+                "title": "Financial Scope",
+                "type": "string"
+              },
+              "lower_minor": {
+                "maximum": 10000000000000,
+                "minimum": 0,
+                "title": "Lower Minor",
+                "type": "integer"
+              },
+              "source_ids": {
+                "items": {
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                  "type": "string"
+                },
+                "maxItems": 10,
+                "minItems": 1,
+                "title": "Source Ids",
+                "type": "array"
+              },
+              "upper_minor": {
+                "maximum": 10000000000000,
+                "minimum": 0,
+                "title": "Upper Minor",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "lower_minor",
+              "upper_minor",
+              "currency",
+              "financial_scope",
+              "source_ids",
+              "basis"
+            ],
+            "title": "CostToServe",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "action": {
+                    "const": "outcome_protocol"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "comparison_plan": {
+                        "maxLength": 1200,
+                        "minLength": 1,
+                        "title": "Comparison Plan",
+                        "type": "string"
+                      },
+                      "confounders": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "title": "Confounders",
+                        "type": "array"
+                      },
+                      "design": {
+                        "enum": [
+                          "single_subject_observational",
+                          "cohort_readiness_only"
+                        ],
+                        "title": "Design",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "limitations": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "minItems": 1,
+                        "title": "Limitations",
+                        "type": "array"
+                      },
+                      "question": {
+                        "maxLength": 1000,
+                        "minLength": 1,
+                        "title": "Question",
+                        "type": "string"
+                      },
+                      "readiness_artifact_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "title": "Readiness Artifact Ids",
+                        "type": "array"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "source_ref",
+                      "idempotency_key",
+                      "question",
+                      "design",
+                      "comparison_plan",
+                      "limitations"
+                    ],
+                    "title": "ExperimentProtocolBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "outcome_definition"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "currency": {
+                        "anyOf": [
+                          {
+                            "enum": [
+                              "TWD",
+                              "USD",
+                              "EUR",
+                              "JPY"
+                            ],
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Currency"
+                      },
+                      "description": {
+                        "maxLength": 1000,
+                        "minLength": 1,
+                        "title": "Description",
+                        "type": "string"
+                      },
+                      "direction": {
+                        "enum": [
+                          "increase",
+                          "decrease",
+                          "maintain",
+                          "descriptive"
+                        ],
+                        "title": "Direction",
+                        "type": "string"
+                      },
+                      "financial_scope": {
+                        "default": "unknown",
+                        "enum": [
+                          "personal",
+                          "business",
+                          "unknown"
+                        ],
+                        "title": "Financial Scope",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "metric": {
+                        "enum": [
+                          "received_income",
+                          "necessary_expense",
+                          "delivered_projects",
+                          "task_completion",
+                          "outreach_reply",
+                          "cash_runway",
+                          "debt_due",
+                          "self_reported_wellbeing",
+                          "agent_cost",
+                          "production_acceptance"
+                        ],
+                        "title": "Metric",
+                        "type": "string"
+                      },
+                      "protocol_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Protocol Id",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      },
+                      "unit": {
+                        "enum": [
+                          "minor_currency",
+                          "count",
+                          "days",
+                          "self_reported_text"
+                        ],
+                        "title": "Unit",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "source_ref",
+                      "idempotency_key",
+                      "protocol_id",
+                      "metric",
+                      "unit",
+                      "direction",
+                      "description"
+                    ],
+                    "title": "OutcomeDefinitionBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "outcome_baseline"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "definition_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Definition Id",
+                        "type": "string"
+                      },
+                      "evidence_class": {
+                        "default": "unknown",
+                        "enum": [
+                          "self_report",
+                          "income_receipt",
+                          "expense_receipt",
+                          "delivery_confirmation",
+                          "task_completion_artifact",
+                          "reply_receipt",
+                          "owner_finance_snapshot",
+                          "cost_record",
+                          "production_acceptance_receipt",
+                          "unknown"
+                        ],
+                        "title": "Evidence Class",
+                        "type": "string"
+                      },
+                      "evidence_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "title": "Evidence Ids",
+                        "type": "array"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "observed_count": {
+                        "anyOf": [
+                          {
+                            "maximum": 1000000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Observed Count"
+                      },
+                      "observed_minor": {
+                        "anyOf": [
+                          {
+                            "maximum": 10000000000000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Observed Minor"
+                      },
+                      "observed_value": {
+                        "anyOf": [
+                          {
+                            "maxLength": 400,
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Observed Value"
+                      },
+                      "protocol_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Protocol Id",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 20,
+                        "title": "Source Ids",
+                        "type": "array"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      },
+                      "verification_status": {
+                        "default": "USER_STATED",
+                        "enum": [
+                          "USER_STATED",
+                          "DOCUMENT_VERIFIED",
+                          "UNKNOWN",
+                          "DISPUTED"
+                        ],
+                        "title": "Verification Status",
+                        "type": "string"
+                      },
+                      "verifier": {
+                        "default": "unknown",
+                        "enum": [
+                          "self_reported",
+                          "unknown"
+                        ],
+                        "title": "Verifier",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "source_ref",
+                      "idempotency_key",
+                      "protocol_id",
+                      "definition_id"
+                    ],
+                    "title": "BaselineSnapshotBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "outcome_target"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseline_id": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Baseline Id"
+                      },
+                      "definition_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Definition Id",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "observation_end": {
+                        "format": "date-time",
+                        "title": "Observation End",
+                        "type": "string"
+                      },
+                      "observation_start": {
+                        "format": "date-time",
+                        "title": "Observation Start",
+                        "type": "string"
+                      },
+                      "protocol_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Protocol Id",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "target_lower": {
+                        "maxLength": 80,
+                        "minLength": 1,
+                        "title": "Target Lower",
+                        "type": "string"
+                      },
+                      "target_upper": {
+                        "maxLength": 80,
+                        "minLength": 1,
+                        "title": "Target Upper",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "source_ref",
+                      "idempotency_key",
+                      "protocol_id",
+                      "definition_id",
+                      "target_lower",
+                      "target_upper",
+                      "observation_start",
+                      "observation_end"
+                    ],
+                    "title": "OutcomeTargetBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "outcome_observation"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseline_id": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Baseline Id"
+                      },
+                      "confounders": {
+                        "items": {
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "title": "Confounders",
+                        "type": "array"
+                      },
+                      "cost_to_serve": {
+                        "anyOf": [
+                          {
+                            "$ref": "#/$defs/CostToServe"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null
+                      },
+                      "definition_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Definition Id",
+                        "type": "string"
+                      },
+                      "evidence_class": {
+                        "default": "unknown",
+                        "enum": [
+                          "self_report",
+                          "income_receipt",
+                          "expense_receipt",
+                          "delivery_confirmation",
+                          "task_completion_artifact",
+                          "reply_receipt",
+                          "owner_finance_snapshot",
+                          "cost_record",
+                          "production_acceptance_receipt",
+                          "unknown"
+                        ],
+                        "title": "Evidence Class",
+                        "type": "string"
+                      },
+                      "evidence_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "title": "Evidence Ids",
+                        "type": "array"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "lower_minor": {
+                        "anyOf": [
+                          {
+                            "maximum": 10000000000000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Lower Minor"
+                      },
+                      "observed_count": {
+                        "anyOf": [
+                          {
+                            "maximum": 1000000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Observed Count"
+                      },
+                      "observed_minor": {
+                        "anyOf": [
+                          {
+                            "maximum": 10000000000000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Observed Minor"
+                      },
+                      "observed_value": {
+                        "anyOf": [
+                          {
+                            "maxLength": 400,
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Observed Value"
+                      },
+                      "protocol_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Protocol Id",
+                        "type": "string"
+                      },
+                      "result": {
+                        "default": "unknown",
+                        "enum": [
+                          "improvement",
+                          "no_change",
+                          "failure",
+                          "unknown"
+                        ],
+                        "title": "Result",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 20,
+                        "title": "Source Ids",
+                        "type": "array"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "target_id": {
+                        "anyOf": [
+                          {
+                            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Target Id"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      },
+                      "upper_minor": {
+                        "anyOf": [
+                          {
+                            "maximum": 10000000000000,
+                            "minimum": 0,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Upper Minor"
+                      },
+                      "verification_status": {
+                        "default": "USER_STATED",
+                        "enum": [
+                          "USER_STATED",
+                          "DOCUMENT_VERIFIED",
+                          "UNKNOWN",
+                          "DISPUTED"
+                        ],
+                        "title": "Verification Status",
+                        "type": "string"
+                      },
+                      "verifier": {
+                        "default": "unknown",
+                        "enum": [
+                          "self_reported",
+                          "unknown"
+                        ],
+                        "title": "Verifier",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "source_ref",
+                      "idempotency_key",
+                      "protocol_id",
+                      "definition_id"
+                    ],
+                    "title": "OutcomeObservationBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "delete_domain_record"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expected_version": {
+                        "minimum": 1,
+                        "title": "Expected Version",
+                        "type": "integer"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "expected_version"
+                    ],
+                    "title": "Delete",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "action": {
+            "maxLength": 48,
+            "minLength": 1,
+            "title": "Action",
+            "type": "string"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id",
+          "action",
+          "payload",
+          "idempotency_key"
+        ],
+        "title": "PrepareOperation",
+        "type": "object"
+      },
+      "journey": "pending_domain_operation:outcomes",
+      "optional": [
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id",
+        "action",
+        "payload",
+        "idempotency_key"
+      ]
+    },
+    "psychology_prepare_my_relationship_operation": {
+      "input_schema": {
+        "$defs": {
+          "OutreachClaim": {
+            "additionalProperties": false,
+            "properties": {
+              "source_id": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                "title": "Source Id",
+                "type": "string"
+              },
+              "text": {
+                "maxLength": 400,
+                "minLength": 1,
+                "title": "Text",
+                "type": "string"
+              }
+            },
+            "required": [
+              "text",
+              "source_id"
+            ],
+            "title": "OutreachClaim",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "oneOf": [
+              {
+                "properties": {
+                  "action": {
+                    "const": "relationship_contact"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "contact_id": {
+                        "default": null,
+                        "title": "Contact Id",
+                        "type": "null"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "note": {
+                        "anyOf": [
+                          {
+                            "maxLength": 1200,
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Note"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "source_ref",
+                      "idempotency_key"
+                    ],
+                    "title": "Contact",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "relationship_thread"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "contact_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Contact Id",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "contact_id",
+                      "source_ref",
+                      "idempotency_key"
+                    ],
+                    "title": "OutreachThreadBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "relationship_brief"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "citation_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 20,
+                        "title": "Citation Ids",
+                        "type": "array"
+                      },
+                      "claims": {
+                        "items": {
+                          "$ref": "#/$defs/OutreachClaim"
+                        },
+                        "maxItems": 10,
+                        "title": "Claims",
+                        "type": "array"
+                      },
+                      "commitment_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 10,
+                        "title": "Commitment Ids",
+                        "type": "array"
+                      },
+                      "contact_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Contact Id",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "objective": {
+                        "maxLength": 600,
+                        "minLength": 1,
+                        "title": "Objective",
+                        "type": "string"
+                      },
+                      "proposed_next_step": {
+                        "maxLength": 600,
+                        "minLength": 1,
+                        "title": "Proposed Next Step",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_record_ids": {
+                        "items": {
+                          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                          "type": "string"
+                        },
+                        "maxItems": 20,
+                        "title": "Source Record Ids",
+                        "type": "array"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "thread_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Thread Id",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      },
+                      "why_relevant": {
+                        "maxLength": 600,
+                        "minLength": 1,
+                        "title": "Why Relevant",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "contact_id",
+                      "source_ref",
+                      "idempotency_key",
+                      "thread_id",
+                      "objective",
+                      "why_relevant",
+                      "proposed_next_step"
+                    ],
+                    "title": "OutreachBriefBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "relationship_draft"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "authorship": {
+                        "const": "owner_authored",
+                        "default": "owner_authored",
+                        "title": "Authorship",
+                        "type": "string"
+                      },
+                      "body": {
+                        "maxLength": 8000,
+                        "minLength": 1,
+                        "title": "Body",
+                        "type": "string"
+                      },
+                      "brief_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Brief Id",
+                        "type": "string"
+                      },
+                      "contact_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Contact Id",
+                        "type": "string"
+                      },
+                      "destination_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Destination Ref",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_event_precision": {
+                        "default": "unknown",
+                        "enum": [
+                          "unknown",
+                          "day",
+                          "second"
+                        ],
+                        "title": "Source Event Precision",
+                        "type": "string"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "subject": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Subject",
+                        "type": "string"
+                      },
+                      "thread_id": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Thread Id",
+                        "type": "string"
+                      },
+                      "title": {
+                        "maxLength": 240,
+                        "minLength": 1,
+                        "title": "Title",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "title",
+                      "contact_id",
+                      "source_ref",
+                      "idempotency_key",
+                      "thread_id",
+                      "brief_id",
+                      "subject",
+                      "body",
+                      "destination_ref"
+                    ],
+                    "title": "OutreachDraftBody",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "relationship_frequency"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expires_at": {
+                        "format": "date-time",
+                        "title": "Expires At",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "max_contacts_rolling7d": {
+                        "maximum": 10,
+                        "minimum": 1,
+                        "title": "Max Contacts Rolling7D",
+                        "type": "integer"
+                      },
+                      "min_interval_seconds": {
+                        "maximum": 2592000,
+                        "minimum": 3600,
+                        "title": "Min Interval Seconds",
+                        "type": "integer"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      },
+                      "source_event_at": {
+                        "anyOf": [
+                          {
+                            "format": "date-time",
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Source Event At"
+                      },
+                      "source_ref": {
+                        "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,159}$",
+                        "title": "Source Ref",
+                        "type": "string"
+                      },
+                      "version": {
+                        "anyOf": [
+                          {
+                            "minimum": 1,
+                            "type": "integer"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "title": "Version"
+                      }
+                    },
+                    "required": [
+                      "min_interval_seconds",
+                      "max_contacts_rolling7d",
+                      "expires_at",
+                      "source_ref",
+                      "idempotency_key",
+                      "record_id"
+                    ],
+                    "title": "ContactFrequency",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "relationship_preview"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expires_at": {
+                        "format": "date-time",
+                        "title": "Expires At",
+                        "type": "string"
+                      },
+                      "idempotency_key": {
+                        "maxLength": 100,
+                        "minLength": 1,
+                        "title": "Idempotency Key",
+                        "type": "string"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "expires_at",
+                      "idempotency_key"
+                    ],
+                    "title": "LocalPreview",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              },
+              {
+                "properties": {
+                  "action": {
+                    "const": "delete_domain_record"
+                  },
+                  "payload": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expected_version": {
+                        "minimum": 1,
+                        "title": "Expected Version",
+                        "type": "integer"
+                      },
+                      "record_id": {
+                        "pattern": "^[0-9a-f]{32}$",
+                        "title": "Record Id",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "record_id",
+                      "expected_version"
+                    ],
+                    "title": "Delete",
+                    "type": "object"
+                  }
+                },
+                "required": [
+                  "action",
+                  "payload"
+                ]
+              }
+            ]
+          }
+        ],
+        "properties": {
+          "action": {
+            "maxLength": 48,
+            "minLength": 1,
+            "title": "Action",
+            "type": "string"
+          },
+          "delegation_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Delegation Id",
+            "type": "string"
+          },
+          "idempotency_key": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "title": "Payload",
+            "type": "object"
+          },
+          "source_delegation_ids": {
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 6,
+            "title": "Source Delegation Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "delegation_id",
+          "action",
+          "payload",
+          "idempotency_key"
+        ],
+        "title": "PrepareOperation",
+        "type": "object"
+      },
+      "journey": "pending_domain_operation:relationships",
+      "optional": [
+        "source_delegation_ids"
+      ],
+      "required": [
+        "delegation_id",
+        "action",
+        "payload",
+        "idempotency_key"
+      ]
+    },
+    "psychology_prepare_my_typed_object_change": {
+      "input_schema": {
+        "$defs": {
+          "Mutation": {
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "statement": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "Culture"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "statement": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      },
+                      "topic": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "Expertise"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "statement": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "HealthSelfReport"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "statement": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      },
+                      "topic": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "Interest"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "statement": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "Motivation"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "statement": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      },
+                      "topic": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "Preference"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "statement": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "Religion"
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "changes": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "end": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "anyOf": [
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "literal": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "precision": {
+                                    "enum": [
+                                      "unknown",
+                                      "day",
+                                      "instant"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "precision",
+                                  "literal"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      },
+                      "start": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "anyOf": [
+                              {
+                                "additionalProperties": false,
+                                "properties": {
+                                  "literal": {
+                                    "type": [
+                                      "string",
+                                      "null"
+                                    ]
+                                  },
+                                  "precision": {
+                                    "enum": [
+                                      "unknown",
+                                      "day",
+                                      "instant"
+                                    ]
+                                  }
+                                },
+                                "required": [
+                                  "precision",
+                                  "literal"
+                                ],
+                                "type": "object"
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      },
+                      "title": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "provenance": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "basis": {
+                                "enum": [
+                                  "owner_direct",
+                                  "owner_reviewed_import"
+                                ]
+                              },
+                              "observed_at": {
+                                "format": "date-time",
+                                "type": "string"
+                              },
+                              "source_ref": {
+                                "maxLength": 160,
+                                "minLength": 1,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "basis",
+                              "source_ref",
+                              "observed_at"
+                            ],
+                            "type": "object"
+                          },
+                          "state": {
+                            "enum": [
+                              "known",
+                              "unknown",
+                              "cleared"
+                            ]
+                          },
+                          "valid_from": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "valid_until": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "literal": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "precision": {
+                                "enum": [
+                                  "unknown",
+                                  "day",
+                                  "instant"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "precision",
+                              "literal"
+                            ],
+                            "type": "object"
+                          },
+                          "value": {
+                            "maxLength": 4000,
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "state",
+                          "value",
+                          "valid_from",
+                          "valid_until",
+                          "provenance"
+                        ],
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "kind": {
+                    "const": "TimeBlock"
+                  }
+                }
+              }
+            ],
+            "properties": {
+              "action": {
+                "enum": [
+                  "create",
+                  "patch",
+                  "correct",
+                  "tombstone"
+                ],
+                "title": "Action",
+                "type": "string"
+              },
+              "changes": {
+                "additionalProperties": true,
+                "title": "Changes",
+                "type": "object"
+              },
+              "correction_of": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "default": null,
+                "title": "Correction Of"
+              },
+              "expected_version": {
+                "minimum": 0,
+                "title": "Expected Version",
+                "type": "integer"
+              },
+              "idempotency_key": {
+                "title": "Idempotency Key",
+                "type": "string"
+              },
+              "kind": {
+                "title": "Kind",
+                "type": "string"
+              },
+              "object_id": {
+                "title": "Object Id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "object_id",
+              "kind",
+              "action",
+              "expected_version",
+              "changes",
+              "idempotency_key"
+            ],
+            "title": "Mutation",
+            "type": "object"
+          }
+        },
+        "additionalProperties": false,
+        "properties": {
+          "authority_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Authority Id",
+            "type": "string"
+          },
+          "mutation": {
+            "$ref": "#/$defs/Mutation"
+          }
+        },
+        "required": [
+          "authority_id",
+          "mutation"
+        ],
+        "title": "Prepare",
+        "type": "object"
+      },
+      "journey": "pending_typed_change",
+      "optional": [],
+      "required": [
+        "authority_id",
+        "mutation"
+      ]
+    },
+    "psychology_prepare_my_typed_object_edge": {
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "default": "create",
+            "enum": [
+              "create",
+              "tombstone"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "edge_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Edge Id",
+            "type": "string"
+          },
+          "expected_version": {
+            "minimum": 0,
+            "title": "Expected Version",
+            "type": "integer"
+          },
+          "idempotency_key": {
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Idempotency Key",
+            "type": "string"
+          },
+          "kind": {
+            "const": "related_to",
+            "title": "Kind",
+            "type": "string"
+          },
+          "left_authority_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Left Authority Id",
+            "type": "string"
+          },
+          "left_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Left Id",
+            "type": "string"
+          },
+          "left_version": {
+            "minimum": 1,
+            "title": "Left Version",
+            "type": "integer"
+          },
+          "right_authority_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Right Authority Id",
+            "type": "string"
+          },
+          "right_id": {
+            "pattern": "^[0-9a-f]{32}$",
+            "title": "Right Id",
+            "type": "string"
+          },
+          "right_version": {
+            "minimum": 1,
+            "title": "Right Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "left_authority_id",
+          "right_authority_id",
+          "left_id",
+          "right_id",
+          "left_version",
+          "right_version",
+          "kind",
+          "edge_id",
+          "expected_version",
+          "idempotency_key"
+        ],
+        "title": "EdgePrepare",
+        "type": "object"
+      },
+      "journey": "pending_private_edge_change",
+      "optional": [
+        "action"
+      ],
+      "required": [
+        "left_authority_id",
+        "right_authority_id",
+        "left_id",
+        "right_id",
+        "left_version",
+        "right_version",
+        "kind",
+        "edge_id",
+        "expected_version",
+        "idempotency_key"
+      ]
+    }
+  },
+  "typed_kinds": [
+    "Culture",
+    "Expertise",
+    "HealthSelfReport",
+    "Interest",
+    "Motivation",
+    "Preference",
+    "Religion",
+    "TimeBlock"
+  ],
+  "typed_purposes": {
+    "Culture": "typed_object_culture",
+    "Expertise": "typed_object_expertise",
+    "HealthSelfReport": "typed_object_healthselfreport",
+    "Interest": "typed_object_interest",
+    "Motivation": "typed_object_motivation",
+    "Preference": "typed_object_preference",
+    "Religion": "typed_object_religion",
+    "TimeBlock": "typed_object_timeblock"
+  }
+}

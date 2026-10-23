@@ -1,6 +1,6 @@
 # Source and distribution variants
 
-Version 1.4.4 is an unreleased source candidate. It keeps **portal-mcp** as the selected MCP-only public review package and
+Version 1.5.0 is an unreleased source candidate. It keeps **portal-mcp** as the selected MCP-only public review package and
 adds **portal-workflows** as a separate full-workflows application source proposal.
 Both display **Psychology** and connect the same **Psychology** server,
 key `Psychology`, endpoint `https://noesis.seges.ai/mcp`, with the existing
@@ -14,7 +14,7 @@ creating this source profile does not create or approve a second Portal applicat
 | `portal` | `psychology-plugin` | Legacy full portable workflow package, excluding lifecycle hooks. Separate artifact, not the selected MCP-only release or the new workflows application identity. |
 | `runtime` | `psychology-plugin` | Full manual package with 16 skills, agent instructions and optional trusted local hooks. Host trust and Node remain required. |
 
-The workflows profile uses the same **1.4.4** candidate version as the root and MCP-only
+The workflows profile uses the same **1.5.0** candidate version as the root and MCP-only
 profiles. Their distinct machine identities are unchanged. Its committed manifest and
 README live in `packaging/portal-workflows/`; the source mapping is explicit, with
 no hidden ZIP-time name transformation. Skill-local `agents/openai.yaml` is supported
@@ -31,8 +31,8 @@ only their explicitly mapped root files are included.
 
 After review, build the separate workflows source from its exact reviewed commit:
 `python tools/package-plugin.py --variant portal-workflows --ref <reviewed-commit> --out <external-folder>`.
-Its strict allowlist contains 48 files, including all 35 skill files and the Life
-workflow guide and journey contract used by those skills. A missing
+Its strict allowlist contains 50 files, including all 35 skill files, the Life
+workflow guide and contract, and the connected-object guide and contract used by those skills. A missing
 reference, metadata file or schema, or an unreviewed new skill resource, stops the
 build instead of silently dropping it. Archive receipts identify each exact source
 blob. Host invocation and saved component inventory still require actual acceptance.

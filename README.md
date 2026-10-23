@@ -74,9 +74,10 @@ See [package variants](docs/package-variants.md) and the
 Use the [supported-client record](https://noesis.seges.ai/ai/supported-clients.json)
 for the exact recorded host coverage. A connection in one account does not establish support everywhere.
 Today is a separate website flow; [connected task management](docs/workspace-mcp.md) requires compatible callable tools and your approval for that AI connection, and never runs automatically.
+When your connection exposes the matching tools, [review personal objects and domain records](docs/connected-objects.md) or read and patch one exact task. Each uses its own applicable permissions.
 Manage permissions, request a data copy or request deletion in your [Noesis account](https://noesis.seges.ai/en/account/).
 
-Source package **v1.4.4**, unreleased candidate. GitHub releases and host acceptance are separate.
+Source package **v1.5.0**, unreleased candidate. GitHub releases and host acceptance are separate.
 Check [source releases](https://github.com/seges-plugin/Psychology-Plugin/releases/latest)
 and the [public records](https://noesis.seges.ai/ai/release-records.json) for current status.
 An installed host does not automatically pick up a source change.
