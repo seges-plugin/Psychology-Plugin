@@ -1,0 +1,1951 @@
+{
+  "schema": "psychology.object-intent.development.v1",
+  "scope": "Disclosed development including v1-v6 after root authorization. Optional hint only, not a dispatcher, authorization, unseen-v7, host, natural-language completeness or automatic-write claim.",
+  "cases": [
+    {
+      "id": "seed-diet",
+      "prompt": "我不吃牛肉",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-religion",
+      "prompt": "我的宗教信仰是佛教",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-allergy",
+      "prompt": "我對花生過敏",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-culture",
+      "prompt": "我喜歡日本文化",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-expertise",
+      "prompt": "我的專長是 UX 設計",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-preference-edit",
+      "prompt": "請更新我的飲食偏好",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-diet-en",
+      "prompt": "My food preference is vegetarian",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-religion-en",
+      "prompt": "My religion is Buddhism",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-allergy-en",
+      "prompt": "I am allergic to peanuts",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-expertise-en",
+      "prompt": "I specialize in accounting",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-contact-edit",
+      "prompt": "把我的聯絡人小王的電話改成新的號碼",
+      "expected": "personal"
+    },
+    {
+      "id": "seed-contact-list",
+      "prompt": "列出我的朋友",
+      "expected": "personal"
+    },
+    {
+      "id": "diet-cn",
+      "prompt": "我的饮食偏好是素食",
+      "expected": "personal"
+    },
+    {
+      "id": "allergy-cn",
+      "prompt": "我对芝麻过敏",
+      "expected": "personal"
+    },
+    {
+      "id": "religion-cn",
+      "prompt": "本人信仰佛教",
+      "expected": "personal"
+    },
+    {
+      "id": "religion-plain",
+      "prompt": "我信奉基督教",
+      "expected": "personal"
+    },
+    {
+      "id": "expertise-cn",
+      "prompt": "我的专长是平面设计",
+      "expected": "personal"
+    },
+    {
+      "id": "motivation",
+      "prompt": "我的動機是幫助別人學習",
+      "expected": "personal"
+    },
+    {
+      "id": "interest",
+      "prompt": "我對攝影有興趣",
+      "expected": "personal"
+    },
+    {
+      "id": "culture-variant",
+      "prompt": "我一直喜歡北歐文化",
+      "expected": "personal"
+    },
+    {
+      "id": "expertise-uk",
+      "prompt": "I specialise in accessible design",
+      "expected": "personal"
+    },
+    {
+      "id": "diet-en-variant",
+      "prompt": "I don't eat beef",
+      "expected": "personal"
+    },
+    {
+      "id": "motivation-en",
+      "prompt": "My motivation is helping my community",
+      "expected": "personal"
+    },
+    {
+      "id": "culture-en",
+      "prompt": "I like Japanese culture",
+      "expected": "personal"
+    },
+    {
+      "id": "preference-en",
+      "prompt": "My dietary preferences are vegetarian",
+      "expected": "personal"
+    },
+    {
+      "id": "contact-create",
+      "prompt": "新增我的聯絡人小王",
+      "expected": "personal"
+    },
+    {
+      "id": "contact-edit-cn",
+      "prompt": "请修改我的联系人小李的备注",
+      "expected": "personal"
+    },
+    {
+      "id": "contact-delete",
+      "prompt": "刪除我的聯絡人小陳",
+      "expected": "personal"
+    },
+    {
+      "id": "contact-query-cn",
+      "prompt": "查询我的好友",
+      "expected": "personal"
+    },
+    {
+      "id": "contact-en",
+      "prompt": "Update my contact Alice's phone number",
+      "expected": "personal"
+    },
+    {
+      "id": "friends-en",
+      "prompt": "Please list my friends",
+      "expected": "personal"
+    },
+    {
+      "id": "project-query",
+      "prompt": "查看我的專案",
+      "expected": "personal"
+    },
+    {
+      "id": "project-edit",
+      "prompt": "修改我的專案名稱",
+      "expected": "personal"
+    },
+    {
+      "id": "goal-create",
+      "prompt": "新增我的目標",
+      "expected": "personal"
+    },
+    {
+      "id": "goal-read-en",
+      "prompt": "Show my goals",
+      "expected": "personal"
+    },
+    {
+      "id": "journal-query",
+      "prompt": "列出我的日誌",
+      "expected": "personal"
+    },
+    {
+      "id": "timeblock-create",
+      "prompt": "新增我的時間區塊",
+      "expected": "personal"
+    },
+    {
+      "id": "timeblock-edit-en",
+      "prompt": "Edit my time block",
+      "expected": "personal"
+    },
+    {
+      "id": "preference-delete",
+      "prompt": "刪除我的偏好",
+      "expected": "personal"
+    },
+    {
+      "id": "health-query",
+      "prompt": "Show my health self-report",
+      "expected": "personal"
+    },
+    {
+      "id": "fiction-tw",
+      "prompt": "小說裡的角色說：我對花生過敏",
+      "expected": "none"
+    },
+    {
+      "id": "fiction-edit-en",
+      "prompt": "Rewrite a fictional character's line: My religion is Buddhism",
+      "expected": "none"
+    },
+    {
+      "id": "quoted",
+      "prompt": "「我不吃牛肉」是測試用字串",
+      "expected": "none"
+    },
+    {
+      "id": "quoted-en",
+      "prompt": "Translate \"I am allergic to peanuts\" into Chinese",
+      "expected": "none"
+    },
+    {
+      "id": "inline-code",
+      "prompt": "Explain `My religion is Buddhism` as parser input",
+      "expected": "none"
+    },
+    {
+      "id": "test-frame",
+      "prompt": "以下是測試字串：我不吃牛肉",
+      "expected": "none"
+    },
+    {
+      "id": "test-frame-en",
+      "prompt": "For a test, classify this input: List my friends",
+      "expected": "none"
+    },
+    {
+      "id": "technical-schema",
+      "prompt": "My religion field is a string in this schema",
+      "expected": "none"
+    },
+    {
+      "id": "technical-command",
+      "prompt": "Describe how to update my contact in the API",
+      "expected": "none"
+    },
+    {
+      "id": "technical-cn",
+      "prompt": "請解釋資料庫如何列出我的朋友",
+      "expected": "none"
+    },
+    {
+      "id": "technical-like",
+      "prompt": "I prefer this API function",
+      "expected": "none"
+    },
+    {
+      "id": "routine-feedback",
+      "prompt": "I like this button",
+      "expected": "none"
+    },
+    {
+      "id": "third-party",
+      "prompt": "My friend is allergic to peanuts",
+      "expected": "none"
+    },
+    {
+      "id": "third-party-tw",
+      "prompt": "我的朋友信仰佛教",
+      "expected": "none"
+    },
+    {
+      "id": "third-party-query",
+      "prompt": "列出小王的朋友",
+      "expected": "none"
+    },
+    {
+      "id": "ambiguous-contact",
+      "prompt": "把小王的電話改成新的號碼",
+      "expected": "none"
+    },
+    {
+      "id": "unknown-health",
+      "prompt": "I don't know whether I am allergic to peanuts",
+      "expected": "none"
+    },
+    {
+      "id": "possible-health",
+      "prompt": "我可能對花生過敏",
+      "expected": "none"
+    },
+    {
+      "id": "health-question",
+      "prompt": "I am allergic to peanuts?",
+      "expected": "none"
+    },
+    {
+      "id": "religion-question",
+      "prompt": "My religion is Buddhism?",
+      "expected": "none"
+    },
+    {
+      "id": "religion-hypothetical",
+      "prompt": "If my religion is Buddhism, what would happen?",
+      "expected": "none"
+    },
+    {
+      "id": "infer-religion",
+      "prompt": "從照片推斷我的宗教",
+      "expected": "none"
+    },
+    {
+      "id": "infer-edge",
+      "prompt": "照片中的兩個人是不是朋友",
+      "expected": "none"
+    },
+    {
+      "id": "optout-religion",
+      "prompt": "不要記錄我的宗教信仰",
+      "expected": "declined"
+    },
+    {
+      "id": "optout-health",
+      "prompt": "我對花生過敏，但不要保存這件事",
+      "expected": "declined"
+    },
+    {
+      "id": "optout-en",
+      "prompt": "Do not save my religious beliefs",
+      "expected": "declined"
+    },
+    {
+      "id": "optout-contact",
+      "prompt": "Don't record my contacts",
+      "expected": "declined"
+    },
+    {
+      "id": "urgent-first",
+      "prompt": "我想傷害自己，我的宗教信仰是佛教",
+      "expected": "urgent"
+    },
+    {
+      "id": "urgent-optout",
+      "prompt": "I want to hurt myself. Do not save my allergy",
+      "expected": "urgent"
+    },
+    {
+      "id": "expertise-technical-value",
+      "prompt": "My expertise is SQL database design",
+      "expected": "personal"
+    },
+    {
+      "id": "expertise-technical-tw",
+      "prompt": "我的專長是資料庫設計",
+      "expected": "personal"
+    },
+    {
+      "id": "specialize-technical",
+      "prompt": "I specialize in API security",
+      "expected": "personal"
+    },
+    {
+      "id": "fiction-sensitive-suffix",
+      "prompt": "My religion is Buddhism in this fictional story",
+      "expected": "none"
+    },
+    {
+      "id": "fiction-object-query",
+      "prompt": "List my friends in a fictional story",
+      "expected": "none"
+    },
+    {
+      "id": "fiction-cn-suffix",
+      "prompt": "我的宗教信仰是佛教（小說設定）",
+      "expected": "none"
+    },
+    {
+      "id": "sample-sensitive-suffix",
+      "prompt": "My religion is Buddhism is a sample sentence",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-p01",
+      "prompt": "我不吃牛肉，之後給我的餐點建議請排除牛肉。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p02",
+      "prompt": "我的宗教是道教，我希望保留這項自我描述。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p03",
+      "prompt": "我是在客語家庭長大的，家裡過年習慣先祭祖。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p04",
+      "prompt": "我對蝦子過敏，這是我已經知道的飲食限制。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p05",
+      "prompt": "我的專長是資料視覺化與公共政策研究。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p06",
+      "prompt": "我的聯絡人小安換了工作，請把他的公司欄位改成範例出版社。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p07",
+      "prompt": "請把我的慣用稱呼由小林改為林老師。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p08",
+      "prompt": "我目前比較喜歡一對一討論，團體討論會讓我很累。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p09",
+      "prompt": "我以前選過攝影興趣，現在請從我的興趣清單移除。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p10",
+      "prompt": "可以列出我已保存的飲食偏好嗎？",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p11",
+      "prompt": "我每週三都會接孩子下課，這個時段不安排其他事。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p12",
+      "prompt": "我現在換工作的主要動機是想有更多陪伴家人的時間。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p13",
+      "prompt": "我吃素已经五年了，以后菜单建议按这个偏好来。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p14",
+      "prompt": "请把我的宗教资料改为无宗教信仰。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p15",
+      "prompt": "我的家乡是潮汕，我们家重视清明祭祖。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p16",
+      "prompt": "我有医生确认的乳糖不耐受，请记下这个饮食限制。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p17",
+      "prompt": "我的工作专长包括供应链分析和需求预测。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p18",
+      "prompt": "把我联系人王姐的关系标签从同事改成前同事。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p19",
+      "prompt": "我这个学期的学习目标是能读懂基础西班牙语文章。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p20",
+      "prompt": "我已经结束游泳课程，请更新我的学习状态。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p21",
+      "prompt": "My meals need to be gluten free because of my diagnosed coeliac disease.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p22",
+      "prompt": "Please update my religion field to Buddhist.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p23",
+      "prompt": "I grew up speaking both Malay and English at home.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p24",
+      "prompt": "My main areas of expertise are acoustic engineering and technical writing.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p25",
+      "prompt": "Change the relationship label on my contact Morgan from colleague to mentor.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p26",
+      "prompt": "I prefer short written instructions. Can you help me draft a checklist?",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p27",
+      "prompt": "我平常都喝無糖茶。你能推薦一款容易買到的茶嗎？",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-p28",
+      "prompt": "I have completed my first aid course; please mark that learning goal complete.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v1-n01",
+      "prompt": "請修改小說角色這句台詞：「我信奉佛教，明年想搬去宜蘭。」",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n02",
+      "prompt": "下面都是虚构人物的设定：我对花生过敏。请评价人物塑造。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n03",
+      "prompt": "我朋友喜歡法國料理，請幫他找幾個菜色。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n04",
+      "prompt": "佛教和道教在歷史上有哪些差別？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n05",
+      "prompt": "乳糖不耐受和牛奶過敏有什麼不同？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n06",
+      "prompt": "Please translate this string: \"My religion is Hindu and I prefer vegetarian food.\"",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n07",
+      "prompt": "不要記錄或保存我的資料。只介紹一下興趣分類有哪些方法。",
+      "expected": "declined"
+    },
+    {
+      "id": "disclosed-v1-n08",
+      "prompt": "I follow the installation guide for this library; explain step four.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n09",
+      "prompt": "I practise the command sequence from this deployment tutorial. Check the syntax only.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n10",
+      "prompt": "I follow your requested output format. Now summarize the attached policy.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n11",
+      "prompt": "Am I allergic to peanuts? I have never had this checked.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n12",
+      "prompt": "我是不是應該算佛教徒？我還沒決定，也沒有要更新資料。",
+      "expected": "declined"
+    },
+    {
+      "id": "disclosed-v1-n13",
+      "prompt": "假如我是一名廚師而且不吃海鮮，你會如何設計這個虛構角色？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n14",
+      "prompt": "In this example, contact is a database table and relation is a foreign key. Explain the schema.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n15",
+      "prompt": "我現在可能會傷害自己，請先幫我取得緊急協助，不要保存資料。",
+      "expected": "urgent"
+    },
+    {
+      "id": "disclosed-v1-n16",
+      "prompt": "My brother is an electrical engineer and prefers Japanese food. Help me write his birthday card.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v1-n17",
+      "prompt": "这不是我的资料，只是测试文字：我的专长是医学。不要保存。",
+      "expected": "declined"
+    },
+    {
+      "id": "disclosed-v1-n18",
+      "prompt": "我並沒有說過自己信奉任何宗教，請不要替我推論。",
+      "expected": "none"
+    },
+    {
+      "id": "v2-follow-instructions",
+      "prompt": "I follow your instructions",
+      "expected": "none"
+    },
+    {
+      "id": "v2-follow-tutorial",
+      "prompt": "I follow this tutorial",
+      "expected": "none"
+    },
+    {
+      "id": "v2-practise-command",
+      "prompt": "I practise that shell command",
+      "expected": "none"
+    },
+    {
+      "id": "v2-faith-explicit",
+      "prompt": "I practise Buddhism",
+      "expected": "personal"
+    },
+    {
+      "id": "v2-diet-explicit",
+      "prompt": "I follow a vegetarian diet",
+      "expected": "personal"
+    },
+    {
+      "id": "v2-diet-then-question",
+      "prompt": "我不吃牛肉。你建議什麼餐廳？",
+      "expected": "personal"
+    },
+    {
+      "id": "v2-allergy-then-question",
+      "prompt": "I am allergic to peanuts. What can I eat?",
+      "expected": "personal"
+    },
+    {
+      "id": "v2-religion-uncertain",
+      "prompt": "My religion is Buddhism?",
+      "expected": "none"
+    },
+    {
+      "id": "v2-religion-then-question",
+      "prompt": "My religion is Buddhism. What do you recommend?",
+      "expected": "personal"
+    },
+    {
+      "id": "v2-framed-comma",
+      "prompt": "Below is an example, My religion is Buddhism.",
+      "expected": "none"
+    },
+    {
+      "id": "v2-fiction-unquoted",
+      "prompt": "The fictional character says I follow Buddhism.",
+      "expected": "none"
+    },
+    {
+      "id": "v2-thirdparty-health",
+      "prompt": "My colleague is allergic to peanuts. What can he eat?",
+      "expected": "none"
+    },
+    {
+      "id": "v2-prefer-output",
+      "prompt": "I prefer you use JSON for this response.",
+      "expected": "none"
+    },
+    {
+      "id": "v2-decline-update",
+      "prompt": "請不要更新我的宗教資料。",
+      "expected": "declined"
+    },
+    {
+      "id": "v2-uncertain-no-data",
+      "prompt": "我還沒決定，也沒有要更新資料。",
+      "expected": "declined"
+    },
+    {
+      "id": "v2-urgent-maybe-optout",
+      "prompt": "我可能會傷害自己，不要保存資料。",
+      "expected": "urgent"
+    },
+    {
+      "id": "v2-urgent-afraid",
+      "prompt": "我怕自己會傷害自己，請先陪我。",
+      "expected": "urgent"
+    },
+    {
+      "id": "v2-urgent-will",
+      "prompt": "我將會傷害自己。",
+      "expected": "urgent"
+    },
+    {
+      "id": "v2-urgent-en-might",
+      "prompt": "I might hurt myself. Do not save this.",
+      "expected": "urgent"
+    },
+    {
+      "id": "v2-urgent-quoted",
+      "prompt": "Translate this sentence: \"I might hurt myself.\"",
+      "expected": "none"
+    },
+    {
+      "id": "v2-urgent-fiction",
+      "prompt": "小說角色說：我可能會傷害自己。",
+      "expected": "none"
+    },
+    {
+      "id": "v2-urgent-thirdparty",
+      "prompt": "我朋友可能會傷害自己，請說明一般支援資源。",
+      "expected": "none"
+    },
+    {
+      "id": "v2-urgent-technical",
+      "prompt": "Test this string: I might hurt myself.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-p01",
+      "prompt": "我對腰果有過敏反應，這點已經確認過。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p02",
+      "prompt": "我平日的飲食以植物性食物為主，偶爾吃蛋。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p03",
+      "prompt": "I follow Sikhism as my religion.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p04",
+      "prompt": "我從小講閩南語，家族聚會主要也用台語。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p05",
+      "prompt": "我家端午節有包粽子的傳統，這是我重視的家庭文化。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p06",
+      "prompt": "我的主要專業能力是人因工程和訪談分析。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p07",
+      "prompt": "My professional expertise includes materials testing and statistical modelling.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p08",
+      "prompt": "我的健康自述目前是長期偏頭痛，請不要把它寫成臨床診斷。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p09",
+      "prompt": "幫我把偏好稱呼改為阿禾。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p10",
+      "prompt": "請更新我通訊錄中林教練的職稱欄位。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p11",
+      "prompt": "我想看一下自己保存過哪些聯絡人。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p12",
+      "prompt": "從我保存的飲食偏好刪除「愛吃辣」這一項。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p13",
+      "prompt": "I usually prefer quiet cafes. Which one would you recommend for reading?",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p14",
+      "prompt": "我的宗教信仰是基督教。你能幫我整理一段自我介紹嗎？",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p15",
+      "prompt": "請翻譯小說台詞「我愛吃甜食」。我自己不喜歡甜食。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p16",
+      "prompt": "我不能吃鸡蛋，这个过敏情况已经确认了。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p17",
+      "prompt": "我的家庭文化重视中秋团圆，想把这点留在个人资料里。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p18",
+      "prompt": "我的主要专业能力包括水资源分析与工程制图。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p19",
+      "prompt": "我保存的联系人赵老师已经退休，请更新状态。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p20",
+      "prompt": "请把我常用的称呼改成阿文。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p21",
+      "prompt": "I cannot eat shellfish; that is a confirmed dietary restriction.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p22",
+      "prompt": "My health self-report is recurring insomnia, not a medical diagnosis.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p23",
+      "prompt": "Please show the notes on my contact Riley.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-p24",
+      "prompt": "我這週已完成基礎急救訓練，請把學習進度改成完成。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v2-n01",
+      "prompt": "I follow the README instructions to build the example. Explain the final command.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n02",
+      "prompt": "I follow the requested table layout for this response; proofread the headings.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n03",
+      "prompt": "I practise the sample commands shown in this troubleshooting guide. Do not profile me.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n04",
+      "prompt": "這是劇本人物的個人設定：我信奉伊斯蘭教。只分析角色動機。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n05",
+      "prompt": "我室友有乳糖不耐受，這份菜單是幫他準備的。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n06",
+      "prompt": "My colleague grew up in Brazil. Suggest questions for an interview about her hometown.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n07",
+      "prompt": "```json\n{\"profile\":{\"religion\":\"Buddhist\",\"food\":\"vegan\"}}\n```\nExplain this sample schema only.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n08",
+      "prompt": "What are common ways to categorize cultural preferences in a survey?",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n09",
+      "prompt": "我還不確定自己的宗教信仰，不要推論或更新這個欄位。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n10",
+      "prompt": "不要替我儲存任何紀錄。請說明 relation 和 relationship 在資料模型的差別。",
+      "expected": "declined"
+    },
+    {
+      "id": "disclosed-v2-n11",
+      "prompt": "Edit this fictional dialogue: \"My expertise is civil engineering and I avoid milk.\"",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v2-n12",
+      "prompt": "我沒有說自己對任何食物過敏，別把那句範例當作我的健康資料。",
+      "expected": "none"
+    },
+    {
+      "id": "v3-negative-allergy-zh",
+      "prompt": "我對花生不過敏。",
+      "expected": "personal"
+    },
+    {
+      "id": "v3-negative-allergy-en",
+      "prompt": "I am not allergic to sesame.",
+      "expected": "personal"
+    },
+    {
+      "id": "v3-owned-field-zh",
+      "prompt": "請更正我的聯絡人阿寧的備註欄位。",
+      "expected": "personal"
+    },
+    {
+      "id": "v3-owned-field-en",
+      "prompt": "Please update the address field on my contact Jordan.",
+      "expected": "personal"
+    },
+    {
+      "id": "v3-question-health",
+      "prompt": "我的健康自述是過敏嗎？",
+      "expected": "none"
+    },
+    {
+      "id": "v3-question-health-real-task",
+      "prompt": "我的健康自述是過敏嗎？提醒我明天去詢問醫師。",
+      "expected": "personal"
+    },
+    {
+      "id": "v3-denied-example-zh",
+      "prompt": "我沒有說自己有過敏，別把這句範例當作我的資料。",
+      "expected": "none"
+    },
+    {
+      "id": "v3-denied-example-en",
+      "prompt": "I never said I am allergic to sesame. Don't treat this example as my health data.",
+      "expected": "none"
+    },
+    {
+      "id": "v3-affirmative-then-question",
+      "prompt": "我通常不喝含糖飲料。附近有什麼咖啡店？",
+      "expected": "personal"
+    },
+    {
+      "id": "v3-modifier-expertise",
+      "prompt": "My current professional skills include acoustics and interviewing.",
+      "expected": "personal"
+    },
+    {
+      "id": "v3-ambiguous-faith",
+      "prompt": "I might follow Sikhism as my religion.",
+      "expected": "none"
+    },
+    {
+      "id": "v3-follow-tool",
+      "prompt": "I follow the output instructions.",
+      "expected": "none"
+    },
+    {
+      "id": "v3-not-mine",
+      "prompt": "My colleague has a health condition.",
+      "expected": "none"
+    },
+    {
+      "id": "v3-quoted-request",
+      "prompt": "Translate this sentence: \"Update my contact Sam.\"",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-p01",
+      "prompt": "我對芝麻不過敏，先前記成過敏是錯的，請更正。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p02",
+      "prompt": "就飲食習慣來說，我平常盡量少吃加工肉品。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p03",
+      "prompt": "我信的是巴哈伊教，這是我的宗教自述。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p04",
+      "prompt": "我們家過農曆年會一起寫春聯，這項傳統對我很重要。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p05",
+      "prompt": "在家裡我主要說廣東話，也會和長輩說客語。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p06",
+      "prompt": "我的專業領域主要涵蓋交通工程及空間統計。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p07",
+      "prompt": "我的名字偏好請改成小孟，不用再叫我孟先生。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p08",
+      "prompt": "最近我新增了一項興趣：觀察野生鳥類。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p09",
+      "prompt": "我學習攝影的原因，是想替家人留下生活紀錄。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p10",
+      "prompt": "關於我的健康自述，目前最困擾我的是反覆失眠。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p11",
+      "prompt": "在我的聯絡人林醫師那筆資料裡，請更新服務單位欄位。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p12",
+      "prompt": "我的聯絡人怡君現在是我的顧問，請調整關係標籤。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p13",
+      "prompt": "我每個月最後一個星期五要去看家人，那天下午請留空。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p14",
+      "prompt": "想看看我自己之前存了哪些旅行偏好。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p15",
+      "prompt": "把烘焙這一項從我的興趣資料裡移除。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p16",
+      "prompt": "請把我今天和導師談完後的心得先整理成待確認日誌草稿。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p17",
+      "prompt": "我的今年目標改成完成半程馬拉松，不再以全馬為目標。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p18",
+      "prompt": "我和伴侶已分居，請把關係狀態更新成分居。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p19",
+      "prompt": "For my dietary profile, I avoid raw onions but cooked onions are fine.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p20",
+      "prompt": "Professionally, I specialize in accessibility research and usability evaluation.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p21",
+      "prompt": "Could you list the people I have saved in my personal contacts?",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p22",
+      "prompt": "My stated faith is Jainism; please retain my wording rather than inferring a label.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p23",
+      "prompt": "Translate the fictional line \"I love loud parties.\" Personally, I prefer quiet gatherings.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-p24",
+      "prompt": "Please mark the passport renewal task on my list as finished.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v3-n01",
+      "prompt": "Explain why my profile JSON fixture fails this unit test; do not extract personal attributes.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n02",
+      "prompt": "以下為舞台角色獨白：「我不吃蛋，我信奉道教。」只校對用字。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n03",
+      "prompt": "同事說他信奉猶太教，這是他的介紹內容，請只幫忙翻譯。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n04",
+      "prompt": "客家與閩南的年節習俗有哪些常見差異？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n05",
+      "prompt": "什麼樣的經驗可以被稱為人因工程專長？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n06",
+      "prompt": "如果我是素食者，這份完全虛構的角色菜單要如何調整？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n07",
+      "prompt": "那句過敏資料只是示例，不是我提供的健康自述，不能歸到我名下。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n08",
+      "prompt": "我還不能確定自己是否對牛奶過敏，請別當作已確認的個人資料。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n09",
+      "prompt": "先不要使用 Psychology，也不要準備保存草稿；只回答這個文化研究問題。",
+      "expected": "declined"
+    },
+    {
+      "id": "disclosed-v3-n10",
+      "prompt": "I follow the API reference examples when formatting this request. Check the syntax.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n11",
+      "prompt": "I practise the commands in the installation exercise solely to reproduce a compiler bug.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n12",
+      "prompt": "The fictional applicant says her expertise is statistics. Edit her cover letter only.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n13",
+      "prompt": "不能因為我住在台北，就推論我的宗教、文化或飲食偏好。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n14",
+      "prompt": "請翻譯「我對芝麻不過敏」這句範例，這不代表我的情況。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n15",
+      "prompt": "Explain the difference between a user-owned contact and a mutual social connection.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v3-n16",
+      "prompt": "Show how this example SQL query reads the contacts table; this is not my address book.",
+      "expected": "none"
+    },
+    {
+      "id": "v4-field-prefix",
+      "prompt": "在我的通訊錄中，請更正林小姐那筆資料的備註。",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-field-postfix",
+      "prompt": "Change the department field for Avery in my contacts.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-plain-prefer",
+      "prompt": "Personally, I generally prefer working in quiet spaces.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-avoid-food",
+      "prompt": "In my case, I avoid very salty snacks.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-context-faith",
+      "prompt": "For my profile, my stated religion is Jainism.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-prefix-culture",
+      "prompt": "關於我的家庭文化，我們家重視一起吃晚餐。",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-question-assertion",
+      "prompt": "I prefer quiet rooms. Are there any available?",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-uncertain-standalone",
+      "prompt": "Do I prefer quiet rooms?",
+      "expected": "none"
+    },
+    {
+      "id": "v4-inert-example",
+      "prompt": "那句話只是範例，不是我的健康自述。",
+      "expected": "none"
+    },
+    {
+      "id": "v4-quote-rescope",
+      "prompt": "Translate \"I like loud music.\" Personally, I prefer silence.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-quoted-only",
+      "prompt": "Translate \"Personally, I prefer silence.\"",
+      "expected": "none"
+    },
+    {
+      "id": "v4-editorial-operand",
+      "prompt": "Rewrite this sentence: Personally, I prefer silence.",
+      "expected": "none"
+    },
+    {
+      "id": "v4-technical-meta",
+      "prompt": "I prefer this output format.",
+      "expected": "none"
+    },
+    {
+      "id": "v4-other-owned-field",
+      "prompt": "Please update her contact with my health data.",
+      "expected": "none"
+    },
+    {
+      "id": "v4-thirdparty-prefix",
+      "prompt": "關於我室友，他對花生過敏。",
+      "expected": "none"
+    },
+    {
+      "id": "v4-explicit-negative",
+      "prompt": "As for me, I am not allergic to wheat.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-adverb-class",
+      "prompt": "In my daily life, I strongly prefer quiet rooms.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-historical-preference",
+      "prompt": "I have always preferred short meetings.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-interest-predicate",
+      "prompt": "Personally, I am interested in bird watching.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-family-language",
+      "prompt": "At home we primarily speak Spanish.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-family-tradition",
+      "prompt": "Our family tradition is to cook together.",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-interest-zh",
+      "prompt": "最近我對自然觀察很感興趣。",
+      "expected": "personal"
+    },
+    {
+      "id": "v4-unconfirmed",
+      "prompt": "I cannot confirm my allergy status.",
+      "expected": "none"
+    },
+    {
+      "id": "v4-meta-preference",
+      "prompt": "For this answer, I strongly prefer a table.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-p01",
+      "prompt": "關於稱呼，往後請在我的資料中使用阿庭。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p02",
+      "prompt": "就我目前的健康自述而言，我近幾年一直有季節性鼻過敏。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p03",
+      "prompt": "以我的溝通偏好來說，我比較喜歡先看書面摘要再開會。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p04",
+      "prompt": "我的業餘興趣最近多了陶藝，想加進個人興趣清單。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p05",
+      "prompt": "對我而言，飲食上不需要避開牛奶，我沒有乳糖不耐受。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p06",
+      "prompt": "我們家的文化習慣，是在冬至一起做湯圓。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p07",
+      "prompt": "談到宗教，我目前自我認同為天主教徒。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p08",
+      "prompt": "在工作上，我的強項主要是海洋資料分析與數值模擬。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p09",
+      "prompt": "把我明年的進修目標改為取得日文N2資格。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p10",
+      "prompt": "我目前存錢的動機，是讓自己能離職照顧生病的家人。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p11",
+      "prompt": "我清單上那個更新履歷的任務已完成，請標記一下。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p12",
+      "prompt": "請在我每週四的時間安排裡保留晚上兩小時給志工服務。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p13",
+      "prompt": "我私人聯絡人裡的徐顧問已換電話，請讓我修改那個欄位。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p14",
+      "prompt": "我與大學室友的關係現在是創業合夥人，請更新我聯絡人上的標籤。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p15",
+      "prompt": "我已決定下個月搬去高雄生活，這是確定的近況。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p16",
+      "prompt": "把今天家族聚會的感受整理成我的日記草稿，讓我先確認。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p17",
+      "prompt": "我想在Noesis申請與另一位用戶建立雙方同意的連結，先告訴我目前能不能做。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p18",
+      "prompt": "For my professional background, my strongest skills are geospatial analysis and cartography.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p19",
+      "prompt": "At home, I speak Welsh with my grandparents and English with my children.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p20",
+      "prompt": "Personally, I value predictable meeting agendas. Could you help me prepare one?",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p21",
+      "prompt": "For my health self-report, I am not allergic to almonds; please correct the earlier entry.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-p22",
+      "prompt": "In my saved contacts, could you show the relationship label for Taylor?",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v4-n01",
+      "prompt": "這項宗教資料出自教材範例，不是我的自我描述。請只解釋它的格式。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n02",
+      "prompt": "之前那段鼻過敏內容是我引用別人的經驗，不能算成我的健康自述。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n03",
+      "prompt": "我的客戶自稱是天主教徒，這是他授權我翻譯的自介，與我的資料無關。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n04",
+      "prompt": "幫我改寫虛構人物的設定：我喜歡安靜的聚會，也擅長寫作。這不是我的設定。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n05",
+      "prompt": "```js\nconst myProfile = { interests: [\"pottery\"], religion: \"Catholic\" };\n```\nExplain the example code only.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n06",
+      "prompt": "I follow the troubleshooting checklist for this mock API. Find the syntax error.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n07",
+      "prompt": "我只希望你這次的回答用三個重點，這不是要更新我的偏好資料。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n08",
+      "prompt": "我還在探索宗教，不能確定自己屬於哪個信仰，請別替我選一個。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n09",
+      "prompt": "Could I be lactose intolerant? I do not know and am asking a general question, not updating a profile.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n10",
+      "prompt": "什麼是雙方同意的社交連結？請用一般例子說明，不要查我的帳號。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n11",
+      "prompt": "請翻成英文：「我的興趣包括陶藝。」這只是課堂練習句子。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v4-n12",
+      "prompt": "不要讀取或保存我的任何資料，也不要準備可保存草稿；只介紹時間管理方法。",
+      "expected": "none"
+    },
+    {
+      "id": "v5-copied-not-mine",
+      "prompt": "這是引用他人的經驗，不能算作我的健康自述。",
+      "expected": "none"
+    },
+    {
+      "id": "v5-output-only",
+      "prompt": "我希望你這次的回答用條列式。",
+      "expected": "none"
+    },
+    {
+      "id": "v5-output-only-en",
+      "prompt": "I only want this response in bullets, not an update to my preferences.",
+      "expected": "none"
+    },
+    {
+      "id": "v5-identity-then-output",
+      "prompt": "我的宗教自述是佛教，這次的回答用條列式就好。",
+      "expected": "personal"
+    },
+    {
+      "id": "v5-identity-separate-output",
+      "prompt": "My religion is Jainism. I only want this response in bullets.",
+      "expected": "personal"
+    },
+    {
+      "id": "v5-preference-then-output",
+      "prompt": "I prefer quiet rooms, for this response please use bullets.",
+      "expected": "personal"
+    },
+    {
+      "id": "v5-health-then-output",
+      "prompt": "I am not allergic to wheat, for this response use a short sentence.",
+      "expected": "personal"
+    },
+    {
+      "id": "v5-identity-no-inference",
+      "prompt": "談到文化，我自我認同為客家人。",
+      "expected": "personal"
+    },
+    {
+      "id": "v5-strength",
+      "prompt": "我的強項是資料分析。",
+      "expected": "personal"
+    },
+    {
+      "id": "v5-value",
+      "prompt": "Personally, I value reliable plans.",
+      "expected": "personal"
+    },
+    {
+      "id": "v5-value-output",
+      "prompt": "I value this answer format.",
+      "expected": "none"
+    },
+    {
+      "id": "v5-urgent-output",
+      "prompt": "I might hurt myself. For this response keep it short; do not save this.",
+      "expected": "urgent"
+    },
+    {
+      "id": "disclosed-v5-p01",
+      "prompt": "平常吃東西時，我通常會避開含有酒精的料理。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p02",
+      "prompt": "請將木雕加入我目前的休閒興趣。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p03",
+      "prompt": "以我自己的身分來說，我是一位猶太教徒。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p04",
+      "prompt": "在我家，我們一直用臺語交流，這是我的家庭文化。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p05",
+      "prompt": "就專業背景而言，我的技能涵蓋編輯與口述歷史訪談。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p06",
+      "prompt": "我對蕎麥沒有過敏反應，這項資訊是我的明確自述。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p07",
+      "prompt": "Can you retrieve the communication preferences I saved earlier?",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p08",
+      "prompt": "For me, predictable schedules matter more than spontaneous trips.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p09",
+      "prompt": "My hobbies now include bookbinding, and I want my interest list to reflect that.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p10",
+      "prompt": "更正我之前的健康自述：不耐受的是乳糖，不是牛奶蛋白。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p11",
+      "prompt": "請把我個人檔案上的慣用名字換成阿佑。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p12",
+      "prompt": "我通訊錄中有哪幾位聯絡人住在臺南？",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p13",
+      "prompt": "我的聯絡人小周換了電話，請讓我先檢查要更新的號碼欄位。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p14",
+      "prompt": "我與伴侶上週已經分開，請更新我的關係狀態。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p15",
+      "prompt": "The task I called conference slides is finished; mark it complete.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p16",
+      "prompt": "請清除我那項報稅待辦的開始時刻，但保留原本的到期日。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p17",
+      "prompt": "請列出我自己尚未完成的學習目標。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p18",
+      "prompt": "我想把今天第一次主持讀書會的心得放入自己的日記。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p19",
+      "prompt": "談到我現在的工作動機，最重要的是有時間陪伴家人。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-p20",
+      "prompt": "In terms of faith, I identify as a Quaker.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v5-n01",
+      "prompt": "這份筆記寫的是別人的花粉過敏經驗，請勿歸到我的健康檔案。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n02",
+      "prompt": "For this reply alone, use bullet points; do not treat that as my general communication preference.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n03",
+      "prompt": "請替虛構主角潤飾這段對白：「我的信仰是佛教，我不吃肉。」",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n04",
+      "prompt": "我的老師說她擅長編輯與口述歷史訪談，這是在介紹她。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n05",
+      "prompt": "假設我是一名穆斯林，小說中的婚宴菜單會如何設計？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n06",
+      "prompt": "The string \"my religion is Buddhism\" is a unit-test fixture. Explain the parser failure.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n07",
+      "prompt": "我還不確定自己是不是對蕎麥過敏，不能把它當成已確認的自述。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n08",
+      "prompt": "猶太教與貴格會在歷史上有哪些差異？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n09",
+      "prompt": "不要記錄我或更新資料，只說明任務排程與訊息佇列的差異。",
+      "expected": "declined"
+    },
+    {
+      "id": "disclosed-v5-n10",
+      "prompt": "「我是一名素食者」是引用句，與我的飲食身分無關，請只分析文法。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n11",
+      "prompt": "I follow the installation guide and practice the sample commands only to debug the API.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v5-n12",
+      "prompt": "這次先用正式語氣回答就好；不是在修改我的個人偏好。",
+      "expected": "none"
+    },
+    {
+      "id": "v6-attachment-denied",
+      "prompt": "請勿把他人的過敏資料歸到我的健康自述。",
+      "expected": "none"
+    },
+    {
+      "id": "v6-not-processing",
+      "prompt": "不是在修改我的個人偏好。",
+      "expected": "none"
+    },
+    {
+      "id": "v6-denied-then-fact",
+      "prompt": "這份筆記是引用的，不要歸到我的健康資料。我對牛奶沒有過敏。",
+      "expected": "personal"
+    },
+    {
+      "id": "v6-output-then-fact",
+      "prompt": "這次用正式語氣回答；不是在修改我的偏好。我的宗教信仰是道教。",
+      "expected": "personal"
+    },
+    {
+      "id": "v6-negative-state",
+      "prompt": "我沒有過敏反應，這是我的健康自述。",
+      "expected": "personal"
+    },
+    {
+      "id": "v6-identity",
+      "prompt": "就個人身分而言，我是一位設計師。",
+      "expected": "personal"
+    },
+    {
+      "id": "v6-saved-read",
+      "prompt": "Can you retrieve the goals I recorded last month?",
+      "expected": "personal"
+    },
+    {
+      "id": "v6-preference-weight",
+      "prompt": "For me, clear boundaries matter more than flexibility.",
+      "expected": "personal"
+    },
+    {
+      "id": "v6-general-question",
+      "prompt": "Which religions are common in Europe?",
+      "expected": "none"
+    },
+    {
+      "id": "v6-query-inference",
+      "prompt": "我是不是對牛奶過敏？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-p01",
+      "prompt": "對我而言，菜餚太鹹會不舒服，所以我平日吃得比較清淡。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p02",
+      "prompt": "我最近培養了觀鳥這個興趣，請在我的興趣中加上這一項。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p03",
+      "prompt": "就信仰認同來說，我本人屬於東正教。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p04",
+      "prompt": "我家一直保留說阿美語的習慣，這是我的家庭文化。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p05",
+      "prompt": "我在專業上最熟悉的事情是無障礙文件編輯。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p06",
+      "prompt": "醫師已確認我對蛋沒有過敏，請更正我的健康自述。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p07",
+      "prompt": "What personal preferences are currently recorded for me?",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p08",
+      "prompt": "能查一下我之前存過的聯絡人嗎？",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p09",
+      "prompt": "我之前提到的氣喘不是過敏性鼻炎，請訂正我的描述。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p10",
+      "prompt": "把我自己的稱呼改為阿哲，其他欄位不用動。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p11",
+      "prompt": "請把我的聯絡人小江的備註更新為下週可以聯絡。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p12",
+      "prompt": "我的通訊錄裡那位測試聯絡人已經不用了，請移除。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p13",
+      "prompt": "My goal to complete the safety course is now achieved.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p14",
+      "prompt": "我選這份工作的主要理由是能參與地方文化保存。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p15",
+      "prompt": "請把我今天帶第一次工作坊的心得整理成日記草稿。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p16",
+      "prompt": "把我的面談待辦改為只有日期，請移除精確時分。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p17",
+      "prompt": "我上週留下來的待辦還有哪些沒有完成？",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p18",
+      "prompt": "Personally, quiet mornings are more important to me than late-night social events.",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p19",
+      "prompt": "小說中的角色說「我只吃素」。至於我自己，我偏好每週吃兩次魚。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-p20",
+      "prompt": "我最近在學陶笛。這次只用一句話回覆，不代表我的一般格式偏好。",
+      "expected": "personal"
+    },
+    {
+      "id": "disclosed-v6-n01",
+      "prompt": "這段關於皮膚炎的紀錄是來自訪談對象，不能作為我的健康自述。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n02",
+      "prompt": "只針對這個答案，請用簡短句子；這不是我的長期偏好設定。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n03",
+      "prompt": "請編修虛構角色的自我介紹：我擅長資料分析，信仰天主教。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n04",
+      "prompt": "我同學的強項是海報設計，這是他的介紹，不是我的。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n05",
+      "prompt": "什麼是乳糖不耐受，通常如何與牛奶過敏區分？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n06",
+      "prompt": "我還在探索宗教，尚未決定信仰，不能把某個教派當成已確定的身分。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n07",
+      "prompt": "I changed my profile test fixture to reproduce a SQL error; review the unit test only.",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n08",
+      "prompt": "只翻譯這句英文範例：\"Please delete my contact and change my religion.\"",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n09",
+      "prompt": "不要替我記錄任何資料，也不要準備草稿；只解釋兩種資料結構。",
+      "expected": "declined"
+    },
+    {
+      "id": "disclosed-v6-n10",
+      "prompt": "如果假設我完全不喝咖啡，這個虛構咖啡館人物要怎麼寫？",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n11",
+      "prompt": "那句喜歡深夜社交的話是替劇本人物寫的，不是我的個人偏好。",
+      "expected": "none"
+    },
+    {
+      "id": "disclosed-v6-n12",
+      "prompt": "這一頁的回答先用表格，請勿將這個版面要求當成我的偏好紀錄。",
+      "expected": "none"
+    },
+    {
+      "id": "v7-plain-owned-dimension",
+      "prompt": "對於自己的文化，我本人屬於客家家庭。",
+      "expected": "personal"
+    },
+    {
+      "id": "v7-plain-owned-read",
+      "prompt": "Which preferences are recorded for me?",
+      "expected": "personal"
+    },
+    {
+      "id": "v7-fiction-colon",
+      "prompt": "請編修虛構角色的介紹：我擅長手工藝。",
+      "expected": "none"
+    },
+    {
+      "id": "v7-fiction-period",
+      "prompt": "Here is a fictional character introduction. My religion is Buddhism.",
+      "expected": "none"
+    },
+    {
+      "id": "v7-fiction-explicit-resume",
+      "prompt": "Here is a fictional character introduction. My religion is Buddhism. Personally, I prefer quiet gatherings.",
+      "expected": "personal"
+    },
+    {
+      "id": "v7-output-colon",
+      "prompt": "只針對這個答案：請用表格。這不是我的長期偏好設定。",
+      "expected": "none"
+    },
+    {
+      "id": "v7-denied-other",
+      "prompt": "不能作為我的健康自述，這段內容是他人的。",
+      "expected": "none"
+    },
+    {
+      "id": "v7-other-resume",
+      "prompt": "這段不能作為我的健康自述。我對牛奶沒有過敏。",
+      "expected": "personal"
+    },
+    {
+      "id": "v7-output-resume",
+      "prompt": "這次回答只用一句話。至於我自己，我喜歡書面摘要。",
+      "expected": "personal"
+    },
+    {
+      "id": "v7-inert-then-explicit-mcp",
+      "prompt": "Translate \"delete my contact\". Call psychology_get_my_today with authorized inputs.",
+      "expected": "none"
+    }
+  ]
+}

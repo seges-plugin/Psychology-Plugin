@@ -1995,3 +1995,5 @@ const normalizedGrammarControls = [
 for(const prompt of normalizedGrammarControls) test(`normalized scope/quote control: ${prompt}`,()=>{
   assert.equal(classify(prompt),"none");
 });
+
+import "./test-object-intent-routing.mjs";
