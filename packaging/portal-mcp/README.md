@@ -1,10 +1,10 @@
-# Psychology Plugin
+# Psychology
 
 This archive is intended for the existing **With MCP** submission flow, not a
 Skills-only upload. Verify the saved Portal component inventory and connected
 MCP after import. A local archive check does not prove import acceptance.
 
-Connect **Psychology MCP** at `https://noesis.seges.ai/mcp` through the host's
+Connect **Psychology** at `https://noesis.seges.ai/mcp` through the host's
 browser OAuth flow. Use the available operations for a requested reflection
 guide, psychometric instrument discovery, exact item materials, or selected
 Noesis records. Use only capabilities actually exposed by the connected host.

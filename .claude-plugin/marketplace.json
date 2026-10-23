@@ -3,7 +3,7 @@
   "name": "psychology-plugin",
   "description": "Use memories and past chats you choose to clarify a goal. Review suggestions in your AI; track a next step on the Today website. Not diagnosis or treatment.",
   "owner": {
-    "name": "Psychology Plugin"
+    "name": "Psychology"
   },
   "plugins": [
     {

@@ -16,7 +16,7 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Psychology Plugin",
+        "displayName": "Psychology",
         "shortDescription": "Reflection workflows and MCP",
         "longDescription": "Use reflection workflows to clarify a goal, review a change or explore chosen context. Skills guide source selection, self-report and owner-reviewed candidates. Stored reads require consent and an explicit source choice; writes require review and authorization. No automatic archive access or save. Scoring is not diagnosis or treatment. Professional listings are unverified leads. Installation does not guarantee invocation or host acceptance.",
         "category": "Productivity",
@@ -92,7 +92,7 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "Noesis and Psychology Plugin are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
+        "commerce_description": "Noesis and Psychology are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
       },
       "publication": {
         "release_notes": "v1.4.4 candidate: retain 16 skills and add their explicit Life journey guide and contract. Guide task creation, optional start/deadline, separate reminder review and same-request profile recovery only when compatible tools are exposed. No lifecycle hooks, automatic writes, host acceptance or directory approval is claimed."

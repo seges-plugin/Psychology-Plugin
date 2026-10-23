@@ -1,5 +1,6 @@
 // Offline release consistency only. No host, network, OAuth or account actions.
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 import test from 'node:test';
@@ -8,6 +9,22 @@ const text=(name)=>readFileSync(resolve(root,name),'utf8');
 const json=(name)=>JSON.parse(text(name));
 const manifests=['package.json','plugin.json','.codex-plugin/plugin.json','.claude-plugin/plugin.json','.claude-plugin/marketplace.json','kimi.plugin.json','openclaw.plugin.json','packaging/portal-mcp/plugin.json','packaging/portal-workflows/plugin.json'];
 const profiles=['plugin.json','packaging/portal-mcp/plugin.json','packaging/portal-workflows/plugin.json'];
+
+test('Psychology display names and MCP server key agree across tracked JSON including hidden manifests',()=>{
+ for(const name of profiles)assert.equal(json(name).extensions['com.openai'].interface.displayName,'Psychology',name);
+ for(const name of ['.codex-plugin/plugin.json','kimi.plugin.json'])assert.equal(json(name).interface.displayName,'Psychology',name);
+ assert.equal(json('openclaw.plugin.json').name,'Psychology');
+ assert.deepEqual(json('.claude-plugin/marketplace.json').owner,{name:'Psychology'});
+ for(const name of ['mcp.json','.mcp.json','.claude-plugin/plugin.json','kimi.plugin.json','openclaw.plugin.json']){
+  const servers=json(name).mcpServers;assert.deepEqual(Object.keys(servers),['Psychology'],name);
+  assert.equal(servers.Psychology.url,'https://noesis.seges.ai/mcp',name);
+ }
+ for(const name of ['package.json','plugin.json','.codex-plugin/plugin.json','.claude-plugin/plugin.json','kimi.plugin.json'])assert.equal(json(name).name,'psychology-plugin',name);
+ assert.equal(json('packaging/portal-workflows/plugin.json').name,'psychology-plugin-workflows');
+ const tracked=execFileSync('git',['ls-files','-z','--','*.json'],{cwd:root,encoding:'utf8'}).split('\0').filter(Boolean);
+ assert.ok(tracked.includes('.mcp.json')&&tracked.includes('.claude-plugin/plugin.json'));
+ for(const name of tracked)assert.doesNotMatch(JSON.stringify(json(name)),/\bPsychology (?:Plugin|MCP)\b/,name);
+});
 
 test('all nine source and distribution versions agree on unreleased 1.4.4',()=>{
  for(const name of manifests){const value=json(name);assert.equal(name.endsWith('marketplace.json')?value.plugins[0].version:value.version,'1.4.4',name);}

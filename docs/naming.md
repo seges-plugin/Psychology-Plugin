@@ -1,19 +1,22 @@
-# Psychology Plugin naming
+# Psychology naming
 
 ## Names by schema role
 
 | Role | Canonical value |
 | --- | --- |
-| Plugin display name | `Psychology Plugin` |
+| Plugin display name | `Psychology` |
 | Package, Claude marketplace/plugin, and OpenClaw plugin ID | `psychology-plugin` |
-| Hosted connector display name | `Psychology MCP` |
-| MCP configuration key on every packaged harness | `psychology_mcp` |
+| Hosted connector display name | `Psychology` |
+| MCP configuration key on every packaged harness | `Psychology` |
 | Public MCP tool and prompt namespace | `psychology_` |
 | MCP endpoint and protected resource | `https://noesis.seges.ai/mcp` |
 
-Plugin manifests require a lowercase machine identifier; Codex MCP server IDs
-cannot contain spaces. These IDs therefore differ deliberately from display
-names. Provider schema URLs, JSON Schema versions, API field names, skill slugs,
+Plugin manifests require a lowercase machine identifier. The plugin package ID
+therefore remains `psychology-plugin`, while its display name is `Psychology`.
+The separate workflow package keeps `psychology-plugin-workflows`. MCP server
+keys accept `Psychology`, so all packaged harnesses use that exact key rather
+than adding an unsupported display-name field. Provider schema URLs, JSON Schema
+versions, API field names, skill slugs,
 instrument IDs, and the deployed `psychology_` tool namespace are protocol
 identifiers, not product labels, and must not be changed by a text replacement.
 The product's site and stored-data service are called Noesis; that name does
@@ -21,9 +24,24 @@ not introduce a second plugin or authorize cross-product data access.
 
 The package does not override the MCP server's runtime handshake name. That
 value is owned by the separately deployed server. A harness may display its
-local configuration key; use `Psychology MCP` for editable connector names.
+local configuration key; use `Psychology` for editable connector names.
 
-## Migration from versions through 1.2.23
+## Current display-name and MCP-key update
+
+The plugin and connector are both named `Psychology`. Current source manifests,
+package profiles, setup examples and naming checks agree on that label. The
+previous connector key was `psychology_mcp`; update or replace that entry when
+loading the revised configuration. Do not keep both keys active, which can
+duplicate the same server's tools. A host may require selecting the renamed
+connection or authorizing it again; the rename itself neither transfers saved
+credentials nor adds permissions. The endpoint, OAuth resource and tool namespace
+remain unchanged.
+
+This source update does not rename an already installed host entry, a submitted
+Portal draft, or the separately deployed server's runtime handshake metadata.
+Those surfaces require their own update and acceptance evidence.
+
+## Historical migration from versions through 1.2.23
 
 Version 1.3.0 changes the package/marketplace ID from `psychology` to
 `psychology-plugin` and the MCP configuration key from `psychology` to

@@ -37,7 +37,7 @@ class MemoryContract(unittest.TestCase):
         self.assertEqual(profile["version"], canonical["version"])
         self.assertEqual(set(profile), {"$schema", "name", "version", "description", "homepage", "repository", "license", "keywords", "extensions"})
         ui = profile["extensions"]["com.openai"]["interface"]
-        self.assertEqual(ui["displayName"], "Psychology Plugin")
+        self.assertEqual(ui["displayName"], "Psychology")
         self.assertLessEqual(len(ui["shortDescription"]), 30)
         self.assertEqual(len(ui["defaultPrompt"]), 3)
         for prompt in ui["defaultPrompt"]:

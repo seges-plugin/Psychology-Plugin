@@ -13,14 +13,14 @@
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
   "interface": {
-    "displayName": "Psychology Plugin",
+    "displayName": "Psychology",
     "shortDescription": "Reflect, then take a next step",
     "longDescription": "Use memories and past chats you choose for strengths and likely answers; ask only consequential gaps. Kimi Code is an evaluation/setup path, not a supported host, and cannot access the Kimi.ai consumer archive. Stored reads require consent and an explicit source choice. Not diagnosis or treatment.",
     "websiteURL": "https://noesis.seges.ai"
   },
   "skills": "./skills/",
   "mcpServers": {
-    "psychology_mcp": {
+    "Psychology": {
       "url": "https://noesis.seges.ai/mcp"
     }
   }

@@ -1,6 +1,6 @@
 ---
 name: onboarding
-description: Guide a user through a browser-authorized Psychology MCP connection without collecting credentials or overstating host support.
+description: Guide a user through a browser-authorized Psychology connection without collecting credentials or overstating host support.
 version: "1.2.4"
 ---
 
@@ -54,8 +54,8 @@ person agrees to make the local configuration change, add the stable server name
 flow:
 
 ```powershell
-codex mcp add psychology_mcp --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
-codex mcp login psychology_mcp --oauth-client-registration dcr
+codex mcp add Psychology --url https://noesis.seges.ai/mcp --oauth-resource https://noesis.seges.ai/mcp
+codex mcp login Psychology --oauth-client-registration dcr
 ```
 
 The second command opens the browser authorization flow. Immediately before it starts, state that the

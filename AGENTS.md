@@ -1,4 +1,4 @@
-# Psychology Plugin working rules
+# Psychology working rules
 
 - Always edit, review, test and perform Git operations in the existing user-designated Psychology-Plugin worktree, identified by `git rev-parse --show-toplevel` at task start. Keep that exact location for the whole task and future work. Do not create another worktree or clone, move the checkout, or discard another task's changes. Assign non-overlapping files to agents. A later explicit user instruction is required to change this rule.
 - Read README.md and CLAUDE.md before work. Preserve user-selected context, explicit consent, source records, non-clinical boundaries, host/package distinctions and the current instrument baseline.

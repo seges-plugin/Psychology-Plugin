@@ -1,6 +1,6 @@
-# Psychology Plugin — reflection workflows
+# Psychology — reflection workflows
 
-This is the source-defined **portal-workflows** distribution of Psychology Plugin, version 1.4.4 (unreleased source candidate). Its machine identifier is `psychology-plugin-workflows`. It is a separate application proposal from the MCP-only package (`psychology-plugin`); it must not replace that application's existing draft. The connected server remains **Psychology MCP**, key `psychology_mcp`, endpoint `https://noesis.seges.ai/mcp`, Streamable HTTP with OAuth/DCR.
+This is the source-defined **portal-workflows** distribution of Psychology, version 1.4.4 (unreleased source candidate). Its machine identifier is `psychology-plugin-workflows`. It is a separate application proposal from the MCP-only package (`psychology-plugin`); it must not replace that application's existing draft. The connected server remains **Psychology**, key `Psychology`, endpoint `https://noesis.seges.ai/mcp`, Streamable HTTP with OAuth/DCR.
 
 ## Included workflow components
 

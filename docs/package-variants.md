@@ -2,8 +2,8 @@
 
 Version 1.4.4 is an unreleased source candidate. It keeps **portal-mcp** as the selected MCP-only public review package and
 adds **portal-workflows** as a separate full-workflows application source proposal.
-Both display **Psychology Plugin** and connect the same **Psychology MCP** server,
-key `psychology_mcp`, endpoint `https://noesis.seges.ai/mcp`, with the existing
+Both display **Psychology** and connect the same **Psychology** server,
+key `Psychology`, endpoint `https://noesis.seges.ai/mcp`, with the existing
 Streamable HTTP and OAuth/DCR configuration. Their machine identities are distinct;
 creating this source profile does not create or approve a second Portal application.
 
