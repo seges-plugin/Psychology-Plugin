@@ -64,10 +64,10 @@
               "expected_behavior": "Call psychology_get_item_bank with instrument=cat_q. Present only returned respondent-facing question text, without reverse-scoring or answer-key metadata. If response options or scale labels are absent, disclose the omission and do not invent them, administer scored responses, score, or save. Preserve an exact returned scale without modification."
             },
             {
-              "description": "Check current authorization before the user chooses to read their saved assessment history.",
-              "prompt": "I want to review my saved assessment results in Noesis. Check what is currently authorized, then show only my saved results if the required consent is active.",
+              "description": "Read only the dedicated reviewer's own assessment metadata. Setup: use a fresh synthetic owner with the current-policy core agreement and adult confirmation; leave all optional storage purposes off and create no assessment records.",
+              "prompt": "I want to review my own Noesis assessment history. Check what is currently authorized, then list only this account's assessment metadata.",
               "tools_triggered": "psychology_get_consent_status, psychology_list_my_assessments",
-              "expected_behavior": "Check consent first. If the applicable saved-results permission is not active, do not read the history and explain the next available action. If active, return only the user's saved results within the tool's supported scope."
+              "expected_behavior": "Call psychology_get_consent_status first and explain the current-policy core agreement, adult confirmation, and returned optional-purpose flags. For the connected authenticated owner with that current core agreement, call psychology_list_my_assessments for only that owner's metadata even when store_results=false and storage_authorized=false. Optional result-storage consent gates new assessment persistence, not this own-metadata read. Accept count=0 with assessments=[] as a valid result for the fresh fixture. If connection or core authorization is absent or refused, stop and report that boundary. Do not enable optional grants, create or save an assessment, fetch another owner's records, invent scores, or treat metadata as full scored results."
             },
             {
               "description": "Use only an explicitly chosen retained-context grant after checking consent and listing available scopes.",

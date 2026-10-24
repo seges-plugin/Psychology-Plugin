@@ -29,6 +29,31 @@ def candidate():
 
 
 class MemoryContract(unittest.TestCase):
+    def test_p4_reviews_own_metadata_with_optional_storage_off_and_empty_history(self):
+        cases = []
+        for path in ["plugin.json", "packaging/portal-mcp/plugin.json", "packaging/portal-workflows/plugin.json"]:
+            value = json.loads((ROOT / path).read_text(encoding="utf-8"))
+            review = value["extensions"]["com.openai"]["review"]["test_cases"]
+            self.assertEqual(len(review["positive"]), 5)
+            self.assertEqual(len(review["negative"]), 3)
+            case = review["positive"][3]
+            self.assertEqual(case["tools_triggered"], "psychology_get_consent_status, psychology_list_my_assessments")
+            self.assertIn("current-policy core agreement and adult confirmation", case["description"])
+            self.assertIn("leave all optional storage purposes off", case["description"])
+            self.assertIn("create no assessment records", case["description"])
+            self.assertIn("my own Noesis assessment history", case["prompt"])
+            self.assertIn("this account's assessment metadata", case["prompt"])
+            behavior = case["expected_behavior"]
+            for boundary in ["get_consent_status first", "connected authenticated owner", "store_results=false and storage_authorized=false",
+                             "not this own-metadata read", "count=0 with assessments=[]", "connection or core authorization is absent or refused",
+                             "Do not enable optional grants, create or save an assessment", "fetch another owner's records", "invent scores",
+                             "metadata as full scored results"]:
+                self.assertIn(boundary, behavior, (path, boundary))
+            self.assertNotIn("saved-results permission is not active, do not read", behavior)
+            cases.append(case)
+        self.assertEqual(cases[0], cases[1])
+        self.assertEqual(cases[0], cases[2])
+
     def test_actual_public_mcp_profile_is_contextual_and_separate_from_manual(self):
         profile = json.loads((ROOT / "packaging/portal-mcp/plugin.json").read_text(encoding="utf-8"))
         canonical = json.loads((ROOT / "plugin.json").read_text(encoding="utf-8"))
