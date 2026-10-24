@@ -26,27 +26,44 @@ test('Psychology display names and MCP server key agree across tracked JSON incl
  for(const name of tracked)assert.doesNotMatch(JSON.stringify(json(name)),/\bPsychology (?:Plugin|MCP)\b/,name);
 });
 
-test('all nine source and distribution versions agree on unreleased 1.4.4',()=>{
- for(const name of manifests){const value=json(name);assert.equal(name.endsWith('marketplace.json')?value.plugins[0].version:value.version,'1.4.4',name);}
- for(const name of profiles){const notes=json(name).extensions['com.openai'].publication.release_notes;assert.match(notes,/v1\.4\.4 candidate:/);assert.doesNotMatch(notes,/\b(?:published|approved) (?:release|listing|host)\b/i);}
- assert.match(text('README.md'),/Source package \*\*v1\.4\.4\*\*, unreleased candidate/);
+test('all nine source and distribution versions agree on unreleased 1.5.0',()=>{
+ for(const name of manifests){const value=json(name);assert.equal(name.endsWith('marketplace.json')?value.plugins[0].version:value.version,'1.5.0',name);}
+ for(const name of profiles){const notes=json(name).extensions['com.openai'].publication.release_notes;assert.match(notes,/v1\.5\.0 candidate:/);assert.doesNotMatch(notes,/\b(?:published|approved) (?:release|listing|host)\b/i);}
+ assert.match(text('README.md'),/Source package \*\*v1\.5\.0\*\*, unreleased candidate/);
  assert.match(text('CHANGELOG.md'),/current published package remains 1\.4\.3/);
 });
 test('source candidate separates artifact review, deployment and actual host discovery',()=>{
  const c=json('schemas/workspace-mcp-journey.contract.json');
  assert.equal(c.status,'SOURCE_CANDIDATE_NOT_LIVE_OR_RELEASE_ACCEPTANCE');
+ // The retained Life/profile component keeps its original candidate provenance.
  assert.equal(c.candidate_package_version,'1.4.4');
  assert.equal(c.backend_deployment_verified,false);assert.equal(c.authenticated_host_discovery_verified,false);
  assert.deepEqual(c.catalog_target,{public_tools:46,new_workspace_tools:9,new_review_status_tools:1,prompts:18,instruments:16});
  assert.equal(Object.keys(c.tools).length,9);assert.equal(c.review_status.tool,'psychology_get_profile_write_review_status');
- assert.match(text('CHANGELOG.md'),/domain-MCP candidates are not included/);
+ const connected=json('schemas/connected-object-journey.contract.json');
+ assert.equal(connected.release_candidate_version,'1.5.0');
+ assert.equal(connected.status,'FUTURE_SOURCE_ONLY_NOT_CURRENT_SERVER_OR_HOST_ACCEPTANCE');
+ assert.equal(connected.release_ready,false);assert.equal(connected.actual_tuple,null);
+ assert.equal(connected.existing_life_profile_journey_preserved,'schemas/workspace-mcp-journey.contract.json');
+ assert.deepEqual([connected.future_native_count,connected.future_public_count,connected.prompts,connected.instruments],[51,66,18,16]);
+ assert.equal(Object.keys(connected.tools).length,20);
+ assert.deepEqual(connected.typed_kinds,['Culture','Expertise','HealthSelfReport','Interest','Motivation','Preference','Religion','TimeBlock']);
+ for(const kind of connected.typed_kinds)assert.equal(connected.typed_purposes[kind],'typed_object_'+kind.toLowerCase());
+ for(const field of ['chat_does_not_approve','no_external_sends_or_bank_writes','no_private_Kairos_bridge','oauth_is_not_purpose_grant','prepared_is_not_committed'])assert.equal(connected.authority[field],true,field);
+ for(const [name,value] of Object.entries(connected.tools)){
+  assert.ok(text('docs/connected-objects.md').includes('`'+name+'`'),name);
+  assert.equal(value.input_schema.additionalProperties,false,name);
+  assert.ok(!Object.keys(value.input_schema.properties).some(k=>/^(owner_id|user_id|client_id|connection_id|__verified_)/.test(k)),name);
+ }
+ // The earlier 1.4.4 changelog entry remains historical, not a current catalog limit.
+ assert.match(text('CHANGELOG.md').split('## 1.4.4 candidate (unreleased)')[1],/domain-MCP candidates are not included/);
 });
 test('new guide and journey contract are explicit workflow resources while MCP stays eight files',()=>{
  const p=text('tools/package-plugin.py');const start=p.indexOf('WORKFLOW_COMPONENTS = (');const end=p.indexOf('\n)',start);const closure=p.slice(start,end);
- for(const name of ['docs/workspace-mcp.md','schemas/workspace-mcp-journey.contract.json'])assert.ok(closure.includes("'"+name+"'"),name);
+ for(const name of ['docs/workspace-mcp.md','schemas/workspace-mcp-journey.contract.json','docs/connected-objects.md','schemas/connected-object-journey.contract.json'])assert.ok(closure.includes("'"+name+"'"),name);
  const mcp=json('packaging/portal-mcp/plugin.json');const ai=mcp.extensions['com.openai'];
  assert.equal(mcp.name,'psychology-plugin');for(const field of ['skills','agents','hooks','onboardingSkill'])assert.equal(ai[field],undefined);
- assert.match(text('docs/package-variants.md'),/48 files/);
+ assert.match(text('docs/package-variants.md'),/50 files/);
  assert.equal(readdirSync(resolve(root,'skills'),{withFileTypes:true}).filter(x=>x.isDirectory()).length,16);
 });
 test('ten added public tool names are exact and no caller identity is an input',()=>{
