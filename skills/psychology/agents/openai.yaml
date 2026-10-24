@@ -1,0 +1,5 @@
+interface:
+  display_name: "Psychology"
+  short_description: "Reflect, remember, and grow"
+policy:
+  allow_implicit_invocation: true

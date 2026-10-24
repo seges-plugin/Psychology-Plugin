@@ -1,0 +1,41 @@
+{
+  "name": "psychology",
+  "version": "1.6.0",
+  "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seges-plugin/Psychology-Plugin"
+  },
+  "files": [
+    "plugin.json",
+    "mcp.json",
+    ".mcp.json",
+    ".codex-plugin/plugin.json",
+    "openclaw.plugin.json",
+    "skills",
+    "README.md",
+    "LICENSE",
+    "assets/icon.png",
+    "assets/logo-light.svg",
+    "assets/logo-dark.svg",
+    "docs/openai-brand-rationale.md",
+    ".claude-plugin/plugin.json",
+    ".claude-plugin/marketplace.json",
+    "kimi.plugin.json",
+    "agents",
+    "docs/naming.md",
+    "hooks",
+    "docs/activation-and-memory.md",
+    "docs/package-variants.md",
+    "docs/setup-and-contract.md",
+    "docs/workspace-mcp.md",
+    "docs/connected-objects.md",
+    "schemas/memory-update.schema.json"
+  ],
+  "scripts": {
+    "test": "npm run verify",
+    "verify": "node tools/validate-package.mjs"
+  }
+}

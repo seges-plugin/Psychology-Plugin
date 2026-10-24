@@ -1,0 +1,54 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "psychology",
+  "version": "1.6.0",
+  "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+  "homepage": "https://noesis.seges.ai",
+  "repository": "https://github.com/seges-plugin/Psychology-Plugin",
+  "license": "MIT",
+  "keywords": [
+    "psychology",
+    "psychometrics",
+    "self-assessment",
+    "self-reflection",
+    "mcp"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Psychology",
+        "shortDescription": "Reflection tools via MCP",
+        "longDescription": "Age-appropriate reflection for people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Use context you choose to clarify a question or goal, review possible patterns and decide a next step. Relationship reflection is non-explicit and focuses on communication, consent and boundaries. Individual exercises may have stricter age or suitability requirements. Follow your host's age and parent or guardian permission requirements. Available features depend on your connection and current account controls. Stored reads require the relevant consent and source choice; eligible saves require their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
+        "category": "Productivity",
+        "capabilities": [
+          "psychometric-scoring",
+          "self-reflection",
+          "consent-controlled-storage",
+          "referral-leads"
+        ],
+        "websiteURL": "https://noesis.seges.ai",
+        "privacyPolicyURL": "https://noesis.seges.ai/privacy",
+        "termsOfServiceURL": "https://noesis.seges.ai/terms",
+        "defaultPrompt": [
+          "Help me clarify my current goal using relevant context available in this chat.",
+          "Use psychology to get the guide for reflecting on context I choose.",
+          "Check my current Noesis permissions before I select saved results to read."
+        ],
+        "brandColor": "#0d6efd",
+        "brandColorDark": "#78a9ff",
+        "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon.png",
+        "logo": "./assets/icon.png",
+        "logoDark": "./assets/icon.png",
+        "supportURL": "https://noesis.seges.ai/support/"
+      },
+      "review": {
+        "commerce": false,
+        "commerce_description": "Noesis and psychology are free and noncommercial. The plugin does not sell subscriptions, credits, digital services, or paid referrals."
+      },
+      "publication": {
+        "release_notes": "Reflection guidance, context review and next-step planning with separate account controls."
+      }
+    }
+  }
+}

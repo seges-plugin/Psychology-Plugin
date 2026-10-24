@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:psychology:memory-update:v1",
+  "title": "psychology local working memory-update envelope",
+  "description": "A session working contract, not an MCP payload, database schema, published endpoint or authorization receipt. Journey source choices, intent and approval/status observations are local metadata, never authoritative consent, approval or save proof.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "candidates"],
+  "properties": {
+    "schema": {"const": "psychology.memory-update.v1"},
+    "candidates": {"type": "array", "minItems": 1, "maxItems": 25, "items": {"$ref": "#/$defs/candidate"}},
+    "journey": {"$ref": "#/$defs/journey"}
+  },
+  "allOf": [{"if": {"required": ["journey"], "properties": {"journey": {"required": ["persist_status"], "properties": {"persist_status": {"const": "saved"}}}}}, "then": {"properties": {"candidates": {"items": {"properties": {"status": {"const": "saved"}}}}}}}],
+  "$defs": {
+    "journey": {
+      "type": "object", "additionalProperties": false,
+      "description": "Answer-first task continuity only. retention_requested records user intent, not permission. Review/persist/Today/outreach statuses describe local observations; exact purpose consent, owner review, external-send approval and authoritative receipts remain separate requirements.",
+      "required": ["journey_id", "user_goal", "retention_requested"],
+      "properties": {
+        "journey_id": {"type": "string", "minLength": 1, "maxLength": 100},
+        "user_goal": {"type": "string", "minLength": 1, "maxLength": 1500},
+        "retention_requested": {"type": "boolean"},
+        "source_choices": {"type": "array", "maxItems": 25, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "answered_questions": {"type": "array", "maxItems": 25, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 1500}},
+        "review_status": {"enum": ["not_started", "pending", "approved", "rejected", "expired"]},
+        "persist_status": {"enum": ["session_only", "pending", "saved", "blocked", "unknown_result"]},
+        "today_status": {"enum": ["not_requested", "draft", "saved", "blocked", "unknown_result"]},
+        "outreach_status": {"enum": ["not_requested", "shortlist", "draft", "awaiting_send_approval", "sent", "unknown_result"]},
+        "next_user_decision": {"type": ["string", "null"], "maxLength": 1500}
+      }
+    },
+    "clock": {
+      "type": "object", "additionalProperties": false,
+      "required": ["raw", "precision"],
+      "properties": {
+        "raw": {"type": ["string", "null"], "maxLength": 100},
+        "precision": {"enum": ["instant", "minute", "day", "month", "year", "unknown"]}
+      },
+      "allOf": [{"if": {"properties": {"raw": {"type": "null"}}}, "then": {"properties": {"precision": {"const": "unknown"}}}}]
+    },
+    "candidate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["claim", "source_kind", "source_ref", "evidence_quote", "interpretation", "clocks", "destination", "status", "receipt"],
+      "properties": {
+        "claim": {"type": "string", "minLength": 1, "maxLength": 1500},
+        "source_kind": {"enum": ["current_session_user", "selected_original_message", "platform_memory_summary"]},
+        "source_ref": {"type": ["string", "null"], "maxLength": 200},
+        "evidence_quote": {"type": "string", "minLength": 1, "maxLength": 1500},
+        "interpretation": {"type": "boolean"},
+        "clocks": {
+          "type": "object", "additionalProperties": false,
+          "required": ["source_event", "memory_record", "summary_generation", "valid_from", "valid_until", "server_observed_at"],
+          "properties": {
+            "source_event": {"$ref": "#/$defs/clock"},
+            "memory_record": {"$ref": "#/$defs/clock"},
+            "summary_generation": {"$ref": "#/$defs/clock"},
+            "valid_from": {"$ref": "#/$defs/clock"},
+            "valid_until": {"$ref": "#/$defs/clock"},
+            "server_observed_at": {"type": ["string", "null"], "format": "date-time", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"}
+          }
+        },
+        "destination": {"enum": ["profile", "trajectory", "selected_context", "journal", "workspace", "none"]},
+        "status": {"enum": ["session_only", "awaiting_source", "awaiting_permission", "awaiting_owner_review", "saved", "blocked", "unknown_result"]},
+        "receipt": {
+          "oneOf": [
+            {"type": "null"},
+            {"type": "object", "additionalProperties": false, "required": ["tool", "reference"],
+             "properties": {"tool": {"type": "string", "minLength": 1}, "reference": {"type": "string", "minLength": 1}}}
+          ]
+        }
+      },
+      "allOf": [
+        {"if": {"properties": {"source_kind": {"enum": ["platform_memory_summary", "selected_original_message"]}}}, "then": {"properties": {"destination": {"enum": ["selected_context", "none"]}}}},
+        {"if": {"properties": {"status": {"const": "saved"}}}, "then": {"properties": {"destination": {"not": {"const": "none"}}, "receipt": {"type": "object"}}}, "else": {"properties": {"receipt": {"type": "null"}}}}
+      ]
+    }
+  }
+}

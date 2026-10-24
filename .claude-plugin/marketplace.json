@@ -1,0 +1,25 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "psychology",
+  "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+  "owner": {
+    "name": "Psychology"
+  },
+  "plugins": [
+    {
+      "name": "psychology",
+      "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+      "category": "productivity",
+      "source": "./",
+      "version": "1.6.0",
+      "keywords": [
+        "psychology",
+        "psychometrics",
+        "self-assessment",
+        "self-reflection",
+        "mcp"
+      ],
+      "strict": true
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "psychology",
+  "name": "Psychology",
+  "version": "1.6.0",
+  "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+  "configSchema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "icon": "https://raw.githubusercontent.com/seges-plugin/Psychology-Plugin/main/assets/icon.png",
+  "skills": [
+    "./skills"
+  ],
+  "mcpServers": {
+    "Psychology": {
+      "url": "https://noesis.seges.ai/mcp",
+      "transport": "streamable-http",
+      "auth": "oauth"
+    }
+  }
+}

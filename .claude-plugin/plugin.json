@@ -1,0 +1,21 @@
+{
+  "name": "psychology",
+  "version": "1.6.0",
+  "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+  "homepage": "https://noesis.seges.ai",
+  "repository": "https://github.com/seges-plugin/Psychology-Plugin",
+  "license": "MIT",
+  "mcpServers": {
+    "Psychology": {
+      "type": "http",
+      "url": "https://noesis.seges.ai/mcp"
+    }
+  },
+  "keywords": [
+    "psychology",
+    "psychometrics",
+    "self-assessment",
+    "self-reflection",
+    "mcp"
+  ]
+}

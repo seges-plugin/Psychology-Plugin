@@ -1,0 +1,27 @@
+{
+  "name": "psychology",
+  "version": "1.6.0",
+  "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+  "keywords": [
+    "psychology",
+    "psychometrics",
+    "self-assessment",
+    "self-reflection",
+    "mcp"
+  ],
+  "homepage": "https://noesis.seges.ai",
+  "repository": "https://github.com/seges-plugin/Psychology-Plugin",
+  "license": "MIT",
+  "interface": {
+    "displayName": "Psychology",
+    "shortDescription": "Reflect, then take a next step",
+    "longDescription": "Age-appropriate reflection for people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Use context you choose to clarify a question or goal, review possible patterns and decide a next step. Relationship reflection is non-explicit and focuses on communication, consent and boundaries. Individual exercises may have stricter age or suitability requirements. Follow your host's age and parent or guardian permission requirements. Available features depend on your connection and current account controls. Stored reads require the relevant consent and source choice; eligible saves require their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
+    "websiteURL": "https://noesis.seges.ai"
+  },
+  "skills": "./skills/",
+  "mcpServers": {
+    "Psychology": {
+      "url": "https://noesis.seges.ai/mcp"
+    }
+  }
+}
