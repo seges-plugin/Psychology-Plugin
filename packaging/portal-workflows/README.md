@@ -1,6 +1,6 @@
 # Psychology
 
-Guided workflows help you reflect on context you choose and turn useful ideas into a practical next step. This package uses the identifier `psychology-workflows` and connects the **Psychology** MCP server at `https://noesis.seges.ai/mcp`.
+Review a goal, understand what changed and decide what to do next using context you choose. Keep comparisons, drafts and next steps in the same conversation, with available Noesis tasks and reminders. This package uses the identifier `psychology-workflows` and connects the **Psychology** MCP server at `https://noesis.seges.ai/mcp`.
 
 The package includes reflection, context, assessment, interpretation and coaching workflows with supporting references. It contains no root agents or local hooks. Use your host's supported installation interface and complete Noesis OAuth in the browser.
 

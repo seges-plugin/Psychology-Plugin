@@ -1,21 +1,21 @@
 {
   "name": "psychology",
-  "version": "1.6.0",
-  "description": "General-audience reflection for ages 13 and older. Explore context you choose and plan a next step. Not diagnosis or treatment.",
+  "version": "1.6.1",
+  "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
   "keywords": [
     "psychology",
-    "psychometrics",
-    "self-assessment",
     "self-reflection",
-    "mcp"
+    "goals",
+    "tasks",
+    "reminders"
   ],
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
   "interface": {
     "displayName": "Psychology",
-    "shortDescription": "Reflect, then take a next step",
-    "longDescription": "Age-appropriate reflection for people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Use context you choose to clarify a question or goal, review possible patterns and decide a next step. Relationship reflection is non-explicit and focuses on communication, consent and boundaries. Individual exercises may have stricter age or suitability requirements. Follow your host's age and parent or guardian permission requirements. Available features depend on your connection and current account controls. Stored reads require the relevant consent and source choice; eligible saves require their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
+    "shortDescription": "Continue your next step",
+    "longDescription": "Bring a current goal or commitment and the relevant context you choose. Review what changed, compare possible next steps and prepare a useful plan or draft. Use available Noesis task and reminder operations with the appropriate account permissions. You can correct suggestions and decide what to keep. Reflection exercises are optional and may have stricter age or suitability requirements. For people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Follow your host's age and parent or guardian permission requirements. Stored reads need the relevant permission and source choice; eligible saves need their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
     "websiteURL": "https://noesis.seges.ai"
   },
   "skills": "./skills/",

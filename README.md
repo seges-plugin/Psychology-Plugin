@@ -1,17 +1,19 @@
 # Psychology
 
-**Think it through. Then take the next step.**
+**Your plan changed. Keep moving.**
 
-Psychology helps you reflect on experiences you choose, understand useful patterns and turn an idea into a practical next step.
+Psychology helps you review a goal, understand what changed and decide what to do next using context you choose. Continue the work in your AI, with Noesis tasks and reminders when available.
 
 [Connect your AI](docs/setup-and-contract.md) · [Open Today](https://noesis.seges.ai/en/today/) · [Get support](https://noesis.seges.ai/support/)
 
-## What you can do
+## Start with something you need to do
 
-- Clarify a question or goal using relevant context you choose.
-- Explore self-reflection exercises and understand the returned results.
-- Review suggestions, correct them and decide what to keep.
-- Organize a next step in Today, with dates or reminders when useful.
+- Compare an original agreement with a new request and draft a reply.
+- Review a changed goal alongside your current limits and possible next steps.
+- Turn an agreed next step into a Today task, with optional dates or reminders.
+- Explore a reflection exercise when it is useful to your question.
+
+For example: “My client asked for extra work, but Friday's deadline stays the same. Help me compare the agreement with this message and prepare a reply.” Share the material you want to use, review the suggestions and choose your next step.
 
 Tell your assistant what you want help with. It can use context available in the current conversation and other sources you deliberately select. It cannot retrieve an unavailable conversation archive.
 
@@ -35,9 +37,9 @@ You choose the source material and can correct, skip or reject a suggestion. Rea
 
 You can continue the conversation while a save waits for your review. Imported context, personal profile information and workspace records have separate controls. See [context and memory](docs/activation-and-memory.md).
 
-## Take the next step
+## Keep the same goal in view
 
-[Today](https://noesis.seges.ai/en/today/) is the separate Noesis website for tasks and reminders. Connected task and record features require the relevant account permissions. If a feature is unavailable in your AI, you can work with a draft or use the website.
+Ask for a comparison, a draft or a task in the same conversation. You do not need to fill out a complete profile first. [Today](https://noesis.seges.ai/en/today/) is your Noesis task and reminder view. Connected task and record features require the relevant account permissions. If a feature is unavailable in your AI, keep the draft or continue on the website.
 
 - [Tasks and reminders](docs/workspace-mcp.md)
 - [Personal records and relationships](docs/connected-objects.md)
@@ -51,7 +53,7 @@ Individual exercises and instruments may have stricter age or suitability requir
 
 ## Support and wellbeing
 
-Psychology is a noncommercial reflection tool. It does not provide diagnosis or treatment and is not an emergency service. Instrument results need their original context; professional listings are unverified leads rather than clinical endorsements.
+Psychology supports personal reflection and next-step planning. It does not provide diagnosis or treatment and is not an emergency service. Instrument results need their original context and applicable use conditions; professional listings are unverified leads rather than clinical endorsements.
 
 Manage permissions, request a data copy or request account deletion in your [Noesis account](https://noesis.seges.ai/en/account/).
 

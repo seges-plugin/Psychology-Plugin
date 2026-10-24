@@ -1,7 +1,7 @@
 ---
 name: psychology
 version: "1.3.0"
-description: Use proactively for personal decisions, commitments, reminders, rescheduling, completion, corrected goals, career or relationship changes, habits, wellbeing, learning progress, financial context and selected memories, even without Psychology or remember keywords. Technical subject matter does not exclude a personal commitment. Route to memory-updates; verify the exact store and capability before persistence.
+description: Help review personal decisions, changed plans, commitments, reminders, rescheduling, completion, career or relationship changes, habits, wellbeing, learning progress, financial context and selected memories. Match relevant natural-language requests without requiring the Psychology name. Technical subject matter does not exclude a personal commitment. Verify the actual capability and permission before saving.
 triggers:
   - "@psychology"
   - "help me choose a non-clinical self-reflection exercise"

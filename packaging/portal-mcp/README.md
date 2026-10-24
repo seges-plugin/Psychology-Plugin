@@ -1,6 +1,6 @@
 # Psychology
 
-Use Psychology to clarify a question, explore a reflection exercise or work with Noesis records you choose. This package connects MCP tools without bundled skills or local hooks.
+Use Psychology to review a goal, understand what changed and choose a practical next step using context you select. Work with available Noesis tasks and records, or explore an optional reflection exercise. This package connects MCP tools without bundled skills or local hooks.
 
 Connect to `https://noesis.seges.ai/mcp` using your host's browser OAuth flow. Available operations depend on your host and account permissions.
 

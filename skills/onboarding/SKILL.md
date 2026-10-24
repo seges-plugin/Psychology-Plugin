@@ -1,6 +1,6 @@
 ---
 name: onboarding
-description: Guide a user through a browser-authorized Psychology connection without collecting credentials or overstating host support.
+description: Connect Psychology to Noesis through the supported browser sign-in, then return to the user's goal. Do not collect credentials or overstate host support.
 version: "1.2.4"
 ---
 
