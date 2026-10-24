@@ -1,0 +1,26 @@
+{
+  "name": "psychology",
+  "version": "1.6.1",
+  "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seges-plugin/Psychology-Plugin"
+  },
+  "files": [
+    "plugin.json",
+    "mcp.json",
+    ".mcp.json",
+    ".codex-plugin/plugin.json",
+    "openclaw.plugin.json",
+    "skills",
+    "README.md",
+    "LICENSE",
+    ".claude-plugin/plugin.json",
+    ".claude-plugin/marketplace.json",
+    "kimi.plugin.json",
+    "agents",
+    "hooks"
+  ]
+}

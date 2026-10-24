@@ -1,0 +1,21 @@
+{
+  "id": "psychology",
+  "name": "Psychology",
+  "version": "1.6.1",
+  "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
+  "configSchema": {
+    "type": "object",
+    "properties": {},
+    "additionalProperties": false
+  },
+  "skills": [
+    "./skills"
+  ],
+  "mcpServers": {
+    "Psychology": {
+      "url": "https://noesis.seges.ai/mcp",
+      "transport": "streamable-http",
+      "auth": "oauth"
+    }
+  }
+}

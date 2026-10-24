@@ -1,0 +1,6 @@
+interface:
+  display_name: "Personal context updates"
+  short_description: "Notice changes and route memory"
+  default_prompt: "Use my current decision and selected memories to update a source-linked working brief and show its correct save path."
+policy:
+  allow_implicit_invocation: true

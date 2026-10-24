@@ -1,0 +1,52 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "psychology",
+  "version": "1.6.1",
+  "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
+  "homepage": "https://noesis.seges.ai",
+  "repository": "https://github.com/seges-plugin/Psychology-Plugin",
+  "license": "MIT",
+  "keywords": [
+    "psychology",
+    "self-reflection",
+    "goals",
+    "tasks",
+    "reminders"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Psychology",
+        "shortDescription": "Continue your next step",
+        "longDescription": "Bring a current goal or commitment and the relevant context you choose. Review what changed, compare possible next steps and prepare a useful plan or draft. Use available Noesis task and reminder operations with the appropriate account permissions. You can correct suggestions and decide what to keep. Reflection exercises are optional and may have stricter age or suitability requirements. For people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Follow your host's age and parent or guardian permission requirements. Stored reads need the relevant permission and source choice; eligible saves need their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
+        "category": "Productivity",
+        "capabilities": [
+          "goal-reflection",
+          "next-step-planning",
+          "tasks-and-reminders",
+          "reviewed-personal-records",
+          "optional-self-reflection"
+        ],
+        "websiteURL": "https://noesis.seges.ai",
+        "privacyPolicyURL": "https://noesis.seges.ai/privacy",
+        "termsOfServiceURL": "https://noesis.seges.ai/terms",
+        "defaultPrompt": [
+          "My plan changed. Help me review my goal, current limits and next action using the context I choose.",
+          "My client asked for extra work. Help me compare the original agreement with the new request and draft a reply.",
+          "Help me turn this agreed next step into a Today task using the available account tools."
+        ],
+        "brandColor": "#0d6efd",
+        "brandColorDark": "#78a9ff",
+        "supportURL": "https://noesis.seges.ai/support/"
+      },
+      "review": {
+        "commerce": false,
+        "commerce_description": "The plugin does not sell subscriptions, credits, digital services or paid referrals, and it does not start checkout or upgrades. Available account functionality depends on the current permissions and entitlements."
+      },
+      "publication": {
+        "release_notes": "Goal review, selected-context reflection and practical next-step planning with existing account controls."
+      },
+      "onboardingSkill": "./skills/onboarding/SKILL.md"
+    }
+  }
+}

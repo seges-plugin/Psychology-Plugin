@@ -1,0 +1,5 @@
+interface:
+  display_name: "Psychology"
+  short_description: "Review changes and plan your next step"
+policy:
+  allow_implicit_invocation: true

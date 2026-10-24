@@ -1,0 +1,5 @@
+interface:
+  display_name: "Selected memory distillation"
+  short_description: "Build on the context you choose"
+policy:
+  allow_implicit_invocation: true
