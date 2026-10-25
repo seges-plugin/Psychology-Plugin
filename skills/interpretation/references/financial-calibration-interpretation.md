@@ -7,10 +7,10 @@
 > interval-estimation calibration quiz. **Part (b) is this module's own original design, not a published or
 > independently validated psychometric instrument**, never describe it to a user as "the Tetlock test," a
 > validated calibration scale, or any named published instrument. Say this distinction every time both
-> parts are discussed. This file does not reproduce Part (b)'s items or its scoring thresholds, call
-> `psychology_get_item_bank` for exact item wording and `psychology_score_financial_calibration` for the
-> authoritative interpretation of a given hit rate, that scoring logic is this product's own and is not
-> published anywhere else.
+> parts are discussed. This file does not reproduce Part (b)'s items or scoring thresholds. For
+> administration or rescoring, use only host-discovered tools that explicitly support this instrument
+> and its permitted use. Otherwise explain the supplied result without reconstructing items or thresholds.
+> The original calibration scoring logic is this product's own and is not published elsewhere.
 
 ## Two genuinely different things bundled into one score
 
@@ -51,7 +51,7 @@ three correctly.**
 For each interval item, the person gave a range they were asked to be confident contained the true answer.
 **The exact scoring thresholds that turn a hit rate into "underconfident" / "well-calibrated" /
 "overconfident" are this product's own internal logic and live only in
-`psychology_score_financial_calibration`'s return value, never restate or approximate them here.** With
+the returned scoring record; never restate or approximate them here.** With
 only a handful of items, small differences in hit rate carry real sampling noise, so treat whatever
 direction the tool reports as the signal, not the precise percentage.
 
@@ -100,7 +100,7 @@ meaninglessness:
   well-established general methodology (interval-estimation calibration testing), but this specific set has
   no external reliability/validity study. Say this whenever discussing it.
 - **No exact scoring thresholds are reproduced here.** The hit-rate cutoffs that separate underconfident /
-  well-calibrated / overconfident are internal to `psychology_score_financial_calibration` and are not
+  well-calibrated / overconfident are internal to the original scoring implementation and are not
   published or restated in this file.
 - **Not investment advice, and not a financial-capability diagnosis.** This is a self-assessment of
   specific knowledge and a general reasoning skill, it must never be the sole basis for an actual financial

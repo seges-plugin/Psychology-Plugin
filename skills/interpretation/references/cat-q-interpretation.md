@@ -6,9 +6,9 @@
 > a returned record; it is not a public MCP invocation. The record covers three subscales (Compensation,
 > Masking, Assimilation), reported as **means** (1-7), not percentiles. Use alongside `strength-frames.md`'s
 > framing conventions and `2e-archetypes.md` for cross-instrument pattern language. This file describes how
-> to talk about a returned result at the construct level, it does not reproduce item text, call
-> `psychology_get_item_bank` for the exact administered wording and `psychology_score_cat_q` for the
-> authoritative subscale means.
+> to talk about a returned result at the construct level; it does not reproduce item text. For
+> administration or rescoring, use only host-discovered tools that explicitly support this instrument
+> and its permitted use. Otherwise explain the supplied subscale means without reconstructing items or scores.
 
 ## What CAT-Q actually measures, and what it doesn't
 

@@ -7,8 +7,9 @@
 > 6 months), scored against the instrument's own published positive-screen rule. ASRS-V1.1 Screener ©
 > 2023 New York University and President and Fellows of Harvard College. This file describes how to talk
 > about a returned result; it does not reproduce the item text, the per-item scoring rule, or the
-> instrument's validation statistics, call `psychology_get_item_bank` for the exact administered wording
-> and `psychology_score_asrs_part_a` for the authoritative scoring and threshold logic.
+> instrument's validation statistics. For administration or rescoring, use only host-discovered tools
+> that explicitly support this instrument and its permitted use. Otherwise explain the supplied result
+> without reconstructing items, scores or thresholds.
 
 ## Read this paragraph first, every time
 
@@ -56,8 +57,8 @@ downside:
 
 ## What a positive screen means, and doesn't
 
-A positive screen (per `psychology_score_asrs_part_a`'s own threshold logic, do not restate or approximate
-that logic here) means: on this snapshot, this person's answers land in the range the instrument's
+A positive screen (as classified in the returned result, do not restate or approximate
+the scoring logic here) means: on this snapshot, this person's answers land in the range the instrument's
 validation research associates with adults who, on further clinical evaluation, are likely to meet criteria
 for ADHD. It is an invitation to get clarity, not a conclusion. Useful, honest language: *"Your pattern here
 is worth exploring further with a professional if you want a clearer picture, this screener is designed to
@@ -94,5 +95,4 @@ professional rather than treating the screen as the final word.
 - **No neurodivergence-adjusted norm exists**, this screener was validated against clinical ratings in the
   general population, not against an ADHD-specific or 2e-specific comparison sample.
 - **No item text, per-item thresholds, or validation statistics are reproduced here.** Those live only in
-  the instrument's own licensed materials and in the live `psychology_get_item_bank` /
-  `psychology_score_asrs_part_a` tool results, never in this file.
+  the instrument's own licensed materials and authorized scoring records, never in this file.

@@ -7,9 +7,9 @@
 > Kripalani, S., et al., 2009. *Value in Health*, 12(1), 118-123), a 12-item, 1-4 scale, total 12-48. **This
 > is a personal self-tracking tool. It is not a medical diagnosis, not a substitute for a sleep study or
 > medication review, and not treatment advice.** Say this directly, every time, before discussing either
-> component. This file does not reproduce either instrument's item text, call `psychology_get_item_bank`
-> for the exact administered wording and `psychology_score_wellness_tracking` for the authoritative
-> subscale totals.
+> component. This file does not reproduce either instrument's item text. For administration or
+> rescoring, use only host-discovered tools that explicitly support this instrument and its permitted use.
+> Otherwise explain the supplied subscale totals without reconstructing items or scores.
 
 ## Two unrelated things bundled into one tracker
 
