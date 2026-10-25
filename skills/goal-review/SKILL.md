@@ -122,9 +122,11 @@ features, scheduled agents, bank access, financial controls, or accepted host su
 Use only capabilities actually exposed by the current host and authorized for the requested
 operation. Describe a missing capability plainly and continue the supported conversation-only work.
 
-Preserve Noesis as permanently free, advertising-free, noncommercial health and growth
-infrastructure. Do not offer subscriptions, data sales, commercial health referrals, or
-commercial sponsorship through this review. No private psychological information may be
+Assessment items, administration, scoring, interpretation, reports, quotas and priority must not be
+included in paid subscriptions or upgrade benefits. This Plugin does not display subscription plans,
+credits, checkout or upgrade promotions. If an existing paid account is supported, use only its already
+included eligible non-assessment entitlements; do not infer that subscriptions or billing are enabled.
+Do not offer data sales, commercial health referrals or commercial sponsorship through this review. No private psychological information may be
 automatically shared with a separate commercial service. Access to Noesis must not depend on
 joining another service. A purpose-specific consent for reflection is not consent for
 commercial reuse, financial disclosure, outreach, or model training. Commercial reuse or

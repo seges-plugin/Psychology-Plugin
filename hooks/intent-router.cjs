@@ -203,8 +203,11 @@ function objectSourceFrame(c) {
   const sourceIntro=!selfIntro&&/^[^，,。！？;；\n]{1,24}(?:表示|提到|指出|說道|说道|寫道|写道|說|说)\s*[:：]?$/.test(c);
   const editorialIntro=editorial&&/(?:以下|下面|這段|这段|這句|这句|段落|文字|內容|内容)\s*[:：]?$/.test(c);
   const generalFrame=/^(?:一般情況下|一般情况下|假設情境|假设情境)\s*[:：]?$/.test(c);
+  // Untrusted document instructions scope their following lines just like a
+  // quote/source introduction; a later explicit owner resumption can exit it.
+  const documentIntro = /^(?:(?:the|this|that|a|an)\s+)?(?:document|file|attachment|article|report)\s+(?:says?|states?|instructs?|reads?)\s*:|^(?:(?:這份|这份|該|该|附件中的)?(?:文件|文檔|文档|附件|文章|報告|报告))(?:中)?(?:說|说|寫道|写道|指示|要求|表示)\s*[:：]/i.test(c);
   const ownActivity=/^(?:(?:please|can you|could you)\s+)?(?:remind\s+(?:me|us)|add\b|create\b|reschedule\b)|^(?:i|we)\s+(?:promised|agreed|owe|will|finished|completed|started|began)\b|^(?:提醒我|我(?:答應|答应|承諾|承诺|決定|决定|完成|開始|开始)|(?:請|请|幫我|帮我)?(?:新增|添加|建立|创建))/i.test(c);
-  return !ownActivity&&(sample||sourceIntro||editorialIntro||generalFrame||(fiction&&(editorial||attributed)));
+  return !ownActivity&&(sample||sourceIntro||documentIntro||editorialIntro||generalFrame||(fiction&&(editorial||attributed)));
 }
 
 function objectUnitSegments(prompt) {
@@ -268,6 +271,53 @@ function objectUpdateDeclined(clause) {
   return /(?:不要|別|别|沒有要|没有要|不想)\s*(?:替我|幫我|帮我)?(?:更新|修改|記錄|记录|儲存|储存)(?:我的|我|個人|个人)?(?:資料|资料|偏好|興趣|兴趣|宗教|健康|檔案|档案)/.test(clause)||/\b(?:do not|don't)\s+(?:update|change|record|save)\s+my\s+(?:profile|preferences?|religion|health|contacts?)\b/i.test(clause);
 }
 
+// Subject omission is common in explicit record requests. A bounded operation or
+// selected-object state may request a hint without proving ownership, resolving a
+// target, authorizing an account read or approving any mutation.
+// A temporal modifier is a source-selection hint, not another person's name.
+// This recognizes literal scope grammar only: no date parsing, time precision,
+// account access, target resolution or mutation authorization is inferred.
+function temporalRecordScope(value) {
+  const text = value.trim();
+  return /^(?:today|yesterday|tomorrow)$/i.test(text)
+    || /^(?:this|last|next|current|previous|coming)\s+(?:day|week|month|year|quarter|weekend)$/i.test(text)
+    || /^(?:(?:this|last|next)\s+)?(?:monday|tuesday|wednesday|thursday|friday|saturday|sunday)$/i.test(text)
+    || /^(?:this|last|next)\s+(?:january|february|march|april|may|june|july|august|september|october|november|december)$/i.test(text)
+    || /^(?:今天|昨天|前天|明天|後天|后天)$/.test(text)
+    || /^(?:上|下|這|这|本)(?:週|周|星期)(?:[一二三四五六日天1-7])?$/.test(text)
+    || /^(?:上|下|這|这|本)(?:個|个)?(?:月|季|季度|年)$/.test(text)
+    || /^(?:\d{4}年)?(?:[1-9]|1[0-2])月(?:(?:[1-9]|[12]\d|3[01])(?:日|號|号))?$/.test(text)
+    || /^\d{4}-(?:0[1-9]|1[0-2])(?:-(?:0[1-9]|[12]\d|3[01]))?$/.test(text);
+}
+
+function selectedObjectRequest(clause) {
+  const c = clause.trim().replace(/^[,，]\s*/, '');
+  if (objectUncertain(c) || objectDeniedAttribution(c) || objectNegatedAction(c) || objectOutputOnly(c)) return false;
+  if (/\b(?:his|her|their|someone else's|another person's)\b|(?:他的|她的|他們的|他们的|她們的|她们的|別人的|别人的|其他人的)/i.test(c)) return false;
+  if (/\b(?:schema|database|sql|api|plugin|repo|repository|commit|hook|fixture|unit test|function|variable|password|token|syntax|compiler|readme|package[.-]json|dependencies|dependency|npm|css|html|typescript|javascript|python|component|codebase|config|configuration)\b|(?:程式|代碼|代码|資料庫|数据库|密碼|密码|測試|测试|元件|組件|组件|設定檔|配置|依賴|依赖|套件)/i.test(c)) return false;
+  if (/\b(?:fictional|fiction|imaginary|novel|screenplay)\b|(?:虛構|虚构|小說|小说|劇本|剧本)/i.test(c)) return false;
+  // A named person's possessive is not an owner-selected account record.
+  // Selected record genitives (this project's task) are still normal requests.
+  const recordGenitives = new Set(['project', 'task', 'goal', 'reminder', 'contact', 'journal', 'diary', 'record']);
+  if ([...c.matchAll(/\b([a-z][a-z-]*)['’]s\b/ig)].some(match => {
+    const modifier = c.slice(0, match.index).match(/\b(this|last|next|current|previous|coming)\s+$/i);
+    const scope = modifier ? modifier[1] + ' ' + match[1] : match[1];
+    return !recordGenitives.has(match[1].toLowerCase()) && !temporalRecordScope(scope);
+  })) return false;
+  const zhOperand = c.replace(/^(?:(?:請|请|幫我|帮我|替我|麻煩|麻烦)\s*){0,3}(?:列出|顯示|显示|查看|查詢|查询|讀取|读取|新增|添加|建立|創建|创建|更新|修改|更正|調整|调整|設定|设定|刪除|删除|刪掉|删掉|移除|清除|重新命名|取消|移動|移动|完成|標記|标记)\s*/, '');
+  const zhQueryOperand = zhOperand.replace(/^(?:(?:今天|明天|昨天|這週|这周|本週|本周|上週|上周|下週|下周|這個月|这个月)\s*)?(?:有|還有|还有)?(?:哪些|哪幾|哪几|什麼|什么)/, '');
+  const zhPossessor = zhQueryOperand.match(/^([^，,。！？;；\n]{1,30})的(?:日記|日记|日誌|日志|聯絡人|联系人|任務|任务|待辦|待办|提醒|專案|专案|目標|目标|時段|时段|時間區塊|时间区块)/);
+  const selectedPossessor = /^(?:(?:我(?:們|们)?|本人|自己)(?:的(?:任務|任务|專案|专案|目標|目标|日記|日记|聯絡人|联系人))?|(?:這|这|那)(?:個|个|項|项|篇|則|则)?(?:任務|任务|專案|专案|目標|目标|日記|日记|聯絡人|联系人)|所有|全部|上週|上周|這週|这周|本週|本周|今天|昨天|明天|已完成|未完成|已取消|已暫停|已暂停|等待中)$/;
+  if (zhPossessor && !selectedPossessor.test(zhPossessor[1].trim()) && !temporalRecordScope(zhPossessor[1])) return false;
+  const record = /(?:聯絡人|联系人|通訊錄|通讯录|任務|任务|待辦|待办|提醒|時間區塊|时间区块|時段|时段|目標|目标|專案|专案|項目|项目|日誌|日志|日記|日记|關係記錄|关系记录)|\b(?:contacts?|address book|tasks?|reminders?|time[ -]?blocks?|goals?|projects?|journals?|diary(?: entries| entry)?|relationship records?)\b/i;
+  if (!record.test(c)) return false;
+  const direct = /^(?:(?:please|can you|could you|would you|help me)\s+)?(?:list|show|view|read|retrieve|fetch|add|create|update|edit|correct|adjust|set|delete|remove|clear|rename|replace|cancel|reschedule|move|complete|finish|mark)\b|^(?:(?:請|请|幫我|帮我|替我|麻煩|麻烦)\s*){0,3}(?:列出|顯示|显示|查看|查詢|查询|讀取|读取|新增|添加|建立|創建|创建|更新|修改|更正|調整|调整|設定|设定|刪除|删除|刪掉|删掉|移除|清除|重新命名|取消|移動|移动|完成|標記|标记|把|將|将)/i;
+  const boundedQuery = /^(?:(?:今天|明天|昨天|這週|这周|本週|本周|上週|上周|下週|下周|這個月|这个月)\s*)?(?:有|還有|还有)?(?:哪些|哪幾|哪几|什麼|什么)/.test(c);
+  const selectedState = /^(?:這個|这个|那個|那个|這項|这项|那項|那项|this|that)\s*(?:任務|任务|待辦|待办|提醒|專案|专案|目標|目标|task|reminder|project|goal)/i.test(c)
+    && /(?:沒有期限|没有期限|無期限|无期限|尚未開始|尚未开始|已完成|已取消|已暫停|已暂停|等待中)|\b(?:no due date|no deadline|completed|cancelled|canceled|paused|on hold|waiting)\b/i.test(c);
+  return direct.test(c) || boundedQuery || selectedState;
+}
+
 function classify(prompt) {
   if (typeof prompt !== "string" || !prompt.trim()) return "none";
   const clauses = objectRoutingClauses(prompt);
@@ -278,6 +328,10 @@ function classify(prompt) {
   if (own && /(?:kill|hurt)\s+myself|end my life|(?:想|要|打算)(?:自殺|自杀|傷害自己|伤害自己)|(?:我|本人)(?:現在|现在)?(?:可能(?:會|会)?|怕(?:自己)?(?:會|会)?|擔心(?:自己)?(?:會|会)?|担心(?:自己)?(?:會|会)?|將會|将会)(?:自殺|自杀|傷害自己|伤害自己)/i.test(text)) return "urgent";
   if (/(?:don't|do not|stop)\s+(?:creat(?:e|ing)\s+(?:any\s+)?records?\b|us(?:e|ing)\s+psychology|(?:track(?:ing)?|record(?:ing)?|sav(?:e|ing)|remember(?:ing)?|stor(?:e|ing))\s+(?:me|this|these|that|my|our|any|anything))|(?:不要|停止|別再|别再|不再)\s*(?:(?:替我|幫我|帮我|為我|为我)\s*)?(?:使用\s*Psychology|[記记][錄录]|[記记]住|[儲储]存|保存|蒸[餾馏]|(?:建立|創建|创建|新增)(?:任何)?(?:[記记][錄录]|檔案|档案))/i.test(text)) return "declined";
   if (clauses.some(objectUpdateDeclined)) return "declined";
+  // Preserve this technical filename cue from the visible original prompt
+  // before period-based clause splitting can discard its extension.
+  const selectedPrompt = prompt.replace(/\bpackage\.json\b/ig, 'package-json');
+  if (objectRoutingClauses(selectedPrompt).some(selectedObjectRequest)) return "personal";
   if (objectIntentSentences(prompt, clauses)) return "personal";
   if (clauses.some(composedGrammar)) return "personal";
   // Retain punctuation-derived question scope; the plain clause list no longer

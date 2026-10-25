@@ -1,7 +1,7 @@
 {
   "name": "psychology",
-  "version": "1.6.1",
-  "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
+  "version": "1.6.2",
+  "description": "Review goals, tasks, relationships or diary notes using context you choose, and plan your next step. Ages 13 and older; not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",

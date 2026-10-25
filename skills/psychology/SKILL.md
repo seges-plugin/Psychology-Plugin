@@ -1,7 +1,7 @@
 ---
 name: psychology
 version: "1.3.0"
-description: Help review personal decisions, changed plans, commitments, reminders, rescheduling, completion, career or relationship changes, habits, wellbeing, learning progress, financial context and selected memories. Match relevant natural-language requests without requiring the Psychology name. Technical subject matter does not exclude a personal commitment. Verify the actual capability and permission before saving.
+description: Help with goals, decisions, commitments, tasks, reminders, start or due times, completion or cancellation, contacts and relationships, diary notes, learning progress, wellbeing and selected memories. Route relevant natural-language requests to list, read, create, change or remove eligible records, including short follow-ups, without requiring Psychology or memory keywords. Use only actually exposed operations and the required source, purpose and owner authorization; absent capabilities keep a session-only draft.
 triggers:
   - "@psychology"
   - "help me choose a non-clinical self-reflection exercise"
@@ -58,6 +58,13 @@ while candidates await review. Meaningful changes start distillation, not unappr
 General commitments and learning milestones count even when they mention code, SQL or an API. Distinguish
 them from requests to edit code, quoted examples, translation, other people's facts and hypotheticals.
 Reminders, rescheduling and "done" may refer to a selected task; never infer its identity or mutate every task.
+
+Short requests such as "list diary entries from last week", "delete this diary entry", "rename this project",
+"clear the due date for this task", or "show all contacts" are relevant routing requests even without an
+explicit "I". Resolve a target only from the person's selected context when unambiguous. A routing match
+does not establish ownership, authorize a private read or approve a change. Check the exact currently
+exposed schema for that object and action; do not assume diary editing, contact operations or a general
+record API exists. Missing operations keep the requested draft or use the supported Noesis page.
 
 ## 0. Safety before connection or source choice
 
