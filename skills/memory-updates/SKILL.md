@@ -1,6 +1,6 @@
 ---
 name: memory-updates
-description: Use proactively for personal decisions, commitments, reminders, rescheduling, task completion, learning progress, habits, relationships, wellbeing or financial changes, including commitments about technical work. Also use for selected past chats/memories. Distil and route candidates without requiring Psychology or remember keywords; persistence needs the exact supported destination and authorization.
+description: Use proactively for personal decisions, commitments, tasks, reminders, start or due times, completion, cancellation, learning progress, habits, contacts and relationships, diary notes, wellbeing or financial changes, including commitments about technical work. Also use for selected past chats or memories and explicit list/read/create/change/remove requests about supported personal records. Distil and route candidates without requiring Psychology or remember keywords; a routing match never authorizes a private read or save. Use the exact supported destination and action authorization.
 version: "1.0.0"
 ---
 

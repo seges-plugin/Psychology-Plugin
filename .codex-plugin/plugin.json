@@ -1,7 +1,7 @@
 {
   "name": "psychology",
-  "version": "1.6.1",
-  "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
+  "version": "1.6.2",
+  "description": "Review goals, tasks, relationships or diary notes using context you choose, and plan your next step. Ages 13 and older; not diagnosis or treatment.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -17,7 +17,7 @@
   "interface": {
     "displayName": "Psychology",
     "shortDescription": "Continue your next step",
-    "longDescription": "Bring a current goal or commitment and the relevant context you choose. Review what changed, compare possible next steps and prepare a useful plan or draft. Use available Noesis task and reminder operations with the appropriate account permissions. You can correct suggestions and decide what to keep. Reflection exercises are optional and may have stricter age or suitability requirements. For people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Follow your host's age and parent or guardian permission requirements. Stored reads need the relevant permission and source choice; eligible saves need their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
+    "longDescription": "Bring a current goal, task, relationship question or diary note and the relevant context you choose. Review what changed, compare possible next steps and prepare a useful plan or draft. Requests to list, create, edit, reschedule, complete or remove records use only operations actually available in this session, with the appropriate account permissions. If an operation is unavailable, keep a conversation draft or use the supported Noesis page. You can correct suggestions and decide what to keep. Reflection exercises are optional and may have stricter age or suitability requirements. For people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Follow your host's age and parent or guardian permission requirements. Stored reads need the relevant permission and source choice; eligible saves need their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
     "category": "Productivity",
     "capabilities": [
       "goal-reflection",

@@ -1,17 +1,17 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "psychology",
-  "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
+  "description": "Review goals, tasks, relationships or diary notes using context you choose, and plan your next step. Ages 13 and older; not diagnosis or treatment.",
   "owner": {
     "name": "Psychology"
   },
   "plugins": [
     {
       "name": "psychology",
-      "description": "Review what changed, clarify your goal and plan a practical next step using context you choose. For ages 13 and older; not diagnosis or treatment.",
+      "description": "Review goals, tasks, relationships or diary notes using context you choose, and plan your next step. Ages 13 and older; not diagnosis or treatment.",
       "category": "productivity",
       "source": "./",
-      "version": "1.6.1",
+      "version": "1.6.2",
       "keywords": [
         "psychology",
         "self-reflection",
