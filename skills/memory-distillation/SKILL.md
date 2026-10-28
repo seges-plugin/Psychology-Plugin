@@ -21,10 +21,7 @@ triggers:
 
 ## Audience and privacy
 
-This skill is for ages 13+. Use teen-appropriate, non-graphic language when age is unknown. For a person
-known to be under 13, offer only general information or immediate safety support; do not collect personal
-history, read account data, prepare personal candidates or save anything. Follow the audience boundary in
-`../00-session-bootstrap/SKILL.md` and respect the actual service's age restrictions.
+Follow the [account age rules](../00-session-bootstrap/SKILL.md#audience-and-age-appropriate-privacy). Under 13: general or safety help only; no personal collection, account reads or saving. Ages 13-17: account work is limited to server-permitted ordinary tasks/goals, optional dates and user-enabled reminders. Unknown age grants no restricted processing or persistence. Never bypass restrictions through another tool/store/file. Ordinary non-sensitive conversation may continue. Declaring 18+ grants no optional-purpose consent; keep required source/action/connection permissions and instrument rights.
 
 This workflow may start proactively from `../memory-updates/SKILL.md` when a personal task benefits from
 context already available or explicitly selected in this conversation. Do not require the person to say

@@ -1,9 +1,6 @@
 # Selected-memory summary prompt
-For a person known to be under 13, do not request personal history, produce a personal-context export,
-prepare personal candidates or save anything. Offer only general information or immediate safety help.
-For ages 13–17 or an unknown age, keep examples non-graphic and suitable for teens; do not solicit intimate
-details or infer sensitive identity or health traits. Do not ask for a birth date or identity document.
 
+This adult-only workflow follows the age gate inside the copy prompt below. Ordinary non-sensitive conversation can continue without history retrieval.
 
 Use this reference when a person wants to bring relevant memories and past-chat context from ChatGPT, Claude,
 or Kimi into Psychology. It asks for a purpose-limited summary of context the source assistant can actually access,
@@ -34,6 +31,7 @@ prompt line. Its SHA-256 is checked by the contract verifier.
 The Markdown fence delimiters are documentation only and are not part of those canonical bytes.
 
 ```text
+Use only current account eligibility; a chat age claim or adult=true grants none. Under 13: general/safety help only, without personal intake, account reads or saving. Ages 13-17 or unknown: do not retrieve/import past chats or memory, draft sensitive profiles or retain candidates; offer ordinary non-sensitive planning instead. Never bypass limits through other tools/stores/files. Declaring 18+ grants no optional-purpose consent; keep source/action/connection permissions.
 Help me bring useful personal context into Noesis/Psychology for this purpose: [YOUR PURPOSE].
 Use relevant stored memories and relevant past conversations about me that you can actually access in this
 account or chat context. If I select or paste specific conversations, use those too. Do not limit the result to

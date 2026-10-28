@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "psychology",
-  "version": "1.6.2",
-  "description": "Review goals, tasks, relationships or diary notes using context you choose, and plan your next step. Ages 13 and older; not diagnosis or treatment.",
+  "version": "1.6.3",
+  "description": "Review a change in your plan and decide your next step, using context you choose. Non-clinical support.",
   "homepage": "https://noesis.seges.ai",
   "repository": "https://github.com/seges-plugin/Psychology-Plugin",
   "license": "MIT",
@@ -18,7 +18,7 @@
       "interface": {
         "displayName": "Psychology",
         "shortDescription": "Continue your next step",
-        "longDescription": "Bring a current goal, task, relationship question or diary note and the relevant context you choose. Review what changed, compare possible next steps and prepare a useful plan or draft. Requests to list, create, edit, reschedule, complete or remove records use only operations actually available in this session, with the appropriate account permissions. If an operation is unavailable, keep a conversation draft or use the supported Noesis page. You can correct suggestions and decide what to keep. Reflection exercises are optional and may have stricter age or suitability requirements. For people aged 13 and older; not for children under 13. Unavailable in the EU, EEA and UK. Follow your host's age and parent or guardian permission requirements. Stored reads need the relevant permission and source choice; eligible saves need their applicable review and authorization. Not diagnosis or treatment. Professional listings are unverified leads.",
+        "longDescription": "Continue a goal, task, relationship question or diary note using context you choose. Review what changed and decide your next step. Use available Noesis tools to update records, with the required permissions and review. Noesis uses your self-declared age band. Ages 13-17 have basic tasks, goals and reminders with limited collection. Eligible adults can use the available features they authorize. Health, instruments, imports, research and sharing have separate requirements. Unknown age does not grant adult access. Unavailable under 13 or in the EU, EEA or UK. Your AI host's age rules apply. Not diagnosis or treatment.",
         "category": "Productivity",
         "capabilities": [
           "goal-reflection",

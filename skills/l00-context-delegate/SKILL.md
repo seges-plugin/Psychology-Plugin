@@ -12,15 +12,9 @@ triggers:
 
 ## Audience and privacy
 
-This skill is for ages 13+. Use teen-appropriate, non-graphic language when age is unknown. For a person
-known to be under 13, offer only general information or immediate safety support; do not collect personal
-history, read account data, prepare personal candidates or save anything. Follow the audience boundary in
-`../00-session-bootstrap/SKILL.md` and respect the actual service's age restrictions.
+Follow the [account age rules](../00-session-bootstrap/SKILL.md#audience-and-age-appropriate-privacy). Under 13: general or safety help only; no personal collection, account reads or saving. Ages 13-17: account work is limited to server-permitted ordinary tasks/goals, optional dates and user-enabled reminders. Unknown age grants no restricted processing or persistence. Never bypass restrictions through another tool/store/file. Ordinary non-sensitive conversation may continue. Declaring 18+ grants no optional-purpose consent; keep required source/action/connection permissions and instrument rights.
 
-For a teen or a person of unknown age, use an instrument only when its actual age range and current
-service authorization permit it. Unless current adult eligibility is established, use only a teen-eligible
-instrument. Missing or adult-only eligibility does not authorize context-assisted answers or scoring;
-offer ordinary reflection instead, without a routine birth-date interrogation.
+Context-assisted instrument work requires current eligible adult account capabilities and instrument rights. For teen or unknown-age users, do not retrieve item banks, prepare instrument-answer candidates or score; continue ordinary non-instrument planning with visible context instead. Do not ask for a birth date or treat a chat age claim as account authorization.
 
 ## Reuse the chosen context and plan
 

@@ -32,6 +32,8 @@ adult-confirmation question to discuss friendship or ordinary boundaries.
 
 ## Entry and privacy
 
+Follow the [account age rules](../00-session-bootstrap/SKILL.md#audience-and-age-appropriate-privacy). Under 13: general or safety help only; no personal collection, account reads or saving. Ages 13-17: account work is limited to server-permitted ordinary tasks/goals, optional dates and user-enabled reminders. Unknown age grants no restricted processing or persistence. Never bypass restrictions through another tool/store/file. Ordinary non-sensitive conversation may continue. Declaring 18+ grants no optional-purpose consent; keep required source/action/connection permissions and instrument rights.
+
 1. Follow `../00-session-bootstrap/SKILL.md` for the source and audience boundary. This conversation-only
    flow needs no connector and performs no account reads, scoring or saves.
 2. Continue only with a topic the person chose. If a boundary concern is adjacent to another task, ask
