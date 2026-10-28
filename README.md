@@ -43,9 +43,9 @@ Ask for a comparison, a draft or a task in the same conversation. You do not nee
 
 ## Age and availability
 
-Psychology is intended for people aged 13 and older. It is not for children under 13 and is unavailable in the EU, EEA and UK. Follow your AI host's age and parent or legal guardian permission requirements. Use only features permitted by your current account controls.
+Noesis is for people aged 13 and older outside the EU, EEA and UK. Your account uses your self-declared age band. Ages 13-17 have basic tasks, goals and reminders with limited data collection.
 
-Individual exercises and instruments may have stricter age or suitability requirements; general access does not make every assessment appropriate for ages 13–17. Relationship reflection is non-explicit and focuses on communication, consent, personal boundaries and respectful relationships.
+Eligible adults can use the available features they choose to authorize. Health, instruments, imports, research and sharing have separate requirements. Your AI host's age rules also apply. Relationship reflection stays non-explicit.
 
 ## Support and wellbeing
 

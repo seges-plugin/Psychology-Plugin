@@ -8,10 +8,7 @@ version: "1.2.1"
 
 ## Audience and privacy
 
-This skill is for ages 13+. Use teen-appropriate, non-graphic language when age is unknown. For a person
-known to be under 13, offer only general information or immediate safety support; do not collect personal
-history, read account data, prepare personal candidates or save anything. Follow the audience boundary in
-`../00-session-bootstrap/SKILL.md` and respect the actual service's age restrictions.
+Follow the [account age rules](../00-session-bootstrap/SKILL.md#audience-and-age-appropriate-privacy). Under 13: general or safety help only; no personal collection, account reads or saving. Ages 13-17: account work is limited to server-permitted ordinary tasks/goals, optional dates and user-enabled reminders. Unknown age grants no restricted processing or persistence. Never bypass restrictions through another tool/store/file. Ordinary non-sensitive conversation may continue. Declaring 18+ grants no optional-purpose consent; keep required source/action/connection permissions and instrument rights.
 
 ## Answer the assessment request without repeated intake
 
@@ -44,14 +41,7 @@ a Psychology tool ran; loaded plugin/skill metadata is not proof that any tool i
 
 ## Instrument age suitability
 
-General support for ages 13+ does not make every catalog instrument suitable for teens. Before selecting,
-administering, scoring or saving an instrument for a teen or a person of unknown age, use its actual
-item-bank metadata, intended population and current service authorization to establish eligibility.
-Unless current adult eligibility is established, use only an instrument whose actual age range permits
-teens. If age suitability is missing, adult-only or unclear, do not administer or score it or bypass a
-service refusal. Offer ordinary non-instrument reflection instead. Do not request a birth date or infer adulthood from context. An adult
-norm, cutoff, percentile or validation finding is not a teen norm; never relabel it or claim adolescent
-validation. Keep the person's own answer endorsement, scoring confirmation and separate save review.
+Psychological instrument administration, scoring, interpretation and result saving require current eligible adult account capabilities. Teen or unknown-age users receive ordinary non-instrument planning instead, even when an instrument has adolescent validation. Do not request a birth date or infer adulthood from context. Eligible adults still need the actual instrument population, suitability, rights, current service authorization, direct answer endorsement, scoring confirmation and separate save review. Adult norms and clinical cutoffs do not establish a diagnosis.
 
 ## Two-track product contract
 
