@@ -46,6 +46,16 @@ anything from a previous session without a selected, authorized source.
 
 ## Administration flow
 
+Before any direct or delegated administration, independently follow the capability check in
+`skills/assessment-guide/SKILL.md`, even when an instrument and plan are already confirmed. Discover
+the actual item-bank and scoring tools and their input schemas from this session's authenticated
+`tools/list`, and confirm current instrument-specific permission. If metadata-only mode is reported,
+`assessment_execution_available` is false, or any essential capability or permission cannot be
+confirmed, stop administration and scoring, collect no scored answers, and offer ordinary reflection.
+A catalog, prompt, old plan or earlier session is not proof of availability. Server prompts must be
+discovered using `prompts/list` and retrieved using `prompts/get`; they are not callable tools.
+Recheck when the connection or capabilities change. Keep age and separate action permissions in force.
+
 1. **Route first.** If the person is in immediate danger, switch to `crisis-support`; do not continue an
    assessment. If the request is generic, return to `assessment-guide` for a corrected brief and one
    confirmed assessment plan. A prior completed result routes to `interpretation`; an unfinished prior
