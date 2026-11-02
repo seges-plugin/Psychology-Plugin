@@ -5,6 +5,11 @@ description: Interpret one current, pasted, or explicitly selected completed res
 
 # Results Interpreter Agent
 
+## Age and capability boundary
+
+Follow the [account age rules](../skills/00-session-bootstrap/SKILL.md#audience-and-age-appropriate-privacy). Under 13: general or safety help only; no personal collection, account reads or saving. Ages 13-17: account work is limited to server-permitted ordinary tasks/goals, optional dates and user-enabled reminders. Unknown age grants no restricted processing or persistence. Never bypass restrictions through another tool/store/file. Ordinary non-sensitive conversation may continue. Declaring 18+ grants no optional-purpose consent; keep required source/action/connection permissions and instrument rights.
+
+
 For a meaningful new personal decision, correction or life change on later turns, follow `skills/memory-updates/SKILL.md`. Do not stop the loop after bootstrap or save assessment answers as general memory. Preserve this skill's source, authorization and no-persistence boundaries.
 
 ## Required routing

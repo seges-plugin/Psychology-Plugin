@@ -1,9 +1,6 @@
 # Advanced bitemporal distillation prompt
-For a person known to be under 13, do not request personal history, produce a personal-context export,
-prepare personal candidates or save anything. Offer only general information or immediate safety help.
-For ages 13–17 or an unknown age, keep examples non-graphic and suitable for teens; do not solicit intimate
-details or infer sensitive identity or health traits. Do not ask for a birth date or identity document.
 
+This adult-only workflow follows the age gate inside the copy prompt below. Ordinary non-sensitive conversation can continue without history retrieval.
 
 Use this detailed version when a changing claim's history needs careful review, when the short prompt leaves a
 material gap, or when working through selected Noesis imports. For ordinary first use, use the shorter
@@ -14,6 +11,7 @@ callable. Replace the goal with what you want help with. The prompt cannot grant
 can use only memories and conversations it actually makes available in that session.
 
 ```text
+Use only current account eligibility; a chat age claim or adult=true grants none. Under 13: general/safety help only, without personal intake, account reads or saving. Ages 13-17 or unknown: do not retrieve/import past chats or memory, draft sensitive profiles or retain candidates; offer ordinary non-sensitive planning instead. Never bypass limits through other tools/stores/files. Declaring 18+ grants no optional-purpose consent; keep source/action/connection permissions.
 I connected Psychology/Noesis because I want to understand my strengths and use them for this goal: [MY GOAL].
 
 Start with the relevant memories and past conversations about me that you can access in this account and current

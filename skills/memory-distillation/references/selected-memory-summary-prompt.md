@@ -1,9 +1,6 @@
 # Selected-memory summary prompt
-For a person known to be under 13, do not request personal history, produce a personal-context export,
-prepare personal candidates or save anything. Offer only general information or immediate safety help.
-For ages 13–17 or an unknown age, keep examples non-graphic and suitable for teens; do not solicit intimate
-details or infer sensitive identity or health traits. Do not ask for a birth date or identity document.
 
+This workflow is available only to eligible adults. Do not retrieve or import past chats for teens or users of unknown age. Age alone does not authorize any source, action or connection. Ordinary non-sensitive conversation can continue without history retrieval.
 
 Use this reference when a person wants to bring relevant memories and past-chat context from ChatGPT, Claude,
 or Kimi into Psychology. It asks for a purpose-limited summary of context the source assistant can actually access,

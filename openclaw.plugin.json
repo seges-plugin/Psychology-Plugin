@@ -1,8 +1,8 @@
 {
   "id": "psychology",
   "name": "Psychology",
-  "version": "1.6.2",
-  "description": "Review goals, tasks, relationships or diary notes using context you choose, and plan your next step. Ages 13 and older; not diagnosis or treatment.",
+  "version": "1.6.3",
+  "description": "Review a change in your plan and decide your next step, using context you choose. Non-clinical support.",
   "configSchema": {
     "type": "object",
     "properties": {},

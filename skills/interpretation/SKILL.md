@@ -40,18 +40,11 @@ references:
 
 ## Audience and privacy
 
-This skill is for ages 13+. Use teen-appropriate, non-graphic language when age is unknown. For a person
-known to be under 13, offer only general information or immediate safety support; do not collect personal
-history, read account data, prepare personal candidates or save anything. Follow the audience boundary in
-`../00-session-bootstrap/SKILL.md` and respect the actual service's age restrictions.
+Follow the [account age rules](../00-session-bootstrap/SKILL.md#audience-and-age-appropriate-privacy). Under 13: general or safety help only; no personal collection, account reads or saving. Ages 13-17: account work is limited to server-permitted ordinary tasks/goals, optional dates and user-enabled reminders. Unknown age grants no restricted processing or persistence. Never bypass restrictions through another tool/store/file. Ordinary non-sensitive conversation may continue. Declaring 18+ grants no optional-purpose consent; keep required source/action/connection permissions and instrument rights.
 
 ## Age and measurement limits
 
-For a teen or an unknown age, do not apply adult-only norms, clinical cutoffs or population comparisons.
-Check the actual instrument's intended age range and the selected result's reference population. When
-eligibility or age-appropriate evidence is absent, explain that limitation and use ordinary non-instrument
-reflection rather than a numeric or diagnostic interpretation. Do not infer age, identity or a condition,
-recalculate a result under invented teen norms, or change a service's age eligibility.
+For teen or unknown-age users, do not interpret psychological instrument results, including pasted results, prior account results or local files. Explain the availability limit and continue ordinary non-instrument planning without extracting a sensitive profile. Eligible adults require the actual instrument intended population and selected result reference population; do not infer identity or a condition, invent norms or bypass service eligibility.
 
 ## Use the result and task already chosen
 
