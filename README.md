@@ -43,7 +43,7 @@ Ask for a comparison, a draft or a task in the same conversation. You do not nee
 
 ## Age and availability
 
-Noesis is for people aged 13 and older outside the EU, EEA and UK. Your account uses your self-declared age band. Ages 13-17 have basic tasks, goals and reminders with limited data collection.
+Noesis uses a self-declared age band and is unavailable under 13 or in the EU, EEA and UK. Availability also depends on your region and account eligibility. Where access is available to ages 13-17, use is limited to basic tasks, goals and reminders.
 
 Eligible adults can use the available features they choose to authorize. Health, instruments, imports, research and sharing have separate requirements. Your AI host's age rules also apply. Relationship reflection stays non-explicit.
 

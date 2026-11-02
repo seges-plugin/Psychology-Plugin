@@ -15,7 +15,7 @@
   "interface": {
     "displayName": "Psychology",
     "shortDescription": "Continue your next step",
-    "longDescription": "Continue a goal, task, relationship question or diary note using context you choose. Review what changed and decide your next step. Use available Noesis tools to update records, with the required permissions and review. Noesis uses your self-declared age band. Ages 13-17 have basic tasks, goals and reminders with limited collection. Eligible adults can use the available features they authorize. Health, instruments, imports, research and sharing have separate requirements. Unknown age does not grant adult access. Unavailable under 13 or in the EU, EEA or UK. Your AI host's age rules apply. Not diagnosis or treatment.",
+    "longDescription": "Continue a goal, task, relationship question or diary note using context you choose. Review what changed and decide your next step. Use available Noesis tools to update records, with the required permissions and review. Noesis uses your self-declared age band. For ages 13-17, availability depends on the current region and account eligibility; where available, use is limited to basic tasks, goals and reminders. Eligible adults can use the available features they authorize. Health, instruments, imports, research and sharing have separate requirements. Unknown age does not grant adult access. Unavailable under 13 or in the EU, EEA or UK. Your AI host's age rules apply. Not diagnosis or treatment.",
     "websiteURL": "https://noesis.seges.ai"
   },
   "skills": "./skills/",
